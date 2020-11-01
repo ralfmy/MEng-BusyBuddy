@@ -13,9 +13,14 @@
 		BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */; };
 		BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305891254F2C3E0087FDEA /* Assets.xcassets */; };
 		BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305894254F2C3E0087FDEA /* Preview Assets.xcassets */; };
-		BF305898254F2C3E0087FDEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF305896254F2C3E0087FDEA /* LaunchScreen.storyboard */; };
 		BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */; };
 		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
+		BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
+		BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF3058CD254F2CA60087FDEA /* AdditionalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */; };
+		BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */; };
+		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
+		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +48,6 @@
 		BF30588F254F2C3C0087FDEA /* BusyBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusyBuddy.xcdatamodel; sourceTree = "<group>"; };
 		BF305891254F2C3E0087FDEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF305894254F2C3E0087FDEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BF305897254F2C3E0087FDEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF305899254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyTests.swift; sourceTree = "<group>"; };
@@ -51,6 +55,12 @@
 		BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyUITests.swift; sourceTree = "<group>"; };
 		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPI.swift; sourceTree = "<group>"; };
+		BF3058C7254F2C7E0087FDEA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalProperties.swift; sourceTree = "<group>"; };
+		BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +111,17 @@
 		BF305887254F2C3C0087FDEA /* BusyBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				BF3058BE254F2C530087FDEA /* Models */,
 				BF305888254F2C3C0087FDEA /* AppDelegate.swift */,
 				BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */,
 				BF30588C254F2C3C0087FDEA /* ContentView.swift */,
 				BF305891254F2C3E0087FDEA /* Assets.xcassets */,
-				BF305896254F2C3E0087FDEA /* LaunchScreen.storyboard */,
 				BF305899254F2C3E0087FDEA /* Info.plist */,
-				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
+				BF3058D4254F2E4C0087FDEA /* Core Data */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
+				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
+				BF3058C7254F2C7E0087FDEA /* Place.swift */,
+				BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -126,6 +139,7 @@
 			children = (
 				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058A4254F2C3E0087FDEA /* Info.plist */,
+				BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */,
 			);
 			path = BusyBuddyTests;
 			sourceTree = "<group>";
@@ -137,6 +151,23 @@
 				BF3058AF254F2C3E0087FDEA /* Info.plist */,
 			);
 			path = BusyBuddyUITests;
+			sourceTree = "<group>";
+		};
+		BF3058BE254F2C530087FDEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF3058D4254F2E4C0087FDEA /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */,
+				BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */,
+				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +273,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF305898254F2C3E0087FDEA /* LaunchScreen.storyboard in Resources */,
 				BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */,
 				BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */,
 			);
@@ -269,8 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
+				BF3058CD254F2CA60087FDEA /* AdditionalProperties.swift in Sources */,
+				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
+				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
+				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* ContentView.swift in Sources */,
 			);
@@ -280,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,17 +342,6 @@
 			targetProxy = BF3058AA254F2C3E0087FDEA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BF305896254F2C3E0087FDEA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF305897254F2C3E0087FDEA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BF3058B0254F2C3E0087FDEA /* Debug */ = {
