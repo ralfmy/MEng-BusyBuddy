@@ -20,19 +20,17 @@ class CoreDataContainer {
     init(_ storageType: StorageType = .DISK) {
         self.persistentContainer = NSPersistentContainer(name: "BusyBuddy")
         
-        if storageType == .DISK {
-            self.persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-        }
-        
         if storageType == .MEMORY {
             let description = NSPersistentStoreDescription()
             description.url = URL(fileURLWithPath: "/dev/null")
             self.persistentContainer.persistentStoreDescriptions = [description]
         }
+        
+        self.persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
         
     }
 }

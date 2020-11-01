@@ -4,6 +4,8 @@
 //
 //  Created by Ralf Michael Yap on 01/11/2020.
 //
+//  With help from
+//  https://www.donnywals.com/fetching-objects-from-core-data-in-a-swiftui-project/
 
 import Foundation
 import CoreData
@@ -18,7 +20,7 @@ class CoreDataManager {
         self.persistentContainer = persistentContainer
     }
     
-    func savePlaces(places: [Place]) {
+    public func savePlaces(places: [Place]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
                 let cdPlace = CoreDataPlace(context: self.managedObjectContext)
@@ -42,7 +44,7 @@ class CoreDataManager {
         }
     }
     
-    func loadSavedPlaces() -> [CoreDataPlace] {
+    public func loadSavedPlaces() -> [CoreDataPlace] {
         let request = CoreDataPlace.createFetchRequest()
         let sort = NSSortDescriptor(key: "commonName", ascending: true)
         request.sortDescriptors = [sort]
@@ -56,8 +58,9 @@ class CoreDataManager {
         return self.savedPlaces
     }
     
-    func deleteAllPlaces() {
-        self.savedPlaces.forEach{ place in
+    public func deleteAllPlaces() {
+        let savedPlaces = self.loadSavedPlaces()
+        savedPlaces.forEach{ place in
             self.managedObjectContext.delete(place)
         }
         

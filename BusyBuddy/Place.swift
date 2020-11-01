@@ -24,7 +24,12 @@ struct Place: Encodable, Decodable, Equatable {
     }
     
     func getImageUrl() -> String {
-        return self.additionalProperties.filter({$0.key == "imageUrl"})[0].value
+        let imageUrl = self.additionalProperties.filter({$0.key == "imageUrl"})
+        if imageUrl.count != 0 {
+            return imageUrl[0].value
+        } else {
+            return "None"
+        }
     }
     
 }
