@@ -4,6 +4,8 @@
 //
 //  Created by Ralf Michael Yap on 31/10/2020.
 //
+//  With help from
+//  https://www.hackingwithswift.com/quick-start/swiftui/introduction-to-using-core-data-with-swiftui
 
 import SwiftUI
 import CoreData
@@ -15,7 +17,7 @@ struct ContentView: View {
     ) var savedPlaces: FetchedResults<CoreDataPlace>
     
     var body: some View {
-        Text("Hello, world!")
+        Text("TfL JamCams")
             .padding()
         
         VStack {
@@ -37,7 +39,8 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let places):
-                    self.savePlaces(places: places)
+                    let newPlaces = places.filter{ !savedPlaces.map{ $0.commonName }.contains($0.commonName) }
+                    self.savePlaces(places: newPlaces)
                 case .failure(let err):
                     print("Failure to fetch: ", err)
                 }
@@ -51,6 +54,7 @@ struct ContentView: View {
                 let cdPlace = CoreDataPlace(context: self.managedObjectContext)
                 cdPlace.commonName = place.commonName
                 cdPlace.placeType = place.placeType
+                cdPlace.imageUrl = place.additionalProperties.filter({$0.key == "imageUrl"})[0].value
                 cdPlace.lat = place.lat
                 cdPlace.lon = place.lon
             }
@@ -59,7 +63,7 @@ struct ContentView: View {
         if self.managedObjectContext.hasChanges {
             do {
                 try self.managedObjectContext.save()
-                print("changes")
+                print("Changes saved")
             } catch {
                 print("Error occurred while saving: \(error)")
             }
@@ -75,6 +79,7 @@ struct ContentView: View {
         
         do {
             try self.managedObjectContext.save()
+            print("Successfully deleted")
         } catch {
             print("Error occurred while deleting: \(error)")
         }
@@ -82,8 +87,9 @@ struct ContentView: View {
     
     func loadPlaces() {
         savedPlaces.forEach { place in
-            print(place.commonName)
+            print("\(place.commonName): \(place.imageUrl)")
         }
+        print("Finished loading")
         if savedPlaces.count == 0 {
             print("No places")
         }

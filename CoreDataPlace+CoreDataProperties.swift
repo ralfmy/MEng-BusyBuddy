@@ -18,6 +18,7 @@ extension CoreDataPlace {
     
     @NSManaged public var commonName: String
     @NSManaged public var placeType: String
+    @NSManaged public var imageUrl: String
     @NSManaged public var lat: Double
     @NSManaged public var lon: Double
 

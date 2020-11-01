@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B5012d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CoreDataPlace" representedClassName="CoreDataPlace" syncable="YES">
         <attribute name="commonName" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="lon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="placeType" attributeType="String"/>
     </entity>
     <elements>
-        <element name="CoreDataPlace" positionX="-54" positionY="-9" width="128" height="89"/>
+        <element name="CoreDataPlace" positionX="-54" positionY="-9" width="128" height="104"/>
     </elements>
 </model>
