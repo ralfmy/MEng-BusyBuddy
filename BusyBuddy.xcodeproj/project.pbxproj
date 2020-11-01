@@ -17,10 +17,13 @@
 		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
 		BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
 		BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
-		BF3058CD254F2CA60087FDEA /* AdditionalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */; };
+		BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */; };
 		BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */; };
 		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
+		BF3058E5254F44560087FDEA /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* CoreDataTests.swift */; };
+		BF3058EA254F49660087FDEA /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* CoreDataContainer.swift */; };
+		BF89E5EB254F51E500AA5336 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +60,13 @@
 		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPI.swift; sourceTree = "<group>"; };
 		BF3058C7254F2C7E0087FDEA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalProperties.swift; sourceTree = "<group>"; };
+		BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalProperty.swift; sourceTree = "<group>"; };
 		BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
+		BF3058E4254F44560087FDEA /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		BF3058E9254F49660087FDEA /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
+		BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +127,7 @@
 				BF305893254F2C3E0087FDEA /* Preview Content */,
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
 				BF3058C7254F2C7E0087FDEA /* Place.swift */,
-				BF3058CC254F2CA60087FDEA /* AdditionalProperties.swift */,
+				BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -140,6 +146,7 @@
 				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058A4254F2C3E0087FDEA /* Info.plist */,
 				BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */,
+				BF3058E4254F44560087FDEA /* CoreDataTests.swift */,
 			);
 			path = BusyBuddyTests;
 			sourceTree = "<group>";
@@ -166,6 +173,8 @@
 				BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */,
 				BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */,
 				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
+				BF3058E9254F49660087FDEA /* CoreDataContainer.swift */,
+				BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -300,14 +309,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
-				BF3058CD254F2CA60087FDEA /* AdditionalProperties.swift in Sources */,
+				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
+				BF3058EA254F49660087FDEA /* CoreDataContainer.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* ContentView.swift in Sources */,
+				BF89E5EB254F51E500AA5336 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +328,7 @@
 			files = (
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
+				BF3058E5254F44560087FDEA /* CoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

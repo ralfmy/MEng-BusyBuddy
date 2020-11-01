@@ -10,7 +10,7 @@ import Foundation
 struct Place: Encodable, Decodable, Equatable {
     let commonName: String
     let placeType: String
-    let additionalProperties: [AdditionalProperties]
+    let additionalProperties: [AdditionalProperty]
     let lat: Double
     let lon: Double
     
@@ -21,6 +21,10 @@ struct Place: Encodable, Decodable, Equatable {
         } else {
             return false
         }
+    }
+    
+    func getImageUrl() -> String {
+        return self.additionalProperties.filter({$0.key == "imageUrl"})[0].value
     }
     
 }

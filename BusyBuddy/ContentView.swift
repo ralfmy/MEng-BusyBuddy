@@ -5,7 +5,7 @@
 //  Created by Ralf Michael Yap on 31/10/2020.
 //
 //  With help from
-//  https://www.hackingwithswift.com/quick-start/swiftui/introduction-to-using-core-data-with-swiftui
+//  https://www.hackingwithswift.com/quick-start/swiftui/introduction-to-using-core-data-with-swiftui 
 
 import SwiftUI
 import CoreData
@@ -16,6 +16,8 @@ struct ContentView: View {
     @FetchRequest(entity: CoreDataPlace.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \CoreDataPlace.commonName, ascending: true)]
     ) var savedPlaces: FetchedResults<CoreDataPlace>
     
+    let coreDataManager: CoreDataManager
+    
     var body: some View {
         Text("TfL JamCams")
             .padding()
@@ -25,10 +27,18 @@ struct ContentView: View {
                 self.fetchAllJamCams()
             }
             Button("Load") {
-                self.loadPlaces()
+                let savedPlaces = self.coreDataManager.loadSavedPlaces()
+                if savedPlaces.count == 0 {
+                    print("-- NO SAVED PLACES --")
+                } else {
+                    savedPlaces.forEach { place in
+                        print("\(place.commonName): \(place.imageUrl)")
+                    }
+                    print("-- FINISHED LOADING --")
+                }
             }
             Button("Delete") {
-                self.deleteAll()
+                self.coreDataManager.deleteAllPlaces()
             }
         }
         
@@ -40,64 +50,19 @@ struct ContentView: View {
                 switch result {
                 case .success(let places):
                     let newPlaces = places.filter{ !savedPlaces.map{ $0.commonName }.contains($0.commonName) }
-                    self.savePlaces(places: newPlaces)
+                    self.coreDataManager.savePlaces(places: newPlaces)
                 case .failure(let err):
                     print("Failure to fetch: ", err)
                 }
             }
         }
     }
-    
-    func savePlaces(places: [Place]) {
-        managedObjectContext.performAndWait {
-            places.forEach { place in
-                let cdPlace = CoreDataPlace(context: self.managedObjectContext)
-                cdPlace.commonName = place.commonName
-                cdPlace.placeType = place.placeType
-                cdPlace.imageUrl = place.additionalProperties.filter({$0.key == "imageUrl"})[0].value
-                cdPlace.lat = place.lat
-                cdPlace.lon = place.lon
-            }
-        }
-        
-        if self.managedObjectContext.hasChanges {
-            do {
-                try self.managedObjectContext.save()
-                print("Changes saved")
-            } catch {
-                print("Error occurred while saving: \(error)")
-            }
-        } else {
-            print("no changes")
-        }
-    }
-    
-    func deleteAll() {
-        savedPlaces.forEach{ place in
-            self.managedObjectContext.delete(place)
-        }
-        
-        do {
-            try self.managedObjectContext.save()
-            print("Successfully deleted")
-        } catch {
-            print("Error occurred while deleting: \(error)")
-        }
-    }
-    
-    func loadPlaces() {
-        savedPlaces.forEach { place in
-            print("\(place.commonName): \(place.imageUrl)")
-        }
-        print("Finished loading")
-        if savedPlaces.count == 0 {
-            print("No places")
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let persistentContainer = CoreDataContainer().persistentContainer
+        let managedObjectContext = persistentContainer.viewContext
+        ContentView(coreDataManager: CoreDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext))
     }
 }
