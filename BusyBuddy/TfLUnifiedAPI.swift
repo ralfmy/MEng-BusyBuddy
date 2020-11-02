@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//  Methods for calling the TfL Unified API.
+
 struct TfLUnifiedAPI {
     
     private let session: URLSession

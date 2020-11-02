@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  PlacesDataManager.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 01/11/2020.
@@ -12,27 +12,43 @@ import Foundation
 import CoreData
 import os.log
 
-class CoreDataManager {
+//  Responsible for saving Places data to persitent storage via Core Data, and for loading data from storage to memory
+
+class PlacesDataManager: ObservableObject {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesDataManager")
+    
     private var persistentContainer: NSPersistentContainer
     private var managedObjectContext: NSManagedObjectContext
     
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "CoreDataManager")
+    @Published var places = [CoreDataPlace]()
 
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.persistentContainer = persistentContainer
+        self.fetchAndLoadAllPlaces()
     }
     
-    fileprivate func saveContext(message: String = "INFO: Save successful.") {
-        do {
-            try self.managedObjectContext.save()
-            self.logger.info("\(message, privacy: .private)")
-        } catch {
-            self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
+    private func fetchAndLoadAllPlaces() {
+        self.loadAllSavedPlaces()
+        
+        if self.places.isEmpty {
+            self.logger.info("No saved places. Fetching all places from TfL Unified API.")
+            
+            TfLUnifiedAPI().fetchAllJamCams() { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let places):
+                        self.savePlaces(places: places)
+                        self.loadAllSavedPlaces()
+                    case .failure(let err):
+                        self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
+                    }
+                }
+            }
         }
     }
     
-    public func savePlaces(places: [Place]) {
+    private func savePlaces(places: [Place]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
                 let cdPlace = CoreDataPlace(context: self.managedObjectContext)
@@ -51,8 +67,17 @@ class CoreDataManager {
             self.logger.info("INFO: No changes made.")
         }
     }
+    
+    private func saveContext(message: String = "INFO: Save successful.") {
+        do {
+            try self.managedObjectContext.save()
+            self.logger.info("\(message, privacy: .private)")
+        } catch {
+            self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
+        }
+    }
         
-    public func loadAllSavedPlaces() -> [CoreDataPlace] {
+    private func loadAllSavedPlaces() {
         var results = [CoreDataPlace]()
 
         let request = CoreDataPlace.createFetchRequest()
@@ -65,7 +90,7 @@ class CoreDataManager {
             self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
         }
         
-        return results
+        self.places = results
     }
     
     public func loadSavedPlaces(by commonName: String) -> [CoreDataPlace] {
@@ -106,21 +131,23 @@ class CoreDataManager {
     }
     
     public func deleteAllSavedPlaces() {
-        let savedPlaces = self.loadAllSavedPlaces()
-        savedPlaces.forEach{ place in
+        // Used for clearing storage
+        self.places.forEach{ place in
             self.managedObjectContext.delete(place)
         }
-        saveContext()
+        self.saveContext(message: "Successfully deleted all saved places.")
+        self.loadAllSavedPlaces()
     }
     
     public func deleteSavedPlace(with id: String) {
         if let place = self.loadSavedPlace(with: id) {
             self.managedObjectContext.delete(place)
-            saveContext()
+            self.saveContext()
         } else {
             self.logger.info("INFO: Place with id \(id) not found.")
         }
-        
+        self.saveContext(message: "Successfully deleted all saved places.")
+
     }
     
 }

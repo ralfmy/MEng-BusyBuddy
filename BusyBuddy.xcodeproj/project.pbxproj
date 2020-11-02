@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF305888254F2C3C0087FDEA /* AppDelegate.swift */; };
 		BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */; };
-		BF30588D254F2C3C0087FDEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588C254F2C3C0087FDEA /* ContentView.swift */; };
+		BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588C254F2C3C0087FDEA /* PlacesView.swift */; };
 		BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */; };
 		BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305891254F2C3E0087FDEA /* Assets.xcassets */; };
 		BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305894254F2C3E0087FDEA /* Preview Assets.xcassets */; };
@@ -23,7 +23,8 @@
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* CoreDataTests.swift */; };
 		BF3058EA254F49660087FDEA /* CoreDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */; };
-		BF89E5EB254F51E500AA5336 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */; };
+		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
+		BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,7 @@
 		BF305885254F2C3C0087FDEA /* BusyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF305888254F2C3C0087FDEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BF30588C254F2C3C0087FDEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF30588C254F2C3C0087FDEA /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
 		BF30588F254F2C3C0087FDEA /* BusyBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusyBuddy.xcdatamodel; sourceTree = "<group>"; };
 		BF305891254F2C3E0087FDEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF305894254F2C3E0087FDEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -66,7 +67,8 @@
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistence.swift; sourceTree = "<group>"; };
-		BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
+		BFD97B572550449E00FF23D4 /* PlaceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +119,10 @@
 		BF305887254F2C3C0087FDEA /* BusyBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				BF3058BE254F2C530087FDEA /* Models */,
+				BF3058BE254F2C530087FDEA /* Core ML Models */,
 				BF305888254F2C3C0087FDEA /* AppDelegate.swift */,
 				BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */,
-				BF30588C254F2C3C0087FDEA /* ContentView.swift */,
+				BF30588C254F2C3C0087FDEA /* PlacesView.swift */,
 				BF305891254F2C3E0087FDEA /* Assets.xcassets */,
 				BF305899254F2C3E0087FDEA /* Info.plist */,
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
@@ -128,6 +130,7 @@
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
 				BF3058C7254F2C7E0087FDEA /* Place.swift */,
 				BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */,
+				BFD97B572550449E00FF23D4 /* PlaceItem.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -160,11 +163,11 @@
 			path = BusyBuddyUITests;
 			sourceTree = "<group>";
 		};
-		BF3058BE254F2C530087FDEA /* Models */ = {
+		BF3058BE254F2C530087FDEA /* Core ML Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Models;
+			path = "Core ML Models";
 			sourceTree = "<group>";
 		};
 		BF3058D4254F2E4C0087FDEA /* Core Data */ = {
@@ -174,7 +177,7 @@
 				BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */,
 				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
 				BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */,
-				BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */,
+				BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
 				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
+				BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
@@ -317,8 +321,8 @@
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
-				BF30588D254F2C3C0087FDEA /* ContentView.swift in Sources */,
-				BF89E5EB254F51E500AA5336 /* CoreDataManager.swift in Sources */,
+				BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */,
+				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

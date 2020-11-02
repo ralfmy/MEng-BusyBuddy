@@ -7,6 +7,8 @@
 
 import Foundation
 
+//  Decode JSON response from TfL Unified API into this Place type.
+
 struct Place: Encodable, Decodable, Equatable {
     let id: String
     let commonName: String
