@@ -18,10 +18,10 @@ class CoreDataTests: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var coreDataManager: CoreDataManager!
     
-    let places = [Place(commonName: "Common Name", placeType: "Place Type", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "Image URL")], lat: 4.20, lon: 6.9)]
+    let places = [Place(id: "Unique ID", commonName: "Common Name", placeType: "Place Type", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "Image URL")], lat: 4.20, lon: 6.9)]
     
     override func setUpWithError() throws {
-        self.persistentContainer = CoreDataPersistence(.MEMORY).container
+        self.persistentContainer = CoreDataPersistence(.memory).container
         self.managedObjectContext = self.persistentContainer.viewContext
         self.coreDataManager = CoreDataManager(persistentContainer: self.persistentContainer, managedObjectContext: self.managedObjectContext)
     }
@@ -46,25 +46,57 @@ class CoreDataTests: XCTestCase {
         }
     }
 
-    func testLoadPlaces() throws {
+    func testLoadAllloadedPlaces() throws {
         self.coreDataManager.savePlaces(places: self.places)
         
-        let savedPlaces = self.coreDataManager.loadAllSavedPlaces()
+        let loadedPlaces = self.coreDataManager.loadAllSavedPlaces()
         
-        XCTAssertEqual(savedPlaces.count, 1)
-        XCTAssertEqual(savedPlaces[0].commonName, "Common Name")
-        XCTAssertEqual(savedPlaces[0].placeType, "Place Type")
-        XCTAssertEqual(savedPlaces[0].lat, 4.20)
-        XCTAssertEqual(savedPlaces[0].lon, 6.9)
+        XCTAssertEqual(loadedPlaces.count, 1)
+        XCTAssertEqual(loadedPlaces[0].commonName, "Common Name")
+        XCTAssertEqual(loadedPlaces[0].placeType, "Place Type")
+        XCTAssertEqual(loadedPlaces[0].lat, 4.20)
+        XCTAssertEqual(loadedPlaces[0].lon, 6.9)
     }
     
-    func testDeleteAllPlaces() throws {
+    func testLoadSavedPlacesByCommonName() throws {
         self.coreDataManager.savePlaces(places: self.places)
-        var savedPlaces = self.coreDataManager.loadAllSavedPlaces()
-        XCTAssertTrue(!savedPlaces.isEmpty)
+        
+        let loadedPlaces = self.coreDataManager.loadSavedPlaces(by: "Common Name")
+        
+        XCTAssertEqual(loadedPlaces.count, 1)
+        XCTAssertEqual(loadedPlaces[0].commonName, "Common Name")
+        
+    }
+    
+    func testLoadSavedPlaceById() throws {
+        self.coreDataManager.savePlaces(places: self.places)
+        
+        let loadedPlace = self.coreDataManager.loadSavedPlace(with: "Unique ID")
+        
+        XCTAssertEqual(loadedPlace!.id, "Unique ID")
+
+    }
+    
+    func testLoadSavedPlaceNoMatchReturnsNil() throws {
+        self.coreDataManager.savePlaces(places: self.places)
+        let loadedPlace = self.coreDataManager.loadSavedPlace(with: "Random ID")
+        XCTAssertNil(loadedPlace)
+    }
+    
+    func testDeleteAllSavedPlaces() throws {
+        self.coreDataManager.savePlaces(places: self.places)
+        var loadedPlaces = self.coreDataManager.loadAllSavedPlaces()
+        XCTAssertTrue(!loadedPlaces.isEmpty)
 
         self.coreDataManager.deleteAllSavedPlaces()
-        savedPlaces = self.coreDataManager.loadAllSavedPlaces()
-        XCTAssertTrue(savedPlaces.isEmpty)
+        loadedPlaces = self.coreDataManager.loadAllSavedPlaces()
+        XCTAssertTrue(loadedPlaces.isEmpty)
+    }
+    
+    func testDeleteSavedPlaceWithId() {
+        self.coreDataManager.savePlaces(places: self.places)
+        let loadedPlace = self.coreDataManager.loadSavedPlace(with: "Unique ID")
+        self.coreDataManager.deleteSavedPlace(with: loadedPlace!.id)
+        XCTAssertNil(self.coreDataManager.loadSavedPlace(with: "Unique ID"))
     }
 }

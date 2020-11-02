@@ -11,16 +11,16 @@ import Foundation
 import CoreData
 
 enum StorageType {
-    case DISK, MEMORY
+    case disk, memory
 }
 
 class CoreDataPersistence {
     let container: NSPersistentContainer
     
-    init(_ storageType: StorageType = .DISK) {
+    init(_ storageType: StorageType = .disk) {
         self.container = NSPersistentContainer(name: "BusyBuddy")
         
-        if storageType == .MEMORY {
+        if storageType == .memory {
             let description = NSPersistentStoreDescription()
             description.url = URL(fileURLWithPath: "/dev/null")
             self.container.persistentStoreDescriptions = [description]

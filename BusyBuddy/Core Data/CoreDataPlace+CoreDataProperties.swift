@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension CoreDataPlace {
 
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<CoreDataPlace> {

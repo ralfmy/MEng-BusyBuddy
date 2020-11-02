@@ -15,13 +15,21 @@ import os.log
 class CoreDataManager {
     private var persistentContainer: NSPersistentContainer
     private var managedObjectContext: NSManagedObjectContext
-    private var loadedPlaces = [CoreDataPlace]()
     
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "CoreDataManager")
 
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.persistentContainer = persistentContainer
+    }
+    
+    fileprivate func saveContext(message: String = "INFO: Save successful.") {
+        do {
+            try self.managedObjectContext.save()
+            self.logger.info("\(message, privacy: .private)")
+        } catch {
+            self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
+        }
     }
     
     public func savePlaces(places: [Place]) {
@@ -38,40 +46,62 @@ class CoreDataManager {
         }
         
         if self.managedObjectContext.hasChanges {
-            do {
-                try self.managedObjectContext.save()
-                self.logger.info("INFO: Places saved successfully.")
-            } catch {
-                self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
-            }
+            saveContext(message: "INFO: Places saved successfully.")
         } else {
             self.logger.info("INFO: No changes made.")
         }
     }
-    
+        
     public func loadAllSavedPlaces() -> [CoreDataPlace] {
+        var results = [CoreDataPlace]()
+
         let request = CoreDataPlace.createFetchRequest()
         let sort = NSSortDescriptor(key: "commonName", ascending: true)
         request.sortDescriptors = [sort]
         
         do {
-            self.loadedPlaces = try persistentContainer.viewContext.fetch(request)
+            results = try persistentContainer.viewContext.fetch(request)
         } catch {
             self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
         }
         
-        return self.loadedPlaces
+        return results
     }
     
-    public func loadSavedPlace(by commonName: String) {
+    public func loadSavedPlaces(by commonName: String) -> [CoreDataPlace] {
+        var results = [CoreDataPlace]()
+        
         let request = CoreDataPlace.createFetchRequest()
         request.sortDescriptors = []
-        request.predicate = NSPredicate(format: "commonName == %@", commonName)
+        request.predicate = NSPredicate(format: "commonName CONTAINS[c] %@", commonName)
         
         do {
-            self.loadedPlaces = try persistentContainer.viewContext.fetch(request)
+            results = try persistentContainer.viewContext.fetch(request)
         } catch {
             self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
+        }
+        
+        return results
+    }
+    
+    public func loadSavedPlace(with id: String) -> CoreDataPlace? {
+        var results = [CoreDataPlace]()
+
+        let request = CoreDataPlace.createFetchRequest()
+        request.sortDescriptors = []
+        request.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            results = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
+        }
+        
+        if results.isEmpty {
+            self.logger.info("INFO: Place with id \(id) not found.")
+            return nil
+        } else {
+            return results[0]
         }
     }
     
@@ -80,12 +110,17 @@ class CoreDataManager {
         savedPlaces.forEach{ place in
             self.managedObjectContext.delete(place)
         }
-        
-        do {
-            try self.managedObjectContext.save()
-            self.logger.info("INFO: All saved places successfully deleted")
-        } catch {
-            self.logger.error("ERROR: Error occurred while deleting: \(error as NSObject, privacy: .public)")
-        }
+        saveContext()
     }
+    
+    public func deleteSavedPlace(with id: String) {
+        if let place = self.loadSavedPlace(with: id) {
+            self.managedObjectContext.delete(place)
+            saveContext()
+        } else {
+            self.logger.info("INFO: Place with id \(id) not found.")
+        }
+        
+    }
+    
 }
