@@ -14,19 +14,20 @@ enum StorageType {
     case DISK, MEMORY
 }
 
-class CoreDataContainer {
-    let persistentContainer: NSPersistentContainer
+class CoreDataPersistence {
+    let container: NSPersistentContainer
     
     init(_ storageType: StorageType = .DISK) {
-        self.persistentContainer = NSPersistentContainer(name: "BusyBuddy")
+        self.container = NSPersistentContainer(name: "BusyBuddy")
         
         if storageType == .MEMORY {
             let description = NSPersistentStoreDescription()
             description.url = URL(fileURLWithPath: "/dev/null")
-            self.persistentContainer.persistentStoreDescriptions = [description]
+            self.container.persistentStoreDescriptions = [description]
         }
         
-        self.persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        self.container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }

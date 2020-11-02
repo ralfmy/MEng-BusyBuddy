@@ -8,6 +8,7 @@
 import Foundation
 
 struct Place: Encodable, Decodable, Equatable {
+    let id: String
     let commonName: String
     let placeType: String
     let additionalProperties: [AdditionalProperty]

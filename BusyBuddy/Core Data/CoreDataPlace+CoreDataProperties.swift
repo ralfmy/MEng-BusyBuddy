@@ -16,6 +16,7 @@ extension CoreDataPlace {
         return NSFetchRequest<CoreDataPlace>(entityName: "CoreDataPlace")
     }
     
+    @NSManaged public var id: String
     @NSManaged public var commonName: String
     @NSManaged public var placeType: String
     @NSManaged public var imageUrl: String

@@ -21,7 +21,7 @@ class CoreDataTests: XCTestCase {
     let places = [Place(commonName: "Common Name", placeType: "Place Type", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "Image URL")], lat: 4.20, lon: 6.9)]
     
     override func setUpWithError() throws {
-        self.persistentContainer = CoreDataContainer(.MEMORY).persistentContainer
+        self.persistentContainer = CoreDataPersistence(.MEMORY).container
         self.managedObjectContext = self.persistentContainer.viewContext
         self.coreDataManager = CoreDataManager(persistentContainer: self.persistentContainer, managedObjectContext: self.managedObjectContext)
     }
@@ -49,7 +49,7 @@ class CoreDataTests: XCTestCase {
     func testLoadPlaces() throws {
         self.coreDataManager.savePlaces(places: self.places)
         
-        let savedPlaces = self.coreDataManager.loadSavedPlaces()
+        let savedPlaces = self.coreDataManager.loadAllSavedPlaces()
         
         XCTAssertEqual(savedPlaces.count, 1)
         XCTAssertEqual(savedPlaces[0].commonName, "Common Name")
@@ -60,11 +60,11 @@ class CoreDataTests: XCTestCase {
     
     func testDeleteAllPlaces() throws {
         self.coreDataManager.savePlaces(places: self.places)
-        var savedPlaces = self.coreDataManager.loadSavedPlaces()
+        var savedPlaces = self.coreDataManager.loadAllSavedPlaces()
         XCTAssertTrue(!savedPlaces.isEmpty)
 
-        self.coreDataManager.deleteAllPlaces()
-        savedPlaces = self.coreDataManager.loadSavedPlaces()
+        self.coreDataManager.deleteAllSavedPlaces()
+        savedPlaces = self.coreDataManager.loadAllSavedPlaces()
         XCTAssertTrue(savedPlaces.isEmpty)
     }
 }

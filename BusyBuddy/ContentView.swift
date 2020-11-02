@@ -9,6 +9,7 @@
 
 import SwiftUI
 import CoreData
+import os.log
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -17,6 +18,8 @@ struct ContentView: View {
     ) var savedPlaces: FetchedResults<CoreDataPlace>
     
     let coreDataManager: CoreDataManager
+    
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "ContentView")
     
     var body: some View {
         Text("TfL JamCams")
@@ -27,18 +30,18 @@ struct ContentView: View {
                 self.fetchAllJamCams()
             }
             Button("Load") {
-                let savedPlaces = self.coreDataManager.loadSavedPlaces()
+                let savedPlaces = self.coreDataManager.loadAllSavedPlaces()
                 if savedPlaces.count == 0 {
-                    print("-- NO SAVED PLACES --")
+                    self.logger.info("INFO: No saved places.")
                 } else {
                     savedPlaces.forEach { place in
-                        print("\(place.commonName): \(place.imageUrl)")
+                        self.logger.info("INFO: \(place.id): \(place.commonName) - \(place.imageUrl)")
                     }
-                    print("-- FINISHED LOADING --")
+                    self.logger.info("INFO: Finished loading \(savedPlaces.count) places.")
                 }
             }
             Button("Delete") {
-                self.coreDataManager.deleteAllPlaces()
+                self.coreDataManager.deleteAllSavedPlaces()
             }
         }
         
@@ -49,10 +52,9 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let places):
-                    let newPlaces = places.filter{ !savedPlaces.map{ $0.commonName }.contains($0.commonName) }
-                    self.coreDataManager.savePlaces(places: newPlaces)
+                    self.coreDataManager.savePlaces(places: places)
                 case .failure(let err):
-                    print("Failure to fetch: ", err)
+                    self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
                 }
             }
         }
@@ -61,7 +63,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let persistentContainer = CoreDataContainer().persistentContainer
+        let persistentContainer = CoreDataPersistence().container
         let managedObjectContext = persistentContainer.viewContext
         ContentView(coreDataManager: CoreDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext))
     }

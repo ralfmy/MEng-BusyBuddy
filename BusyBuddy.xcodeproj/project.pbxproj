@@ -22,7 +22,7 @@
 		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* CoreDataTests.swift */; };
-		BF3058EA254F49660087FDEA /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* CoreDataContainer.swift */; };
+		BF3058EA254F49660087FDEA /* CoreDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */; };
 		BF89E5EB254F51E500AA5336 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataProperties.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
-		BF3058E9254F49660087FDEA /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
+		BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistence.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,7 +173,7 @@
 				BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */,
 				BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */,
 				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
-				BF3058E9254F49660087FDEA /* CoreDataContainer.swift */,
+				BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */,
 				BF89E5EA254F51E500AA5336 /* CoreDataManager.swift */,
 			);
 			path = "Core Data";
@@ -313,7 +313,7 @@
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
-				BF3058EA254F49660087FDEA /* CoreDataContainer.swift in Sources */,
+				BF3058EA254F49660087FDEA /* CoreDataPersistence.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,

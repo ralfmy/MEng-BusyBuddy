@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        })
 //        return container
         
-        CoreDataContainer().persistentContainer
+        CoreDataPersistence().container
     }()
 
     // MARK: - Core Data Saving support

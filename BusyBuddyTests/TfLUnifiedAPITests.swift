@@ -9,6 +9,7 @@
 //  https://www.swiftbysundell.com/articles/mocking-in-swift/
 
 import XCTest
+import os.log
 
 @testable import BusyBuddy
 
@@ -41,6 +42,8 @@ class URLSessionMock: URLSession {
 
 class TfLUnifiedAPITests: XCTestCase {
     
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "CoreDataManager")
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -61,7 +64,7 @@ class TfLUnifiedAPITests: XCTestCase {
                 count = places.count
                 expectation.fulfill()
             case .failure(let err):
-                print("Failure to fetch: ", err)
+                self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
             }
         }
         
