@@ -13,8 +13,6 @@ import os.log
 
 struct PlacesView: View {
     @EnvironmentObject var placesDataManager: PlacesDataManager
-    
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "ContentView")
         
     var body: some View {
         NavigationView {

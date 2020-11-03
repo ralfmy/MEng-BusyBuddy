@@ -140,14 +140,13 @@ class PlacesDataManager: ObservableObject {
     }
     
     public func deleteSavedPlace(with id: String) {
-        if let place = self.loadSavedPlace(with: id) {
+        if let place = self.places.first(where: { $0.id == id }) {
             self.managedObjectContext.delete(place)
             self.saveContext()
         } else {
             self.logger.info("INFO: Place with id \(id) not found.")
         }
         self.saveContext(message: "Successfully deleted all saved places.")
-
     }
     
 }
