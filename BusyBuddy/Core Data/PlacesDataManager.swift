@@ -102,6 +102,7 @@ class PlacesDataManager: ObservableObject {
     }
     
     public func deleteAllSavedPlaces() {
+        self.loadAllSavedPlaces()
         // Used for clearing storage
         self.places.forEach{ place in
             self.managedObjectContext.delete(place)
@@ -111,13 +112,12 @@ class PlacesDataManager: ObservableObject {
     }
     
     public func deleteSavedPlace(with id: String) {
-        if let place = self.places.first(where: { $0.id == id }) {
+        if let place = self.loadSavedPlace(with: id) {
             self.managedObjectContext.delete(place)
-            self.saveContext()
+            self.saveContext(message: "Successfully deleted place with id \(id)")
         } else {
             self.logger.info("INFO: Place with id \(id) not found.")
         }
-        self.saveContext(message: "Successfully deleted all saved places.")
     }
     
     private func saveContext(message: String = "INFO: Save successful.") {
