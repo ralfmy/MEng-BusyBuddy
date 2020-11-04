@@ -7,8 +7,10 @@
 
 import UIKit
 import SwiftUI
+import os.log
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "SceneDelegate")
 
     var window: UIWindow?
 
@@ -22,7 +24,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         let placesDataManager = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
-
+        
+        // NEED TO CHECK WHEN LAST API FETCH OCCURRED
+        if placesDataManager.places.isEmpty {
+            self.logger.info("No saved places. Fetching all places from TfL Unified API.")
+            TfLUnifiedAPI().fetchAllJamCams() { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let places):
+                        placesDataManager.savePlaces(places: places)
+                        placesDataManager.loadAllSavedPlaces()
+                    case .failure(let err):
+                        self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
+                    }
+                }
+            }
+        }
+        
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let placesView = PlacesView().environmentObject(placesDataManager)

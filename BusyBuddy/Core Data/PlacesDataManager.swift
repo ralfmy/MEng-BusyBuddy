@@ -25,30 +25,10 @@ class PlacesDataManager: ObservableObject {
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.persistentContainer = persistentContainer
-        self.fetchAndLoadAllPlaces()
-    }
-    
-    private func fetchAndLoadAllPlaces() {
         self.loadAllSavedPlaces()
-        
-        if self.places.isEmpty {
-            self.logger.info("No saved places. Fetching all places from TfL Unified API.")
-            
-            TfLUnifiedAPI().fetchAllJamCams() { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let places):
-                        self.savePlaces(places: places)
-                        self.loadAllSavedPlaces()
-                    case .failure(let err):
-                        self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
-                    }
-                }
-            }
-        }
     }
     
-    private func savePlaces(places: [Place]) {
+    public func savePlaces(places: [Place]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
                 let cdPlace = CoreDataPlace(context: self.managedObjectContext)
@@ -67,17 +47,8 @@ class PlacesDataManager: ObservableObject {
             self.logger.info("INFO: No changes made.")
         }
     }
-    
-    private func saveContext(message: String = "INFO: Save successful.") {
-        do {
-            try self.managedObjectContext.save()
-            self.logger.info("\(message, privacy: .private)")
-        } catch {
-            self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
-        }
-    }
         
-    private func loadAllSavedPlaces() {
+    public func loadAllSavedPlaces() {
         var results = [CoreDataPlace]()
 
         let request = CoreDataPlace.createFetchRequest()
@@ -147,6 +118,15 @@ class PlacesDataManager: ObservableObject {
             self.logger.info("INFO: Place with id \(id) not found.")
         }
         self.saveContext(message: "Successfully deleted all saved places.")
+    }
+    
+    private func saveContext(message: String = "INFO: Save successful.") {
+        do {
+            try self.managedObjectContext.save()
+            self.logger.info("\(message, privacy: .private)")
+        } catch {
+            self.logger.error("ERROR: Error occurred while saving: \(error as NSObject, privacy: .public)")
+        }
     }
     
 }

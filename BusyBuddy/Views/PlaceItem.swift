@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import CoreML
+import os.log
 
 struct PlaceItem: View {
     var place: CoreDataPlace
-    
     var body: some View {
         Text("\(place.commonName)")
     }

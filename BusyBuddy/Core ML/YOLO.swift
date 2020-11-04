@@ -29,8 +29,8 @@ class YOLO: CoreMLModel {
         self.image = image
     }
     
-    func preprocess(image: UIImage) -> MLFeatureProvider {
-        let scaled = image.scaleTo(targetSize: CGSize(width: 416, height: 416))
+    func preprocess() -> MLFeatureProvider {
+        let scaled = self.image.scaleTo(targetSize: CGSize(width: 416, height: 416))
         let cvPixelBuffer = scaled.toCVPixelBuffer()
         recogniseDate(image: cvPixelBuffer!)
         return YOLOv3Input(image: cvPixelBuffer!)
@@ -44,15 +44,14 @@ class YOLO: CoreMLModel {
         }
     }
     
-    func postprocess(output: MLFeatureProvider) -> [String: Double] {
-        var result = [String: Double]()
+    func postprocess(output: MLFeatureProvider) -> [(Any, Any)] {
+        var result = [(Any, Any)]()
         let confidences = output.featureValue(for: "confidence")?.multiArrayValue
-        for i in 0...confidences!.shape[0].intValue - 1 {
+        for i in 0...confidences!.shape[0].intValue - 1 {  // MUST CHECK FOR OFFLINE CAMERAS
             let dimension = getDimension(i: i, from: confidences!)
             let maxIndices = getIndicesOfMaxValues(from: dimension)
             maxIndices.forEach({ index in
-                result[classes[index]] = dimension[index] * 100
-                print("\(classes[index]): \((dimension[index] * 100))%")
+                result.append((classes[index] , (dimension[index] * 100) ))
             })
         }
         return result

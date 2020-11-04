@@ -13,11 +13,11 @@ protocol CoreMLModel {
     var image: UIImage { get set }
     
     // Preprocess image into model input
-    func preprocess(image: UIImage) -> MLFeatureProvider
+    func preprocess() -> MLFeatureProvider
     
     // Predict on input and generate model output
     func predict(input: MLFeatureProvider) -> MLFeatureProvider?
     
     // Process model output
-    func postprocess(output: MLFeatureProvider) -> [String: Double]
+    func postprocess(output: MLFeatureProvider) -> [(Any, Any)]
 }

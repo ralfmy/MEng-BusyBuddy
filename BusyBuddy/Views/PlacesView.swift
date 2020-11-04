@@ -9,7 +9,6 @@
 
 import SwiftUI
 import CoreData
-import os.log
 
 struct PlacesView: View {
     @EnvironmentObject var placesDataManager: PlacesDataManager
@@ -20,15 +19,18 @@ struct PlacesView: View {
                 PlaceItem(place: place)
             }
             .navigationBarTitle(Text("Places"))
-            .navigationBarItems(trailing: Button("Delete All") {
-                placesDataManager.deleteAllSavedPlaces()
-            })
+//            .navigationBarItems(trailing: Button("Delete All") {
+//                placesDataManager.deleteAllSavedPlaces()
+//            })
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let persistentContainer = CoreDataPersistence(.memory).container
+    static let managedObjectContext = persistentContainer.viewContext
+    static let placesDataManager = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
     static var previews: some View {
-        PlacesView()
+        PlacesView().environmentObject(placesDataManager)
     }
 }
