@@ -33,7 +33,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     switch result {
                     case .success(let places):
                         placesDataManager.savePlaces(places: places)
-                        placesDataManager.loadAllSavedPlaces()
                     case .failure(let err):
                         self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
                     }

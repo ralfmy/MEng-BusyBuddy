@@ -46,6 +46,8 @@ class PlacesDataManager: ObservableObject {
         } else {
             self.logger.info("INFO: No changes made.")
         }
+        
+        self.loadAllSavedPlaces()
     }
         
     public func loadAllSavedPlaces() {

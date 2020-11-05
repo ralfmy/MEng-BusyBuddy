@@ -55,7 +55,6 @@ class PlacesDataManagerTests: XCTestCase {
 
     func testLoadAllSavedPlaces() throws {
         self.placesDataManager.savePlaces(places: self.places)
-        self.placesDataManager.loadAllSavedPlaces()
         
         let places = self.placesDataManager.places
         
