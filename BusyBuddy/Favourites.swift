@@ -38,8 +38,13 @@ class Favourites: ObservableObject {
     
     public func add(place: Place) {
         objectWillChange.send()
-        self.placeIds.append(place.id)
-        save()
+        if !self.contains(place: place) {
+            self.placeIds.append(place.id)
+            save()
+        } else {
+            self.logger.info("INFO: Place already in Favourites.")
+        }
+        
     }
     
     public func remove(place: Place) {

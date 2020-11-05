@@ -9,15 +9,28 @@ import SwiftUI
 
 struct PlaceDetail: View {
     @EnvironmentObject var favourites: Favourites
+    @State var buttonState = 0
     
     let place: Place
     
     var body: some View {
         VStack {
             Spacer()
-            Button("Add to Favourites") {
-                favourites.add(place: self.place)
+            Button(buttonState == 0 ? "Add to Favourites" : "Remove from Favourites") {
+                if favourites.contains(place: self.place) {
+                    favourites.remove(place: self.place)
+                    self.buttonState = 0
+                } else {
+                    favourites.add(place: self.place)
+                    self.buttonState = 1
+                }
             }.navigationBarTitle(Text(self.place.commonName))
+        }.onAppear {
+            if favourites.contains(place: self.place) {
+                self.buttonState = 1
+            } else {
+                self.buttonState = 0
+            }
         }
     }
 }
