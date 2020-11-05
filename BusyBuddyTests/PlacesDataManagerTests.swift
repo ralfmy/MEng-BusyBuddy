@@ -26,16 +26,16 @@ class PlacesDataManagerTests: XCTestCase {
     var places: [PlaceResource]!
     
     override func setUpWithError() throws {
-        self.persistentContainer = PersistenceManager(.memory).container
-        self.managedObjectContext = self.persistentContainer.viewContext
-        self.placesDataManager = PlacesDataManager(persistentContainer: self.persistentContainer, managedObjectContext: self.managedObjectContext)
+        persistentContainer = PersistenceManager(.memory).container
+        managedObjectContext = persistentContainer.viewContext
+        placesDataManager = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
         
-        self.gowerSt = PlaceResource(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
-        self.places = [gowerSt]
+        gowerSt = PlaceResource(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
+        places = [gowerSt]
     }
     
     override func tearDownWithError() throws {
-        self.placesDataManager.deleteAllSavedPlaces()
+        placesDataManager.deleteAllSavedPlaces()
     }
     
     func testSavePlaces() throws {
@@ -46,7 +46,7 @@ class PlacesDataManagerTests: XCTestCase {
                 return true
             }
             
-            self.placesDataManager.savePlaces(places: self.places)
+            placesDataManager.savePlaces(places: places)
             
             waitForExpectations(timeout: 1) { error in
                 XCTAssertNil(error, "Save failed")
@@ -54,9 +54,9 @@ class PlacesDataManagerTests: XCTestCase {
     }
 
     func testLoadAllSavedPlaces() throws {
-        self.placesDataManager.savePlaces(places: self.places)
+        placesDataManager.savePlaces(places: places)
         
-        let places = self.placesDataManager.places
+        let places = placesDataManager.places
         
         XCTAssertEqual(places.count, 1)
         XCTAssertEqual(places[0].commonName, gowerSt.commonName)
@@ -66,8 +66,8 @@ class PlacesDataManagerTests: XCTestCase {
     }
     
     func testLoadSavedPlacesByCommonName() throws {
-        self.placesDataManager.savePlaces(places: self.places)
-        let loadedPlaces = self.placesDataManager.loadSavedPlaces(by: "University St/Gower St")
+        placesDataManager.savePlaces(places: places)
+        let loadedPlaces = placesDataManager.loadSavedPlaces(by: "University St/Gower St")
 
         XCTAssertEqual(loadedPlaces.count, 1)
         XCTAssertEqual(loadedPlaces[0].commonName, gowerSt.commonName)
@@ -75,37 +75,44 @@ class PlacesDataManagerTests: XCTestCase {
     }
 
     func testLoadSavedPlaceById() throws {
-        self.placesDataManager.savePlaces(places: self.places)
-        let loadedPlace = self.placesDataManager.loadSavedPlace(with: gowerSt.id)
+        placesDataManager.savePlaces(places: places)
+        let loadedPlace = placesDataManager.loadSavedPlace(with: gowerSt.id)
 
         XCTAssertEqual(loadedPlace!.id, gowerSt.id)
 
     }
 
     func testLoadSavedPlaceNoMatchReturnsNil() throws {
-        self.placesDataManager.savePlaces(places: self.places)
-        let loadedPlace = self.placesDataManager.loadSavedPlace(with: "Random ID")
+        placesDataManager.savePlaces(places: places)
+        let loadedPlace = placesDataManager.loadSavedPlace(with: "Random ID")
         
         XCTAssertNil(loadedPlace)
     }
+    
+    func testFindPlace() throws {
+        placesDataManager.savePlaces(places: places)
+        let place = placesDataManager.findPlace(with: gowerSt.id)
+        
+        XCTAssertEqual(place!.id, gowerSt.id)
+    }
 
     func testDeleteAllSavedPlaces() throws {
-        self.placesDataManager.savePlaces(places: self.places)
-        self.placesDataManager.loadAllSavedPlaces()
+        placesDataManager.savePlaces(places: places)
+        placesDataManager.loadAllSavedPlaces()
         
-        XCTAssertTrue(!self.placesDataManager.places.isEmpty)
+        XCTAssertTrue(!placesDataManager.places.isEmpty)
 
-        self.placesDataManager.deleteAllSavedPlaces()
+        placesDataManager.deleteAllSavedPlaces()
         
-        XCTAssertTrue(self.placesDataManager.places.isEmpty)
+        XCTAssertTrue(placesDataManager.places.isEmpty)
     }
 
     func testDeleteSavedPlaceWithId() {
-        self.placesDataManager.savePlaces(places: self.places)
-        let loadedPlace = self.placesDataManager.loadSavedPlace(with: gowerSt.id)
-        self.placesDataManager.deleteSavedPlace(with: loadedPlace!.id)
+        placesDataManager.savePlaces(places: places)
+        let loadedPlace = placesDataManager.loadSavedPlace(with: gowerSt.id)
+        placesDataManager.deleteSavedPlace(with: loadedPlace!.id)
         
-        XCTAssertNil(self.placesDataManager.loadSavedPlace(with: gowerSt.id))
+        XCTAssertNil(placesDataManager.loadSavedPlace(with: gowerSt.id))
     }
     
 }
