@@ -14,25 +14,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Get the managed object context from the shared persistent container.
-//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        let placesDataManager = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
+        let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
+        let favourites = Favourites()
         
         // NEED TO CHECK WHEN LAST API FETCH OCCURRED
-        if placesDataManager.places.isEmpty {
+        if store.places.isEmpty {
             self.logger.info("No saved places. Fetching all places from TfL Unified API.")
             TfLUnifiedAPI().fetchAllJamCams() { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let places):
-                        placesDataManager.savePlaces(places: places)
+                        store.savePlaces(places: places)
                     case .failure(let err):
                         self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
                     }
@@ -42,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = PlacesView().environmentObject(placesDataManager)
+        let placesView = PlacesView().environmentObject(store).environmentObject(favourites)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -12,7 +12,7 @@ import Foundation
 import CoreData
 import os.log
 
-//  Responsible for saving Places data to persitent storage via Core Data, and for loading data from storage to memory
+//  Responsible for saving Place data to persitent storage via Core Data, and for loading data from storage to memory
 
 class PlacesDataManager: ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesDataManager")
@@ -66,6 +66,17 @@ class PlacesDataManager: ObservableObject {
         self.places = results
     }
     
+    public func findPlace(with id: String) -> Place? {
+        var result = self.places.first(where: { $0.id == id})
+        
+        // If not found in memory, check persistent storage
+        if result == nil {
+            result = loadSavedPlace(with: id)
+        }
+        
+        return result
+    }
+    
     public func loadSavedPlaces(by commonName: String) -> [Place] {
         var results = [Place]()
         
@@ -104,7 +115,6 @@ class PlacesDataManager: ObservableObject {
     }
     
     public func deleteAllSavedPlaces() {
-        self.loadAllSavedPlaces()
         // Used for clearing storage
         self.places.forEach{ place in
             self.managedObjectContext.delete(place)

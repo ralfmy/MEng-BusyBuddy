@@ -11,6 +11,9 @@
 		BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF542550BB5A006C900F /* CoreMLModel.swift */; };
 		BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF6A25515E94006C900F /* YOLO.swift */; };
 		BF1EDF73255161FD006C900F /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF72255161FD006C900F /* ImageUtils.swift */; };
+		BF2DB8A225541D0400A304A7 /* FavouritePlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */; };
+		BF2DB8A725541D0E00A304A7 /* AllPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A625541D0E00A304A7 /* AllPlacesView.swift */; };
+		BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */; };
 		BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF305888254F2C3C0087FDEA /* AppDelegate.swift */; };
 		BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */; };
 		BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588C254F2C3C0087FDEA /* PlacesView.swift */; };
@@ -29,7 +32,7 @@
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BFAFD2E125540DB700972554 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* Favourites.swift */; };
-		BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceItem.swift */; };
+		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		BF1EDF542550BB5A006C900F /* CoreMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLModel.swift; sourceTree = "<group>"; };
 		BF1EDF6A25515E94006C900F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
 		BF1EDF72255161FD006C900F /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesView.swift; sourceTree = "<group>"; };
+		BF2DB8A625541D0E00A304A7 /* AllPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlacesView.swift; sourceTree = "<group>"; };
+		BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
 		BF305885254F2C3C0087FDEA /* BusyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF305888254F2C3C0087FDEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +84,7 @@
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
-		BFD97B572550449E00FF23D4 /* PlaceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceItem.swift; sourceTree = "<group>"; };
+		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				BF30588C254F2C3C0087FDEA /* PlacesView.swift */,
-				BFD97B572550449E00FF23D4 /* PlaceItem.swift */,
+				BFD97B572550449E00FF23D4 /* PlaceRow.swift */,
+				BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */,
+				BF2DB8A625541D0E00A304A7 /* AllPlacesView.swift */,
+				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,7 +347,8 @@
 				BF3058D7254F2E590087FDEA /* Place+CoreDataClass.swift in Sources */,
 				BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */,
 				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
-				BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */,
+				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
+				BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF1EDF73255161FD006C900F /* ImageUtils.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
@@ -346,8 +356,10 @@
 				BFAFD2E125540DB700972554 /* Favourites.swift in Sources */,
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
 				BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */,
+				BF2DB8A725541D0E00A304A7 /* AllPlacesView.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
 				BF3058C8254F2C7E0087FDEA /* PlaceResource.swift in Sources */,
+				BF2DB8A225541D0400A304A7 /* FavouritePlacesView.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */,
 				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,
