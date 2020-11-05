@@ -13,32 +13,29 @@ import CoreData
 struct PlacesView: View {
     @EnvironmentObject var store: PlacesDataManager
     @EnvironmentObject var favourites: Favourites
-    @State private var selectedView = 0
+    @State private var isShowingAll = false
     
     let viewOptions = ["Favourites", "All"]
     
     var body: some View {
         NavigationView {
             VStack {
-                Picker("View Options", selection: $selectedView) {
-                    ForEach(0..<viewOptions.count) { index in
-                        Text(self.viewOptions[index]).tag(index)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                
-                if self.selectedView == 0 {
-                    FavouritePlacesView(places: self.getFavouritePlaces())
-                } else {
-                    AllPlacesView()
-                }
+                FavouritePlacesView(places: self.getFavouritePlaces())
                 Spacer()
             }
-            .navigationBarTitle(Text("Places"))
-            .navigationBarItems(trailing: Button("Delete All") {
-                store.deleteAllSavedPlaces()
+            .navigationBarTitle(Text("Favourites"))
+//            .navigationBarItems(trailing: Button("Delete All") {
+//                store.deleteAllSavedPlaces()
+//            })
+            .navigationBarItems(trailing: Button(action: {
+                self.isShowingAll.toggle()
+            }) {
+                Image(systemName: "plus.circle.fill").imageScale(.large)
+                    .frame(width: 44, height: 44, alignment: .trailing)
             })
+            .sheet(isPresented: $isShowingAll) {
+                AllPlacesView(isPresented: self.$isShowingAll)
+            }
         }.environmentObject(self.store).environmentObject(self.favourites)
     }
     

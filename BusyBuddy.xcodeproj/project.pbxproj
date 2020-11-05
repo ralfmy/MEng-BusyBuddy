@@ -33,6 +33,7 @@
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BFAFD2E125540DB700972554 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* Favourites.swift */; };
 		BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */; };
+		BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */; };
 		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
+		BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExample.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		BF305887254F2C3C0087FDEA /* BusyBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				BFC5A09F255453EF00CE2B80 /* Resources */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF305888254F2C3C0087FDEA /* AppDelegate.swift */,
 				BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */,
@@ -215,6 +218,14 @@
 				BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		BFC5A09F255453EF00CE2B80 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +361,7 @@
 				BF3058D7254F2E590087FDEA /* Place+CoreDataClass.swift in Sources */,
 				BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */,
 				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
+				BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
