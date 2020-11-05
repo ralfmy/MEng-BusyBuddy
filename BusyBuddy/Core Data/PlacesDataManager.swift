@@ -20,7 +20,7 @@ class PlacesDataManager: ObservableObject {
     private var persistentContainer: NSPersistentContainer
     private var managedObjectContext: NSManagedObjectContext
     
-    @Published var places = [CoreDataPlace]()
+    @Published var places = [Place]()
 
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
@@ -28,10 +28,10 @@ class PlacesDataManager: ObservableObject {
         self.loadAllSavedPlaces()
     }
     
-    public func savePlaces(places: [Place]) {
+    public func savePlaces(places: [PlaceResource]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
-                let cdPlace = CoreDataPlace(context: self.managedObjectContext)
+                let cdPlace = Place(context: self.managedObjectContext)
                 cdPlace.id = place.id
                 cdPlace.commonName = place.commonName
                 cdPlace.placeType = place.placeType
@@ -51,9 +51,9 @@ class PlacesDataManager: ObservableObject {
     }
         
     public func loadAllSavedPlaces() {
-        var results = [CoreDataPlace]()
+        var results = [Place]()
 
-        let request = CoreDataPlace.createFetchRequest()
+        let request = Place.createFetchRequest()
         let sort = NSSortDescriptor(key: "commonName", ascending: true)
         request.sortDescriptors = [sort]
         
@@ -66,10 +66,10 @@ class PlacesDataManager: ObservableObject {
         self.places = results
     }
     
-    public func loadSavedPlaces(by commonName: String) -> [CoreDataPlace] {
-        var results = [CoreDataPlace]()
+    public func loadSavedPlaces(by commonName: String) -> [Place] {
+        var results = [Place]()
         
-        let request = CoreDataPlace.createFetchRequest()
+        let request = Place.createFetchRequest()
         request.sortDescriptors = []
         request.predicate = NSPredicate(format: "commonName CONTAINS[c] %@", commonName)
         
@@ -82,10 +82,10 @@ class PlacesDataManager: ObservableObject {
         return results
     }
     
-    public func loadSavedPlace(with id: String) -> CoreDataPlace? {
-        var results = [CoreDataPlace]()
+    public func loadSavedPlace(with id: String) -> Place? {
+        var results = [Place]()
 
-        let request = CoreDataPlace.createFetchRequest()
+        let request = Place.createFetchRequest()
         request.sortDescriptors = []
         request.predicate = NSPredicate(format: "id == %@", id)
         

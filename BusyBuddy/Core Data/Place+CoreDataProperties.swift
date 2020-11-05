@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-extension CoreDataPlace {
+extension Place {
 
-    @nonobjc public class func createFetchRequest() -> NSFetchRequest<CoreDataPlace> {
-        return NSFetchRequest<CoreDataPlace>(entityName: "CoreDataPlace")
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Place> {
+        return NSFetchRequest<Place>(entityName: "Place")
     }
     
     @NSManaged public var id: String
@@ -24,6 +24,6 @@ extension CoreDataPlace {
 
 }
 
-extension CoreDataPlace : Identifiable {
+extension Place : Identifiable {
 
 }

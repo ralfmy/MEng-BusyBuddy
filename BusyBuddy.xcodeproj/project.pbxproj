@@ -20,14 +20,15 @@
 		BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */; };
 		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
 		BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
-		BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF3058C8254F2C7E0087FDEA /* PlaceResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* PlaceResource.swift */; };
 		BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */; };
-		BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */; };
-		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
+		BF3058D7254F2E590087FDEA /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* Place+CoreDataClass.swift */; };
+		BF3058D8254F2E590087FDEA /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* Place+CoreDataProperties.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */; };
-		BF3058EA254F49660087FDEA /* CoreDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */; };
+		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
+		BFAFD2E125540DB700972554 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* Favourites.swift */; };
 		BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,14 +69,15 @@
 		BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyUITests.swift; sourceTree = "<group>"; };
 		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPI.swift; sourceTree = "<group>"; };
-		BF3058C7254F2C7E0087FDEA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		BF3058C7254F2C7E0087FDEA /* PlaceResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceResource.swift; sourceTree = "<group>"; };
 		BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalProperty.swift; sourceTree = "<group>"; };
-		BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataClass.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataProperties.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BF3058D5254F2E590087FDEA /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataClass.swift"; path = "BusyBuddy/Core Data/Place+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BF3058D6254F2E590087FDEA /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataProperties.swift"; path = "BusyBuddy/Core Data/Place+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManagerTests.swift; sourceTree = "<group>"; };
-		BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistence.swift; sourceTree = "<group>"; };
+		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
+		BFAFD2E025540DB700972554 /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlaceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,9 +147,10 @@
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
-				BF3058C7254F2C7E0087FDEA /* Place.swift */,
+				BF3058C7254F2C7E0087FDEA /* PlaceResource.swift */,
 				BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */,
 				BF1EDF72255161FD006C900F /* ImageUtils.swift */,
+				BFAFD2E025540DB700972554 /* Favourites.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -193,10 +196,10 @@
 		BF3058D4254F2E4C0087FDEA /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */,
-				BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */,
+				BF3058D5254F2E590087FDEA /* Place+CoreDataClass.swift */,
+				BF3058D6254F2E590087FDEA /* Place+CoreDataProperties.swift */,
 				BF30588E254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld */,
-				BF3058E9254F49660087FDEA /* CoreDataPersistence.swift */,
+				BF3058E9254F49660087FDEA /* PersistenceManager.swift */,
 				BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */,
 			);
 			path = "Core Data";
@@ -332,18 +335,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */,
-				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
+				BF3058D7254F2E590087FDEA /* Place+CoreDataClass.swift in Sources */,
 				BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */,
 				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlaceItem.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF1EDF73255161FD006C900F /* ImageUtils.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
-				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
+				BF3058D8254F2E590087FDEA /* Place+CoreDataProperties.swift in Sources */,
+				BFAFD2E125540DB700972554 /* Favourites.swift in Sources */,
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
-				BF3058EA254F49660087FDEA /* CoreDataPersistence.swift in Sources */,
+				BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
-				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
+				BF3058C8254F2C7E0087FDEA /* PlaceResource.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */,
 				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,

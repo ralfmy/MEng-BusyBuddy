@@ -14,7 +14,7 @@ enum StorageType {
     case disk, memory
 }
 
-class CoreDataPersistence {
+class PersistenceManager {
     let container: NSPersistentContainer
     
     init(_ storageType: StorageType = .disk) {

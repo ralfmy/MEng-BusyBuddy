@@ -9,7 +9,7 @@ import Foundation
 
 //  Decode JSON response from TfL Unified API into this Place type.
 
-struct Place: Encodable, Decodable, Equatable {
+struct PlaceResource: Encodable, Decodable, Equatable {
     let id: String
     let commonName: String
     let placeType: String
@@ -17,7 +17,7 @@ struct Place: Encodable, Decodable, Equatable {
     let lat: Double
     let lon: Double
     
-    static func == (lhs: Place, rhs: Place) -> Bool {
+    static func == (lhs: PlaceResource, rhs: PlaceResource) -> Bool {
         if (lhs.commonName == rhs.commonName && lhs.placeType == rhs.placeType && lhs.lat == rhs.lat && lhs.lon == rhs.lon)
         {
             return true

@@ -27,7 +27,7 @@ struct PlacesView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static let persistentContainer = CoreDataPersistence(.memory).container
+    static let persistentContainer = PersistenceManager(.memory).container
     static let managedObjectContext = persistentContainer.viewContext
     static let placesDataManager = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
     static var previews: some View {

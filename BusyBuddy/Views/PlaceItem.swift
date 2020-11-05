@@ -10,14 +10,14 @@ import CoreML
 import os.log
 
 struct PlaceItem: View {
-    var place: CoreDataPlace
+    var place: Place
     var body: some View {
         Text("\(place.commonName)")
     }
 }
 
 struct PlaceItem_Previews: PreviewProvider {
-    static var place = CoreDataPlace()
+    static var place = Place()
     
     init() {
         PlaceItem_Previews.place.commonName = "Oxford St"

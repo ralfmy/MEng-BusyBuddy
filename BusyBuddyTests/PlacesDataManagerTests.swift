@@ -22,15 +22,15 @@ class PlacesDataManagerTests: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var placesDataManager: PlacesDataManager!
     
-    var gowerSt: Place!
-    var places: [Place]!
+    var gowerSt: PlaceResource!
+    var places: [PlaceResource]!
     
     override func setUpWithError() throws {
-        self.persistentContainer = CoreDataPersistence(.memory).container
+        self.persistentContainer = PersistenceManager(.memory).container
         self.managedObjectContext = self.persistentContainer.viewContext
         self.placesDataManager = PlacesDataManager(persistentContainer: self.persistentContainer, managedObjectContext: self.managedObjectContext)
         
-        self.gowerSt = Place(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
+        self.gowerSt = PlaceResource(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
         self.places = [gowerSt]
     }
     
