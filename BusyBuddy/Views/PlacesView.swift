@@ -30,15 +30,16 @@ struct PlacesView: View {
             .navigationBarItems(trailing: Button(action: {
                 self.isShowingAll.toggle()
             }) {
-                Image(systemName: "plus.circle.fill").imageScale(.large)
+                Image(systemName: "magnifyingglass.circle.fill").imageScale(.large)
                     .frame(width: 44, height: 44, alignment: .trailing)
             })
+            
             .sheet(isPresented: $isShowingAll) {
                 AllPlacesView(isPresented: self.$isShowingAll)
             }
-        }.environmentObject(self.store).environmentObject(self.favourites)
+        }
     }
-    
+
     func getFavouritePlaces() -> [Place] {
         let ids = favourites.ids()
         var places = [Place]()

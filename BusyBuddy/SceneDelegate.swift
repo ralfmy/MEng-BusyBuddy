@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Get the managed object context from the shared persistent container.
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
-        let favourites = Favourites()
+        
+        let favourites = (UIApplication.shared.delegate as! AppDelegate).favourites
         
         // NEED TO CHECK WHEN LAST API FETCH OCCURRED
         if store.places.isEmpty {
