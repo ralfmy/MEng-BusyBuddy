@@ -36,10 +36,13 @@
 		BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */; };
 		BFC5A0A92554634600CE2B80 /* FavouriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
-		BFC5A0B32554655600CE2B80 /* test_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFC5A0B22554655600CE2B80 /* test_image.jpg */; };
 		BFD2D3882556B7CE00554869 /* Busyness.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* Busyness.swift */; };
 		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
 		BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DAFD2556BE2800F10883 /* ImageCache.swift */; };
+		BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DB21255734C400F10883 /* ImageCacheTests.swift */; };
+		BFE3DB2F255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */; };
+		BFE3DB30255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */; };
+		BFE3DB31255761CC00F10883 /* test_UniversitySt_GowerSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,10 +98,13 @@
 		BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExample.swift; sourceTree = "<group>"; };
 		BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteDetail.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
-		BFC5A0B22554655600CE2B80 /* test_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_image.jpg; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* Busyness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Busyness.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
 		BFE3DAFD2556BE2800F10883 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		BFE3DB21255734C400F10883 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
+		BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_HorseferryRd_MarshamSt.jpg; sourceTree = "<group>"; };
+		BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_OxfordSt_DaviesSt.jpg; sourceTree = "<group>"; };
+		BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_UniversitySt_GowerSt.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,11 +199,12 @@
 		BF3058A1254F2C3E0087FDEA /* BusyBuddyTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058A4254F2C3E0087FDEA /* Info.plist */,
+				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */,
 				BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */,
 				BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */,
+				BFE3DB21255734C400F10883 /* ImageCacheTests.swift */,
 				BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */,
 			);
 			path = BusyBuddyTests;
@@ -237,7 +244,9 @@
 		BFC5A09F255453EF00CE2B80 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFC5A0B22554655600CE2B80 /* test_image.jpg */,
+				BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */,
+				BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */,
+				BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */,
 				BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */,
 			);
 			path = Resources;
@@ -347,7 +356,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */,
-				BFC5A0B32554655600CE2B80 /* test_image.jpg in Resources */,
+				BFE3DB31255761CC00F10883 /* test_UniversitySt_GowerSt.jpg in Resources */,
+				BFE3DB2F255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg in Resources */,
+				BFE3DB30255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg in Resources */,
 				BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +419,7 @@
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 				BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */,
+				BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */,
 				BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

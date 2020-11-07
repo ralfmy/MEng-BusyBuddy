@@ -58,7 +58,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         self.logger.info("INFO: Image successfully saved to cache.")
                     }
                 }
-                print(imageCache.getImages(forKey: id))
             }
         }
         

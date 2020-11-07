@@ -24,9 +24,6 @@ struct PlacesView: View {
                 Spacer()
             }
             .navigationBarTitle(Text("Favourites"))
-//            .navigationBarItems(trailing: Button("Delete All") {
-//                store.deleteAllSavedPlaces()
-//            })
             .navigationBarItems(trailing: Button(action: {
                 self.isShowingAll.toggle()
             }) {
