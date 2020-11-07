@@ -8,12 +8,15 @@
 import UIKit
 import CoreData
 import BackgroundTasks
+import os.log
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppDelegate")
     
     var favourites = Favourites()
-
+    var cache = ImageCache()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }

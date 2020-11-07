@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "SceneDelegate")
 
     var window: UIWindow?
+    var timer: Timer?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,9 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        let favourites = (UIApplication.shared.delegate as! AppDelegate).favourites
+        let imageCache = (UIApplication.shared.delegate as! AppDelegate).cache
+        
         let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
         
-        let favourites = (UIApplication.shared.delegate as! AppDelegate).favourites
         
         // NEED TO CHECK WHEN LAST API FETCH OCCURRED
         if store.places.isEmpty {
@@ -40,9 +43,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+            favourites.ids().forEach { id in
+                if let place = store.findPlace(with: id) {
+                    self.logger.debug("DEBUG:\(place.commonName)")
+                    var image: UIImage?
+                    if let data = try? Data(contentsOf: URL(string: place.imageUrl)!) {
+                        if let uiImage = UIImage(data: data) {
+                            image = uiImage
+                        }
+                    }
+                    if image != nil {
+                        imageCache.addImage(forKey: id, image: image!)
+                        self.logger.info("INFO: Image successfully saved to cache.")
+                    }
+                }
+                print(imageCache.getImages(forKey: id))
+            }
+        }
+        
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = PlacesView().environmentObject(store).environmentObject(favourites)
+        let placesView = PlacesView().environmentObject(store).environmentObject(favourites).environmentObject(imageCache)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -58,6 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        timer!.invalidate()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

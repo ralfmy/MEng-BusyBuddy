@@ -9,15 +9,19 @@ import Foundation
 import CoreML
 import UIKit
 
-protocol CoreMLModel {
-    var image: UIImage { get set }
-    
+protocol CoreMLModel {    
     // Preprocess image into model input
-    func preprocess() -> MLFeatureProvider
+    func preprocess(image: UIImage) -> MLFeatureProvider
     
     // Predict on input and generate model output
     func predict(input: MLFeatureProvider) -> MLFeatureProvider?
     
     // Process model output
     func postprocess(output: MLFeatureProvider) -> [(Any, Any)]
+}
+
+// Singleton
+struct ML {
+    static let model = YOLO()
+    private init () {}
 }

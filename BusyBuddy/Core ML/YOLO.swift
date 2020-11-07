@@ -12,7 +12,6 @@ import Vision
 
 class YOLO: CoreMLModel {
     let model = YOLOv3()
-    var image: UIImage
     
     private let classes = [
         "person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat", "traffic light",
@@ -25,12 +24,8 @@ class YOLO: CoreMLModel {
         "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
     ]
     
-    init(image: UIImage) {
-        self.image = image
-    }
-    
-    func preprocess() -> MLFeatureProvider {
-        let scaled = self.image.scaleTo(targetSize: CGSize(width: 416, height: 416))
+    func preprocess(image: UIImage) -> MLFeatureProvider {
+        let scaled = image.scaleTo(targetSize: CGSize(width: 416, height: 416))
         let cvPixelBuffer = scaled.toCVPixelBuffer()
         recogniseDate(image: cvPixelBuffer!)
         return YOLOv3Input(image: cvPixelBuffer!)

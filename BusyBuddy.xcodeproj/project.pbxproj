@@ -37,7 +37,9 @@
 		BFC5A0A92554634600CE2B80 /* FavouriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
 		BFC5A0B32554655600CE2B80 /* test_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFC5A0B22554655600CE2B80 /* test_image.jpg */; };
+		BFD2D3882556B7CE00554869 /* Busyness.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* Busyness.swift */; };
 		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
+		BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DAFD2556BE2800F10883 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +96,9 @@
 		BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteDetail.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
 		BFC5A0B22554655600CE2B80 /* test_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_image.jpg; sourceTree = "<group>"; };
+		BFD2D3872556B7CD00554869 /* Busyness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Busyness.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
+		BFE3DAFD2556BE2800F10883 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				BF305888254F2C3C0087FDEA /* AppDelegate.swift */,
 				BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */,
 				BF1EDF7B25516248006C900F /* Views */,
+				BFD2D3872556B7CD00554869 /* Busyness.swift */,
+				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
 				BF3058C7254F2C7E0087FDEA /* PlaceResource.swift */,
 				BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */,
@@ -367,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD2D3882556B7CE00554869 /* Busyness.swift in Sources */,
 				BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */,
 				BF3058D7254F2E590087FDEA /* Place+CoreDataClass.swift in Sources */,
 				BFC5A0A92554634600CE2B80 /* FavouriteDetail.swift in Sources */,
@@ -376,6 +383,7 @@
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
+				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* Place+CoreDataProperties.swift in Sources */,
