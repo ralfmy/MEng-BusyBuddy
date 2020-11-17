@@ -13,15 +13,14 @@ import UIKit
 struct TfLUnifiedAPI {
     
     private let session: URLSession
-    
-    let prefix = "https://api.tfl.gov.uk/"
-    let api_key = ProcessInfo.processInfo.environment["api_key"]
+    private let prefix = "https://api.tfl.gov.uk/"
+    private let api_key = ProcessInfo.processInfo.environment["api_key"]
     
     init(session: URLSession = .shared) {
         self.session = session
     }
     
-    func fetchAllJamCams(completion: @escaping (Result<[PlaceResource], Error>) -> Void) {
+    func fetchAllJamCams(completion: @escaping (Result<[CodablePlace], Error>) -> Void) {
         guard let url = URL(string: self.prefix + "Place/Type/JamCam?app_key=" + self.api_key!) else { return }
         
         session.dataTask(with: url) { (data, response, error) in
@@ -30,7 +29,7 @@ struct TfLUnifiedAPI {
             }
                         
             do {
-                let places = try JSONDecoder().decode([PlaceResource].self, from: data!)
+                let places = try JSONDecoder().decode([CodablePlace].self, from: data!)
                 completion(.success(places))
             } catch let jsonError {
                 completion(.failure(jsonError))

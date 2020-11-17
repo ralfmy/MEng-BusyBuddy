@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        let favourites = (UIApplication.shared.delegate as! AppDelegate).favourites
+        let favouritesManager = (UIApplication.shared.delegate as! AppDelegate).favouritesManager
         let imageCache = (UIApplication.shared.delegate as! AppDelegate).cache
         
         let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // NEED TO CHECK WHEN LAST API FETCH OCCURRED
         if store.places.isEmpty {
-            self.logger.info("No saved places. Fetching all places from TfL Unified API.")
+            self.logger.info("INFO: No saved places. Fetching all places from TfL Unified API.")
             TfLUnifiedAPI().fetchAllJamCams() { result in
                 DispatchQueue.main.async {
                     switch result {
@@ -43,27 +43,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-            favourites.ids().forEach { id in
-                if let place = store.findPlace(with: id) {
-                    self.logger.debug("DEBUG:\(place.commonName)")
-                    var image: UIImage?
-                    if let data = try? Data(contentsOf: URL(string: place.imageUrl)!) {
-                        if let uiImage = UIImage(data: data) {
-                            image = uiImage
-                        }
-                    }
-                    if image != nil {
-                        imageCache.addImage(forKey: id, image: image!)
-                        self.logger.info("INFO: Image successfully saved to cache.")
-                    }
-                }
-            }
-        }
+//        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+//            favourites.list().forEach { place in
+//                var image: UIImage?
+//                if let data = try? Data(contentsOf: URL(string: place.getImageUrl())!) {
+//                    if let uiImage = UIImage(data: data) {
+//                        image = uiImage
+//                    }
+//                }
+//                if image != nil {
+//                    imageCache.addImage(forKey: place.id, image: image!)
+//                }
+//            }
+//        }
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = PlacesView().environmentObject(store).environmentObject(favourites).environmentObject(imageCache)
+        let placesView = PlacesView().environmentObject(store).environmentObject(favouritesManager).environmentObject(imageCache)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -79,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-        timer!.invalidate()
+//        timer!.invalidate()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

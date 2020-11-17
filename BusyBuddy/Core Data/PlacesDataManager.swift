@@ -20,7 +20,7 @@ class PlacesDataManager: ObservableObject {
     private var persistentContainer: NSPersistentContainer
     private var managedObjectContext: NSManagedObjectContext
     
-    @Published var places = [Place]()
+    @Published var places = [CodablePlace]()
 
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
@@ -28,7 +28,7 @@ class PlacesDataManager: ObservableObject {
         self.loadAllSavedPlaces()
     }
     
-    public func savePlaces(places: [PlaceResource]) {
+    public func savePlaces(places: [CodablePlace]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
                 let cdPlace = Place(context: self.managedObjectContext)
@@ -63,21 +63,24 @@ class PlacesDataManager: ObservableObject {
             self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
         }
         
-        self.places = results
+        
+        self.places = results.map { $0.asCodablePlace() }
     }
     
-    public func findPlace(with id: String) -> Place? {
+    public func findPlace(with id: String) -> CodablePlace? {
         var result = self.places.first(where: { $0.id == id})
         
         // If not found in memory, check persistent storage
         if result == nil {
-            result = loadSavedPlace(with: id)
+            if let loadedPlace = loadSavedPlace(with: id) {
+                result = loadedPlace.asCodablePlace()
+            }
         }
         
         return result
     }
     
-    public func loadSavedPlaces(by commonName: String) -> [Place] {
+    private func loadSavedPlaces(by commonName: String) -> [Place] {
         var results = [Place]()
         
         let request = Place.createFetchRequest()
@@ -93,7 +96,7 @@ class PlacesDataManager: ObservableObject {
         return results
     }
     
-    public func loadSavedPlace(with id: String) -> Place? {
+    private func loadSavedPlace(with id: String) -> Place? {
         var results = [Place]()
 
         let request = Place.createFetchRequest()
@@ -116,7 +119,19 @@ class PlacesDataManager: ObservableObject {
     
     public func deleteAllSavedPlaces() {
         // Used for clearing storage
-        self.places.forEach{ place in
+        var results = [Place]()
+
+        let request = Place.createFetchRequest()
+        let sort = NSSortDescriptor(key: "commonName", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        do {
+            results = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            self.logger.error("ERROR: Fetch failed: \(error as NSObject, privacy: .public)")
+        }
+        
+        results.forEach{ place in
             self.managedObjectContext.delete(place)
         }
         self.saveContext(message: "Successfully deleted all saved places.")
@@ -127,6 +142,7 @@ class PlacesDataManager: ObservableObject {
         if let place = self.loadSavedPlace(with: id) {
             self.managedObjectContext.delete(place)
             self.saveContext(message: "Successfully deleted place with id \(id)")
+            self.loadAllSavedPlaces()
         } else {
             self.logger.info("INFO: Place with id \(id) not found.")
         }

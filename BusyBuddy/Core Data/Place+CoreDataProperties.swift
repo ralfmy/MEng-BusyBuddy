@@ -27,3 +27,9 @@ extension Place {
 extension Place : Identifiable {
 
 }
+
+extension Place {
+    func asCodablePlace() -> CodablePlace {
+        return CodablePlace(id: self.id, commonName: self.commonName, placeType: self.placeType, additionalProperties: [AdditionalProperty(key: "imageUrl", value: self.imageUrl)], lat: self.lat, lon: self.lon)
+    }
+}

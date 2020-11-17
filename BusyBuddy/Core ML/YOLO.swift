@@ -9,11 +9,20 @@ import Foundation
 import UIKit
 import CoreML
 import Vision
+import os.log
 
 class YOLO: CoreMLModel {
+    
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "YOLO")
+    
+    var images: [UIImage]?
+    var processedInputs: [MLFeatureProvider]?
+    var predictionOutput: [MLFeatureProvider]?
+    var results: [CoreMLModelResult]
+    
     let model = YOLOv3()
     
-    private let classes = [
+    private let objClasses = [
         "person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat", "traffic light",
         "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow",
         "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
@@ -24,39 +33,56 @@ class YOLO: CoreMLModel {
         "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
     ]
     
-    func preprocess(image: UIImage) -> MLFeatureProvider {
-        let scaled = image.scaleTo(targetSize: CGSize(width: 416, height: 416))
-        let cvPixelBuffer = scaled.toCVPixelBuffer()
-        recogniseDate(image: cvPixelBuffer!)
-        return YOLOv3Input(image: cvPixelBuffer!)
+    init() {
+        self.results = []
     }
     
-    func predict(input: MLFeatureProvider) -> MLFeatureProvider? {
-        if let output = try? model.prediction(input: input as! YOLOv3Input) {
-            return output
+    public func inputImages(images: [UIImage]) -> Self {
+        self.images = images
+        return self
+    }
+    
+    public func preprocess() -> Self {
+        let scaled: [UIImage] = self.images!.map{ $0.scaleTo(targetSize: CGSize(width: 416, height: 416)) }
+        let cvPixelBuffer: [CVPixelBuffer] = scaled.map{ $0.toCVPixelBuffer()! }
+        self.processedInputs = cvPixelBuffer.map { YOLOv3Input(image: $0) }
+        return self
+    }
+    
+    public func predict() -> Self {
+        if let output = try? model.predictions(inputs: self.processedInputs as! [YOLOv3Input]) {
+            self.predictionOutput = output
         } else {
-            return nil
+            self.predictionOutput = nil
         }
+        return self
     }
     
-    func postprocess(output: MLFeatureProvider) -> [(Any, Any)] {
-        var result = [(Any, Any)]()
-        let confidences = output.featureValue(for: "confidence")?.multiArrayValue
-        for i in 0...confidences!.shape[0].intValue - 1 {  // MUST CHECK FOR OFFLINE CAMERAS
-            let dimension = getDimension(i: i, from: confidences!)
-            let maxIndices = getIndicesOfMaxValues(from: dimension)
-            maxIndices.forEach({ index in
-                result.append((classes[index] , (dimension[index] * 100) ))
-            })
+    public func postprocess() -> Self {
+        self.results = []
+        self.predictionOutput!.forEach { output in
+            let result = CoreMLModelResult()
+            let confidences = output.featureValue(for: "confidence")?.multiArrayValue
+            if confidences!.shape[0].intValue > 0 {
+                for i in 0...confidences!.shape[0].intValue - 1 {  // MUST CHECK FOR OFFLINE CAMERAS
+                    let dimension = getDimension(i: i, from: confidences!)
+                    let maxIndices = getIndicesOfMaxValues(from: dimension)
+                    maxIndices.forEach({ index in
+                        result.add(item: CoreMLModelResult.ObjectClassConfidence(objClass: objClasses[index], confidence: (dimension[index] * 100)))
+                    })
+                }
+                self.results.append(result)
+            } else {
+                self.results.append(CoreMLModelResult())
+            }
         }
-        return result
+        return self
     }
-    
     
     private func getDimension(i: Int, from matrix: MLMultiArray) -> [Double] {
         var dim = [Double]()
         
-        for j in 0...matrix.shape[1].intValue {
+        for j in 0...matrix.shape[1].intValue - 1 {
             dim.append(matrix[[i, j] as [NSNumber]].doubleValue)
         }
         
@@ -86,7 +112,7 @@ class YOLO: CoreMLModel {
             }
             
             // Process the recognized strings.
-            print(recognizedStrings[0])
+//            print(recognizedStrings[0])
         })
 
         do {

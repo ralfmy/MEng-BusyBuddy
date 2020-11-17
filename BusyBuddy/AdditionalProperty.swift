@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AdditionalProperty: Encodable, Decodable {
+struct AdditionalProperty: Codable {
     let key: String
     let value: String
 }

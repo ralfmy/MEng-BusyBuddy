@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct AllPlacesView: View {
+struct AllPlacesSheet: View {
     @EnvironmentObject var store: PlacesDataManager
-    @EnvironmentObject var favourites: Favourites
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
             List(store.places) { place in
-                NavigationLink(destination: PlaceDetail(place: place).environmentObject(favourites)) {
+                NavigationLink(destination: PlaceDetail(place: place)) {
                     PlaceRow(commonName: place.commonName)
                 }
             }.listStyle(PlainListStyle())
@@ -29,12 +28,11 @@ struct AllPlacesView: View {
     }
 }
 
-struct AllPlacesView_Previews: PreviewProvider {
+struct AllPlacesSheet_Previews: PreviewProvider {
     @EnvironmentObject var store: PlacesDataManager
-    @EnvironmentObject var favourites: Favourites
     @State static private var isShowingAll = false
 
     static var previews: some View {
-        AllPlacesView(isPresented: $isShowingAll)
+        AllPlacesSheet(isPresented: $isShowingAll)
     }
 }

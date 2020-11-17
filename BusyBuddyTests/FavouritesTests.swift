@@ -13,21 +13,14 @@ import os.log
 class FavouritesTests: XCTestCase {
     private var userDefaults: UserDefaults!
     
-    var favourites: Favourites!
+    var favouritesManager: FavouritesManager!
     var gowerSt: Place!
 
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        favourites = Favourites(userDefaults)
-        
-        gowerSt = Place(context: PersistenceManager(.memory).container.viewContext)
-        gowerSt.id = "JamCams_00001.07389"
-        gowerSt.commonName = "University St/Gower St"
-        gowerSt.placeType = "JamCam"
-        gowerSt.imageUrl = "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg"
-        gowerSt.lat = 51.5239
-        gowerSt.lon = -0.1341
+        favouritesManager = FavouritesManager(userDefaults)
+
     }
 
     override func tearDownWithError() throws {
@@ -35,33 +28,27 @@ class FavouritesTests: XCTestCase {
     }
 
     func testNoFavouritesReturnsEmptyArray() throws {
-        XCTAssertTrue(favourites.ids().isEmpty)
+        XCTAssertTrue(favouritesManager.getPlaces().isEmpty)
     }
     
     func testAddPlace() throws {
-        favourites.add(place: gowerSt)
-        let ids = favourites.ids()
+        favouritesManager.add(place: PlaceExample.place)
+        let places = favouritesManager.getPlaces()
         
-        XCTAssertEqual(ids.count, 1)
-        XCTAssertEqual(ids[0], gowerSt.id)
+        XCTAssertEqual(places.count, 1)
+        XCTAssertEqual(places[0].id, PlaceExample.place.id)
     }
 
     func testremovePlace() throws {
-        favourites.add(place: gowerSt)
-        XCTAssertFalse(favourites.ids().isEmpty)
+        favouritesManager.add(place: PlaceExample.place)
+        XCTAssertFalse(favouritesManager.getPlaces().isEmpty)
         
-        favourites.remove(place: gowerSt)
-        XCTAssertTrue(favourites.ids().isEmpty)
+        favouritesManager.remove(place: PlaceExample.place)
+        XCTAssertTrue(favouritesManager.getPlaces().isEmpty)
     }
     
     func testContainsPlaceTrue() throws {
-        favourites.add(place: gowerSt)
-        XCTAssertTrue(favourites.contains(place: gowerSt))
-    }
-    
-    func testContainsPlaceFalse() throws {
-        favourites.add(place: gowerSt)
-        gowerSt.id = "not the real id"
-        XCTAssertFalse(favourites.contains(place: gowerSt))
+        favouritesManager.add(place: PlaceExample.place)
+        XCTAssertTrue(favouritesManager.contains(place: PlaceExample.place))
     }
 }

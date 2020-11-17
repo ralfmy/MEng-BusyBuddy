@@ -27,17 +27,16 @@ class ImageCache: ObservableObject {
     
     public func addImage(forKey: String, image: UIImage) {
         if var images = self.getImages(forKey: forKey) {
-            self.logger.debug("DEBUG: Cache hit.")
+//            self.logger.debug("DEBUG: Cache hit.")
             // Cache maximum the latest 3 images
             if images.count == self.countLimit {
-                self.logger.debug("DEBUG: Max array size.")
+//                self.logger.debug("DEBUG: Max array size.")
                 images.removeFirst()
             }
             images.append(image)
-            print(images)
             self.cache.setObject(ImageCacheEntry(images), forKey: NSString(string: forKey))
         } else {
-            self.logger.debug("DEBUG: Cache miss.")
+//            self.logger.debug("DEBUG: Cache miss.")
             self.cache.setObject(ImageCacheEntry([image]), forKey: NSString(string: forKey))
         }
         self.logger.info("INFO: Image successfully saved to cache.")

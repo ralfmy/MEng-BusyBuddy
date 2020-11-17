@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct FavouritePlacesView: View {
-    @EnvironmentObject var store: PlacesDataManager
-    @EnvironmentObject var favourites: Favourites
+    @EnvironmentObject var favouritesManager: FavouritesManager
     
-    var places: [Place]
+    @Binding var busyScores: [BusyScore]
     
     var body: some View {
-        List(places) { place in
-            NavigationLink(destination: FavouriteDetail(place: place)) {
+        List(favouritesManager.getPlaces()) { place in
+            NavigationLink(destination: FavouriteDetail(place: place, busyScores: $busyScores)) {
                 PlaceRow(commonName: place.commonName)
             }
         }.listStyle(PlainListStyle())
@@ -23,7 +22,9 @@ struct FavouritePlacesView: View {
 }
 
 struct FavouritePlacesView_Previews: PreviewProvider {
+    @State static private var busyScores = [BusyScore(id: "id", count: 5)]
+
     static var previews: some View {
-        FavouritePlacesView(places: [Place]())
+        FavouritePlacesView(busyScores: $busyScores)
     }
 }
