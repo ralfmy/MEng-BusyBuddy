@@ -19,6 +19,7 @@ class YOLO: CoreMLModel {
     var processedInputs: [MLFeatureProvider]?
     var predictionOutput: [MLFeatureProvider]?
     var results: [CoreMLModelResult]
+    var threshold: Double
     
     let model = YOLOv3()
     
@@ -33,8 +34,9 @@ class YOLO: CoreMLModel {
         "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
     ]
     
-    init() {
+    init(threshold: Double = 50) {
         self.results = []
+        self.threshold = threshold
     }
     
     public func inputImages(images: [UIImage]) -> Self {

@@ -19,14 +19,13 @@ struct PlacesView: View {
     
     @State private var firstLoad = true
     @State private var isShowingAll = false
-    @State private var busyScores = [BusyScore]()
     
     let viewOptions = ["Favourites", "All"]
     
     var body: some View {
         NavigationView {
             VStack {
-                FavouritePlacesView(busyScores: $busyScores)
+                FavouritePlacesView()
                 Spacer()
             }
             .navigationBarTitle(Text("Favourites"))
@@ -55,7 +54,7 @@ struct PlacesView: View {
     }
     
     func updateScores() {
-        self.busyScores = ML.model.run(on: favouritesManager.getPlaces())
+        self.favouritesManager.updateBusyScores()
     }
 }
 

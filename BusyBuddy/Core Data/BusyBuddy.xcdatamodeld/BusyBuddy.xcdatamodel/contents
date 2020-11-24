@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B5012d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Place" representedClassName="Place" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CoreDataPlace" representedClassName="CoreDataPlace" syncable="YES">
         <attribute name="commonName" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="imageUrl" attributeType="String"/>
@@ -14,6 +14,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Place" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="CoreDataPlace" positionX="-54" positionY="-9" width="128" height="119"/>
     </elements>
 </model>

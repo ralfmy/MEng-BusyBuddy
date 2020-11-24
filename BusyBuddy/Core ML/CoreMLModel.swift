@@ -14,6 +14,7 @@ protocol CoreMLModel: ObservableObject {
     var processedInputs: [MLFeatureProvider]? { get set }
     var predictionOutput: [MLFeatureProvider]? { get set }
     var results: [CoreMLModelResult] { get set }
+    var threshold: Double { get set }
     
     func inputImages(images: [UIImage]) -> Self
     
@@ -28,9 +29,10 @@ protocol CoreMLModel: ObservableObject {
 }
 
 extension CoreMLModel {
-    public func run(on places: [CodablePlace]) -> [BusyScore] {
+    
+    public func run(on places: [Place]) {
         if !places.isEmpty {
-            print("INFO: Running model.")
+            print("INFO: Running model on \(places.count) images")
             // CHECK SCORE CACHE
             var images = [UIImage]()
             places.forEach { place in
@@ -41,24 +43,20 @@ extension CoreMLModel {
                 }
             }
             let results = self.inputImages(images: images).preprocess().predict().postprocess().results
-            return calculateBusyScore(places: places, results: results)
-        } else {
-            return []
+            self.updateBusyScores(places: places, results: results)
         }
     }
 
-    public func calculateBusyScore(places: [CodablePlace], results: [CoreMLModelResult]) -> [BusyScore] {
-        var scores = [BusyScore]()
+    private func updateBusyScores(places: [Place], results: [CoreMLModelResult]) {
         for i in 0..<results.count {
-            if let objects = results[i].getObjectConfidences() {
-                let peopleCount = (results[i].objects.filter { $0.objClass == "person" && $0.confidence >= 50 }).count
-                scores.append(BusyScore(id: places[i].id, count: peopleCount))
+            if results[i].getObjectConfidences() != nil {
+                let peopleCount = (results[i].objects.filter { $0.objClass == "person" && $0.confidence >= self.threshold }).count
+                places[i].busyScore = BusyScore(count: peopleCount)
             } else {
-                scores.append(BusyScore(id: places[i].id, count: -1))
+                places[i].busyScore = BusyScore()
             }
         }
         print("INFO: Model finished.")
-        return scores
     }
 }
 

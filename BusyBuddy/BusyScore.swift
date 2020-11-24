@@ -19,13 +19,13 @@ struct BusyScore {
         case high
     }
     
-    var id: String
     var count: Int
     var score: Score = .none
+    var date: Date
     
-    init(id: String, count: Int) {
-        self.id = id
+    init(count: Int = -1) {
         self.count = count
+        self.date = Date()
         switch self.count {
         case 0..<5:
             self.score = .low
@@ -37,5 +37,4 @@ struct BusyScore {
             break
         }
     }
-    
 }

@@ -76,14 +76,14 @@ class TfLUnifiedAPITests: XCTestCase {
 //        let session = URLSessionMock()
 //        let api = TfLUnifiedAPI(session: session)
 //
-//        let place = Place(commonName: "Oxford St", placeType: "JamCam", additionalProperties: [], lat: 0, lon: 0)
+//        let place = CoreDataPlace(commonName: "Oxford St", placeType: "JamCam", additionalProperties: [], lat: 0, lon: 0)
 //        let encoder = JSONEncoder()
 //        let data = try? encoder.encode(place)
 //        session.data = data
 //
 //        let url = URL(fileURLWithPath: "url")
 //
-//        var result: Result<[Place], Error>?
+//        var result: Result<[CoreDataPlace], Error>?
 //        api.getAllJamCams() {
 //            result = $0
 //        }

@@ -20,7 +20,7 @@ struct TfLUnifiedAPI {
         self.session = session
     }
     
-    func fetchAllJamCams(completion: @escaping (Result<[CodablePlace], Error>) -> Void) {
+    func fetchAllJamCams(completion: @escaping (Result<[Place], Error>) -> Void) {
         guard let url = URL(string: self.prefix + "Place/Type/JamCam?app_key=" + self.api_key!) else { return }
         
         session.dataTask(with: url) { (data, response, error) in
@@ -29,7 +29,7 @@ struct TfLUnifiedAPI {
             }
                         
             do {
-                let places = try JSONDecoder().decode([CodablePlace].self, from: data!)
+                let places = try JSONDecoder().decode([Place].self, from: data!)
                 completion(.success(places))
             } catch let jsonError {
                 completion(.failure(jsonError))

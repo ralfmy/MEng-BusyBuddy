@@ -14,7 +14,6 @@ class FavouritesTests: XCTestCase {
     private var userDefaults: UserDefaults!
     
     var favouritesManager: FavouritesManager!
-    var gowerSt: Place!
 
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)

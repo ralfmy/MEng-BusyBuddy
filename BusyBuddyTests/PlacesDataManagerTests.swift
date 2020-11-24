@@ -22,15 +22,15 @@ class PlacesDataManagerTests: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var placesDataManager: PlacesDataManager!
     
-    var gowerSt: CodablePlace!
-    var places: [CodablePlace]!
+    var gowerSt: Place!
+    var places: [Place]!
     
     override func setUpWithError() throws {
         persistentContainer = PersistenceManager(.memory).container
         managedObjectContext = persistentContainer.viewContext
         placesDataManager = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
         
-        gowerSt = CodablePlace(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
+        gowerSt = Place(id: "JamCams_00001.07389", commonName: "University St/Gower St", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07389.jpg")], lat: 51.5239, lon: -0.1341)
         places = [gowerSt]
     }
     

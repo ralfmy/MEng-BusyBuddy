@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Place)
-public class Place: NSManagedObject {
+@objc(CoreDataPlace)
+public class CoreDataPlace: NSManagedObject {
 
 }

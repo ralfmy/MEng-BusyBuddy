@@ -19,12 +19,12 @@ class FavouritesManager: ObservableObject {
     private var defaults: UserDefaults
     private let saveKey = "Favourites"
     
-    @Published private var places: [CodablePlace]
+    @Published private var places: [Place]
     
     init(_ defaults: UserDefaults = UserDefaults.standard) {
         self.defaults = defaults
         if let data = defaults.object(forKey: saveKey) as? Data {
-            if let favourites = try? JSONDecoder().decode([CodablePlace].self, from: data) {
+            if let favourites = try? JSONDecoder().decode([Place].self, from: data) {
                 self.places = favourites
                 return
             }
@@ -32,12 +32,13 @@ class FavouritesManager: ObservableObject {
         self.places = []
     }
     
-    public func getPlaces() -> [CodablePlace] {
+    public func getPlaces() -> [Place] {
         let sorted = self.places.sorted(by: { $0.commonName < $1.commonName })
+        self.logger.debug("DEBUG: Image urls \(sorted.map { $0.getImageUrl() } )")
         return sorted
     }
     
-    public func add(place: CodablePlace) {
+    public func add(place: Place) {
         objectWillChange.send()
         if !self.contains(place: place) {
             self.places.append(place)
@@ -48,7 +49,7 @@ class FavouritesManager: ObservableObject {
         
     }
     
-    public func remove(place: CodablePlace) {
+    public func remove(place: Place) {
         objectWillChange.send()
         if self.contains(place: place) {
             self.places.removeAll(where: { $0.id == place.id })
@@ -59,8 +60,42 @@ class FavouritesManager: ObservableObject {
         
     }
     
-    public func contains(place: CodablePlace) -> Bool {
+    public func contains(place: Place) -> Bool {
         return self.places.contains(where: { $0.id == place.id })
+    }
+    
+    public func updateBusyScores() {
+        if self.places.filter({ $0.busyScore.score == .none }).count == self.places.count {
+            ML.model.run(on: self.places)
+        } else {
+            var needsUpdate = [Place]()
+            self.places.forEach { place in
+                if place.busyScoreNeedsUpdate() {
+                    needsUpdate.append(place)
+                }
+            }
+            ML.model.run(on: needsUpdate)
+        }
+    }
+    
+    public func updateBusyScoreFor(place: Place) {
+        if place.busyScoreNeedsUpdate() {
+            ML.model.run(on: [place])
+        }
+    }
+    
+    private func busyScoreNeedsUpdate(place: Place) -> Bool {
+        let busyScore = place.busyScore
+        if busyScore.count != -1 {
+            if busyScore.date.addingTimeInterval(5 * 60) > Date() {
+                self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
     
     private func save() {

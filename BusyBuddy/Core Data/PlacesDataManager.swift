@@ -20,7 +20,7 @@ class PlacesDataManager: ObservableObject {
     private var persistentContainer: NSPersistentContainer
     private var managedObjectContext: NSManagedObjectContext
     
-    @Published var places = [CodablePlace]()
+    @Published var places = [Place]()
 
     init(persistentContainer: NSPersistentContainer, managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
@@ -28,10 +28,10 @@ class PlacesDataManager: ObservableObject {
         self.loadAllSavedPlaces()
     }
     
-    public func savePlaces(places: [CodablePlace]) {
+    public func savePlaces(places: [Place]) {
         managedObjectContext.performAndWait {
             places.forEach { place in
-                let cdPlace = Place(context: self.managedObjectContext)
+                let cdPlace = CoreDataPlace(context: self.managedObjectContext)
                 cdPlace.id = place.id
                 cdPlace.commonName = place.commonName
                 cdPlace.placeType = place.placeType
@@ -51,9 +51,9 @@ class PlacesDataManager: ObservableObject {
     }
         
     public func loadAllSavedPlaces() {
-        var results = [Place]()
+        var results = [CoreDataPlace]()
 
-        let request = Place.createFetchRequest()
+        let request = CoreDataPlace.createFetchRequest()
         let sort = NSSortDescriptor(key: "commonName", ascending: true)
         request.sortDescriptors = [sort]
         
@@ -67,7 +67,7 @@ class PlacesDataManager: ObservableObject {
         self.places = results.map { $0.asCodablePlace() }
     }
     
-    public func findPlace(with id: String) -> CodablePlace? {
+    public func findPlace(with id: String) -> Place? {
         var result = self.places.first(where: { $0.id == id})
         
         // If not found in memory, check persistent storage
@@ -80,10 +80,10 @@ class PlacesDataManager: ObservableObject {
         return result
     }
     
-    private func loadSavedPlaces(by commonName: String) -> [Place] {
-        var results = [Place]()
+    private func loadSavedPlaces(by commonName: String) -> [CoreDataPlace] {
+        var results = [CoreDataPlace]()
         
-        let request = Place.createFetchRequest()
+        let request = CoreDataPlace.createFetchRequest()
         request.sortDescriptors = []
         request.predicate = NSPredicate(format: "commonName CONTAINS[c] %@", commonName)
         
@@ -96,10 +96,10 @@ class PlacesDataManager: ObservableObject {
         return results
     }
     
-    private func loadSavedPlace(with id: String) -> Place? {
-        var results = [Place]()
+    private func loadSavedPlace(with id: String) -> CoreDataPlace? {
+        var results = [CoreDataPlace]()
 
-        let request = Place.createFetchRequest()
+        let request = CoreDataPlace.createFetchRequest()
         request.sortDescriptors = []
         request.predicate = NSPredicate(format: "id == %@", id)
         
@@ -119,9 +119,9 @@ class PlacesDataManager: ObservableObject {
     
     public func deleteAllSavedPlaces() {
         // Used for clearing storage
-        var results = [Place]()
+        var results = [CoreDataPlace]()
 
-        let request = Place.createFetchRequest()
+        let request = CoreDataPlace.createFetchRequest()
         let sort = NSSortDescriptor(key: "commonName", ascending: true)
         request.sortDescriptors = [sort]
         
