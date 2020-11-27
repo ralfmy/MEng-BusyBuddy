@@ -24,19 +24,19 @@
 		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
 		BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
 		BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
-		BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */; };
 		BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */; };
 		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */; };
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
+		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
+		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
 		BFAFD2E125540DB700972554 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* FavouritesManager.swift */; };
 		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
 		BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */; };
 		BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */; };
-		BFC5A0A92554634600CE2B80 /* FavouriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
@@ -65,7 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = YOLOv3.mlmodel; path = ../../../../../../../Downloads/YOLOv3.mlmodel; sourceTree = "<group>"; };
+		BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = YOLOv3.mlmodel; path = ../../../YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF1EDF542550BB5A006C900F /* CoreMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLModel.swift; sourceTree = "<group>"; };
 		BF1EDF6A25515E94006C900F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
 		BF1EDF72255161FD006C900F /* UIImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
@@ -88,19 +88,19 @@
 		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPI.swift; sourceTree = "<group>"; };
 		BF3058C7254F2C7E0087FDEA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalProperty.swift; sourceTree = "<group>"; };
 		BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataClass.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataProperties.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManagerTests.swift; sourceTree = "<group>"; };
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
+		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
+		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
 		BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExample.swift; sourceTree = "<group>"; };
-		BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteDetail.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 				BFBD96222565BABB0091C0FE /* PlaceMap.swift */,
 				BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */,
 				BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */,
-				BFC5A0A82554634600CE2B80 /* FavouriteDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,13 +176,14 @@
 				BF30588A254F2C3C0087FDEA /* SceneDelegate.swift */,
 				BF1EDF7B25516248006C900F /* Views */,
 				BFD2D3872556B7CD00554869 /* BusyScore.swift */,
-				BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */,
-				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
 				BF3058C7254F2C7E0087FDEA /* Place.swift */,
-				BF3058CC254F2CA60087FDEA /* AdditionalProperty.swift */,
+				BF92211A256E6D7F0022CE80 /* PlacesCache.swift */,
+				BF92212D256E78160022CE80 /* PlacesManager.swift */,
 				BFAFD2E025540DB700972554 /* FavouritesManager.swift */,
 				BF1EDF72255161FD006C900F /* UIImageUtils.swift */,
+				BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */,
+				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
@@ -393,11 +393,11 @@
 				BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */,
 				BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */,
 				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
-				BFC5A0A92554634600CE2B80 /* FavouriteDetail.swift in Sources */,
 				BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */,
-				BF3058CD254F2CA60087FDEA /* AdditionalProperty.swift in Sources */,
+				BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */,
 				BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
+				BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,

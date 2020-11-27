@@ -42,7 +42,7 @@ class Place: Codable, Equatable, Identifiable {
     
     public func busyScoreNeedsUpdate() -> Bool {
         let busyScore = self.busyScore
-        if Date() > busyScore.date.addingTimeInterval(10)  {
+        if Date() > busyScore.date.addingTimeInterval(5 * 60)  {
             self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
             return true
         } else {
@@ -71,3 +71,9 @@ extension Place {
         case lon
     }
 }
+
+struct AdditionalProperty: Codable {
+    let key: String
+    let value: String
+}
+

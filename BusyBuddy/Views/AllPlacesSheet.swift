@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct AllPlacesSheet: View {
-    @EnvironmentObject var store: PlacesDataManager
+    @EnvironmentObject var placesManager: PlacesManager
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
-            List(store.places) { place in
+            List(placesManager.getPlaces()) { place in
                 NavigationLink(destination: PlaceDetail(place: place)) {
                     PlaceRow(commonName: place.commonName)
                 }

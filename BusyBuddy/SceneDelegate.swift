@@ -13,7 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "SceneDelegate")
 
     var window: UIWindow?
-    var timer: Timer?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,45 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Get the managed object context from the shared persistent container.
-        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+//        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        let placesManager = (UIApplication.shared.delegate as! AppDelegate).placesManager
         let favouritesManager = (UIApplication.shared.delegate as! AppDelegate).favouritesManager
-        let imageCache = (UIApplication.shared.delegate as! AppDelegate).cache
         
-        let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
+//        let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
         
-        
-        // NEED TO CHECK WHEN LAST API FETCH OCCURRED
-        if store.places.isEmpty {
-            self.logger.info("INFO: No saved places. Fetching all places from TfL Unified API.")
-            TfLUnifiedAPI().fetchAllJamCams() { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let places):
-                        store.savePlaces(places: places)
-                    case .failure(let err):
-                        self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
-                    }
-                }
-            }
-        }
-        
-//        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-//            favourites.list().forEach { place in
-//                var image: UIImage?
-//                if let data = try? Data(contentsOf: URL(string: place.getImageUrl())!) {
-//                    if let uiImage = UIImage(data: data) {
-//                        image = uiImage
-//                    }
-//                }
-//                if image != nil {
-//                    imageCache.addImage(forKey: place.id, image: image!)
-//                }
-//            }
-//        }
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = PlacesView().environmentObject(store).environmentObject(favouritesManager).environmentObject(imageCache)
+        let placesView = PlacesView().environmentObject(placesManager).environmentObject(favouritesManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

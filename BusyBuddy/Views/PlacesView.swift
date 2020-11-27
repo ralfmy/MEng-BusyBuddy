@@ -14,7 +14,7 @@ import os.log
 struct PlacesView: View {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesView")
 
-    @EnvironmentObject var store: PlacesDataManager
+    @EnvironmentObject var placesManager: PlacesManager
     @EnvironmentObject var favouritesManager: FavouritesManager
     
     @State private var firstLoad = true

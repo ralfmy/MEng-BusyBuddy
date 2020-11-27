@@ -10,8 +10,6 @@ import SwiftUI
 struct PlaceDetail: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
 
-    @State private var cacheTimer: Timer?
-    @State private var modelTimer: Timer?
     @State private var buttonState: Int = 0
     @State private var buttonColor: Color = Color.blue
     @State private var scoreText = ""

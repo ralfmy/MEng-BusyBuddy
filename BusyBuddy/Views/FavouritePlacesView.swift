@@ -12,7 +12,7 @@ struct FavouritePlacesView: View {
         
     var body: some View {
         List(favouritesManager.getPlaces()) { place in
-            NavigationLink(destination: FavouriteDetail(place: place)) {
+            NavigationLink(destination: PlaceDetail(place: place)) {
                 PlaceRow(commonName: place.commonName)
             }
         }.listStyle(PlainListStyle())
