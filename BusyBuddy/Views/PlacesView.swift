@@ -25,36 +25,49 @@ struct PlacesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                FavouritePlacesView()
+                PlacesList(places: favouritesManager.getPlaces())
                 Spacer()
             }
             .navigationBarTitle(Text("Favourites"))
-            .navigationBarItems(leading: Button(action: {
-                self.isShowingAll.toggle()
-            }) {
-                Image(systemName: "magnifyingglass.circle.fill").imageScale(.large)
-                    .frame(width: 64, height: 64, alignment: .leading)
-            }, trailing: Button(action: {
-                updateScores()
-            }) {
-                Image(systemName: "arrow.clockwise.circle.fill").imageScale(.large).frame(width: 64, height: 64, alignment: .trailing)
-            })
+            .navigationBarItems(leading: SearchButton, trailing: UpdateButton)
             .sheet(isPresented: $isShowingAll, onDismiss: {
                 updateScores()
             }) {
-                AllPlacesSheet(isPresented: self.$isShowingAll)
+                AllPlacesSheet(isPresented: $isShowingAll)
             }
             .onAppear {
-                if self.firstLoad {
+                if firstLoad {
                     updateScores()
-                    self.firstLoad = false
+                    firstLoad = false
                 }
             }
+        }.accentColor(.white)
+    }
+    
+    private var SearchButton: some View {
+        Button(action: {
+            isShowingAll.toggle()
+        }) {
+            Image(systemName: "magnifyingglass.circle.fill")
+                .imageScale(.large)
+                .frame(width: 64, height: 64, alignment: .leading)
+                .accentColor(.blue)
         }
     }
     
-    func updateScores() {
-        self.favouritesManager.updateBusyScores()
+    private var UpdateButton: some View {
+        Button(action: {
+            updateScores()
+        }) {
+            Image(systemName: "arrow.clockwise.circle.fill")
+                .imageScale(.large)
+                .frame(width: 64, height: 64, alignment: .trailing)
+                .accentColor(.blue)
+        }
+    }
+    
+    private func updateScores() {
+        favouritesManager.updateBusyScores()
     }
 }
 

@@ -14,18 +14,33 @@ struct PlaceMap: View {
     let place: Place
     
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: [place]) { place in
-            MapMarker(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon))
+        ZStack(alignment: .bottomLeading) {
+            Map(coordinateRegion: $region, annotationItems: [place]) { place in
+                MapMarker(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon))
+            }
+            .frame(height: 400)
+            .brightness(-0.2)
+            .onAppear {
+                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            }
+            CommonName
         }
-        .frame(height: 300)
-        .onAppear {
-            self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.place.lat, longitude: self.place.lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        }
+    }
+    
+    private var CommonName: some View {
+        Text(place.commonName)
+            .font(.title)
+            .fontWeight(.bold)
+            .lineLimit(2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 8).padding(.bottom, 27).padding(.leading, 8).padding(.trailing, 8)
+            .foregroundColor(Color.white)
     }
 }
 
 struct PlaceMap_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceMap(place: PlaceExample.place)
+        PlaceMap(place: ExamplePlace.place)
+            .previewLayout(.sizeThatFits)
     }
 }

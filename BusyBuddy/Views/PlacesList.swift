@@ -12,19 +12,33 @@ import os.log
 struct PlacesList: View {
     @State private var action: Int? = 0
     
-    let place: Place
+    let places: [Place]
     
     var body: some View {
-        
-        NavigationLink(destination: PlaceDetail(place: place), tag: 1, selection: $action) {
-            Text(place.commonName)
+        List(places) { place in
+            HStack {
+                ZStack(alignment: .leading) {
+                    Text(place.commonName).font(.headline)
+                    NavigationLink(destination: PlaceDetail(place: place)) {
+                        EmptyView()
+                    }.buttonStyle(PlainButtonStyle()).opacity(0.0)
+                }
+                Spacer()
+                DistanceText
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+        .listStyle(PlainListStyle())
+    }
+    
+    private var DistanceText: some View {
+        Text("1.4km").font(.footnote).padding(5).foregroundColor(Color.white).background(RoundedRectangle(cornerRadius: 100).fill(Color.gray))
     }
 }
 
 struct PlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesList(place: PlaceExample.place)
+        PlacesList(places: [ExamplePlace.place])
+            .previewLayout(.sizeThatFits)
     }
 }

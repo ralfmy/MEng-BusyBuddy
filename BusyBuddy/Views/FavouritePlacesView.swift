@@ -11,11 +11,7 @@ struct FavouritePlacesView: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
         
     var body: some View {
-        List(favouritesManager.getPlaces()) { place in
-            NavigationLink(destination: PlaceDetail(place: place)) {
-                PlaceRow(commonName: place.commonName)
-            }
-        }.listStyle(PlainListStyle())
+        PlacesList(places: favouritesManager.getPlaces())
     }
 }
 

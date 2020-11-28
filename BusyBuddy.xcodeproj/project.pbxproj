@@ -36,10 +36,10 @@
 		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
 		BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */; };
-		BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */; };
+		BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
-		BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlaceRow.swift */; };
+		BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlacesList.swift */; };
 		BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DAFD2556BE2800F10883 /* ImageCache.swift */; };
 		BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DB21255734C400F10883 /* ImageCacheTests.swift */; };
 		BFE3DB2F255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */; };
@@ -100,10 +100,10 @@
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
-		BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceExample.swift; sourceTree = "<group>"; };
+		BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlace.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
-		BFD97B572550449E00FF23D4 /* PlaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRow.swift; sourceTree = "<group>"; };
+		BFD97B572550449E00FF23D4 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
 		BFE3DAFD2556BE2800F10883 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		BFE3DB21255734C400F10883 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
 		BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_HorseferryRd_MarshamSt.jpg; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				BF30588C254F2C3C0087FDEA /* PlacesView.swift */,
-				BFD97B572550449E00FF23D4 /* PlaceRow.swift */,
+				BFD97B572550449E00FF23D4 /* PlacesList.swift */,
 				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
 				BFBD96222565BABB0091C0FE /* PlaceMap.swift */,
 				BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */,
@@ -253,7 +253,7 @@
 				BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */,
 				BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */,
 				BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */,
-				BFC5A0A02554540E00CE2B80 /* PlaceExample.swift */,
+				BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -395,11 +395,11 @@
 				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
 				BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */,
 				BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */,
-				BFC5A0A12554540E00CE2B80 /* PlaceExample.swift in Sources */,
+				BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
 				BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
-				BFD97B582550449E00FF23D4 /* PlaceRow.swift in Sources */,
+				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,

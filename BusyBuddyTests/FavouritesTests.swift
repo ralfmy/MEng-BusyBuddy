@@ -31,23 +31,23 @@ class FavouritesTests: XCTestCase {
     }
     
     func testAddPlace() throws {
-        favouritesManager.add(place: PlaceExample.place)
+        favouritesManager.add(place: ExamplePlace.place)
         let places = favouritesManager.getPlaces()
         
         XCTAssertEqual(places.count, 1)
-        XCTAssertEqual(places[0].id, PlaceExample.place.id)
+        XCTAssertEqual(places[0].id, ExamplePlace.place.id)
     }
 
     func testremovePlace() throws {
-        favouritesManager.add(place: PlaceExample.place)
+        favouritesManager.add(place: ExamplePlace.place)
         XCTAssertFalse(favouritesManager.getPlaces().isEmpty)
         
-        favouritesManager.remove(place: PlaceExample.place)
+        favouritesManager.remove(place: ExamplePlace.place)
         XCTAssertTrue(favouritesManager.getPlaces().isEmpty)
     }
     
     func testContainsPlaceTrue() throws {
-        favouritesManager.add(place: PlaceExample.place)
-        XCTAssertTrue(favouritesManager.contains(place: PlaceExample.place))
+        favouritesManager.add(place: ExamplePlace.place)
+        XCTAssertTrue(favouritesManager.contains(place: ExamplePlace.place))
     }
 }

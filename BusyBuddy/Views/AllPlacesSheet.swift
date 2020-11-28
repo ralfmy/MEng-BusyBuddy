@@ -9,22 +9,26 @@ import SwiftUI
 
 struct AllPlacesSheet: View {
     @EnvironmentObject var placesManager: PlacesManager
+    
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
-            List(placesManager.getPlaces()) { place in
-                NavigationLink(destination: PlaceDetail(place: place)) {
-                    PlaceRow(commonName: place.commonName)
-                }
-            }.listStyle(PlainListStyle())
-            .navigationBarTitle("All Places", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                self.isPresented = false
-            }) {
-                Text("Done")
-            })
-        }
+            VStack {
+                PlacesList(places: placesManager.getPlaces())
+                Spacer()
+            }
+            .navigationBarTitle(Text("All Places"), displayMode: .inline)
+            .navigationBarItems(trailing: DoneButton)
+        }.accentColor(.white)
+    }
+    
+    private var DoneButton: some View {
+        Button(action: {
+            isPresented = false
+        }) {
+            Text("Done")
+        }.accentColor(.blue)
     }
 }
 
