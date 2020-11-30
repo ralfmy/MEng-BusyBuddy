@@ -12,6 +12,7 @@ struct PlaceDetail: View {
 
     @State private var buttonState: Int = 0
     @State private var buttonColor: Color = Color.blue
+    @State private var busyScore: BusyScore = BusyScore(id: "")
     @State private var scoreText = ""
     
     let place: Place
@@ -20,37 +21,40 @@ struct PlaceDetail: View {
         ZStack {
             VStack {
                 PlaceMap(place: place).edgesIgnoringSafeArea(.all)
-                Spacer()
+                Spacer().frame(height: 20)
+                BusyIcon(busyScore: busyScore, size: 100)
                 Text(scoreText)
                 Spacer()
                 FavButton
+                Spacer()
             }
             
         }
-        .navigationBarItems(trailing: UpdateButton).onAppear {
+        .navigationBarItems(trailing: UpdateButton)
+        .onAppear {
             updateScore()
+            if favouritesManager.contains(place: place) {
+                buttonState = 1
+                buttonColor = Color.red
+            } else {
+                buttonState = 0
+                buttonColor = Color.blue
+            }
         }
     }
-    
-    init(place: Place) {
-        self.place = place
 
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().barTintColor = .clear
-    }
-    
     private var UpdateButton: some View {
         Button(action: {
             updateScore()
         }) {
-            Image(systemName: "arrow.clockwise.circle.fill").imageScale(.large).frame(width: 64, height: 64, alignment: .trailing)
+            Image(systemName: "arrow.clockwise.circle.fill")
+                .imageScale(.large)
+                .frame(width: 64, height: 64, alignment: .trailing)
+                .accentColor(.white)
         }
     }
     
-    private var FavButton: some View {
+    var FavButton: some View {
         Button(buttonState == 0 ? "Add to Favourites" : "Remove from Favourites") {
             if favouritesManager.contains(place: place) {
                 favouritesManager.remove(place: place)
@@ -60,24 +64,26 @@ struct PlaceDetail: View {
                 favouritesManager.add(place: place)
                 buttonState = 1
                 buttonColor = Color.red
-
+                
             }
         }.foregroundColor(buttonColor)
     }
     
-    
     private func updateScore() {
         scoreText = "Loading..."
         DispatchQueue.main.async {
-            if place.busyScoreNeedsUpdate() {
-                ML.model.run(on: [place])
+            if favouritesManager.contains(place: place) {
+                favouritesManager.updateScoreFor(place: place)
+                busyScore = favouritesManager.getScoreFor(id: place.id)!
+                updateScoreText(busyScore: busyScore)
+            } else {
+                busyScore = ML.model.run(on: [place]).first!
+                updateScoreText(busyScore: busyScore)
             }
-            updateScoreText()
         }
     }
     
-    private func updateScoreText() {
-        let busyScore = place.busyScore
+    private func updateScoreText(busyScore: BusyScore) {
         if busyScore.score == .none {
             scoreText = "No Objects Detected"
         } else {

@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
+		BF0B88EC25754D9F0036E0E0 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88EB25754D9F0036E0E0 /* AppView.swift */; };
+		BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88F325754DD00036E0E0 /* MapView.swift */; };
+		BF0B8902257556350036E0E0 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
 		BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */; };
 		BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF542550BB5A006C900F /* CoreMLModel.swift */; };
 		BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF6A25515E94006C900F /* YOLO.swift */; };
 		BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF72255161FD006C900F /* UIImageUtils.swift */; };
-		BF2DB8A225541D0400A304A7 /* FavouritePlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */; };
 		BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */; };
 		BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */; };
 		BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF305888254F2C3C0087FDEA /* AppDelegate.swift */; };
@@ -29,6 +32,9 @@
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */; };
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
+		BF6B1DA42573BAB900CF3FF0 /* FavouritesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* FavouritesGrid.swift */; };
+		BF6B1DB52573C3DA00CF3FF0 /* FavouriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* FavouriteItem.swift */; };
+		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
 		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
@@ -65,11 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0B88E6257546640036E0E0 /* BusyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
+		BF0B88EB25754D9F0036E0E0 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		BF0B88F325754DD00036E0E0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BF0B8901257556350036E0E0 /* BusyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
 		BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = YOLOv3.mlmodel; path = ../../../YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF1EDF542550BB5A006C900F /* CoreMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLModel.swift; sourceTree = "<group>"; };
 		BF1EDF6A25515E94006C900F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
 		BF1EDF72255161FD006C900F /* UIImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
-		BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesView.swift; sourceTree = "<group>"; };
 		BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlacesSheet.swift; sourceTree = "<group>"; };
 		BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
 		BF305885254F2C3C0087FDEA /* BusyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +102,9 @@
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManagerTests.swift; sourceTree = "<group>"; };
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		BF6B1DA32573BAB900CF3FF0 /* FavouritesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesGrid.swift; sourceTree = "<group>"; };
+		BF6B1DB42573C3DA00CF3FF0 /* FavouriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItem.swift; sourceTree = "<group>"; };
+		BF6B1DB92573C5C100CF3FF0 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
@@ -139,12 +151,17 @@
 		BF1EDF7B25516248006C900F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF0B88EB25754D9F0036E0E0 /* AppView.swift */,
 				BF30588C254F2C3C0087FDEA /* PlacesView.swift */,
+				BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */,
 				BFD97B572550449E00FF23D4 /* PlacesList.swift */,
 				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
 				BFBD96222565BABB0091C0FE /* PlaceMap.swift */,
-				BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */,
-				BF2DB8A125541D0400A304A7 /* FavouritePlacesView.swift */,
+				BF6B1DA32573BAB900CF3FF0 /* FavouritesGrid.swift */,
+				BF6B1DB42573C3DA00CF3FF0 /* FavouriteItem.swift */,
+				BF0B88E6257546640036E0E0 /* BusyIcon.swift */,
+				BF0B8901257556350036E0E0 /* BusyText.swift */,
+				BF0B88F325754DD00036E0E0 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +201,7 @@
 				BF1EDF72255161FD006C900F /* UIImageUtils.swift */,
 				BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */,
 				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
+				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
@@ -400,11 +418,15 @@
 				BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
+				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
+				BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */,
+				BF0B8902257556350036E0E0 /* BusyText.swift in Sources */,
+				BF6B1DA42573BAB900CF3FF0 /* FavouritesGrid.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
 				BFAFD2E125540DB700972554 /* FavouritesManager.swift in Sources */,
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
@@ -412,7 +434,9 @@
 				BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
-				BF2DB8A225541D0400A304A7 /* FavouritePlacesView.swift in Sources */,
+				BF6B1DB52573C3DA00CF3FF0 /* FavouriteItem.swift in Sources */,
+				BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */,
+				BF0B88EC25754D9F0036E0E0 /* AppView.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* PlacesView.swift in Sources */,
 				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,
@@ -514,6 +538,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TFL_API_KEY = 315c8cac0a0c4335b847845e643b6778;
 			};
 			name = Debug;
 		};
@@ -568,6 +593,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TFL_API_KEY = 315c8cac0a0c4335b847845e643b6778;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

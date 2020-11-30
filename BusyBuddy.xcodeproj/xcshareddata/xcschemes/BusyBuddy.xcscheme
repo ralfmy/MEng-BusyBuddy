@@ -70,13 +70,6 @@
             ReferencedContainer = "container:BusyBuddy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "api_key"
-            value = "315c8cac0a0c4335b847845e643b6778"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

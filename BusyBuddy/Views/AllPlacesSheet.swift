@@ -18,7 +18,7 @@ struct AllPlacesSheet: View {
                 PlacesList(places: placesManager.getPlaces())
                 Spacer()
             }
-            .navigationBarTitle(Text("All Places"), displayMode: .inline)
+            .navigationBarTitle(Text("All Places"), displayMode: .automatic)
             .navigationBarItems(trailing: DoneButton)
         }.accentColor(.white)
     }

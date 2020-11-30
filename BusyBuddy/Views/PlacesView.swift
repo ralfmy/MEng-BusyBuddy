@@ -20,12 +20,10 @@ struct PlacesView: View {
     @State private var firstLoad = true
     @State private var isShowingAll = false
     
-    let viewOptions = ["Favourites", "All"]
-    
     var body: some View {
         NavigationView {
             VStack {
-                PlacesList(places: favouritesManager.getPlaces())
+                FavouritesGrid()
                 Spacer()
             }
             .navigationBarTitle(Text("Favourites"))
@@ -43,7 +41,7 @@ struct PlacesView: View {
             }
         }.accentColor(.white)
     }
-    
+
     private var SearchButton: some View {
         Button(action: {
             isShowingAll.toggle()
@@ -51,7 +49,7 @@ struct PlacesView: View {
             Image(systemName: "magnifyingglass.circle.fill")
                 .imageScale(.large)
                 .frame(width: 64, height: 64, alignment: .leading)
-                .accentColor(.blue)
+                .accentColor(.appBlue)
         }
     }
     
@@ -62,12 +60,14 @@ struct PlacesView: View {
             Image(systemName: "arrow.clockwise.circle.fill")
                 .imageScale(.large)
                 .frame(width: 64, height: 64, alignment: .trailing)
-                .accentColor(.blue)
+                .accentColor(.appBlue)
         }
     }
     
     private func updateScores() {
-        favouritesManager.updateBusyScores()
+        DispatchQueue.main.async {
+            favouritesManager.updateScores()
+        }
     }
 }
 

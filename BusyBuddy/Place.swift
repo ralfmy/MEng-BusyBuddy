@@ -19,9 +19,7 @@ class Place: Codable, Equatable, Identifiable {
     let additionalProperties: [AdditionalProperty]
     let lat: Double
     let lon: Double
-    
-    var busyScore = BusyScore()
-    
+        
     init(id: String, commonName: String, placeType: String, additionalProperties: [AdditionalProperty], lat: Double, lon: Double) {
         self.id = id
         self.commonName = commonName
@@ -40,16 +38,16 @@ class Place: Codable, Equatable, Identifiable {
         }
     }
     
-    public func busyScoreNeedsUpdate() -> Bool {
-        let busyScore = self.busyScore
-        if Date() > busyScore.date.addingTimeInterval(5 * 60)  {
-            self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
-            return true
-        } else {
-            self.logger.info("INFO: BusyScore does not need update.")
-            return false
-        }
-    }
+//    public func busyScoreNeedsUpdate() -> Bool {
+//        let busyScore = self.busyScore
+//        if Date() > busyScore.date.addingTimeInterval(5) || busyScore.score == .none  {
+//            self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
+//            return true
+//        } else {
+//            self.logger.info("INFO: BusyScore does not need update.")
+//            return false
+//        }
+//    }
     
     static func == (lhs: Place, rhs: Place) -> Bool {
         if (lhs.commonName == rhs.commonName && lhs.placeType == rhs.placeType && lhs.lat == rhs.lat && lhs.lon == rhs.lon)

@@ -69,5 +69,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>TfLApiKey</key>
+	<string>$(TFL_API_KEY)</string>
 </dict>
 </plist>

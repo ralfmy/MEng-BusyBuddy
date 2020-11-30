@@ -9,9 +9,7 @@ import SwiftUI
 import CoreML
 import os.log
 
-struct PlacesList: View {
-    @State private var action: Int? = 0
-    
+struct PlacesList: View {    
     let places: [Place]
     
     var body: some View {

@@ -14,14 +14,14 @@ struct TfLUnifiedAPI {
     
     private let session: URLSession
     private let prefix = "https://api.tfl.gov.uk/"
-    private let api_key = ProcessInfo.processInfo.environment["api_key"]
+    private let api_key = Bundle.main.object(forInfoDictionaryKey: "TfLApiKey") as! String
     
     init(session: URLSession = .shared) {
         self.session = session
     }
     
     func fetchAllJamCams(completion: @escaping (Result<[Place], Error>) -> Void) {
-        guard let url = URL(string: self.prefix + "Place/Type/JamCam?app_key=" + self.api_key!) else { return }
+        guard let url = URL(string: self.prefix + "Place/Type/JamCam?app_key=" + self.api_key) else { return }
         
         session.dataTask(with: url) { (data, response, error) in
             if let err = error {
