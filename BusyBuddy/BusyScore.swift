@@ -24,12 +24,14 @@ struct BusyScore {
     var score: Score = .none
     var date: Date
     
-    let outdate: Double = 5 * 60
+    let expiry: Double = 5 * 60
     
-    init(id: String, count: Int = -1) {
+    // count = -1 means loading; count = -2 means no result
+    
+    init(id: String, count: Int = -1, date: Date = Date()) {
         self.id = id
         self.count = count
-        self.date = Date()
+        self.date = date
         switch self.count {
         case 0..<5:
             self.score = .low
@@ -38,14 +40,17 @@ struct BusyScore {
         case 10...:
             self.score = .high
         default:
-            break
+            self.score = .none
         }
     }
     
     public func scoreAsString() -> String {
+        if self.count == -1 {
+            return "LOADING"
+        }
         switch self.score {
         case .none:
-            return "NONE"
+            return "NO OBJECTS DETECTED"
         case .low:
             return "NOT BUSY"
         case .medium:
@@ -64,7 +69,7 @@ struct BusyScore {
     }
     
     public func isStale() -> Bool {
-        if self.date.addingTimeInterval(outdate) < Date() {
+        if self.date.addingTimeInterval(expiry) < Date() {
             return true
         } else {
             return false

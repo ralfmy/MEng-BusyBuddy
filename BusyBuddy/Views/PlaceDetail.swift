@@ -23,7 +23,7 @@ struct PlaceDetail: View {
                 ZStack(alignment: .bottomLeading) {
                     PlaceMap(place: place).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {
-                        HStack(alignment: .bottom) {
+                        HStack(alignment: .top) {
                             CommonName
                             FavButton
                         }
@@ -31,21 +31,15 @@ struct PlaceDetail: View {
                     }
                 }
                 Spacer()
-                BusyIcon(busyScore: busyScore, size: 100)
-                BusyText(busyScore: busyScore)
+                BusyIcon(busyScore: favouritesManager.contains(place: place) ? setBusyScore() : busyScore, size: 100).padding()
+                BusyText(busyScore: favouritesManager.contains(place: place) ? setBusyScore() : busyScore).padding()
                 Spacer()
             }
-            
         }
         .navigationBarItems(trailing: UpdateButton)
         .onAppear {
-            updateScore()
-            if favouritesManager.contains(place: place) {
-                buttonState = 1
-                buttonColor = Color.red
-            } else {
-                buttonState = 0
-                buttonColor = Color.blue
+            if !favouritesManager.contains(place: place) {
+                updateScore()
             }
         }
     }
@@ -64,20 +58,20 @@ struct PlaceDetail: View {
         Button(action: {
             updateScore()
         }) {
-            Image(systemName: "arrow.clockwise.circle.fill")
-                .font(.title)
+            Image(systemName: "arrow.clockwise")
+                .font(Font.title2.weight(.bold))
                 .foregroundColor(.white)
         }
     }
     
     private var FavButton: some View {
-
         Button(action: {
             if favouritesManager.contains(place: place) {
+                busyScore = favouritesManager.getScoreFor(id: place.id)!
                 favouritesManager.remove(place: place)
                 buttonState = 0
             } else {
-                favouritesManager.add(place: place)
+                favouritesManager.add(place: place, busyScore: busyScore)
                 buttonState = 1
             }
         }) {
@@ -88,27 +82,26 @@ struct PlaceDetail: View {
         .padding(.leading, 10).padding(.trailing, 10)
     }
     
-    private func updateScore() {
-        scoreText = "Loading..."
-        DispatchQueue.main.async {
-            if favouritesManager.contains(place: place) {
-                favouritesManager.updateScoreFor(place: place)
-                busyScore = favouritesManager.getScoreFor(id: place.id)!
-                updateScoreText(busyScore: busyScore)
-            } else {
-                busyScore = ML.model.run(on: [place]).first!
-                updateScoreText(busyScore: busyScore)
-            }
+    func setBusyScore() -> BusyScore {
+        if let busyScore = favouritesManager.getScoreFor(id: place.id) {
+            return busyScore
+        } else {
+            return BusyScore(id: "")
         }
     }
     
-    private func updateScoreText(busyScore: BusyScore) {
-        if busyScore.score == .none {
-            scoreText = "No Objects Detected"
+    private func updateScore() {
+        if favouritesManager.contains(place: place) {
+            favouritesManager.updateScoreFor(place: place)
         } else {
-            scoreText = "\(busyScore.score)\n\(busyScore.count)"
+            self.busyScore = BusyScore(id: place.id)
+            DispatchQueue.global(qos: .userInteractive).async {
+                let busyScore = ML.model.run(on: [place]).first!
+                DispatchQueue.main.async {
+                    self.busyScore = busyScore
+                }
+            }
         }
-        
     }
 }
 

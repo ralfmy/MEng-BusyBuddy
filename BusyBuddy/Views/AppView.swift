@@ -12,7 +12,7 @@ import CoreData
 import os.log
 
 struct AppView: View {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesView")
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppView")
 
     @EnvironmentObject var placesManager: PlacesManager
     @EnvironmentObject var favouritesManager: FavouritesManager
@@ -36,7 +36,7 @@ struct AppView: View {
                 // Tab 1
                 FavouritesGrid()
                 .sheet(isPresented: $isShowingAll, onDismiss: {
-                    updateScores()
+//                    updateScores()
                 }) {
                     AllPlacesSheet(isPresented: $isShowingAll).environmentObject(favouritesManager)
                 }
@@ -110,9 +110,7 @@ struct AppView: View {
     }
     
     private func updateScores() {
-        DispatchQueue.main.async {
-            favouritesManager.updateScores()
-        }
+        favouritesManager.updateScores()
     }
 }
 

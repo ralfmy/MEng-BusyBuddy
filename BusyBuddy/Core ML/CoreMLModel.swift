@@ -50,7 +50,7 @@ extension CoreMLModel {
                     let peopleCount = (results[i].objects.filter { $0.objClass == "person" && $0.confidence >= self.threshold }).count
                     scores.append(BusyScore(id: places[i].id, count: peopleCount))
                 } else {
-                    scores.append(BusyScore(id: places[i].id))
+                    scores.append(BusyScore(id: places[i].id, count: -2))
                 }
             }
             print("INFO: Model finished.")

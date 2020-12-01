@@ -10,12 +10,15 @@ import SwiftUI
 struct BusyText: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
     
-    @State private var busyText: String = ""
-    
     let busyScore: BusyScore
     
     var body: some View {
-        Text(busyScore.scoreAsString()).font(.subheadline).fontWeight(.bold).foregroundColor(setForegroundColour())
+        Text(busyScore.scoreAsString())
+            .font(.subheadline)
+            .fontWeight(.bold)
+            .lineLimit(2)
+            .multilineTextAlignment(.center)
+            .foregroundColor(setForegroundColour())
     }
     
     private func setForegroundColour() -> Color {

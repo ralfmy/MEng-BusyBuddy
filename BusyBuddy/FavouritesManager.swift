@@ -9,6 +9,8 @@
 //  https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
 //  https://www.hackingwithswift.com/books/ios-swiftui/saving-and-loading-data-with-userdefaults
 //  https://www.hackingwithswift.com/example-code/system/how-to-load-and-save-a-struct-in-userdefaults-using-codable
+//  https://hackernoon.com/swift-multi-threading-using-gcd-for-beginners-2581b7aa21cb
+//  https://www.raywenderlich.com/5370-grand-central-dispatch-tutorial-for-swift-4-part-1-2
 
 import Foundation
 import os.log
@@ -41,7 +43,7 @@ class FavouritesManager: ObservableObject {
     }
     
     public func getPlaces() -> [Place] {
-        self.logger.debug("DEBUG: Image urls \(self.places.map { $0.getImageUrl() } )")
+//        self.logger.debug("DEBUG: Image urls \(self.places.map { $0.getImageUrl() } )")
         return self.places
     }
     
@@ -54,12 +56,12 @@ class FavouritesManager: ObservableObject {
         return places[index]
     }
     
-    public func add(place: Place) {
+    public func add(place: Place, busyScore: BusyScore) {
         objectWillChange.send()
         if !self.contains(place: place) {
             self.places.append(place)
             self.places.sort(by: { $0.commonName < $1.commonName })
-            self.scores.append(BusyScore(id: place.id))
+            self.scores.append(busyScore)
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) already in Favourites.")
@@ -82,21 +84,45 @@ class FavouritesManager: ObservableObject {
     }
     
     public func updateScores() {
-        self.scores = ML.model.run(on: self.places)
+        self.scores = self.scores.map( { BusyScore(id: $0.id) } )
+        
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else {
+                return
+              }
+            let scores = ML.model.run(on: self.places)
+            DispatchQueue.main.async { [weak self] in
+                self?.scores = scores
+            }
+        }
     }
     
     public func updateScoreFor(place: Place) {
         if let currentScore = self.scores.first(where: { $0.id == place.id }) {
-            var score: BusyScore
-            if currentScore.isStale() {
-                self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
-                score = ML.model.run(on: [place]).first!
-            } else {
-                self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
-                score = BusyScore(id: place.id, count: currentScore.count)
+            
+            // Set BusyScore to "Loading" first
+            let index = self.scores.firstIndex(where: { $0.id == place.id })!
+            self.scores[index] = BusyScore(id: place.id)
+            
+            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                guard let self = self else {
+                    return
+                  }
+                
+                var score: BusyScore
+                if currentScore.isStale() {
+                    self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
+                    score = ML.model.run(on: [place]).first!
+                } else {
+                    self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
+                    score = BusyScore(id: place.id, count: currentScore.count, date: currentScore.date)
+                }
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.scores.removeAll(where: { $0.id == place.id })
+                    self?.scores.append(score)
+                }
             }
-            self.scores.removeAll(where: { $0.id == place.id })
-            self.scores.append(score)
         }
     }
     
@@ -112,20 +138,6 @@ class FavouritesManager: ObservableObject {
     public func getScoreFor(id: String) -> BusyScore? {
         return self.scores.first(where: { $0.id == id })
     }
-    
-//    private func busyScoreNeedsUpdate(place: Place) -> Bool {
-//        let busyScore = place.busyScore
-//        if busyScore.count != -1 {
-//            if busyScore.date.addingTimeInterval(5 * 60) > Date() {
-//                self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
-//                return true
-//            } else {
-//                return false
-//            }
-//        } else {
-//            return false
-//        }
-//    }
     
     private func save() {
         if let encoded = try? JSONEncoder().encode(self.places) {

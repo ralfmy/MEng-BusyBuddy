@@ -15,15 +15,15 @@ struct BusyIcon: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Circle().fill(setBusyBackgroundColour()).frame(width: size, height: size)
-            RoundedRectangle(cornerRadius: 15).fill(setBusyForegroundColour()).frame(width: size / 2, height: size / 2)
+            RoundedRectangle(cornerRadius: 100).fill(setBusyBackgroundColour()).frame(width: size, height: size)
+            RoundedRectangle(cornerRadius: 100).fill(setBusyForegroundColour()).frame(width: 0.7 * size, height: 0.7 * size)
         }
     }
     
     private func setBusyForegroundColour() -> Color {
         switch busyScore.score {
         case .none:
-            return Color.busyGreyForeground
+            return Color.busyGreyBackground
         case .low:
             return Color.busyGreenForeground
         case .medium:
@@ -49,10 +49,25 @@ struct BusyIcon: View {
             return Color.white
         }
     }
+    
+    private func setInnerSize() -> CGFloat {
+        switch busyScore.score {
+        case .none:
+            return 0
+        case .low:
+            return 0.4 * size
+        case .medium:
+            return 0.6 * size
+        case.high:
+            return 0.8 * size
+        default:
+            return size
+        }
+    }
 }
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(busyScore: BusyScore(id: ExamplePlace.place.id, count: 7), size: 75)
+        BusyIcon(busyScore: BusyScore(id: ExamplePlace.place.id, count: 1), size: 75)
     }
 }
