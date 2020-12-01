@@ -23,10 +23,12 @@ struct FavouritesGrid: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 8, pinnedViews: [])
             {
                 ForEach(favouritesManager.places) { place in
-                    FavouriteItem(id: place.id)
+                    FavouritesGridItem(id: place.id)
                 }
             }.padding(.leading).padding(.trailing)
-        }    }
+            Spacer().frame(height: 30)
+        }
+    }
 }
 
 struct FavouritesGrid_Previews: PreviewProvider {

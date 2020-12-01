@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavouriteItem: View {
+struct FavouritesGridItem: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
     
     @State private var tapped = false
@@ -17,14 +17,14 @@ struct FavouriteItem: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Spacer().frame(height: 30)
-                BusyIcon(busyScore: favouritesManager.getScoreFor(id: id)!, size: 75)
                 Spacer().frame(height: 20)
-                Text(favouritesManager.getPlaceWith(id: id)!.commonName).font(.headline).lineLimit(2).multilineTextAlignment(.center)
+                BusyIcon(busyScore: favouritesManager.getScoreFor(id: id)!, size: 75)
+                Spacer().frame(height: 12)
+                Text(favouritesManager.getPlaceWith(id: id)!.commonName).font(.headline).lineLimit(2).multilineTextAlignment(.center).foregroundColor(Color.appGreyDarkest)
                 Spacer()
-                BusyText(id: id)
-                Text(favouritesManager.getScoreFor(id: id)!.dateAsString()).font(.caption).fontWeight(.semibold).foregroundColor(Color.busyGreyForeground)
-                Spacer().frame(height: 30)
+                BusyText(busyScore: favouritesManager.getScoreFor(id: id)!)
+                Text(favouritesManager.getScoreFor(id: id)!.dateAsString()).font(.caption).fontWeight(.semibold).foregroundColor(Color.appGreyDarker)
+                Spacer().frame(height: 20)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 220, maxHeight: 220)
             .padding()
@@ -39,11 +39,11 @@ struct FavouriteItem: View {
     }
 }
 
-struct FavouriteItem_Previews: PreviewProvider {
+struct FavouriteSgridItem_Previews: PreviewProvider {
     static let favourites = FavouritesManager()
 
     static var previews: some View {
-        FavouriteItem(id: ExamplePlace.place.id)
+        FavouritesGridItem(id: ExamplePlace.place.id)
             .previewLayout(.sizeThatFits).environmentObject(favourites)
     }
 }

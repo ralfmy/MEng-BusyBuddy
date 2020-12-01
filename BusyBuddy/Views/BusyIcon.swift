@@ -15,12 +15,12 @@ struct BusyIcon: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Circle().fill(setBusyBackgroundColour(busyScore: busyScore)).frame(width: size, height: size)
-            RoundedRectangle(cornerRadius: 15).fill(setBusyForegroundColour(busyScore: busyScore)).frame(width: size / 2, height: size / 2)
+            Circle().fill(setBusyBackgroundColour()).frame(width: size, height: size)
+            RoundedRectangle(cornerRadius: 15).fill(setBusyForegroundColour()).frame(width: size / 2, height: size / 2)
         }
     }
     
-    private func setBusyForegroundColour(busyScore: BusyScore) -> Color {
+    private func setBusyForegroundColour() -> Color {
         switch busyScore.score {
         case .none:
             return Color.busyGreyForeground
@@ -35,7 +35,7 @@ struct BusyIcon: View {
         }
     }
     
-    private func setBusyBackgroundColour(busyScore: BusyScore) -> Color {
+    private func setBusyBackgroundColour() -> Color {
         switch busyScore.score {
         case .none:
             return Color.busyGreyBackground

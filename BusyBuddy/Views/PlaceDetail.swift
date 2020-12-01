@@ -48,9 +48,8 @@ struct PlaceDetail: View {
             updateScore()
         }) {
             Image(systemName: "arrow.clockwise.circle.fill")
-                .imageScale(.large)
-                .frame(width: 64, height: 64, alignment: .trailing)
-                .accentColor(.white)
+                .font(.title)
+                .foregroundColor(.white)
         }
     }
     

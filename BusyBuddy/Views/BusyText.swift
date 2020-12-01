@@ -10,17 +10,18 @@ import SwiftUI
 struct BusyText: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
     
-    let id: String
+    @State private var busyText: String = ""
+    
+    let busyScore: BusyScore
     
     var body: some View {
-        Text(favouritesManager.getScoreFor(id: id)!.scoreAsString()).font(.subheadline).fontWeight(.bold).foregroundColor(setForegroundColour(id: id))
+        Text(busyScore.scoreAsString()).font(.subheadline).fontWeight(.bold).foregroundColor(setForegroundColour())
     }
     
-    private func setForegroundColour(id: String) -> Color {
-        let busyScore = favouritesManager.getScoreFor(id: id)!
+    private func setForegroundColour() -> Color {
         switch busyScore.score {
         case .none:
-            return Color.busyGreyForeground
+            return Color.appGreyDarker
         case .low:
             return Color.busyGreenForeground
         case .medium:
@@ -35,6 +36,6 @@ struct BusyText: View {
 
 struct BusyText_Previews: PreviewProvider {
     static var previews: some View {
-        BusyText(id: ExamplePlace.place.id)
+        BusyText(busyScore: BusyScore(id: ExamplePlace.place.id))
     }
 }
