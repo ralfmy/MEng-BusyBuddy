@@ -13,6 +13,25 @@ struct PlacesList: View {
     let places: [Place]
     
     var body: some View {
+//        ScrollView {
+//            LazyVStack {
+//                ForEach(places) { place in
+//                    HStack {
+//                        ZStack(alignment: .leading) {
+//                            Text(place.commonName).font(.headline)
+//                            NavigationLink(destination: PlaceDetail(place: place)) {
+//                                EmptyView()
+//                            }.buttonStyle(PlainButtonStyle()).opacity(0.0)
+//                        }
+//                        Spacer()
+//                        DistanceText
+//                    }
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+//                    
+//                }
+//            }
+//            .padding(.leading).padding(.trailing)
+//        }        
         List(places) { place in
             HStack {
                 ZStack(alignment: .leading) {

@@ -38,7 +38,7 @@ struct AppView: View {
                 .sheet(isPresented: $isShowingAll, onDismiss: {
                     updateScores()
                 }) {
-                    AllPlacesSheet(isPresented: $isShowingAll)
+                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(favouritesManager)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
@@ -93,9 +93,9 @@ struct AppView: View {
         Button(action: {
             isShowingAll.toggle()
         }) {
-            Image(systemName: "magnifyingglass.circle.fill")
-                .font(.title)
-                .foregroundColor(.appBlue)
+            Image(systemName: "magnifyingglass")
+                .font(Font.title3.weight(.bold))
+                .foregroundColor(.appGreyDarkest)
         }
     }
     
@@ -103,9 +103,9 @@ struct AppView: View {
         Button(action: {
             updateScores()
         }) {
-            Image(systemName: "arrow.clockwise.circle.fill")
-                .font(.title)
-                .foregroundColor(.appBlue)
+            Image(systemName: "arrow.clockwise")
+                .font(Font.title3.weight(.bold))
+                .foregroundColor(.appGreyDarkest)
         }
     }
     

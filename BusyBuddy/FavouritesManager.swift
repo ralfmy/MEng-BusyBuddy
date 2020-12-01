@@ -41,8 +41,6 @@ class FavouritesManager: ObservableObject {
     }
     
     public func getPlaces() -> [Place] {
-        let sorted = self.places.sorted(by: { $0.commonName < $1.commonName })
-        self.places = sorted
         self.logger.debug("DEBUG: Image urls \(self.places.map { $0.getImageUrl() } )")
         return self.places
     }

@@ -13,7 +13,9 @@ struct AllPlacesSheet: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        NavigationView {
+        UITableView.appearance().separatorColor = UIColor(Color.appBlue)
+
+        return NavigationView {
             VStack {
                 PlacesList(places: placesManager.getPlaces())
                 Spacer()
@@ -27,8 +29,8 @@ struct AllPlacesSheet: View {
         Button(action: {
             isPresented = false
         }) {
-            Text("Done")
-        }.accentColor(.blue)
+            Text("Done").foregroundColor(.appGreyDarkest)
+        }
     }
 }
 

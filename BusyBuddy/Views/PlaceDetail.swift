@@ -20,12 +20,19 @@ struct PlaceDetail: View {
     var body: some View {
         ZStack {
             VStack {
-                PlaceMap(place: place).edgesIgnoringSafeArea(.all)
-                Spacer().frame(height: 20)
-                BusyIcon(busyScore: busyScore, size: 100)
-                Text(scoreText)
+                ZStack(alignment: .bottomLeading) {
+                    PlaceMap(place: place).edgesIgnoringSafeArea(.all).frame(height: 300)
+                    VStack {
+                        HStack(alignment: .bottom) {
+                            CommonName
+                            FavButton
+                        }
+                        Spacer().frame(height: 27)
+                    }
+                }
                 Spacer()
-                FavButton
+                BusyIcon(busyScore: busyScore, size: 100)
+                BusyText(busyScore: busyScore)
                 Spacer()
             }
             
@@ -42,6 +49,16 @@ struct PlaceDetail: View {
             }
         }
     }
+    
+    private var CommonName: some View {
+        Text(place.commonName)
+            .font(.title)
+            .fontWeight(.bold)
+            .lineLimit(2)
+            .frame(maxWidth: .infinity, alignment: .bottomLeading)
+            .padding(.leading, 10).padding(.trailing, 10)
+            .foregroundColor(Color.white)
+    }
 
     private var UpdateButton: some View {
         Button(action: {
@@ -53,19 +70,22 @@ struct PlaceDetail: View {
         }
     }
     
-    var FavButton: some View {
-        Button(buttonState == 0 ? "Add to Favourites" : "Remove from Favourites") {
+    private var FavButton: some View {
+
+        Button(action: {
             if favouritesManager.contains(place: place) {
                 favouritesManager.remove(place: place)
                 buttonState = 0
-                buttonColor = Color.blue
             } else {
                 favouritesManager.add(place: place)
                 buttonState = 1
-                buttonColor = Color.red
-                
             }
-        }.foregroundColor(buttonColor)
+        }) {
+            buttonState == 0 ?
+                Image(systemName: "star.circle.fill").font(.title).foregroundColor(.white) :
+                Image(systemName: "star.circle.fill").font(.title).foregroundColor(.appBlue)
+        }
+        .padding(.leading, 10).padding(.trailing, 10)
     }
     
     private func updateScore() {

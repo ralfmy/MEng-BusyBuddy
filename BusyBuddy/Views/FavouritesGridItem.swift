@@ -18,12 +18,12 @@ struct FavouritesGridItem: View {
         VStack {
             VStack(alignment: .center) {
                 Spacer().frame(height: 20)
-                BusyIcon(busyScore: favouritesManager.getScoreFor(id: id)!, size: 75)
+                BusyIcon(busyScore: setBusyScore(), size: 75)
                 Spacer().frame(height: 12)
-                Text(favouritesManager.getPlaceWith(id: id)!.commonName).font(.headline).lineLimit(2).multilineTextAlignment(.center).foregroundColor(Color.appGreyDarkest)
+                Text(setCommonName()).font(.headline).lineLimit(2).multilineTextAlignment(.center).foregroundColor(Color.appGreyDarkest)
                 Spacer()
-                BusyText(busyScore: favouritesManager.getScoreFor(id: id)!)
-                Text(favouritesManager.getScoreFor(id: id)!.dateAsString()).font(.caption).fontWeight(.semibold).foregroundColor(Color.appGreyDarker)
+                BusyText(busyScore: setBusyScore())
+                Text(setLatUpdated()).font(.caption).fontWeight(.semibold).foregroundColor(Color.appGreyDarker)
                 Spacer().frame(height: 20)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 220, maxHeight: 220)
@@ -33,9 +33,41 @@ struct FavouritesGridItem: View {
                 self.tapped = true
             }
         }
-        .background (NavigationLink(destination: PlaceDetail(place: favouritesManager.getPlaceWith(id: id)!), isActive: $tapped) {
+        .background (NavigationLink(destination: PlaceDetail(place: setPlaceDetail()), isActive: $tapped) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
+    }
+    
+    private func setCommonName() -> String {
+        if let place = favouritesManager.getPlaceWith(id: id) {
+            return place.commonName
+        } else {
+            return ""
+        }
+    }
+    
+    func setBusyScore() -> BusyScore {
+        if let busyScore = favouritesManager.getScoreFor(id: id) {
+            return busyScore
+        } else {
+            return BusyScore(id: "")
+        }
+    }
+    
+    private func setLatUpdated() -> String {
+        if let busyScore = favouritesManager.getScoreFor(id: id) {
+            return busyScore.dateAsString()
+        } else {
+            return ""
+        }
+    }
+    
+    private func setPlaceDetail() -> Place {
+        if let place = favouritesManager.getPlaceWith(id: id) {
+            return place
+        } else {
+            return ExamplePlace.place
+        }
     }
 }
 
