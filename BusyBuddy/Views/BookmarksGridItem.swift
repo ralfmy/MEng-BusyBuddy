@@ -12,34 +12,51 @@ struct BookmarksGridItem: View {
     
     @State private var tapped = false
     
-    let id: String
+    let place: Place
     
     var body: some View {
         VStack {
-            VStack(alignment: .center) {
+            VStack(alignment: .leading) {
                 Spacer().frame(height: 15)
-                BusyIcon(busyScore: setBusyScore(), size: 75)
+                BusyIcon(busyScore: setBusyScore(), size: 50, coloured: false)
                 Spacer().frame(height: 20)
-                Text(setCommonName()).font(.headline).lineLimit(2).multilineTextAlignment(.center).foregroundColor(Color.appGreyDarkest)
+                CommonName
                 Spacer()
-                BusyText(busyScore: setBusyScore())
-                Text(setLatUpdated()).font(.caption).fontWeight(.semibold).foregroundColor(Color.appGreyDarker)
+                BusyText(busyScore: setBusyScore(), font: .subheadline)
+                LastUpdated
                 Spacer().frame(height: 15)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 230, maxHeight: 230)
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 20).fill(Color.cardGrey))
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 190, maxHeight: 190)
+            .padding(20)
+            .background(RoundedRectangle(cornerRadius: 20).fill(setCardColour()))
             .onTapGesture {
                 self.tapped = true
             }
         }
-        .background (NavigationLink(destination: PlaceDetail(place: setPlaceDetail()), isActive: $tapped) {
+        .background (NavigationLink(destination: PlaceDetail(place: place), isActive: $tapped) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }
     
+    private var CommonName: some View {
+        Text(setCommonName())
+            .font(.headline)
+            .lineLimit(2)
+            .multilineTextAlignment(.leading)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(setTextColour(opacity: 1))
+    }
+    
+    private var LastUpdated: some View {
+        Text(setLatUpdated())
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundColor(setTextColour(opacity: 0.7))
+
+    }
+    
     private func setCommonName() -> String {
-        if let place = bookmarksManager.getPlaceWith(id: id) {
+        if let place = bookmarksManager.getPlaceWith(id: place.id) {
             return place.commonName
         } else {
             return ""
@@ -47,7 +64,7 @@ struct BookmarksGridItem: View {
     }
     
     func setBusyScore() -> BusyScore {
-        if let busyScore = bookmarksManager.getScoreFor(id: id) {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
             return busyScore
         } else {
             return BusyScore(id: "")
@@ -55,18 +72,40 @@ struct BookmarksGridItem: View {
     }
     
     private func setLatUpdated() -> String {
-        if let busyScore = bookmarksManager.getScoreFor(id: id) {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
             return busyScore.dateAsString()
         } else {
             return ""
         }
     }
     
-    private func setPlaceDetail() -> Place {
-        if let place = bookmarksManager.getPlaceWith(id: id) {
-            return place
+    private func setTextColour(opacity: Double) -> Color {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+            switch busyScore.score {
+            case .none:
+                return Color.appGreyDarkest.opacity(0.8)
+            default:
+                return Color.white.opacity(opacity)
+            }
         } else {
-            return ExamplePlace.place
+            return Color.white
+        }
+    }
+
+    private func setCardColour() -> Color {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+            switch busyScore.score {
+            case .none:
+                return Color.busyGreyLighter
+            case .low:
+                return Color.busyGreenDarker
+            case .medium:
+                return Color.busyYellowDarker
+            case.high:
+                return Color.busyPinkDarker
+            }
+        } else {
+            return Color.white
         }
     }
 }
@@ -75,7 +114,7 @@ struct FavouriteSgridItem_Previews: PreviewProvider {
     static let bookmarks = BookmarksManager()
 
     static var previews: some View {
-        BookmarksGridItem(id: ExamplePlace.place.id)
+        BookmarksGridItem(place: ExamplePlace.place)
             .previewLayout(.sizeThatFits).environmentObject(bookmarks)
     }
 }

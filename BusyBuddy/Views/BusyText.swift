@@ -11,34 +11,21 @@ struct BusyText: View {
     @EnvironmentObject var bookmarksManager: BookmarksManager
     
     let busyScore: BusyScore
+    let font: Font
     
     var body: some View {
         Text(busyScore.scoreAsString())
-            .font(.subheadline)
+            .font(font)
             .fontWeight(.bold)
             .lineLimit(2)
-            .multilineTextAlignment(.center)
-            .foregroundColor(setForegroundColour())
-    }
-    
-    private func setForegroundColour() -> Color {
-        switch busyScore.score {
-        case .none:
-            return Color.appGreyDarker
-        case .low:
-            return Color.busyGreenForeground
-        case .medium:
-            return Color.busyYellowForeground
-        case.high:
-            return Color.busyPinkForeground
-        default:
-            return Color.white
-        }
+            .multilineTextAlignment(.leading)
+            .frame(alignment: .leading)
+            .foregroundColor(busyScore.score == .none ? Color.appGreyDarker.opacity(0.8) : Color.white.opacity(0.8))
     }
 }
 
 struct BusyText_Previews: PreviewProvider {
     static var previews: some View {
-        BusyText(busyScore: BusyScore(id: ExamplePlace.place.id))
+        BusyText(busyScore: BusyScore(id: ExamplePlace.place.id), font: .subheadline)
     }
 }

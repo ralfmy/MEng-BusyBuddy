@@ -50,6 +50,7 @@
 		BFE3DB2F255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */; };
 		BFE3DB30255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */; };
 		BFE3DB31255761CC00F10883 /* test_UniversitySt_GowerSt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */; };
+		BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1EE0D2577ECC00010981B /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		BFE3DB2C255761CC00F10883 /* test_HorseferryRd_MarshamSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_HorseferryRd_MarshamSt.jpg; sourceTree = "<group>"; };
 		BFE3DB2D255761CC00F10883 /* test_OxfordSt_DaviesSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_OxfordSt_DaviesSt.jpg; sourceTree = "<group>"; };
 		BFE3DB2E255761CC00F10883 /* test_UniversitySt_GowerSt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_UniversitySt_GowerSt.jpg; sourceTree = "<group>"; };
+		BFF1EE0D2577ECC00010981B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				BFD97B572550449E00FF23D4 /* PlacesList.swift */,
 				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
 				BFBD96222565BABB0091C0FE /* PlaceMap.swift */,
+				BFF1EE0D2577ECC00010981B /* ImageView.swift */,
 				BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */,
 				BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */,
 				BF0B88E6257546640036E0E0 /* BusyIcon.swift */,
@@ -413,6 +416,7 @@
 				BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
 				BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */,
+				BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,

@@ -23,7 +23,7 @@ struct BookmarksGrid: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 8, pinnedViews: [])
             {
                 ForEach(bookmarksManager.getPlaces()) { place in
-                    BookmarksGridItem(id: place.id)
+                    BookmarksGridItem(place: place)
                 }
             }.padding(.leading).padding(.trailing)
             Spacer().frame(height: 30)

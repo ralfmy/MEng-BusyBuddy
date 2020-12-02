@@ -48,9 +48,9 @@ extension CoreMLModel {
             for i in 0..<places.count {
                 if results[i].getObjectConfidences() != nil {
                     let peopleCount = (results[i].objects.filter { $0.objClass == "person" && $0.confidence >= self.threshold }).count
-                    scores.append(BusyScore(id: places[i].id, count: peopleCount))
+                    scores.append(BusyScore(id: places[i].id, count: peopleCount, image: images[i]))
                 } else {
-                    scores.append(BusyScore(id: places[i].id, count: -2))
+                    scores.append(BusyScore(id: places[i].id, count: -2, image: images[i]))
                 }
             }
             print("INFO: Model finished.")

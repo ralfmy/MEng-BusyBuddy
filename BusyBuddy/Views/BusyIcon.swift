@@ -12,41 +12,51 @@ struct BusyIcon: View {
     
     let busyScore: BusyScore
     let size: CGFloat
+    let coloured: Bool
     
     var body: some View {
         ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 100).fill(setBusyBackgroundColour()).frame(width: size, height: size)
-            RoundedRectangle(cornerRadius: 100).fill(setBusyForegroundColour()).frame(width: 0.7 * size, height: 0.7 * size)
+            RoundedRectangle(cornerRadius: 100).fill(setBusyForegroundColour()).frame(width: setInnerSize(), height: setInnerSize())
         }
     }
     
     private func setBusyForegroundColour() -> Color {
-        switch busyScore.score {
-        case .none:
-            return Color.busyGreyBackground
-        case .low:
-            return Color.busyGreenForeground
-        case .medium:
-            return Color.busyYellowForeground
-        case.high:
-            return Color.busyPinkForeground
-        default:
-            return Color.white
+        if coloured {
+            switch busyScore.score {
+            case .none:
+                return Color.busyGreyLighter
+            case .low:
+                return Color.busyGreenDarker
+            case .medium:
+                return Color.busyYellowDarker
+            case.high:
+                return Color.busyPinkDarker
+            default:
+                return Color.white
+            }
+        } else {
+            return Color.white.opacity(0.4)
         }
+        
     }
     
     private func setBusyBackgroundColour() -> Color {
-        switch busyScore.score {
-        case .none:
-            return Color.busyGreyBackground
-        case .low:
-            return Color.busyGreenBackground
-        case .medium:
-            return Color.busyYellowBackground
-        case.high:
-            return Color.busyPinkBackground
-        default:
-            return Color.white
+        if coloured {
+            switch busyScore.score {
+            case .none:
+                return Color.busyGreyLighter
+            case .low:
+                return Color.busyGreenLighter
+            case .medium:
+                return Color.busyYellowLighter
+            case.high:
+                return Color.busyPinkLighter
+            default:
+                return Color.white
+            }
+        } else {
+            return Color.white.opacity(0.4)
         }
     }
     
@@ -55,7 +65,7 @@ struct BusyIcon: View {
         case .none:
             return 0
         case .low:
-            return 0.4 * size
+            return 0.5 * size
         case .medium:
             return 0.6 * size
         case.high:
@@ -68,6 +78,6 @@ struct BusyIcon: View {
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(busyScore: BusyScore(id: ExamplePlace.place.id, count: 1), size: 75)
+        BusyIcon(busyScore: BusyScore(id: ExamplePlace.place.id, count: 1), size: 75, coloured: true)
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct PlaceDetail: View {
     @EnvironmentObject var bookmarksManager: BookmarksManager
 
+    @State private var isViewingImage: Bool = false
     @State private var buttonState: Int = 0
     @State private var busyScore: BusyScore = BusyScore(id: "")
     @State private var scoreText = ""
@@ -32,12 +33,18 @@ struct PlaceDetail: View {
                     }
                 }
                 Spacer()
-                BusyIcon(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore, size: 100).padding()
-                BusyText(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore).padding()
+                BusyIcon(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore, size: 100, coloured: false).padding()
+                BusyText(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore, font: .title2).padding(.bottom, 5 )
+                LastUpdated
                 Spacer()
+                ViewImageButton
+                Spacer().frame(height: 50)
             }
+            .background(setBackgroundColour()).edgesIgnoringSafeArea(.bottom)
         }
         .navigationBarItems(trailing: UpdateButton)
+        .blur(radius: setBlurRadius())
+        .overlay(ImageView(isShowing: $isViewingImage, busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore))
         .onAppear {
             if bookmarksManager.contains(place: place) {
                 buttonState = 1
@@ -56,6 +63,14 @@ struct PlaceDetail: View {
             .padding(.leading, 10).padding(.trailing, 10)
             .foregroundColor(Color.white)
     }
+    
+    private var LastUpdated: some View {
+        Text(setLatUpdated())
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .foregroundColor(Color.white.opacity(0.7))
+
+    }
 
     private var UpdateButton: some View {
         Button(action: {
@@ -63,7 +78,8 @@ struct PlaceDetail: View {
             updateScore()
         }) {
             Image(systemName: "arrow.clockwise")
-                .font(Font.title2.weight(.bold))
+                .font(Font.title3.weight(.bold))
+                .frame(width: 64, height: 64, alignment: .leading)
                 .foregroundColor(.white)
         }
     }
@@ -81,13 +97,29 @@ struct PlaceDetail: View {
             }
         }) {
             buttonState == 0 ?
-                Image(systemName: "bookmark.fill").font(.title).foregroundColor(Color.white.opacity(0.5)) :
+                Image(systemName: "bookmark.fill").font(.title).foregroundColor(Color.white.opacity(0.8)) :
                 Image(systemName: "bookmark.fill").font(.title).foregroundColor(.red)
         }
         .padding(.leading, 10).padding(.trailing, 10)
     }
     
-    func setBusyScore() -> BusyScore {
+    private var ViewImageButton: some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isViewingImage.toggle()
+            }
+        }) {
+            Text("View Image")
+                .font(.subheadline)
+                .fontWeight(.bold)
+                .padding()
+                .foregroundColor(.black)
+                .background(Color.white)
+                .cornerRadius(100)
+        }
+    }
+    
+    private func setBusyScore() -> BusyScore {
         if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
             return busyScore
         } else {
@@ -107,6 +139,41 @@ struct PlaceDetail: View {
                     self.feedback.notificationOccurred(.success)
                 }
             }
+        }
+    }
+    
+    private func setLatUpdated() -> String {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+            return "Last Updated: " + busyScore.dateAsString()
+        } else {
+            return "Last Updated: " + self.busyScore.dateAsString()
+        }
+    }
+    
+    private func setBlurRadius() -> CGFloat {
+        if isViewingImage {
+            return 3
+        } else {
+            return 0
+        }
+    }
+    
+    private func setBackgroundColour() -> Color {
+        var busyScore: BusyScore
+        if bookmarksManager.contains(place: place) {
+            busyScore = bookmarksManager.getScoreFor(id: place.id)!
+        } else {
+            busyScore = self.busyScore
+        }
+        switch busyScore.score {
+        case .none:
+            return Color.busyGreyLighter
+        case .low:
+            return Color.busyGreenDarker
+        case .medium:
+            return Color.busyYellowDarker
+        case.high:
+            return Color.busyPinkDarker
         }
     }
 }

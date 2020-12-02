@@ -21,6 +21,7 @@ struct BusyScore {
     
     var id: String
     var count: Int
+    var image: UIImage
     var score: Score = .none
     var date: Date
     
@@ -28,9 +29,10 @@ struct BusyScore {
     
     // count = -1 means loading; count = -2 means no result
     
-    init(id: String, count: Int = -1, date: Date = Date()) {
+    init(id: String, count: Int = -1, image: UIImage = UIImage(), date: Date = Date()) {
         self.id = id
         self.count = count
+        self.image = image
         self.date = date
         switch self.count {
         case 0..<5:

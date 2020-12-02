@@ -96,6 +96,7 @@ struct AppView: View {
         }) {
             Image(systemName: "magnifyingglass")
                 .font(Font.title3.weight(.bold))
+                .frame(width: 64, height: 64, alignment: .leading)
                 .foregroundColor(.appGreyDarkest)
         }
     }
@@ -107,6 +108,7 @@ struct AppView: View {
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
+                .frame(width: 64, height: 64, alignment: .trailing)
                 .foregroundColor(.appGreyDarkest)
         }
     }
