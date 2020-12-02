@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppDelegate")
     
     var placesManager = PlacesManager()
-    var favouritesManager = FavouritesManager()
+    var bookmarksManager = BookmarksManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true

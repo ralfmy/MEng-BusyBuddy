@@ -15,7 +15,7 @@ struct AppView: View {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppView")
 
     @EnvironmentObject var placesManager: PlacesManager
-    @EnvironmentObject var favouritesManager: FavouritesManager
+    @EnvironmentObject var bookmarksManager: BookmarksManager
     
     @State private var tabSelection: Int = 0
     @State private var navigationBarHidden: Bool = false
@@ -36,9 +36,9 @@ struct AppView: View {
             TabView(selection: $tabSelection) {
                 
                 // Tab 1
-                FavouritesGrid()
+                BookmarksGrid()
                 .sheet(isPresented: $isShowingAll) {
-                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(favouritesManager)
+                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(bookmarksManager)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
@@ -70,7 +70,7 @@ struct AppView: View {
     private func setNavigationBarTitle(tabSelection: Int) -> String {
         switch tabSelection {
         case 0:
-            return "Favourites"
+            return "Bookmarks"
         case 1:
             return ""
         default:
@@ -112,7 +112,7 @@ struct AppView: View {
     }
     
     private func updateScores() {
-        favouritesManager.updateScores()
+        bookmarksManager.updateScores()
     }
 }
 
@@ -120,9 +120,9 @@ struct ContentView_Previews: PreviewProvider {
     static let persistentContainer = PersistenceManager(.memory).container
     static let managedObjectContext = persistentContainer.viewContext
     static let store = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
-    static let favourites = FavouritesManager()
+    static let bookmarks = BookmarksManager()
     
     static var previews: some View {
-        AppView().environmentObject(store).environmentObject(favourites)
+        AppView().environmentObject(store).environmentObject(bookmarks)
     }
 }

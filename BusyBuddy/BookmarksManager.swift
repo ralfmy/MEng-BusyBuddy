@@ -1,5 +1,5 @@
 //
-//  Favourites.swift
+//  Bookmarks.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 05/11/2020.
@@ -16,11 +16,11 @@ import Foundation
 import UIKit
 import os.log
 
-class FavouritesManager: ObservableObject {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "FavouritesManager")
+class BookmarksManager: ObservableObject {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BookmarksManager")
     
     private var defaults: UserDefaults
-    private let saveKey = "Favourites"
+    private let saveKey = "Bookmarks"
     private let feedback = UINotificationFeedbackGenerator()
     
     @Published var places: [Place]
@@ -30,8 +30,8 @@ class FavouritesManager: ObservableObject {
         self.defaults = defaults
         self.scores = []
         if let data = self.defaults.object(forKey: saveKey) as? Data {
-            if let favourites = try? JSONDecoder().decode([Place].self, from: data) {
-                self.places = favourites
+            if let bookmarks = try? JSONDecoder().decode([Place].self, from: data) {
+                self.places = bookmarks
                 if self.scores.isEmpty {
                     self.places.forEach { place in
                         self.scores.append(BusyScore(id: place.id))
@@ -66,7 +66,7 @@ class FavouritesManager: ObservableObject {
             self.scores.append(busyScore)
             save()
         } else {
-            self.logger.info("INFO: Place with id \(place.id) already in Favourites.")
+            self.logger.info("INFO: Place with id \(place.id) already in Bookmarks.")
         }
     }
     
@@ -77,7 +77,7 @@ class FavouritesManager: ObservableObject {
             self.scores.removeAll(where: { $0.id == place.id })
             save()
         } else {
-            self.logger.info("INFO: Place with id \(place.id) is not in Favourites.")
+            self.logger.info("INFO: Place with id \(place.id) is not in Bookmarks.")
         }
     }
     

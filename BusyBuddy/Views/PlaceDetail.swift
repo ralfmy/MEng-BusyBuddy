@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaceDetail: View {
-    @EnvironmentObject var favouritesManager: FavouritesManager
+    @EnvironmentObject var bookmarksManager: BookmarksManager
 
     @State private var buttonState: Int = 0
     @State private var busyScore: BusyScore = BusyScore(id: "")
@@ -32,14 +32,14 @@ struct PlaceDetail: View {
                     }
                 }
                 Spacer()
-                BusyIcon(busyScore: favouritesManager.contains(place: place) ? setBusyScore() : busyScore, size: 100).padding()
-                BusyText(busyScore: favouritesManager.contains(place: place) ? setBusyScore() : busyScore).padding()
+                BusyIcon(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore, size: 100).padding()
+                BusyText(busyScore: bookmarksManager.contains(place: place) ? setBusyScore() : busyScore).padding()
                 Spacer()
             }
         }
         .navigationBarItems(trailing: UpdateButton)
         .onAppear {
-            if favouritesManager.contains(place: place) {
+            if bookmarksManager.contains(place: place) {
                 buttonState = 1
             } else {
                 updateScore()
@@ -71,24 +71,24 @@ struct PlaceDetail: View {
     private var FavButton: some View {
         Button(action: {
             impact.impactOccurred()
-            if favouritesManager.contains(place: place) {
-                busyScore = favouritesManager.getScoreFor(id: place.id)!
-                favouritesManager.remove(place: place)
+            if bookmarksManager.contains(place: place) {
+                busyScore = bookmarksManager.getScoreFor(id: place.id)!
+                bookmarksManager.remove(place: place)
                 buttonState = 0
             } else {
-                favouritesManager.add(place: place, busyScore: busyScore)
+                bookmarksManager.add(place: place, busyScore: busyScore)
                 buttonState = 1
             }
         }) {
             buttonState == 0 ?
-                Image(systemName: "heart.fill").font(.title).foregroundColor(.white) :
-                Image(systemName: "heart.fill").font(.title).foregroundColor(.red)
+                Image(systemName: "bookmark.fill").font(.title).foregroundColor(Color.white.opacity(0.5)) :
+                Image(systemName: "bookmark.fill").font(.title).foregroundColor(.red)
         }
         .padding(.leading, 10).padding(.trailing, 10)
     }
     
     func setBusyScore() -> BusyScore {
-        if let busyScore = favouritesManager.getScoreFor(id: place.id) {
+        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
             return busyScore
         } else {
             return BusyScore(id: "")
@@ -96,8 +96,8 @@ struct PlaceDetail: View {
     }
     
     private func updateScore() {
-        if favouritesManager.contains(place: place) {
-            favouritesManager.updateScoreFor(place: place)
+        if bookmarksManager.contains(place: place) {
+            bookmarksManager.updateScoreFor(place: place)
         } else {
             self.busyScore = BusyScore(id: place.id)
             DispatchQueue.global(qos: .userInteractive).async {

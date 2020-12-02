@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FavouritesGridItem: View {
-    @EnvironmentObject var favouritesManager: FavouritesManager
+struct BookmarksGridItem: View {
+    @EnvironmentObject var bookmarksManager: BookmarksManager
     
     @State private var tapped = false
     
@@ -39,7 +39,7 @@ struct FavouritesGridItem: View {
     }
     
     private func setCommonName() -> String {
-        if let place = favouritesManager.getPlaceWith(id: id) {
+        if let place = bookmarksManager.getPlaceWith(id: id) {
             return place.commonName
         } else {
             return ""
@@ -47,7 +47,7 @@ struct FavouritesGridItem: View {
     }
     
     func setBusyScore() -> BusyScore {
-        if let busyScore = favouritesManager.getScoreFor(id: id) {
+        if let busyScore = bookmarksManager.getScoreFor(id: id) {
             return busyScore
         } else {
             return BusyScore(id: "")
@@ -55,7 +55,7 @@ struct FavouritesGridItem: View {
     }
     
     private func setLatUpdated() -> String {
-        if let busyScore = favouritesManager.getScoreFor(id: id) {
+        if let busyScore = bookmarksManager.getScoreFor(id: id) {
             return busyScore.dateAsString()
         } else {
             return ""
@@ -63,7 +63,7 @@ struct FavouritesGridItem: View {
     }
     
     private func setPlaceDetail() -> Place {
-        if let place = favouritesManager.getPlaceWith(id: id) {
+        if let place = bookmarksManager.getPlaceWith(id: id) {
             return place
         } else {
             return ExamplePlace.place
@@ -72,10 +72,10 @@ struct FavouritesGridItem: View {
 }
 
 struct FavouriteSgridItem_Previews: PreviewProvider {
-    static let favourites = FavouritesManager()
+    static let bookmarks = BookmarksManager()
 
     static var previews: some View {
-        FavouritesGridItem(id: ExamplePlace.place.id)
-            .previewLayout(.sizeThatFits).environmentObject(favourites)
+        BookmarksGridItem(id: ExamplePlace.place.id)
+            .previewLayout(.sizeThatFits).environmentObject(bookmarks)
     }
 }

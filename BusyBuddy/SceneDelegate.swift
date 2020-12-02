@@ -22,14 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Get the managed object context from the shared persistent container.
 //        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         let placesManager = (UIApplication.shared.delegate as! AppDelegate).placesManager
-        let favouritesManager = (UIApplication.shared.delegate as! AppDelegate).favouritesManager
+        let bookmarksManager = (UIApplication.shared.delegate as! AppDelegate).bookmarksManager
         
 //        let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
         
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = AppView().environmentObject(placesManager).environmentObject(favouritesManager)
+        let placesView = AppView().environmentObject(placesManager).environmentObject(bookmarksManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

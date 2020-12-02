@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BusyIcon: View {
-    @EnvironmentObject var favouritesManager: FavouritesManager
+    @EnvironmentObject var bookmarksManager: BookmarksManager
     
     let busyScore: BusyScore
     let size: CGFloat
