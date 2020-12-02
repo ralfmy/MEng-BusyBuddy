@@ -22,6 +22,8 @@ struct AppView: View {
     @State private var firstLoad: Bool = true
     @State private var isShowingAll: Bool = false
     
+    let impact = UIImpactFeedbackGenerator(style: .light)
+    
     init() {
         UITabBar.appearance().barTintColor = UIColor(Color.tabBar)
         UITabBar.appearance().unselectedItemTintColor = UIColor(Color.white.opacity(0.3))
@@ -35,9 +37,7 @@ struct AppView: View {
                 
                 // Tab 1
                 FavouritesGrid()
-                .sheet(isPresented: $isShowingAll, onDismiss: {
-//                    updateScores()
-                }) {
+                .sheet(isPresented: $isShowingAll) {
                     AllPlacesSheet(isPresented: $isShowingAll).environmentObject(favouritesManager)
                 }
                 .tabItem {
@@ -91,6 +91,7 @@ struct AppView: View {
     
     private var SearchButton: some View {
         Button(action: {
+            impact.impactOccurred()
             isShowingAll.toggle()
         }) {
             Image(systemName: "magnifyingglass")
@@ -101,6 +102,7 @@ struct AppView: View {
     
     private var UpdateButton: some View {
         Button(action: {
+            impact.impactOccurred()
             updateScores()
         }) {
             Image(systemName: "arrow.clockwise")

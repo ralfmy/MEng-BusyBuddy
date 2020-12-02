@@ -11,11 +11,12 @@ struct PlaceDetail: View {
     @EnvironmentObject var favouritesManager: FavouritesManager
 
     @State private var buttonState: Int = 0
-    @State private var buttonColor: Color = Color.blue
     @State private var busyScore: BusyScore = BusyScore(id: "")
     @State private var scoreText = ""
     
     let place: Place
+    let feedback = UINotificationFeedbackGenerator()
+    let impact = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         ZStack {
@@ -38,7 +39,9 @@ struct PlaceDetail: View {
         }
         .navigationBarItems(trailing: UpdateButton)
         .onAppear {
-            if !favouritesManager.contains(place: place) {
+            if favouritesManager.contains(place: place) {
+                buttonState = 1
+            } else {
                 updateScore()
             }
         }
@@ -56,6 +59,7 @@ struct PlaceDetail: View {
 
     private var UpdateButton: some View {
         Button(action: {
+            impact.impactOccurred()
             updateScore()
         }) {
             Image(systemName: "arrow.clockwise")
@@ -66,6 +70,7 @@ struct PlaceDetail: View {
     
     private var FavButton: some View {
         Button(action: {
+            impact.impactOccurred()
             if favouritesManager.contains(place: place) {
                 busyScore = favouritesManager.getScoreFor(id: place.id)!
                 favouritesManager.remove(place: place)
@@ -76,8 +81,8 @@ struct PlaceDetail: View {
             }
         }) {
             buttonState == 0 ?
-                Image(systemName: "star.circle.fill").font(.title).foregroundColor(.white) :
-                Image(systemName: "star.circle.fill").font(.title).foregroundColor(.appBlue)
+                Image(systemName: "heart.fill").font(.title).foregroundColor(.white) :
+                Image(systemName: "heart.fill").font(.title).foregroundColor(.red)
         }
         .padding(.leading, 10).padding(.trailing, 10)
     }
@@ -99,6 +104,7 @@ struct PlaceDetail: View {
                 let busyScore = ML.model.run(on: [place]).first!
                 DispatchQueue.main.async {
                     self.busyScore = busyScore
+                    self.feedback.notificationOccurred(.success)
                 }
             }
         }

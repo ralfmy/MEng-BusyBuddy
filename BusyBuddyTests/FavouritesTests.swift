@@ -1,5 +1,5 @@
 //
-//  FavouritesTests.swift
+//  bookmarksTests.swift
 //  BusyBuddyTests
 //
 //  Created by Ralf Michael Yap on 05/11/2020.
@@ -10,15 +10,15 @@ import os.log
 
 @testable import BusyBuddy
 
-class FavouritesTests: XCTestCase {
+class bookmarksTests: XCTestCase {
     private var userDefaults: UserDefaults!
     
-    var favouritesManager: FavouritesManager!
+    var bookmarksManager: bookmarksManager!
 
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        favouritesManager = FavouritesManager(userDefaults)
+        bookmarksManager = bookmarksManager(userDefaults)
 
     }
 
@@ -26,28 +26,28 @@ class FavouritesTests: XCTestCase {
 
     }
 
-    func testNoFavouritesReturnsEmptyArray() throws {
-        XCTAssertTrue(favouritesManager.getPlaces().isEmpty)
+    func testNobookmarksReturnsEmptyArray() throws {
+        XCTAssertTrue(bookmarksManager.getPlaces().isEmpty)
     }
     
     func testAddPlace() throws {
-        favouritesManager.add(place: ExamplePlace.place)
-        let places = favouritesManager.getPlaces()
+        bookmarksManager.add(place: ExamplePlace.place)
+        let places = bookmarksManager.getPlaces()
         
         XCTAssertEqual(places.count, 1)
         XCTAssertEqual(places[0].id, ExamplePlace.place.id)
     }
 
     func testremovePlace() throws {
-        favouritesManager.add(place: ExamplePlace.place)
-        XCTAssertFalse(favouritesManager.getPlaces().isEmpty)
+        bookmarksManager.add(place: ExamplePlace.place)
+        XCTAssertFalse(bookmarksManager.getPlaces().isEmpty)
         
-        favouritesManager.remove(place: ExamplePlace.place)
-        XCTAssertTrue(favouritesManager.getPlaces().isEmpty)
+        bookmarksManager.remove(place: ExamplePlace.place)
+        XCTAssertTrue(bookmarksManager.getPlaces().isEmpty)
     }
     
     func testContainsPlaceTrue() throws {
-        favouritesManager.add(place: ExamplePlace.place)
-        XCTAssertTrue(favouritesManager.contains(place: ExamplePlace.place))
+        bookmarksManager.add(place: ExamplePlace.place)
+        XCTAssertTrue(bookmarksManager.contains(place: ExamplePlace.place))
     }
 }

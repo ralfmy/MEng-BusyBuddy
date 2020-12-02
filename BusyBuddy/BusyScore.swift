@@ -68,7 +68,7 @@ struct BusyScore {
         return dateFormatter.string(from: self.date)
     }
     
-    public func isStale() -> Bool {
+    public func isExpired() -> Bool {
         if self.date.addingTimeInterval(expiry) < Date() {
             return true
         } else {

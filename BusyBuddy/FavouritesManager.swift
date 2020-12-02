@@ -13,6 +13,7 @@
 //  https://www.raywenderlich.com/5370-grand-central-dispatch-tutorial-for-swift-4-part-1-2
 
 import Foundation
+import UIKit
 import os.log
 
 class FavouritesManager: ObservableObject {
@@ -20,6 +21,7 @@ class FavouritesManager: ObservableObject {
     
     private var defaults: UserDefaults
     private let saveKey = "Favourites"
+    private let feedback = UINotificationFeedbackGenerator()
     
     @Published var places: [Place]
     @Published var scores: [BusyScore]
@@ -93,6 +95,7 @@ class FavouritesManager: ObservableObject {
             let scores = ML.model.run(on: self.places)
             DispatchQueue.main.async { [weak self] in
                 self?.scores = scores
+                self?.feedback.notificationOccurred(.success)
             }
         }
     }
@@ -110,7 +113,7 @@ class FavouritesManager: ObservableObject {
                   }
                 
                 var score: BusyScore
-                if currentScore.isStale() {
+                if currentScore.isExpired() || currentScore.score == .none {
                     self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
                     score = ML.model.run(on: [place]).first!
                 } else {
@@ -121,6 +124,7 @@ class FavouritesManager: ObservableObject {
                 DispatchQueue.main.async { [weak self] in
                     self?.scores.removeAll(where: { $0.id == place.id })
                     self?.scores.append(score)
+                    self?.feedback.notificationOccurred(.success)
                 }
             }
         }

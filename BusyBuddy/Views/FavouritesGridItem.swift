@@ -17,16 +17,16 @@ struct FavouritesGridItem: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 15)
                 BusyIcon(busyScore: setBusyScore(), size: 75)
-                Spacer().frame(height: 12)
+                Spacer().frame(height: 20)
                 Text(setCommonName()).font(.headline).lineLimit(2).multilineTextAlignment(.center).foregroundColor(Color.appGreyDarkest)
                 Spacer()
                 BusyText(busyScore: setBusyScore())
                 Text(setLatUpdated()).font(.caption).fontWeight(.semibold).foregroundColor(Color.appGreyDarker)
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 15)
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 220, maxHeight: 220)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 230, maxHeight: 230)
             .padding()
             .background(RoundedRectangle(cornerRadius: 20).fill(Color.cardGrey))
             .onTapGesture {
