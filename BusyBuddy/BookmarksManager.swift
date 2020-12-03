@@ -58,12 +58,18 @@ class BookmarksManager: ObservableObject {
         return places[index]
     }
     
-    public func add(place: Place, busyScore: BusyScore) {
+    public func add(place: Place, busyScore: BusyScore? = nil) {
         objectWillChange.send()
         if !self.contains(place: place) {
             self.places.append(place)
             self.places.sort(by: { $0.commonName < $1.commonName })
-            self.scores.append(busyScore)
+            var placeBusyScore: BusyScore
+            if busyScore != nil {
+                placeBusyScore = busyScore!
+            } else {
+                placeBusyScore = BusyScore(id: place.id)
+            }
+            self.scores.append(placeBusyScore)
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) already in Bookmarks.")
@@ -118,7 +124,7 @@ class BookmarksManager: ObservableObject {
                     score = ML.model.run(on: [place]).first!
                 } else {
                     self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
-                    score = BusyScore(id: place.id, count: currentScore.count, date: currentScore.date)
+                    score = BusyScore(id: place.id, count: currentScore.count, image: currentScore.image, date: currentScore.date)
                 }
                 
                 DispatchQueue.main.async { [weak self] in

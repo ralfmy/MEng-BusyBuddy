@@ -18,11 +18,13 @@ struct ImageView: View {
             CloseButton
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-        .background(Rectangle().fill(Color.black.opacity(0.5)))
+        .background(Rectangle().fill(Color.black.opacity(0.8)))
         .opacity(self.isShowing ? 1 : 0)
         .edgesIgnoringSafeArea(.all)
         .onTapGesture {
-            self.isShowing.toggle()
+            withAnimation(.easeInOut(duration: 0.2)) {
+                self.isShowing.toggle()
+            }
         }
     }
     
@@ -32,7 +34,7 @@ struct ImageView: View {
                 self.isShowing.toggle()
             }
         }) {
-            Image(systemName: "xmark.circle.fill").font(.largeTitle).foregroundColor(Color.white.opacity(0.8))
+            Image(systemName: "xmark.circle.fill").font(.system(size: 40)).foregroundColor(Color.white.opacity(0.8))
         }
     }
 }

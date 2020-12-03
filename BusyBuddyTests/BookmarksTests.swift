@@ -1,5 +1,5 @@
 //
-//  bookmarksTests.swift
+//  BookmarksTests.swift
 //  BusyBuddyTests
 //
 //  Created by Ralf Michael Yap on 05/11/2020.
@@ -10,15 +10,15 @@ import os.log
 
 @testable import BusyBuddy
 
-class bookmarksTests: XCTestCase {
+class BookmarksTests: XCTestCase {
     private var userDefaults: UserDefaults!
     
-    var bookmarksManager: bookmarksManager!
+    var bookmarksManager: BookmarksManager!
 
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        bookmarksManager = bookmarksManager(userDefaults)
+        bookmarksManager = BookmarksManager(userDefaults)
 
     }
 

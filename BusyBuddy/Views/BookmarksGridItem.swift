@@ -17,14 +17,14 @@ struct BookmarksGridItem: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Spacer().frame(height: 15)
+                Spacer().frame(height: 10)
                 BusyIcon(busyScore: setBusyScore(), size: 50, coloured: false)
                 Spacer().frame(height: 20)
                 CommonName
                 Spacer()
                 BusyText(busyScore: setBusyScore(), font: .subheadline)
                 LastUpdated
-                Spacer().frame(height: 15)
+                Spacer().frame(height: 10)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 190, maxHeight: 190)
             .padding(20)
@@ -57,6 +57,11 @@ struct BookmarksGridItem: View {
     
     private func setCommonName() -> String {
         if let place = bookmarksManager.getPlaceWith(id: place.id) {
+            if let index = place.commonName.firstIndex(of: "/") {
+                var commonName = place.commonName
+                commonName.insert("\n", at: commonName.index(after: index))
+                return commonName
+            }
             return place.commonName
         } else {
             return ""

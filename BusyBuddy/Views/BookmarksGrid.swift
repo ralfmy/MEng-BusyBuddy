@@ -16,11 +16,11 @@ struct BookmarksGrid: View {
     
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BookmarksGrid")
         
-    let columns: [GridItem] = [GridItem(.flexible(), spacing: 8, alignment: .center), GridItem(.flexible(), spacing: 8, alignment: .center)]
+    let columns: [GridItem] = [GridItem(.flexible(), spacing: 16, alignment: .center), GridItem(.flexible(), spacing: 16, alignment: .center)]
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, alignment: .center, spacing: 8, pinnedViews: [])
+            LazyVGrid(columns: columns, alignment: .center, spacing: 16, pinnedViews: [])
             {
                 ForEach(bookmarksManager.getPlaces()) { place in
                     BookmarksGridItem(place: place)

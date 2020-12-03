@@ -40,7 +40,7 @@
 		BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* BookmarksManager.swift */; };
 		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
-		BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */; };
+		BFC5A08E25544A7100CE2B80 /* BookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */; };
 		BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
@@ -110,7 +110,7 @@
 		BFAFD2E025540DB700972554 /* BookmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
-		BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTests.swift; sourceTree = "<group>"; };
+		BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTests.swift; sourceTree = "<group>"; };
 		BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlace.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */,
 				BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */,
-				BFC5A08D25544A7100CE2B80 /* FavouritesTests.swift */,
+				BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */,
 				BFE3DB21255734C400F10883 /* ImageCacheTests.swift */,
 				BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */,
 			);
@@ -452,7 +452,7 @@
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 				BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */,
 				BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */,
-				BFC5A08E25544A7100CE2B80 /* FavouritesTests.swift in Sources */,
+				BFC5A08E25544A7100CE2B80 /* BookmarksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

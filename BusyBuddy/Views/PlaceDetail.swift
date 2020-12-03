@@ -79,7 +79,7 @@ struct PlaceDetail: View {
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
-                .frame(width: 64, height: 64, alignment: .leading)
+                .frame(width: 64, height: 64, alignment: .trailing)
                 .foregroundColor(.white)
         }
     }
