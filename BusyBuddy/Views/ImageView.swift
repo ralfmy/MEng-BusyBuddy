@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import os.log
 
 struct ImageView: View {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "Image View")
+
     @Binding var isShowing: Bool
     
     let busyScore: BusyScore
@@ -25,6 +28,9 @@ struct ImageView: View {
             withAnimation(.easeInOut(duration: 0.2)) {
                 self.isShowing.toggle()
             }
+        }
+        .onAppear {
+            self.logger.info("INFO: \(busyScore.count) people detected.")
         }
     }
     

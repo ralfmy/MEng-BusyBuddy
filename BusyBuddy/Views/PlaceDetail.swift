@@ -21,7 +21,7 @@ struct PlaceDetail: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
                     PlaceMap(place: place).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {

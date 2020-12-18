@@ -9,12 +9,9 @@ import SwiftUI
 
 import SwiftUI
 import CoreML
-import os.log
 
 struct BookmarksGrid: View {
     @EnvironmentObject var bookmarksManager: BookmarksManager
-    
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BookmarksGrid")
         
     let columns: [GridItem] = [GridItem(.flexible(), spacing: 16, alignment: .center), GridItem(.flexible(), spacing: 16, alignment: .center)]
     
