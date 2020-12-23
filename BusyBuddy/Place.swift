@@ -10,10 +10,10 @@ import os.log
 
 //  Decode JSON response from TfL Unified API into this PlacE type.
 
-class Place: Codable, Equatable, Identifiable {
+public final class Place: Codable, Equatable, Identifiable {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "Place")
 
-    let id: String
+    public let id: String
     let commonName: String
     let placeType: String
     let additionalProperties: [AdditionalProperty]
@@ -49,7 +49,7 @@ class Place: Codable, Equatable, Identifiable {
 //        }
 //    }
     
-    static func == (lhs: Place, rhs: Place) -> Bool {
+    public static func == (lhs: Place, rhs: Place) -> Bool {
         if (lhs.commonName == rhs.commonName && lhs.placeType == rhs.placeType && lhs.lat == rhs.lat && lhs.lon == rhs.lon)
         {
             return true

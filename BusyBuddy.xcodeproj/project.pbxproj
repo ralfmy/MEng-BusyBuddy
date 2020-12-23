@@ -37,6 +37,7 @@
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
 		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
+		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
 		BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* BookmarksManager.swift */; };
 		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
@@ -107,6 +108,7 @@
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
+		BFACD8232591CCA400940D50 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* BookmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				BF1EDF7B25516248006C900F /* Views */,
 				BFD2D3872556B7CD00554869 /* BusyScore.swift */,
 				BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */,
+				BFACD8232591CCA400940D50 /* NetworkClient.swift */,
 				BF3058C7254F2C7E0087FDEA /* Place.swift */,
 				BF92211A256E6D7F0022CE80 /* PlacesCache.swift */,
 				BF92212D256E78160022CE80 /* PlacesManager.swift */,
@@ -422,6 +425,7 @@
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
+				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
@@ -646,6 +650,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyBuddyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -667,6 +672,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyBuddyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -687,6 +693,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyBuddyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -706,6 +713,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyBuddyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,33 +7,30 @@
 
 import Foundation
 import UIKit
+import os.log
 
 //  Methods for calling the TfL Unified API.
-
-struct TfLUnifiedAPI {
+public struct TfLUnifiedAPI {
     
-    private let session: URLSession
-    private let prefix = "https://api.tfl.gov.uk/"
-    private let api_key = Bundle.main.object(forInfoDictionaryKey: "TfLApiKey") as! String
-    
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-    
-    func fetchAllJamCams(completion: @escaping (Result<[Place], Error>) -> Void) {
-        guard let url = URL(string: self.prefix + "Place/Type/JamCam?app_key=" + self.api_key) else { return }
+    public static func fetchAllJamCams(client: NetworkClient, completion: (([Place]) -> Void)? = nil) {
+        let prefix = "https://api.tfl.gov.uk/"
+        let api_key = Bundle.main.object(forInfoDictionaryKey: "TfLApiKey") as! String
         
-        session.dataTask(with: url) { (data, response, error) in
-            if let err = error {
-                completion(.failure(err))
+        guard let url = URL(string: prefix + "Place/Type/JamCam?app_key=" + api_key) else { return }
+        
+        client.runRequest(request: URLRequest(url: url)) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let places = try JSONDecoder().decode([Place].self, from: data)
+                    completion?(places)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-                        
-            do {
-                let places = try JSONDecoder().decode([Place].self, from: data!)
-                completion(.success(places))
-            } catch let jsonError {
-                completion(.failure(jsonError))
-            }
-        }.resume()
+        }
     }
+
 }

@@ -40,9 +40,15 @@ class URLSessionMock: URLSession {
     }
 }
 
+class NetworkClientMock: NetworkClient {
+    override public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
+        completion(.success(try! JSONEncoder().encode([ExamplePlace.place])))
+    }
+}
+
 class TfLUnifiedAPITests: XCTestCase {
     
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesDataManager")
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPITests")
     
     override func setUpWithError() throws {
 
@@ -53,23 +59,16 @@ class TfLUnifiedAPITests: XCTestCase {
     }
 
     func testGetAllJamCamsAPICall() {
-        let api = TfLUnifiedAPI()
-
-        var count = -1;
+        var count = 0;
         let expectation = self.expectation(description: "API Call")
         
-        api.fetchAllJamCams() { result in
-            switch result {
-            case .success(let places):
-                count = places.count
-                expectation.fulfill()
-            case .failure(let err):
-                self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
-            }
+        TfLUnifiedAPI.fetchAllJamCams(client: NetworkClientMock()) { places in
+            count = places.count
+            expectation.fulfill()
         }
         
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(count, 911)
+        XCTAssertEqual(count, 1)
     }
     
 //    func testGetAllJamCamsReturn() {

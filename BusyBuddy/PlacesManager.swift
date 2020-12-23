@@ -34,18 +34,10 @@ class PlacesManager: ObservableObject {
     
     private func fetchPlacesFromAPI() {
         self.logger.info("INFO: Fetching places from TfL Unified API.")
-        TfLUnifiedAPI().fetchAllJamCams() { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let places):
-                    self.logger.info("INFO: Fetching success.")
-                    self.cache.setPlaces(places: places)
-                    self.places = places
-                case .failure(let err):
-                    self.logger.error("ERROR: Failure to fetch: \(err as NSObject)")
-                    self.places = []
-                }
-            }
+        TfLUnifiedAPI.fetchAllJamCams(client: NetworkClient()) { places in
+            self.logger.info("INFO: Fetching success.")
+            self.cache.setPlaces(places: places)
+            self.places = places
         }
     }
 }
