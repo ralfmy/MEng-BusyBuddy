@@ -15,7 +15,7 @@ import os.log
 
 @testable import BusyBuddy
 
-class PlacesDataManagerTests: XCTestCase {
+class PlacesManagerTests: XCTestCase {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesDataManager")
     
     var persistentContainer: NSPersistentContainer!

@@ -37,7 +37,9 @@ class PlacesManager: ObservableObject {
         TfLUnifiedAPI.fetchAllJamCams(client: NetworkClient()) { places in
             self.logger.info("INFO: Fetching success.")
             self.cache.setPlaces(places: places)
-            self.places = places
+            DispatchQueue.main.async {
+                self.places = places
+            }
         }
     }
 }

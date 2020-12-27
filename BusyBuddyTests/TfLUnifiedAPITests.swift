@@ -13,33 +13,6 @@ import os.log
 
 @testable import BusyBuddy
 
-class URLSessionDataTaskMock: URLSessionDataTask {
-    private let closure: () -> Void
-    
-    init(closure: @escaping () -> Void) {
-        self.closure = closure
-    }
-    
-    override func resume() {
-        closure()
-    }
-}
-
-class URLSessionMock: URLSession {
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    var data: Data?
-    var error: Error?
-    
-    override func dataTask(with url: URL, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
-        let data = self.data
-        let error = self.error
-        return URLSessionDataTaskMock {
-            completionHandler(data, nil, error)
-        }
-    }
-}
-
 class NetworkClientMock: NetworkClient {
     override public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
         completion(.success(try! JSONEncoder().encode([ExamplePlace.place])))
@@ -69,23 +42,6 @@ class TfLUnifiedAPITests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(count, 1)
-    }
-    
-//    func testGetAllJamCamsReturn() {
-//        let session = URLSessionMock()
-//        let api = TfLUnifiedAPI(session: session)
-//
-//        let place = CoreDataPlace(commonName: "Oxford St", placeType: "JamCam", additionalProperties: [], lat: 0, lon: 0)
-//        let encoder = JSONEncoder()
-//        let data = try? encoder.encode(place)
-//        session.data = data
-//
-//        let url = URL(fileURLWithPath: "url")
-//
-//        var result: Result<[CoreDataPlace], Error>?
-//        api.getAllJamCams() {
-//            result = $0
-//        }
-//    }
+    }    
 
 }

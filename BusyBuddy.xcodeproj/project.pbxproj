@@ -29,7 +29,7 @@
 		BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */; };
 		BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
-		BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */; };
+		BF3058E5254F44560087FDEA /* PlacesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesManagerTests.swift */; };
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
@@ -100,7 +100,7 @@
 		BF3058D5254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataClass.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058D6254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataPlace+CoreDataProperties.swift"; path = "BusyBuddy/Core Data/CoreDataPlace+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
-		BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManagerTests.swift; sourceTree = "<group>"; };
+		BF3058E4254F44560087FDEA /* PlacesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManagerTests.swift; sourceTree = "<group>"; };
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				BF3058A4254F2C3E0087FDEA /* Info.plist */,
 				BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */,
 				BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */,
-				BF3058E4254F44560087FDEA /* PlacesDataManagerTests.swift */,
+				BF3058E4254F44560087FDEA /* PlacesManagerTests.swift */,
 				BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */,
 				BFE3DB21255734C400F10883 /* ImageCacheTests.swift */,
 				BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */,
@@ -454,7 +454,7 @@
 				BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
-				BF3058E5254F44560087FDEA /* PlacesDataManagerTests.swift in Sources */,
+				BF3058E5254F44560087FDEA /* PlacesManagerTests.swift in Sources */,
 				BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksTests.swift in Sources */,
 			);
