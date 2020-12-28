@@ -142,49 +142,6 @@ class BookmarksManager: ObservableObject {
             }
     }
     
-//    public func updateScoreFor(place: Place) {
-//        if let currentScore = self.scores.first(where: { $0.id == place.id }) {
-//
-//            // Set BusyScore to "Loading" first
-//            let index = self.scores.firstIndex(where: { $0.id == place.id })!
-//            self.scores[index] = BusyScore(id: place.id)
-//
-//            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-//                guard let self = self else {
-//                    return
-//                  }
-//
-//                var score: BusyScore
-//                if currentScore.isExpired() || currentScore.score == .none {
-//                    self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
-//                    score = ML.model.run(on: [place]).first!
-//                } else {
-//                    self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
-//                    score = BusyScore(id: place.id, count: currentScore.count, image: currentScore.image, date: currentScore.date)
-//                }
-//
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.scores.removeAll(where: { $0.id == place.id })
-//                    self?.scores.append(score)
-//                    self?.feedback.notificationOccurred(.success)
-//                }
-//            }
-//        }
-//    }
-    
-//    public func getScores() -> [BusyScore] {
-//        if self.scores.isEmpty {
-//            self.places.forEach { place in
-//                self.scores.append(BusyScore(id: place.id))
-//            }
-//        }
-//        return self.scores
-//    }
-//
-//    public func getScoreFor(id: String) -> BusyScore? {
-//        return self.scores.first(where: { $0.id == id })
-//    }
-    
     private func save() {
         if let encoded = try? JSONEncoder().encode(self.places) {
             self.defaults.set(encoded, forKey: saveKey)
