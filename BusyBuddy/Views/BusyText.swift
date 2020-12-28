@@ -26,6 +26,6 @@ struct BusyText: View {
 
 struct BusyText_Previews: PreviewProvider {
     static var previews: some View {
-        BusyText(busyScore: BusyScore(id: ExamplePlace.place.id), font: .subheadline)
+        BusyText(busyScore: BusyScore(), font: .subheadline)
     }
 }

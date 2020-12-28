@@ -78,6 +78,6 @@ struct BusyIcon: View {
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(busyScore: BusyScore(id: ExamplePlace.place.id, count: 1), size: 75, coloured: true)
+        BusyIcon(busyScore: BusyScore(), size: 75, coloured: true)
     }
 }

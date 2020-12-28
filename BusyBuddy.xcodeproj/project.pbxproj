@@ -10,6 +10,13 @@
 		BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
 		BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88F325754DD00036E0E0 /* MapView.swift */; };
 		BF0B8902257556350036E0E0 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
+		BF1B84922598ABEC00EC912D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFABB53D2598A63600106605 /* WidgetKit.framework */; };
+		BF1B84932598ABEC00EC912D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFABB53F2598A63600106605 /* SwiftUI.framework */; };
+		BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1B84952598ABEC00EC912D /* BusyWidgets.swift */; };
+		BF1B84992598ABEF00EC912D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1B84982598ABEF00EC912D /* Assets.xcassets */; };
+		BF1B849B2598ABEF00EC912D /* BusyWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF1B84972598ABEC00EC912D /* BusyWidgets.intentdefinition */; };
+		BF1B849C2598ABEF00EC912D /* BusyWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF1B84972598ABEC00EC912D /* BusyWidgets.intentdefinition */; };
+		BF1B849F2598ABEF00EC912D /* BusyWidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF1EDF482550B60F006C900F /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */; };
 		BF1EDF552550BB5A006C900F /* CoreMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF542550BB5A006C900F /* CoreMLModel.swift */; };
 		BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF6A25515E94006C900F /* YOLO.swift */; };
@@ -55,6 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BF1B849D2598ABEF00EC912D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF30587D254F2C3C0087FDEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF1B84902598ABEC00EC912D;
+			remoteInfo = BusyWidgetsExtension;
+		};
 		BF30589F254F2C3E0087FDEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF30587D254F2C3C0087FDEA /* Project object */;
@@ -71,10 +85,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF1B84A32598ABEF00EC912D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BF1B849F2598ABEF00EC912D /* BusyWidgetsExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BF0B88E6257546640036E0E0 /* BusyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
 		BF0B88F325754DD00036E0E0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BF0B8901257556350036E0E0 /* BusyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
+		BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BusyWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1B84952598ABEC00EC912D /* BusyWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgets.swift; sourceTree = "<group>"; };
+		BF1B84972598ABEC00EC912D /* BusyWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BusyWidgets.intentdefinition; sourceTree = "<group>"; };
+		BF1B84982598ABEF00EC912D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF1B849A2598ABEF00EC912D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF1EDF472550B60F006C900F /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = YOLOv3.mlmodel; path = ../../../YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF1EDF542550BB5A006C900F /* CoreMLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLModel.swift; sourceTree = "<group>"; };
 		BF1EDF6A25515E94006C900F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
@@ -108,6 +141,8 @@
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
+		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BFABB53F2598A63600106605 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BFACD8232591CCA400940D50 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* BookmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
@@ -126,6 +161,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF1B848E2598ABEC00EC912D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1B84932598ABEC00EC912D /* SwiftUI.framework in Frameworks */,
+				BF1B84922598ABEC00EC912D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF305882254F2C3C0087FDEA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,6 +194,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1B84942598ABEC00EC912D /* BusyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				BF1B84952598ABEC00EC912D /* BusyWidgets.swift */,
+				BF1B84972598ABEC00EC912D /* BusyWidgets.intentdefinition */,
+				BF1B84982598ABEF00EC912D /* Assets.xcassets */,
+				BF1B849A2598ABEF00EC912D /* Info.plist */,
+			);
+			path = BusyWidgets;
+			sourceTree = "<group>";
+		};
 		BF1EDF7B25516248006C900F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +229,8 @@
 				BF305887254F2C3C0087FDEA /* BusyBuddy */,
 				BF3058A1254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058AC254F2C3E0087FDEA /* BusyBuddyUITests */,
+				BF1B84942598ABEC00EC912D /* BusyWidgets */,
+				BFABB53C2598A63600106605 /* Frameworks */,
 				BF305886254F2C3C0087FDEA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -184,6 +241,7 @@
 				BF305885254F2C3C0087FDEA /* BusyBuddy.app */,
 				BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */,
 				BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */,
+				BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,6 +326,15 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
+		BFABB53C2598A63600106605 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFABB53D2598A63600106605 /* WidgetKit.framework */,
+				BFABB53F2598A63600106605 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFC5A09F255453EF00CE2B80 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +349,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1B84A02598ABEF00EC912D /* Build configuration list for PBXNativeTarget "BusyWidgetsExtension" */;
+			buildPhases = (
+				BF1B848D2598ABEC00EC912D /* Sources */,
+				BF1B848E2598ABEC00EC912D /* Frameworks */,
+				BF1B848F2598ABEC00EC912D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BusyWidgetsExtension;
+			productName = BusyWidgetsExtension;
+			productReference = BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BF305884254F2C3C0087FDEA /* BusyBuddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF3058B2254F2C3E0087FDEA /* Build configuration list for PBXNativeTarget "BusyBuddy" */;
@@ -289,10 +373,12 @@
 				BF305881254F2C3C0087FDEA /* Sources */,
 				BF305882254F2C3C0087FDEA /* Frameworks */,
 				BF305883254F2C3C0087FDEA /* Resources */,
+				BF1B84A32598ABEF00EC912D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BF1B849E2598ABEF00EC912D /* PBXTargetDependency */,
 			);
 			name = BusyBuddy;
 			productName = BusyBuddy;
@@ -341,9 +427,12 @@
 		BF30587D254F2C3C0087FDEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
+					BF1B84902598ABEC00EC912D = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					BF305884254F2C3C0087FDEA = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -373,11 +462,20 @@
 				BF305884254F2C3C0087FDEA /* BusyBuddy */,
 				BF30589D254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058A8254F2C3E0087FDEA /* BusyBuddyUITests */,
+				BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF1B848F2598ABEC00EC912D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1B84992598ABEF00EC912D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF305883254F2C3C0087FDEA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +505,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF1B848D2598ABEC00EC912D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */,
+				BF1B849B2598ABEF00EC912D /* BusyWidgets.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF305881254F2C3C0087FDEA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,6 +531,7 @@
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
+				BF1B849C2598ABEF00EC912D /* BusyWidgets.intentdefinition in Sources */,
 				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,
@@ -471,6 +579,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BF1B849E2598ABEF00EC912D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */;
+			targetProxy = BF1B849D2598ABEF00EC912D /* PBXContainerItemProxy */;
+		};
 		BF3058A0254F2C3E0087FDEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF305884254F2C3C0087FDEA /* BusyBuddy */;
@@ -484,6 +597,50 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BF1B84A12598ABEF00EC912D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
+				INFOPLIST_FILE = BusyWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.BusyWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF1B84A22598ABEF00EC912D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
+				INFOPLIST_FILE = BusyWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.BusyWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BF3058B0254F2C3E0087FDEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -605,6 +762,7 @@
 		BF3058B3254F2C3E0087FDEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -626,6 +784,7 @@
 		BF3058B4254F2C3E0087FDEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -731,6 +890,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF1B84A02598ABEF00EC912D /* Build configuration list for PBXNativeTarget "BusyWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1B84A12598ABEF00EC912D /* Debug */,
+				BF1B84A22598ABEF00EC912D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF305880254F2C3C0087FDEA /* Build configuration list for PBXProject "BusyBuddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

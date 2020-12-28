@@ -12,7 +12,7 @@ struct BookmarksGridItem: View {
     
     @State private var tapped = false
     
-    let place: Place
+    @State var place: Place
     
     var body: some View {
         VStack {
@@ -69,15 +69,15 @@ struct BookmarksGridItem: View {
     }
     
     func setBusyScore() -> BusyScore {
-        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+        if let busyScore = place.busyScore {
             return busyScore
         } else {
-            return BusyScore(id: "")
+            return BusyScore()
         }
     }
     
     private func setLatUpdated() -> String {
-        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+        if let busyScore = place.busyScore {
             return busyScore.dateAsString()
         } else {
             return ""
@@ -85,7 +85,7 @@ struct BookmarksGridItem: View {
     }
     
     private func setTextColour(opacity: Double) -> Color {
-        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+        if let busyScore = place.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.appGreyDarkest.opacity(0.8)
@@ -93,12 +93,12 @@ struct BookmarksGridItem: View {
                 return Color.white.opacity(opacity)
             }
         } else {
-            return Color.white
+            return Color.appGreyDarkest.opacity(0.8)
         }
     }
 
     private func setCardColour() -> Color {
-        if let busyScore = bookmarksManager.getScoreFor(id: place.id) {
+        if let busyScore = place.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.busyGreyLighter
@@ -110,7 +110,7 @@ struct BookmarksGridItem: View {
                 return Color.busyPinkDarker
             }
         } else {
-            return Color.white
+            return Color.busyGreyLighter
         }
     }
 }

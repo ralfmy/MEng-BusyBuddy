@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Get the managed object context from the shared persistent container.
-//        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+//        let container = (UIAp plication.shared.delegate as! AppDelegate).persistentContainer
         let placesManager = (UIApplication.shared.delegate as! AppDelegate).placesManager
         let bookmarksManager = (UIApplication.shared.delegate as! AppDelegate).bookmarksManager
         

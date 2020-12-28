@@ -24,24 +24,16 @@ class BookmarksManager: ObservableObject {
     private let feedback = UINotificationFeedbackGenerator()
     
     @Published var places: [Place]
-    @Published var scores: [BusyScore]
     
     init(_ defaults: UserDefaults = UserDefaults.standard) {
         self.defaults = defaults
-        self.scores = []
         if let data = self.defaults.object(forKey: saveKey) as? Data {
             if let bookmarks = try? JSONDecoder().decode([Place].self, from: data) {
                 self.places = bookmarks
-                if self.scores.isEmpty {
-                    self.places.forEach { place in
-                        self.scores.append(BusyScore(id: place.id))
-                    }
-                }
                 return
             }
         }
         self.places = []
-        
     }
     
     public func getPlaces() -> [Place] {
@@ -63,13 +55,6 @@ class BookmarksManager: ObservableObject {
         if !self.contains(place: place) {
             self.places.append(place)
             self.places.sort(by: { $0.commonName < $1.commonName })
-            var placeBusyScore: BusyScore
-            if busyScore != nil {
-                placeBusyScore = busyScore!
-            } else {
-                placeBusyScore = BusyScore(id: place.id)
-            }
-            self.scores.append(placeBusyScore)
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) already in Bookmarks.")
@@ -80,7 +65,6 @@ class BookmarksManager: ObservableObject {
         objectWillChange.send()
         if self.contains(place: place) {
             self.places.removeAll(where: { $0.id == place.id })
-            self.scores.removeAll(where: { $0.id == place.id })
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) is not in Bookmarks.")
@@ -92,62 +76,114 @@ class BookmarksManager: ObservableObject {
     }
     
     public func updateScores() {
-        self.scores = self.scores.map( { BusyScore(id: $0.id) } )
+        self.objectWillChange.send()
+        self.places.forEach { place in
+            place.updateBusyScore(busyScore: BusyScore())
+        }
         
+        self.logger.info("INFO: Updating BusyScores...")
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else {
                 return
-              }
-            let scores = ML.model.run(on: self.places)
+            }
+            
+            let output = ML.model.run(on: self.places)
+
             DispatchQueue.main.async { [weak self] in
-                self?.scores = scores
+                self?.objectWillChange.send()
+                for i in 0..<self!.places.count {
+                    let image = output[i].0
+                    let result = output[i].1
+                    if result.getObjectConfidences() != nil {
+                        let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
+                        self?.places[i].updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
+                    } else {
+                        self?.places[i].updateBusyScore(busyScore: BusyScore(count: -2, image: image))
+                    }
+                }
+                self?.logger.info("INFO: Finished updating BusyScores.")
                 self?.feedback.notificationOccurred(.success)
             }
         }
+
     }
     
-    public func updateScoreFor(place: Place) {
-        if let currentScore = self.scores.first(where: { $0.id == place.id }) {
-            
-            // Set BusyScore to "Loading" first
-            let index = self.scores.firstIndex(where: { $0.id == place.id })!
-            self.scores[index] = BusyScore(id: place.id)
-            
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let self = self else {
-                    return
-                  }
-                
-                var score: BusyScore
-                if currentScore.isExpired() || currentScore.score == .none {
-                    self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
-                    score = ML.model.run(on: [place]).first!
-                } else {
-                    self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
-                    score = BusyScore(id: place.id, count: currentScore.count, image: currentScore.image, date: currentScore.date)
-                }
-                
-                DispatchQueue.main.async { [weak self] in
-                    self?.scores.removeAll(where: { $0.id == place.id })
-                    self?.scores.append(score)
-                    self?.feedback.notificationOccurred(.success)
+    public func updateScoreFor(id: String) {
+        if let place = places.first(where: { $0.id == id } ) {
+            if let currentScore = place.busyScore {
+                place.updateBusyScore(busyScore: BusyScore())
+                    if currentScore.isExpired() || currentScore.score == .none {
+                        self.logger.info("INFO: BusyScore for id \(place.id) is expired - updating...")
+                        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                            guard let self = self else {
+                                return
+                            }
+                            
+                            let output = ML.model.run(on: [place]).first!
+                            
+                            DispatchQueue.main.async { [weak self] in
+                                self?.objectWillChange.send()
+                                let image = output.0
+                                let result = output.1
+                                if result.getObjectConfidences() != nil {
+                                    let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
+                                    place.updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
+                                } else {
+                                    place.updateBusyScore(busyScore: BusyScore(count: -2, image: image))
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        self.logger.info("INFO: BusyScore for id \(place.id) is not expired - no need for update.")
+                        place.updateBusyScore(busyScore: currentScore)
+                    }
                 }
             }
-        }
     }
     
-    public func getScores() -> [BusyScore] {
-        if self.scores.isEmpty {
-            self.places.forEach { place in
-                self.scores.append(BusyScore(id: place.id))
-            }
-        }
-        return self.scores
-    }
+//    public func updateScoreFor(place: Place) {
+//        if let currentScore = self.scores.first(where: { $0.id == place.id }) {
+//
+//            // Set BusyScore to "Loading" first
+//            let index = self.scores.firstIndex(where: { $0.id == place.id })!
+//            self.scores[index] = BusyScore(id: place.id)
+//
+//            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+//                guard let self = self else {
+//                    return
+//                  }
+//
+//                var score: BusyScore
+//                if currentScore.isExpired() || currentScore.score == .none {
+//                    self.logger.info("INFO: BusyScore for id \(place.id) is stale - updating...")
+//                    score = ML.model.run(on: [place]).first!
+//                } else {
+//                    self.logger.info("INFO: BusyScore for id \(place.id) is not stale - no need for update.")
+//                    score = BusyScore(id: place.id, count: currentScore.count, image: currentScore.image, date: currentScore.date)
+//                }
+//
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.scores.removeAll(where: { $0.id == place.id })
+//                    self?.scores.append(score)
+//                    self?.feedback.notificationOccurred(.success)
+//                }
+//            }
+//        }
+//    }
     
-    public func getScoreFor(id: String) -> BusyScore? {
-        return self.scores.first(where: { $0.id == id })
-    }
+//    public func getScores() -> [BusyScore] {
+//        if self.scores.isEmpty {
+//            self.places.forEach { place in
+//                self.scores.append(BusyScore(id: place.id))
+//            }
+//        }
+//        return self.scores
+//    }
+//
+//    public func getScoreFor(id: String) -> BusyScore? {
+//        return self.scores.first(where: { $0.id == id })
+//    }
     
     private func save() {
         if let encoded = try? JSONEncoder().encode(self.places) {

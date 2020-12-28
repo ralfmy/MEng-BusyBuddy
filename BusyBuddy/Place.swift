@@ -10,7 +10,7 @@ import os.log
 
 //  Decode JSON response from TfL Unified API into this PlacE type.
 
-public final class Place: Codable, Equatable, Identifiable {
+public final class Place: Codable, Equatable, Identifiable, ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "Place")
 
     public let id: String
@@ -19,14 +19,16 @@ public final class Place: Codable, Equatable, Identifiable {
     let additionalProperties: [AdditionalProperty]
     let lat: Double
     let lon: Double
+    @Published public var busyScore: BusyScore?
         
-    init(id: String, commonName: String, placeType: String, additionalProperties: [AdditionalProperty], lat: Double, lon: Double) {
+    init(id: String, commonName: String, placeType: String, additionalProperties: [AdditionalProperty], lat: Double, lon: Double, busyScore: BusyScore? = nil) {
         self.id = id
         self.commonName = commonName
         self.placeType = placeType
         self.additionalProperties = additionalProperties
         self.lat = lat
         self.lon = lon
+        self.busyScore = busyScore
     }
     
     public func getImageUrl() -> String {
@@ -36,6 +38,10 @@ public final class Place: Codable, Equatable, Identifiable {
         } else {
             return "None"
         }
+    }
+    
+    public func updateBusyScore(busyScore: BusyScore) {
+        self.busyScore = busyScore
     }
     
 //    public func busyScoreNeedsUpdate() -> Bool {

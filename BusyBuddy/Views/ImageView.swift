@@ -49,6 +49,6 @@ struct ImageView_Previews: PreviewProvider {
     @State static private var isShowing = true
 
     static var previews: some View {
-        ImageView(isShowing: $isShowing, busyScore: BusyScore(id: ExamplePlace.place.id))
+        ImageView(isShowing: $isShowing, busyScore: BusyScore())
     }
 }

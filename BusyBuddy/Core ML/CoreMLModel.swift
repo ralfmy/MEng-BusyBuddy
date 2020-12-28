@@ -30,7 +30,7 @@ protocol CoreMLModel: ObservableObject {
 
 extension CoreMLModel {
     
-    public func run(on places: [Place]) -> [BusyScore] {
+    public func run(on places: [Place]) -> [(UIImage, CoreMLModelResult)] {
         if !places.isEmpty {
             print("INFO: Running model on \(places.count) images")
             // CHECK SCORE CACHE
@@ -42,22 +42,13 @@ extension CoreMLModel {
                     }
                 }
             }
-            let results = self.inputImages(images: images).preprocess().predict().postprocess().results
             
-            var scores = [BusyScore]()
-            for i in 0..<places.count {
-                if results[i].getObjectConfidences() != nil {
-                    let peopleCount = (results[i].objects.filter { $0.objClass == "person" && $0.confidence >= self.threshold }).count
-                    scores.append(BusyScore(id: places[i].id, count: peopleCount, image: images[i]))
-                } else {
-                    scores.append(BusyScore(id: places[i].id, count: -2, image: images[i]))
-                }
-            }
+            let results = self.inputImages(images: images).preprocess().predict().postprocess().results
             print("INFO: Model finished.")
-            return scores
-        } else {
-            return []
+            return Array(zip(images, results))
+            
         }
+        return Array(zip([], []))
     }
 }
 
