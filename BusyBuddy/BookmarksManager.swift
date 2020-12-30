@@ -92,14 +92,8 @@ class BookmarksManager: ObservableObject {
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()
                 for i in 0..<self!.places.count {
-                    let image = output[i].0
-                    let result = output[i].1
-                    if result.getObjectConfidences() != nil {
-                        let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
-                        self?.places[i].updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
-                    } else {
-                        self?.places[i].updateBusyScore(busyScore: BusyScore(count: -2, image: image))
-                    }
+                    let busyScore = ML.model.generateBusyScore(from: output[i])
+                    self?.places[i].updateBusyScore(busyScore: busyScore)
                 }
                 self?.logger.info("INFO: Finished updating BusyScores.")
                 self?.feedback.notificationOccurred(.success)
@@ -123,14 +117,8 @@ class BookmarksManager: ObservableObject {
                             
                             DispatchQueue.main.async { [weak self] in
                                 self?.objectWillChange.send()
-                                let image = output.0
-                                let result = output.1
-                                if result.getObjectConfidences() != nil {
-                                    let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
-                                    place.updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
-                                } else {
-                                    place.updateBusyScore(busyScore: BusyScore(count: -2, image: image))
-                                }
+                                let busyScore = ML.model.generateBusyScore(from: output)
+                                place.updateBusyScore(busyScore: busyScore)
                             }
                         }
                         

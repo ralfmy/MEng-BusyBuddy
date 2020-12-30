@@ -106,8 +106,10 @@ struct BookmarksGridItem: View {
                 return Color.busyGreenDarker
             case .medium:
                 return Color.busyYellowDarker
-            case.high:
+            case .high:
                 return Color.busyPinkDarker
+            case .unsure:
+                return Color.busyYellowDarker
             }
         } else {
             return Color.busyGreyLighter

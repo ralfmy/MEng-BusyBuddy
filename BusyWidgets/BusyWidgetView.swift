@@ -20,11 +20,11 @@ struct BusyWidgetView: View {
         VStack {
             VStack(alignment: .leading) {
                 Spacer().frame(height: 10)
-                BusyIcon(busyScore: entry.place.busyScore!, size: 35, coloured: false)
+                BusyIcon(busyScore: setBusyScore(), size: 35, coloured: false)
                 Spacer()
                 CommonName
                 Spacer().frame(height: 5)
-                BusyText(busyScore: entry.place.busyScore!, font: .footnote)
+                BusyText(busyScore: setBusyScore(), font: .footnote)
                 LastUpdated
                 Spacer().frame(height: 10)
             }
@@ -69,6 +69,14 @@ struct BusyWidgetView: View {
         }
     }
     
+    private func setBusyScore() -> BusyScore {
+        if let busyScore = entry.place.busyScore {
+            return busyScore
+        } else {
+            return BusyScore()
+        }
+    }
+    
     private func setTextColour(opacity: Double) -> Color {
         if let busyScore = entry.place.busyScore {
             switch busyScore.score {
@@ -86,13 +94,15 @@ struct BusyWidgetView: View {
         if let busyScore = entry.place.busyScore {
             switch busyScore.score {
             case .none:
-                return Color.busyGreyLighter
+                return Color.busyYellowDarker
             case .low:
                 return Color.busyGreenDarker
             case .medium:
                 return Color.busyYellowDarker
-            case.high:
+            case .high:
                 return Color.busyPinkDarker
+            case .unsure:
+                return Color.busyYellowDarker
             }
         } else {
             return Color.busyGreyLighter

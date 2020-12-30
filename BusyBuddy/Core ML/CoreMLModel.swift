@@ -14,7 +14,7 @@ protocol CoreMLModel: ObservableObject {
     var processedInputs: [MLFeatureProvider]? { get set }
     var predictionOutput: [MLFeatureProvider]? { get set }
     var results: [CoreMLModelResult] { get set }
-    var threshold: Double { get set }
+    var confidenceThreshold: Double { get set }
     
     func inputImages(images: [UIImage]) -> Self
     
@@ -26,6 +26,8 @@ protocol CoreMLModel: ObservableObject {
     
     // Process model output
     func postprocess() -> Self
+    
+    func generateBusyScore(from output: (UIImage, CoreMLModelResult)) -> BusyScore
 }
 
 extension CoreMLModel {
@@ -52,25 +54,25 @@ extension CoreMLModel {
     }
 }
 
-final class CoreMLModelResult {
+public final class CoreMLModelResult {
     
-    struct ObjectClassConfidence {
-        public var objClass: String
+    public struct ClassificationConfidence {
+        public var classification: String
         public var confidence: Double
         
-        init(objClass: String, confidence: Double) {
-            self.objClass = objClass
+        init(classification: String, confidence: Double) {
+            self.classification = classification
             self.confidence = confidence
         }
     }
     
-    public var objects = [ObjectClassConfidence]()
+    public var objects = [ClassificationConfidence]()
     
-    public func add(item: ObjectClassConfidence) {
+    public func add(item: ClassificationConfidence) {
         self.objects.append(item)
     }
     
-    public func getObjectConfidences() -> [ObjectClassConfidence]? {
+    public func getClassificationConfidences() -> [ClassificationConfidence]? {
         if self.objects.isEmpty {
             return nil
         } else {
@@ -82,7 +84,8 @@ final class CoreMLModelResult {
 // Singleton
 struct ML {
 
-    static let model = YOLO()
+//    static let model = YOLO()
+    static let model = BusyClassifier(confidenceThreshold: 80)
     private init () {}
     
 }

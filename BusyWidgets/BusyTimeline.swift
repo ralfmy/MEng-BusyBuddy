@@ -28,15 +28,8 @@ struct BusyTimeline: TimelineProvider {
 
         let output = ML.model.run(on: [place]).first!
 
-        let image = output.0
-        let result = output.1
-        if result.getObjectConfidences() != nil {
-            let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
-            print(peopleCount)
-            place.updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
-        } else {
-            place.updateBusyScore(busyScore: BusyScore(count: -2, image: image))
-        }
+        let busyScore = ML.model.generateBusyScore(from: output)
+        place.updateBusyScore(busyScore: busyScore)
         
         let entry = Entry(date: currentDate, place: place)
         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))

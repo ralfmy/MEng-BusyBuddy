@@ -34,7 +34,6 @@ struct BusyIcon: View {
                 return Color.white
             }
         } else {
-            print("HELLO")
             return Color.white.opacity(0.4)
         }
         
@@ -67,8 +66,10 @@ struct BusyIcon: View {
             return 0.5 * size
         case .medium:
             return 0.6 * size
-        case.high:
+        case .high:
             return 0.8 * size
+        case .unsure:
+            return 0
         default:
             return size
         }

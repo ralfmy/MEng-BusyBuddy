@@ -135,14 +135,8 @@ struct PlaceDetail: View {
                 let output = ML.model.run(on: [place]).first!
                 
                 DispatchQueue.main.async { [self] in
-                    let image = output.0
-                    let result = output.1
-                    if result.getObjectConfidences() != nil {
-                        let peopleCount = (result.objects.filter { $0.objClass == "person" && $0.confidence >= ML.model.threshold }).count
-                        self.place.updateBusyScore(busyScore: BusyScore(count: peopleCount, image: image))
-                    } else {
-                        self.place.updateBusyScore(busyScore: BusyScore(count: -2, image: image))
-                    }
+                    let busyScore = ML.model.generateBusyScore(from: output)
+                    self.place.updateBusyScore(busyScore: busyScore)
                     self.feedback.notificationOccurred(.success)
                 }
             }
@@ -174,8 +168,10 @@ struct PlaceDetail: View {
                 return Color.busyGreenDarker
             case .medium:
                 return Color.busyYellowDarker
-            case.high:
+            case .high:
                 return Color.busyPinkDarker
+            case .unsure:
+                return Color.busyYellowDarker
             }
         }
         return Color.busyGreyLighter

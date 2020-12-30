@@ -17,6 +17,7 @@ public final class BusyScore {
         case low
         case medium
         case high
+        case unsure
     }
     
     var count: Int
@@ -24,7 +25,7 @@ public final class BusyScore {
     var score: Score = .none
     var date: Date
     
-    let expiry: Double = 5
+    let expiry: Double = 10 * 60
     
     // count = -1 means loading; count = -2 means no result
     
@@ -39,6 +40,8 @@ public final class BusyScore {
             self.score = .medium
         case 10...:
             self.score = .high
+        case -2:
+            self.score = .unsure
         default:
             self.score = .none
         }
@@ -50,13 +53,15 @@ public final class BusyScore {
         }
         switch self.score {
         case .none:
-            return "NO OBJECTS DETECTED"
+            return "NONE"
         case .low:
             return "NOT BUSY"
         case .medium:
             return "FAIRLY BUSY"
         case .high:
             return "VERY BUSY"
+        case.unsure:
+            return "NOT CONFIDENT"
         default:
             return "ERROR"
         }

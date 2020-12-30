@@ -11,17 +11,17 @@ import CoreML
 import Vision
 import os.log
 
-class YOLO: CoreMLModel {
+public final class YOLO: CoreMLModel {
     
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "YOLO")
     
+    private let model = YOLOv3()
+
     var images: [UIImage]?
     var processedInputs: [MLFeatureProvider]?
     var predictionOutput: [MLFeatureProvider]?
     var results: [CoreMLModelResult]
-    var threshold: Double
-    
-    let model = YOLOv3()
+    var confidenceThreshold: Double  // confidence in classification of a person object
     
     private let objClasses = [
         "person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat", "traffic light",
@@ -34,9 +34,9 @@ class YOLO: CoreMLModel {
         "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
     ]
     
-    init(threshold: Double = 50) {
+    init(confidenceThreshold: Double = 50) {
         self.results = []
-        self.threshold = threshold
+        self.confidenceThreshold = confidenceThreshold
     }
     
     public func inputImages(images: [UIImage]) -> Self {
@@ -45,8 +45,8 @@ class YOLO: CoreMLModel {
     }
     
     public func preprocess() -> Self {
-        let scaled: [UIImage] = self.images!.map{ $0.scaleTo(targetSize: CGSize(width: 416, height: 416)) }
-        let cvPixelBuffer: [CVPixelBuffer] = scaled.map{ $0.toCVPixelBuffer()! }
+        let scaled: [UIImage] = self.images!.map { $0.scaleTo(targetSize: CGSize(width: 416, height: 416)) }
+        let cvPixelBuffer: [CVPixelBuffer] = scaled.map { $0.toCVPixelBuffer()! }
         self.processedInputs = cvPixelBuffer.map { YOLOv3Input(image: $0) }
         return self
     }
@@ -70,7 +70,7 @@ class YOLO: CoreMLModel {
                     let dimension = getDimension(i: i, from: confidences!)
                     let maxIndices = getIndicesOfMaxValues(from: dimension)
                     maxIndices.forEach({ index in
-                        result.add(item: CoreMLModelResult.ObjectClassConfidence(objClass: objClasses[index], confidence: (dimension[index] * 100)))
+                        result.add(item: CoreMLModelResult.ClassificationConfidence(classification: objClasses[index], confidence: (dimension[index] * 100)))
                     })
                 }
                 self.results.append(result)
@@ -79,6 +79,18 @@ class YOLO: CoreMLModel {
             }
         }
         return self
+    }
+    
+    public func generateBusyScore(from output: (UIImage, CoreMLModelResult)) -> BusyScore {
+        let image = output.0
+        let result = output.1
+        if let cc = result.getClassificationConfidences() {
+            let people = (cc.filter { $0.classification == "person" && $0.confidence >= self.confidenceThreshold })
+            self.logger.info("INFO: confidences \(people.map { $0.confidence })")
+            return BusyScore(count: people.count, image: image)
+        } else {
+            return BusyScore(count: -2, image: image)
+        }
     }
     
     private func getDimension(i: Int, from matrix: MLMultiArray) -> [Double] {
