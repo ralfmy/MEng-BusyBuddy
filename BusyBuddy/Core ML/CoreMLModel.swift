@@ -52,7 +52,7 @@ extension CoreMLModel {
     }
 }
 
-class CoreMLModelResult {
+final class CoreMLModelResult {
     
     struct ObjectClassConfidence {
         public var objClass: String

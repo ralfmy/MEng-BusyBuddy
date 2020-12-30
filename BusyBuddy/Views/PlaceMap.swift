@@ -27,7 +27,7 @@ struct PlaceMap: View {
 
 struct PlaceMap_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceMap(place: ExamplePlace.place)
+        PlaceMap(place: ExamplePlaces.oxfordCircus)
             
     }
 }

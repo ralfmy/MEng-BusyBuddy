@@ -11,6 +11,7 @@ import os.log
 
 //  Methods for calling the TfL Unified API.
 public struct TfLUnifiedAPI {
+    static let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPI")
     
     public static func fetchAllJamCams(client: NetworkClient, completion: (([Place]) -> Void)? = nil) {
         let prefix = "https://api.tfl.gov.uk/"
@@ -25,10 +26,10 @@ public struct TfLUnifiedAPI {
                     let places = try JSONDecoder().decode([Place].self, from: data)
                     completion?(places)
                 } catch {
-                    print(error.localizedDescription)
+                    self.logger.error("ERROR: \(error.localizedDescription)")
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                self.logger.error("ERROR: \(error.localizedDescription)")
             }
         }
     }

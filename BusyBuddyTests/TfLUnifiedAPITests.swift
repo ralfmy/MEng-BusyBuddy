@@ -15,7 +15,7 @@ import os.log
 
 class NetworkClientMock: NetworkClient {
     override public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        completion(.success(try! JSONEncoder().encode([ExamplePlace.place])))
+        completion(.success(try! JSONEncoder().encode([ExamplePlaces.oxfordCircus])))
     }
 }
 

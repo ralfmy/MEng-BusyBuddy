@@ -33,7 +33,7 @@ struct BookmarksGridItem: View {
                 self.tapped = true
             }
         }
-        .background (NavigationLink(destination: PlaceDetail(place: place), isActive: $tapped) {
+        .background(NavigationLink(destination: PlaceDetail(place: place), isActive: $tapped) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }
@@ -48,7 +48,7 @@ struct BookmarksGridItem: View {
     }
     
     private var LastUpdated: some View {
-        Text(setLatUpdated())
+        Text(setLastUpdated())
             .font(.caption)
             .fontWeight(.semibold)
             .foregroundColor(setTextColour(opacity: 0.7))
@@ -68,7 +68,7 @@ struct BookmarksGridItem: View {
         }
     }
     
-    func setBusyScore() -> BusyScore {
+    private func setBusyScore() -> BusyScore {
         if let busyScore = place.busyScore {
             return busyScore
         } else {
@@ -76,7 +76,7 @@ struct BookmarksGridItem: View {
         }
     }
     
-    private func setLatUpdated() -> String {
+    private func setLastUpdated() -> String {
         if let busyScore = place.busyScore {
             return busyScore.dateAsString()
         } else {
@@ -115,11 +115,11 @@ struct BookmarksGridItem: View {
     }
 }
 
-struct FavouriteSgridItem_Previews: PreviewProvider {
+struct BookmarksGridItem_Preview: PreviewProvider {
     static let bookmarks = BookmarksManager()
 
     static var previews: some View {
-        BookmarksGridItem(place: ExamplePlace.place)
+        BookmarksGridItem(place: ExamplePlaces.oxfordCircus)
             .previewLayout(.sizeThatFits).environmentObject(bookmarks)
     }
 }

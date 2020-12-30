@@ -53,8 +53,8 @@ struct BusyWidgets: Widget {
     let kind: String = "BusyWidgets"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            BusyWidgetsEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: BusyTimeline()) { entry in
+            BusyWidgetView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")

@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct BusyText: View {
-    @EnvironmentObject var bookmarksManager: BookmarksManager
-    
+struct BusyText: View {    
     let busyScore: BusyScore
     let font: Font
     

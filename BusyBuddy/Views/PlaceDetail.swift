@@ -133,6 +133,7 @@ struct PlaceDetail: View {
             DispatchQueue.global(qos: .userInteractive).async {
                 
                 let output = ML.model.run(on: [place]).first!
+                
                 DispatchQueue.main.async { [self] in
                     let image = output.0
                     let result = output.1
@@ -183,6 +184,6 @@ struct PlaceDetail: View {
 
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetail(place: ExamplePlace.place)
+        PlaceDetail(place: ExamplePlaces.oxfordCircus)
     }
 }

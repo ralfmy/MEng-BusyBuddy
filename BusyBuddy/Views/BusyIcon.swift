@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-struct BusyIcon: View {
-    @EnvironmentObject var bookmarksManager: BookmarksManager
-    
+struct BusyIcon: View {    
     let busyScore: BusyScore
     let size: CGFloat
     let coloured: Bool
     
     var body: some View {
         ZStack(alignment: .center) {
-            RoundedRectangle(cornerRadius: 100).fill(setBusyBackgroundColour()).frame(width: size, height: size)
-            RoundedRectangle(cornerRadius: 100).fill(setBusyForegroundColour()).frame(width: setInnerSize(), height: setInnerSize())
+            Circle().fill(setBusyBackgroundColour()).frame(width: size, height: size)
+            Circle().fill(setBusyForegroundColour()).frame(width: setInnerSize(), height: setInnerSize())
         }
     }
     
@@ -36,6 +34,7 @@ struct BusyIcon: View {
                 return Color.white
             }
         } else {
+            print("HELLO")
             return Color.white.opacity(0.4)
         }
         

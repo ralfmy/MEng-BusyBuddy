@@ -31,23 +31,23 @@ class BookmarksTests: XCTestCase {
     }
     
     func testAddPlace() throws {
-        bookmarksManager.add(place: ExamplePlace.place)
+        bookmarksManager.add(place: ExamplePlaces.oxfordCircus)
         let places = bookmarksManager.getPlaces()
         
         XCTAssertEqual(places.count, 1)
-        XCTAssertEqual(places[0].id, ExamplePlace.place.id)
+        XCTAssertEqual(places[0].id, ExamplePlaces.oxfordCircus.id)
     }
 
     func testremovePlace() throws {
-        bookmarksManager.add(place: ExamplePlace.place)
+        bookmarksManager.add(place: ExamplePlaces.oxfordCircus)
         XCTAssertFalse(bookmarksManager.getPlaces().isEmpty)
         
-        bookmarksManager.remove(place: ExamplePlace.place)
+        bookmarksManager.remove(place: ExamplePlaces.oxfordCircus)
         XCTAssertTrue(bookmarksManager.getPlaces().isEmpty)
     }
     
     func testContainsPlaceTrue() throws {
-        bookmarksManager.add(place: ExamplePlace.place)
-        XCTAssertTrue(bookmarksManager.contains(place: ExamplePlace.place))
+        bookmarksManager.add(place: ExamplePlaces.oxfordCircus)
+        XCTAssertTrue(bookmarksManager.contains(place: ExamplePlaces.oxfordCircus))
     }
 }

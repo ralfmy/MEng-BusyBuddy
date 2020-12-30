@@ -36,7 +36,7 @@ struct PlacesList: View {
 
 struct PlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesList(places: [ExamplePlace.place])
+        PlacesList(places: [ExamplePlaces.oxfordCircus])
             .previewLayout(.sizeThatFits)
     }
 }
