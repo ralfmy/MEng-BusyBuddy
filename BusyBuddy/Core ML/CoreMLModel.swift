@@ -85,7 +85,7 @@ public final class CoreMLModelResult {
 struct ML {
 
 //    static let model = YOLO()
-    static let model = BusyClassifier(confidenceThreshold: 80)
+    static let model = BusyClassifier(confidenceThreshold: 70)
     private init () {}
     
 }

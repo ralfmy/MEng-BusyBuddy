@@ -43,6 +43,8 @@
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
 		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
+		BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
@@ -63,24 +65,29 @@
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
 		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
-		BF977A1D259CBDB100BC6896 /* PlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF977A1C259CBDB100BC6896 /* PlaceIntent.intentdefinition */; };
 		BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */; };
 		BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */; };
 		BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
 		BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
-		BF977A3C259CCA0B00BC6896 /* BusyClassifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A3B259CCA0B00BC6896 /* BusyClassifier5.mlmodel */; };
-		BF977A3D259CCA0B00BC6896 /* BusyClassifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A3B259CCA0B00BC6896 /* BusyClassifier5.mlmodel */; };
 		BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BF977A4E259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
 		BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
 		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
+		BFAF770F259DD1DD0024E7DB /* BusyClassifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFAF770E259DD1DD0024E7DB /* BusyClassifier5.mlmodel */; };
+		BFAF7710259DD1DD0024E7DB /* BusyClassifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFAF770E259DD1DD0024E7DB /* BusyClassifier5.mlmodel */; };
 		BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* BookmarksManager.swift */; };
 		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
 		BFC5A08E25544A7100CE2B80 /* BookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */; };
 		BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */; };
 		BFC5A0AE2554651F00CE2B80 /* YOLOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */; };
+		BFC73D0725A085EC0003413E /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC73CC325A084080003413E /* Intents.framework */; };
+		BFC73D0A25A085EC0003413E /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D0925A085EC0003413E /* IntentHandler.swift */; };
+		BFC73D0E25A085EC0003413E /* PlaceIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC73D0625A085EC0003413E /* PlaceIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
+		BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
+		BFC73D5E25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlacesList.swift */; };
 		BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DAFD2556BE2800F10883 /* ImageCache.swift */; };
@@ -113,6 +120,13 @@
 			remoteGlobalIDString = BF305884254F2C3C0087FDEA;
 			remoteInfo = BusyBuddy;
 		};
+		BFC73D0C25A085EC0003413E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF30587D254F2C3C0087FDEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFC73D0525A085EC0003413E;
+			remoteInfo = PlaceIntent;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -122,6 +136,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				BFC73D0E25A085EC0003413E /* PlaceIntent.appex in Embed App Extensions */,
 				BF1B849F2598ABEF00EC912D /* BusyWidgetsExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -174,21 +189,27 @@
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
-		BF977A1C259CBDB100BC6896 /* PlaceIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PlaceIntent.intentdefinition; sourceTree = "<group>"; };
 		BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
-		BF977A3B259CCA0B00BC6896 /* BusyClassifier5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BusyClassifier5.mlmodel; path = ../../../BusyClassifier5.mlmodel; sourceTree = "<group>"; };
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyClassifier.swift; sourceTree = "<group>"; };
 		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BFABB53F2598A63600106605 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BFACD8232591CCA400940D50 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		BFAF770E259DD1DD0024E7DB /* BusyClassifier5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusyClassifier5.mlmodel; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* BookmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTests.swift; sourceTree = "<group>"; };
 		BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlace.swift; sourceTree = "<group>"; };
 		BFC5A0AD2554651F00CE2B80 /* YOLOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOTests.swift; sourceTree = "<group>"; };
+		BFC73CC325A084080003413E /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		BFC73CCE25A084080003413E /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		BFC73D0625A085EC0003413E /* PlaceIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlaceIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC73D0925A085EC0003413E /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		BFC73D0B25A085EC0003413E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFC73D4625A086F70003413E /* PlaceIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaceIntent.entitlements; sourceTree = "<group>"; };
+		BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectPlaceIntent.intentdefinition; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
 		BFE3DAFD2556BE2800F10883 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -230,6 +251,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFC73D0325A085EC0003413E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC73D0725A085EC0003413E /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -243,7 +272,6 @@
 				BF894372259C81FF0009582A /* BusyEntry.swift */,
 				BF89438B259C88D60009582A /* BusyTimeline.swift */,
 				BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */,
-				BF977A1C259CBDB100BC6896 /* PlaceIntent.intentdefinition */,
 			);
 			path = BusyWidgets;
 			sourceTree = "<group>";
@@ -273,6 +301,7 @@
 				BF3058A1254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058AC254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84942598ABEC00EC912D /* BusyWidgets */,
+				BFC73D0825A085EC0003413E /* PlaceIntent */,
 				BFABB53C2598A63600106605 /* Frameworks */,
 				BF305886254F2C3C0087FDEA /* Products */,
 			);
@@ -285,6 +314,7 @@
 				BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */,
 				BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */,
 				BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */,
+				BFC73D0625A085EC0003413E /* PlaceIntent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,6 +335,7 @@
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
 				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
 				BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */,
+				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
@@ -349,7 +380,7 @@
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
-				BF977A3B259CCA0B00BC6896 /* BusyClassifier5.mlmodel */,
+				BFAF770E259DD1DD0024E7DB /* BusyClassifier5.mlmodel */,
 				BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */,
 				BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */,
 				BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */,
@@ -387,6 +418,8 @@
 			children = (
 				BFABB53D2598A63600106605 /* WidgetKit.framework */,
 				BFABB53F2598A63600106605 /* SwiftUI.framework */,
+				BFC73CC325A084080003413E /* Intents.framework */,
+				BFC73CCE25A084080003413E /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -400,6 +433,16 @@
 				BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BFC73D0825A085EC0003413E /* PlaceIntent */ = {
+			isa = PBXGroup;
+			children = (
+				BFC73D4625A086F70003413E /* PlaceIntent.entitlements */,
+				BFC73D0925A085EC0003413E /* IntentHandler.swift */,
+				BFC73D0B25A085EC0003413E /* Info.plist */,
+			);
+			path = PlaceIntent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +478,7 @@
 			);
 			dependencies = (
 				BF1B849E2598ABEF00EC912D /* PBXTargetDependency */,
+				BFC73D0D25A085EC0003413E /* PBXTargetDependency */,
 			);
 			name = BusyBuddy;
 			productName = BusyBuddy;
@@ -477,6 +521,23 @@
 			productReference = BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		BFC73D0525A085EC0003413E /* PlaceIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "PlaceIntent" */;
+			buildPhases = (
+				BFC73D0225A085EC0003413E /* Sources */,
+				BFC73D0325A085EC0003413E /* Frameworks */,
+				BFC73D0425A085EC0003413E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaceIntent;
+			productName = PlaceIntent;
+			productReference = BFC73D0625A085EC0003413E /* PlaceIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -500,6 +561,9 @@
 						CreatedOnToolsVersion = 12.1;
 						TestTargetID = BF305884254F2C3C0087FDEA;
 					};
+					BFC73D0525A085EC0003413E = {
+						CreatedOnToolsVersion = 12.3;
+					};
 				};
 			};
 			buildConfigurationList = BF305880254F2C3C0087FDEA /* Build configuration list for PBXProject "BusyBuddy" */;
@@ -519,6 +583,7 @@
 				BF30589D254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058A8254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */,
+				BFC73D0525A085EC0003413E /* PlaceIntent */,
 			);
 		};
 /* End PBXProject section */
@@ -559,6 +624,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFC73D0425A085EC0003413E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -567,7 +639,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */,
-				BF977A3D259CCA0B00BC6896 /* BusyClassifier5.mlmodel in Sources */,
 				BF42D849259CA40A004DBE86 /* BusyIcon.swift in Sources */,
 				BF89432D259C7E990009582A /* Place.swift in Sources */,
 				BF894350259C7EB50009582A /* NetworkClient.swift in Sources */,
@@ -577,7 +648,6 @@
 				BF894399259C89640009582A /* ExamplePlace.swift in Sources */,
 				BF894332259C7E9D0009582A /* BusyScore.swift in Sources */,
 				BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
-				BF977A1D259CBDB100BC6896 /* PlaceIntent.intentdefinition in Sources */,
 				BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */,
 				BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
 				BF894341259C7EAC0009582A /* BookmarksManager.swift in Sources */,
@@ -585,6 +655,8 @@
 				BF89435A259C7EC00009582A /* YOLO.swift in Sources */,
 				BF89435F259C7EC20009582A /* CoreMLModel.swift in Sources */,
 				BF89434B259C7EB20009582A /* PlacesCache.swift in Sources */,
+				BFAF7710259DD1DD0024E7DB /* BusyClassifier5.mlmodel in Sources */,
+				BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */,
 				BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */,
@@ -617,6 +689,7 @@
 				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,
+				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
@@ -628,9 +701,9 @@
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
 				BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
 				BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */,
-				BF977A3C259CCA0B00BC6896 /* BusyClassifier5.mlmodel in Sources */,
 				BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
+				BFAF770F259DD1DD0024E7DB /* BusyClassifier5.mlmodel in Sources */,
 				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
@@ -662,6 +735,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BFC73D0225A085EC0003413E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */,
+				BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */,
+				BFC73D5E25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BFC73D0A25A085EC0003413E /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -680,6 +764,11 @@
 			target = BF305884254F2C3C0087FDEA /* BusyBuddy */;
 			targetProxy = BF3058AA254F2C3E0087FDEA /* PBXContainerItemProxy */;
 		};
+		BFC73D0D25A085EC0003413E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFC73D0525A085EC0003413E /* PlaceIntent */;
+			targetProxy = BFC73D0C25A085EC0003413E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -688,6 +777,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BusyWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyWidgets/Info.plist;
@@ -710,6 +800,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BusyWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
 				INFOPLIST_FILE = BusyWidgets/Info.plist;
@@ -851,6 +942,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BusyBuddy/BusyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BusyBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
@@ -873,6 +965,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BusyBuddy/BusyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BusyBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
@@ -973,6 +1066,48 @@
 			};
 			name = Release;
 		};
+		BFC73D1025A085EC0003413E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PlaceIntent/PlaceIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
+				INFOPLIST_FILE = PlaceIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.PlaceIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFC73D1125A085EC0003413E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PlaceIntent/PlaceIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z59VU7JW5V;
+				INFOPLIST_FILE = PlaceIntent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.PlaceIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1017,6 +1152,15 @@
 			buildConfigurations = (
 				BF3058B9254F2C3E0087FDEA /* Debug */,
 				BF3058BA254F2C3E0087FDEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "PlaceIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFC73D1025A085EC0003413E /* Debug */,
+				BFC73D1125A085EC0003413E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

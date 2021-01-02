@@ -25,11 +25,15 @@ class BookmarksManager: ObservableObject {
     
     @Published var places: [Place]
     
-    init(_ defaults: UserDefaults = UserDefaults.standard) {
+    init(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) {
         self.defaults = defaults
         if let data = self.defaults.object(forKey: saveKey) as? Data {
             if let bookmarks = try? JSONDecoder().decode([Place].self, from: data) {
                 self.places = bookmarks
+//                if let encoded = try? JSONEncoder().encode(self.places) {
+//                    UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!.set(encoded, forKey: saveKey)
+//                    logger.info("INFO: UserDefaults save successful.")
+//                }
                 return
             }
         }

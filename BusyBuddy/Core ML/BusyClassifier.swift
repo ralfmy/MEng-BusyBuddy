@@ -70,9 +70,8 @@ public final class BusyClassifier: CoreMLModel {
                 self.logger.info("INFO: \(likelyLabelProbs.classification) with \(likelyLabelProbs.confidence) confidence")
                 if likelyLabelProbs.classification == "busy" {
                     return BusyScore(count: 100, image: image)
-                } else {
-                    return BusyScore(count: 0, image: image)
                 }
+                return BusyScore(count: 0, image: image)
             } else {
                 self.logger.info("INFO: Label probabilities do not meet confidence threshold - \(cc[0].classification) \(cc[0].confidence); \(cc[1].classification) \(cc[1].confidence)")
                 return BusyScore(count: -2, image: image)
