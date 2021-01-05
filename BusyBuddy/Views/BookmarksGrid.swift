@@ -13,6 +13,8 @@ import CoreML
 struct BookmarksGrid: View {
     @EnvironmentObject var bookmarksManager: BookmarksManager
         
+    @State var activeId: String?
+    
     let columns: [GridItem] = [GridItem(.flexible(), spacing: 16, alignment: .center), GridItem(.flexible(), spacing: 16, alignment: .center)]
     
     var body: some View {

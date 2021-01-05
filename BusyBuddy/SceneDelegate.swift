@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
 //        let container = (UIAp plication.shared.delegate as! AppDelegate).persistentContainer
+        let appState = (UIApplication.shared.delegate as! AppDelegate).appState
         let placesManager = (UIApplication.shared.delegate as! AppDelegate).placesManager
         let bookmarksManager = (UIApplication.shared.delegate as! AppDelegate).bookmarksManager
         
@@ -29,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = AppView().environmentObject(placesManager).environmentObject(bookmarksManager)
+        let placesView = AppView().environmentObject(appState).environmentObject(placesManager).environmentObject(bookmarksManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -39,6 +40,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        let appState = (UIApplication.shared.delegate as! AppDelegate).appState
+
+        guard let url = URLContexts.first?.url else { return }
+        if url.scheme == "busybuddy" {
+            if url.host == "bookmarks" {
+                appState.tabSelection = .bookmarks
+            }
+            if url.host == "map" {
+                appState.tabSelection = .map
+            }
+            if !url.pathComponents.isEmpty {
+                appState.placeSelectionId = url.pathComponents[1]
+            }
+        }
+    }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

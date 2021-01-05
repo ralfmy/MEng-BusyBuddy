@@ -13,11 +13,11 @@ import os.log
 
 struct AppView: View {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppView")
-
+    
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var placesManager: PlacesManager
     @EnvironmentObject var bookmarksManager: BookmarksManager
     
-    @State private var tabSelection: Int = 0
     @State private var navigationBarHidden: Bool = false
     @State private var firstLoad: Bool = true
     @State private var isShowingAll: Bool = false
@@ -33,7 +33,7 @@ struct AppView: View {
     
     var body: some View {
         NavigationView {
-            TabView(selection: $tabSelection) {
+            TabView(selection: $appState.tabSelection) {
                 
                 // Tab 1
                 BookmarksGrid()
@@ -49,42 +49,38 @@ struct AppView: View {
                         firstLoad = false
                     }
                 }
-                .tag(0)
+                .tag(Tab.bookmarks)
                 
                 // Tab 2
                 MapView()
                 .tabItem {
                     Image(systemName: "map.fill")
                 }
-                .tag(1)
+                .tag(Tab.map)
             }
             
-            .navigationTitle(setNavigationBarTitle(tabSelection: tabSelection))
-            .navigationBarHidden(setNavigationBarHidden(tabSelection: tabSelection))
+            .navigationTitle(setNavigationBarTitle(tabSelection: appState.tabSelection))
+            .navigationBarHidden(setNavigationBarHidden(tabSelection: appState.tabSelection))
             .navigationBarItems(leading: SearchButton, trailing: UpdateButton)
             .accentColor(.white)
         }
         .accentColor(.white)
     }
     
-    private func setNavigationBarTitle(tabSelection: Int) -> String {
+    private func setNavigationBarTitle(tabSelection: Tab) -> String {
         switch tabSelection {
-        case 0:
+        case .bookmarks:
             return "Bookmarks"
-        case 1:
+        case .map:
             return ""
-        default:
-           return ""
         }
     }
     
-    private func setNavigationBarHidden(tabSelection: Int) -> Bool {
+    private func setNavigationBarHidden(tabSelection: Tab) -> Bool {
         switch tabSelection {
-        case 0:
+        case .bookmarks:
             return false
-        case 1:
-            return true
-        default:
+        case .map:
             return true
         }
     }
@@ -115,6 +111,13 @@ struct AppView: View {
     
     private func updateScores() {
         bookmarksManager.updateScores()
+    }
+}
+
+extension AppView {
+    enum Tab: Hashable {
+        case bookmarks
+        case map
     }
 }
 

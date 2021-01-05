@@ -48,9 +48,8 @@ struct PlaceDetail: View {
         .onAppear {
             if bookmarksManager.contains(place: place) {
                 buttonState = 1
-            } else {
-                updateScore()
             }
+            updateScore()
         }
     }
     

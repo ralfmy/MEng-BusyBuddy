@@ -44,6 +44,7 @@
 		BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
+		BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C4F1D25A49FE700F1247D /* AppState.swift */; };
 		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF894337259C7EA40009582A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -180,6 +181,7 @@
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
 		BF6B1DB92573C5C100CF3FF0 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		BF7C4F1D25A49FE700F1247D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		BF894372259C81FF0009582A /* BusyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyEntry.swift; sourceTree = "<group>"; };
 		BF89438B259C88D60009582A /* BusyTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTimeline.swift; sourceTree = "<group>"; };
 		BF89439E259C8BD80009582A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				BFC5A09F255453EF00CE2B80 /* Resources */,
 				BF305891254F2C3E0087FDEA /* Assets.xcassets */,
 				BF305899254F2C3E0087FDEA /* Info.plist */,
+				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
 				BF977A4E259CD8A400BC6896 /* BusyClassifier.swift in Sources */,
+				BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,

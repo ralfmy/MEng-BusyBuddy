@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookmarksGridItem: View {
+    
+    @EnvironmentObject var appState: AppState
     @EnvironmentObject var bookmarksManager: BookmarksManager
     
     @State private var tapped = false
@@ -30,10 +32,10 @@ struct BookmarksGridItem: View {
             .padding(20)
             .background(RoundedRectangle(cornerRadius: 20).fill(setCardColour()))
             .onTapGesture {
-                self.tapped = true
+                self.appState.placeSelectionId = self.place.id
             }
         }
-        .background(NavigationLink(destination: PlaceDetail(place: place), isActive: $tapped) {
+        .background(NavigationLink(destination: PlaceDetail(place: place), tag: self.place.id, selection: self.$appState.placeSelectionId) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }

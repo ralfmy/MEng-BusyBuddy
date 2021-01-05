@@ -27,6 +27,7 @@ struct BusyWidgetView: View {
             LastUpdated
             Spacer().frame(height: 10)
         }
+        .widgetURL(URL(string: "busybuddy://bookmarks/" + entry.place.id))
         .padding(15)
         .background(setCardColour())
     }
