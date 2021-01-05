@@ -34,11 +34,11 @@ public final class BusyScore {
         self.image = image
         self.date = date
         switch self.count {
-        case 0..<5:
+        case 0..<10:
             self.score = .low
-        case 5..<10:
+        case 10..<15:
             self.score = .medium
-        case 10...:
+        case 15...:
             self.score = .high
         case -2:
             self.score = .unsure

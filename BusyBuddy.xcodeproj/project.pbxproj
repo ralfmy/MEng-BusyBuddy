@@ -35,7 +35,6 @@
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF3058E5254F44560087FDEA /* PlacesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E4254F44560087FDEA /* PlacesManagerTests.swift */; };
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
-		BF41E6CE25A3312A00832C80 /* VisionPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF41E6CD25A3312A00832C80 /* VisionPipeline.swift */; };
 		BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */; };
 		BF42D849259CA40A004DBE86 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
 		BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
@@ -177,7 +176,6 @@
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF3058E4254F44560087FDEA /* PlacesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManagerTests.swift; sourceTree = "<group>"; };
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		BF41E6CD25A3312A00832C80 /* VisionPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionPipeline.swift; sourceTree = "<group>"; };
 		BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgetView.swift; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
@@ -385,7 +383,6 @@
 				BF1EDF542550BB5A006C900F /* BusyModel.swift */,
 				BF1EDF6A25515E94006C900F /* YOLO.swift */,
 				BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */,
-				BF41E6CD25A3312A00832C80 /* VisionPipeline.swift */,
 			);
 			path = "Core ML";
 			sourceTree = "<group>";
@@ -706,7 +703,6 @@
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
 				BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
-				BF41E6CE25A3312A00832C80 /* VisionPipeline.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* AppView.swift in Sources */,
 				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,
 			);

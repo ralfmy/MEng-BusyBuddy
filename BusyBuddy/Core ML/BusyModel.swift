@@ -47,38 +47,11 @@ extension BusyModel {
     }
 }
 
-public final class CoreMLModelResult {
-    
-    public struct ClassificationConfidence {
-        public var classification: String
-        public var confidence: Double
-        
-        init(classification: String, confidence: Double) {
-            self.classification = classification
-            self.confidence = confidence
-        }
-    }
-    
-    public var objects = [ClassificationConfidence]()
-    
-    public func add(item: ClassificationConfidence) {
-        self.objects.append(item)
-    }
-    
-    public func getClassificationConfidences() -> [ClassificationConfidence]? {
-        if self.objects.isEmpty {
-            return nil
-        } else {
-            return self.objects
-        }
-    }
-}
-
 // Singleton
 struct ML {
 
 //    static let model = YOLO()
-    static let model = YOLO()
+    static let model = BusyClassifier()
     private init () {}
     
 }

@@ -130,20 +130,10 @@ struct PlaceDetail: View {
         if bookmarksManager.contains(place: place) {
             bookmarksManager.updateScoreFor(id: place.id)
         } else {
+            self.place.updateBusyScore(busyScore: BusyScore())
             DispatchQueue.global(qos: .userInteractive).async {
-//                var image = UIImage()
-//                if let data = try? Data(contentsOf: URL(string: place.getImageUrl())!) {
-//                    if let uiImage = UIImage(data: data) {
-//                        image = uiImage
-//                    }
-//                }
-//                ML.model.classify(images: [image])
-                
                 let busyScore = ML.model.run(on: [place]).first!
-                
                 DispatchQueue.main.async { [self] in
-//                    let busyScore = ML.model.generateBusyScore(from: output)
-//                    self.place.updateBusyScore(busyScore: busyScore)
                     self.place.updateBusyScore(busyScore: busyScore)
                     self.feedback.notificationOccurred(.success)
                 }
