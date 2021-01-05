@@ -7,30 +7,17 @@
 
 import Foundation
 import CoreML
+import Vision
 import UIKit
 
-protocol CoreMLModel: ObservableObject {
-    var images: [UIImage]? { get set }
-    var processedInputs: [MLFeatureProvider]? { get set }
-    var predictionOutput: [MLFeatureProvider]? { get set }
-    var results: [CoreMLModelResult] { get set }
-    var confidenceThreshold: Double { get set }
+protocol BusyModel: ObservableObject {
+    var observations: [[VNObservation]] { get set }
+    var confidenceThreshold: VNConfidence { get set }
     
-    func inputImages(images: [UIImage]) -> Self
-    
-    // Preprocess image into model input
-    func preprocess() -> Self
-    
-    // Predict on input and generate model output
-    func predict() -> Self
-    
-    // Process model output
-    func postprocess() -> Self
-    
-    func generateBusyScore(from output: (UIImage, CoreMLModelResult)) -> BusyScore
+    lazy var request: VNCoreMLRequest { get set }
 }
 
-extension CoreMLModel {
+extension BusyModel {
     
     public func run(on places: [Place]) -> [(UIImage, CoreMLModelResult)] {
         if !places.isEmpty {
@@ -39,8 +26,8 @@ extension CoreMLModel {
             var images = [UIImage]()
             places.forEach { place in
                 if let data = try? Data(contentsOf: URL(string: place.getImageUrl())!) {
-                    if let uiImage = UIImage(data: data) {
-                        images.append(uiImage)
+                    if let image = UIImage(data: data) {
+                        images.append(image)
                     }
                 }
             }
@@ -85,7 +72,7 @@ public final class CoreMLModelResult {
 struct ML {
 
 //    static let model = YOLO()
-    static let model = BusyClassifier(confidenceThreshold: 70)
+    static let model = BusyClassifier(confidenceThreshold: 0.6)
     private init () {}
     
 }
