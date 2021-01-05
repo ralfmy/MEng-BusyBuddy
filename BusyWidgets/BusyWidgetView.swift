@@ -17,24 +17,22 @@ struct BusyWidgetView: View {
     let entry: BusyEntry
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Spacer().frame(height: 10)
-                BusyIcon(busyScore: setBusyScore(), size: 35, coloured: false)
-                Spacer()
-                CommonName
-                Spacer().frame(height: 5)
-                BusyText(busyScore: setBusyScore(), font: .footnote)
-                LastUpdated
-                Spacer().frame(height: 10)
-            }
-            .padding(15)
-            .background(setCardColour())
+        VStack(alignment: .leading) {
+            Spacer().frame(height: 10)
+            BusyIcon(busyScore: setBusyScore(), size: 35, coloured: false)
+            Spacer()
+            CommonName
+            Spacer().frame(height: 5)
+            BusyText(busyScore: setBusyScore(), font: .footnote)
+            LastUpdated
+            Spacer().frame(height: 10)
         }
+        .padding(15)
+        .background(setCardColour())
     }
     
     private var CommonName: some View {
-        Text(setCommonName())
+        Text(entry.place.commonName)
             .font(.callout)
             .fontWeight(.semibold)
             .lineLimit(2)

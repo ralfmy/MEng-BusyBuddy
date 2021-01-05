@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Vision
+import CoreML
 import CoreData
 import BackgroundTasks
 import os.log

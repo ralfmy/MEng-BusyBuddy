@@ -23,13 +23,13 @@ class BookmarksManager: ObservableObject {
     private let saveKey = "Bookmarks"
     private let feedback = UINotificationFeedbackGenerator()
     
-    @Published var places: [Place]
+    @Published var bookmarks: [Place]
     
     init(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) {
         self.defaults = defaults
         if let data = self.defaults.object(forKey: saveKey) as? Data {
             if let bookmarks = try? JSONDecoder().decode([Place].self, from: data) {
-                self.places = bookmarks
+                self.bookmarks = bookmarks
 //                if let encoded = try? JSONEncoder().encode(self.places) {
 //                    UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!.set(encoded, forKey: saveKey)
 //                    logger.info("INFO: UserDefaults save successful.")
@@ -37,28 +37,28 @@ class BookmarksManager: ObservableObject {
                 return
             }
         }
-        self.places = []
+        self.bookmarks = []
     }
     
     public func getPlaces() -> [Place] {
 //        self.logger.debug("DEBUG: Image urls \(self.places.map { $0.getImageUrl() } )")
-        return self.places
+        return self.bookmarks
     }
     
     public func getPlaceWith(id: String) -> Place? {
-        return self.places.first(where: { $0.id == id })
+        return self.bookmarks.first(where: { $0.id == id })
     }
     
     public func getPlaceAt(index: Int) -> Place? {
-        self.places.sort(by: { $0.commonName < $1.commonName })
-        return places[index]
+        self.bookmarks.sort(by: { $0.commonName < $1.commonName })
+        return bookmarks[index]
     }
     
     public func add(place: Place, busyScore: BusyScore? = nil) {
         objectWillChange.send()
         if !self.contains(place: place) {
-            self.places.append(place)
-            self.places.sort(by: { $0.commonName < $1.commonName })
+            self.bookmarks.append(place)
+            self.bookmarks.sort(by: { $0.commonName < $1.commonName })
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) already in Bookmarks.")
@@ -68,7 +68,7 @@ class BookmarksManager: ObservableObject {
     public func remove(place: Place) {
         objectWillChange.send()
         if self.contains(place: place) {
-            self.places.removeAll(where: { $0.id == place.id })
+            self.bookmarks.removeAll(where: { $0.id == place.id })
             save()
         } else {
             self.logger.info("INFO: Place with id \(place.id) is not in Bookmarks.")
@@ -76,12 +76,12 @@ class BookmarksManager: ObservableObject {
     }
     
     public func contains(place: Place) -> Bool {
-        return self.places.contains(where: { $0.id == place.id })
+        return self.bookmarks.contains(where: { $0.id == place.id })
     }
     
     public func updateScores() {
         self.objectWillChange.send()
-        self.places.forEach { place in
+        self.bookmarks.forEach { place in
             place.updateBusyScore(busyScore: BusyScore())
         }
         
@@ -91,13 +91,12 @@ class BookmarksManager: ObservableObject {
                 return
             }
             
-            let output = ML.model.run(on: self.places)
+            let busyScores = ML.model.run(on: self.bookmarks)
 
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()
-                for i in 0..<self!.places.count {
-                    let busyScore = ML.model.generateBusyScore(from: output[i])
-                    self?.places[i].updateBusyScore(busyScore: busyScore)
+                for i in 0..<self!.bookmarks.count {
+                    self?.bookmarks[i].updateBusyScore(busyScore: busyScores[i])
                 }
                 self?.logger.info("INFO: Finished updating BusyScores.")
                 self?.feedback.notificationOccurred(.success)
@@ -107,7 +106,7 @@ class BookmarksManager: ObservableObject {
     }
     
     public func updateScoreFor(id: String) {
-        if let place = places.first(where: { $0.id == id } ) {
+        if let place = bookmarks.first(where: { $0.id == id } ) {
             if let currentScore = place.busyScore {
                 place.updateBusyScore(busyScore: BusyScore())
                     if currentScore.isExpired() || currentScore.score == .none {
@@ -117,11 +116,10 @@ class BookmarksManager: ObservableObject {
                                 return
                             }
                             
-                            let output = ML.model.run(on: [place]).first!
+                            let busyScore = ML.model.run(on: [place]).first!
                             
                             DispatchQueue.main.async { [weak self] in
                                 self?.objectWillChange.send()
-                                let busyScore = ML.model.generateBusyScore(from: output)
                                 place.updateBusyScore(busyScore: busyScore)
                             }
                         }
@@ -135,7 +133,7 @@ class BookmarksManager: ObservableObject {
     }
     
     private func save() {
-        if let encoded = try? JSONEncoder().encode(self.places) {
+        if let encoded = try? JSONEncoder().encode(self.bookmarks) {
             self.defaults.set(encoded, forKey: saveKey)
             logger.info("INFO: UserDefaults save successful.")
         }

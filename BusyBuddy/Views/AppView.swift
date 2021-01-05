@@ -45,7 +45,6 @@ struct AppView: View {
                 }
                 .onAppear {
                     if firstLoad {
-                        self.logger.debug("First load: \(firstLoad)")
                         updateScores()
                         firstLoad = false
                     }

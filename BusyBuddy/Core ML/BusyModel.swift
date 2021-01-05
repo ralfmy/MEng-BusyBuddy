@@ -4,6 +4,7 @@
 //
 //  Created by Ralf Michael Yap on 02/11/2020.
 //
+//  With help from: https://developer.apple.com/documentation/vision/classifying_images_with_vision_and_core_ml
 
 import Foundation
 import CoreML
@@ -11,15 +12,21 @@ import Vision
 import UIKit
 
 protocol BusyModel: ObservableObject {
+    var images: [UIImage] { get set }
+    var request: VNCoreMLRequest { get set }
     var observations: [[VNObservation]] { get set }
     var confidenceThreshold: VNConfidence { get set }
     
-    lazy var request: VNCoreMLRequest { get set }
+    func classify(images: [UIImage]) -> Self
+    
+    func processResults(for request: VNRequest, error: Error?)
+    
+    func generateBusyScores() -> [BusyScore]
 }
 
 extension BusyModel {
-    
-    public func run(on places: [Place]) -> [(UIImage, CoreMLModelResult)] {
+
+    public func run(on places: [Place]) -> [BusyScore] {
         if !places.isEmpty {
             print("INFO: Running model on \(places.count) images")
             // CHECK SCORE CACHE
@@ -32,12 +39,11 @@ extension BusyModel {
                 }
             }
             
-            let results = self.inputImages(images: images).preprocess().predict().postprocess().results
+            let busyScores = self.classify(images: images).generateBusyScores()
             print("INFO: Model finished.")
-            return Array(zip(images, results))
-            
+            return busyScores
         }
-        return Array(zip([], []))
+        return []
     }
 }
 
@@ -72,7 +78,7 @@ public final class CoreMLModelResult {
 struct ML {
 
 //    static let model = YOLO()
-    static let model = BusyClassifier(confidenceThreshold: 0.6)
+    static let model = YOLO()
     private init () {}
     
 }

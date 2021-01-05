@@ -19,6 +19,8 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
+			<key>INIntentDescription</key>
+			<string>Select a bookmarked Place.</string>
 			<key>INIntentDescriptionID</key>
 			<string>bQcfv7</string>
 			<key>INIntentEligibleForWidgets</key>

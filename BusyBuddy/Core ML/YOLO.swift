@@ -11,17 +11,27 @@ import CoreML
 import Vision
 import os.log
 
-public final class YOLO: CoreMLModel {
-    
+public final class YOLO: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "YOLO")
     
-    private let model = YOLOv3()
+    lazy var request: VNCoreMLRequest = {
+        do {
+            let model = try VNCoreMLModel(for: YOLOv3()
+                                            .model)
+            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+                self?.processResults(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .scaleFill
+            return request
+        } catch {
+            fatalError("Failed to load Vision ML model: \(error)")
+        }
 
-    var images: [UIImage]?
-    var processedInputs: [MLFeatureProvider]?
-    var predictionOutput: [MLFeatureProvider]?
-    var results: [CoreMLModelResult]
-    var confidenceThreshold: Double  // confidence in classification of a person object
+    }()
+
+    internal var images: [UIImage]
+    var observations: [[VNObservation]]
+    var confidenceThreshold: VNConfidence
     
     private let objClasses = [
         "person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat", "traffic light",
@@ -34,63 +44,60 @@ public final class YOLO: CoreMLModel {
         "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
     ]
     
-    init(confidenceThreshold: Double = 50) {
-        self.results = []
+    init(confidenceThreshold: VNConfidence = 0.5) {
+        self.images = []
+        self.observations = []
         self.confidenceThreshold = confidenceThreshold
     }
     
-    public func inputImages(images: [UIImage]) -> Self {
+    public func classify(images: [UIImage]) -> Self {
         self.images = images
-        return self
-    }
-    
-    public func preprocess() -> Self {
-        let scaled: [UIImage] = self.images!.map { $0.scaleTo(targetSize: CGSize(width: 416, height: 416)) }
-        let cvPixelBuffer: [CVPixelBuffer] = scaled.map { $0.toCVPixelBuffer()! }
-        self.processedInputs = cvPixelBuffer.map { YOLOv3Input(image: $0) }
-        return self
-    }
-    
-    public func predict() -> Self {
-        if let output = try? model.predictions(inputs: self.processedInputs as! [YOLOv3Input]) {
-            self.predictionOutput = output
-        } else {
-            self.predictionOutput = nil
-        }
-        return self
-    }
-    
-    public func postprocess() -> Self {
-        self.results = []
-        self.predictionOutput!.forEach { output in
-            let result = CoreMLModelResult()
-            let confidences = output.featureValue(for: "confidence")?.multiArrayValue
-            if confidences!.shape[0].intValue > 0 {
-                for i in 0...confidences!.shape[0].intValue - 1 {  // MUST CHECK FOR OFFLINE CAMERAS
-                    let dimension = getDimension(i: i, from: confidences!)
-                    let maxIndices = getIndicesOfMaxValues(from: dimension)
-                    maxIndices.forEach({ index in
-                        result.add(item: CoreMLModelResult.ClassificationConfidence(classification: objClasses[index], confidence: (dimension[index] * 100)))
-                    })
-                }
-                self.results.append(result)
-            } else {
-                self.results.append(CoreMLModelResult())
+        self.observations = []
+
+        images.forEach { image in
+            guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+            
+            let handler = VNImageRequestHandler(ciImage: ciImage)
+            do {
+                try handler.perform([self.request])
+            } catch {
+                self.logger.error("ERROR: Failed to run model - \(error.localizedDescription)")
             }
         }
+        
         return self
     }
     
-    public func generateBusyScore(from output: (UIImage, CoreMLModelResult)) -> BusyScore {
-        let image = output.0
-        let result = output.1
-        if let cc = result.getClassificationConfidences() {
-            let people = (cc.filter { $0.classification == "person" && $0.confidence >= self.confidenceThreshold })
-            self.logger.info("INFO: confidences \(people.map { $0.confidence })")
-            return BusyScore(count: people.count, image: image)
-        } else {
-            return BusyScore(count: -2, image: image)
+    func processResults(for request: VNRequest, error: Error?) {
+        guard let results = request.results else {
+            self.logger.error("ERROR: Unable to run model on image - \(error!.localizedDescription)")
+            return
         }
+        
+        let objects = results as! [VNRecognizedObjectObservation]
+        
+        if objects.isEmpty {
+            self.logger.info("INFO: No results.")
+        } else {
+//            objects.forEach { object in
+//                print("\(object.labels.first!.identifier): \(object.labels.first!.confidence)")
+//            }
+            self.observations.append(objects)
+        }
+        print("\n")
+    }
+    
+    public func generateBusyScores() -> [BusyScore] {
+        var busyScores = [BusyScore]()
+        for i in 0..<self.observations.count {
+            let image = self.images[i]
+            let observation = self.observations[i]
+            let objects = observation as! [VNRecognizedObjectObservation]
+            let people = objects.filter { $0.labels.first!.identifier == "person" && $0.labels.first!.confidence >= self.confidenceThreshold }
+            busyScores.append(BusyScore(count: people.count, image: image))
+        }
+        
+        return busyScores
     }
     
     private func getDimension(i: Int, from matrix: MLMultiArray) -> [Double] {
