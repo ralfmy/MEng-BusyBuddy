@@ -12,13 +12,34 @@ struct MapView: View {
     @EnvironmentObject var placesManager: PlacesManager
     
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var selectedPlace: Place? = nil
 
     var body: some View {
         Map(coordinateRegion: $region, annotationItems: placesManager.getPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
-                MapAnnotationView(place: place)
+                VStack {
+                    Text(place.commonName)
+                        .font(.caption2)
+                        .fontWeight(.medium)
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.appBlue).opacity(0.8))
+                }.onTapGesture {
+                    self.selectedPlace = place
+                }
             }
         }
+        .sheet(item: self.$selectedPlace) { place in
+            NavigationView {
+                PlaceDetail(place: place)
+                    .navigationBarItems(trailing: Button(action: {
+                        self.selectedPlace = nil
+                    }) {
+                        Text("Done").foregroundColor(.white)
+                    })
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

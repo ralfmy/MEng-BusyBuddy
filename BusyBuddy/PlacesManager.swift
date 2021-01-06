@@ -19,7 +19,7 @@ class PlacesManager: ObservableObject {
     }
     
     public func getPlaces() -> [Place] {
-        return self.places
+        return self.places.sorted(by: { $0.commonName < $1.commonName })
     }
     
     private func loadPlaces() {

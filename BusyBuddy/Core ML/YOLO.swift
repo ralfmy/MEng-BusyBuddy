@@ -14,10 +14,11 @@ import os.log
 public final class YOLO: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "YOLO")
     
+    let detector = YOLOv3()
+    
     lazy var request: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: YOLOv3()
-                                            .model)
+            let model = try VNCoreMLModel(for: self.detector.model)
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processResults(for: request, error: error)
             })

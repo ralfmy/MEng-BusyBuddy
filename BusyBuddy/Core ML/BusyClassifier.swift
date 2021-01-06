@@ -13,10 +13,12 @@ import os.log
 
 public final class BusyClassifier: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BusyClassifier")
+    
+    let classifier = BusyClassifier6()
 
     lazy var request: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: BusyClassifier6().model)
+            let model = try VNCoreMLModel(for: self.classifier.model)
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processResults(for: request, error: error)
             })
