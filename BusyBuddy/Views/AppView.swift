@@ -4,8 +4,8 @@
 //
 //  Created by Ralf Michael Yap on 31/10/2020.
 //
-//  With help from
-//  https://www.hackingwithswift.com/quick-start/swiftui/introduction-to-using-core-data-with-swiftui 
+//  With help from:
+// https://github.com/TreatTrick/Hide-TabBar-In-SwiftUI
 
 import SwiftUI
 import CoreData

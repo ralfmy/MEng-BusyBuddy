@@ -48,12 +48,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if url.scheme == "busybuddy" {
             if url.host == "bookmarks" {
                 appState.tabSelection = .bookmarks
+                if !url.pathComponents.isEmpty {
+                    appState.placeSelectionId = url.pathComponents[1]
+                }
             }
             if url.host == "map" {
                 appState.tabSelection = .map
-            }
-            if !url.pathComponents.isEmpty {
-                appState.placeSelectionId = url.pathComponents[1]
             }
         }
     }

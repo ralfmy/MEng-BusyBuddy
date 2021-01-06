@@ -16,8 +16,7 @@ public final class BusyClassifier: BusyModel {
 
     lazy var request: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: BusyClassifier5()
-                                            .model)
+            let model = try VNCoreMLModel(for: BusyClassifier6().model)
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processResults(for: request, error: error)
             })

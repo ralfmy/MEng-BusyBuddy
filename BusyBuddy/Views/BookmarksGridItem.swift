@@ -12,8 +12,6 @@ struct BookmarksGridItem: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var bookmarksManager: BookmarksManager
     
-    @State private var tapped = false
-    
     @State var place: Place
     
     var body: some View {

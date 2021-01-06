@@ -23,7 +23,7 @@ struct PlaceDetail: View {
         ZStack {
             VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
-                    PlaceMap(place: place).edgesIgnoringSafeArea(.all).frame(height: 300)
+                    PlaceMap(place: self.place).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {
                         HStack(alignment: .top) {
                             CommonName
@@ -44,9 +44,9 @@ struct PlaceDetail: View {
         }
         .navigationBarItems(trailing: UpdateButton)
         .blur(radius: setBlurRadius())
-        .overlay(ImageView(isShowing: $isViewingImage, busyScore: place.busyScore == nil ? BusyScore() : place.busyScore!))
+        .overlay(ImageView(isShowing: $isViewingImage, busyScore: self.place.busyScore == nil ? BusyScore() : self.place.busyScore!))
         .onAppear {
-            if bookmarksManager.contains(place: place) {
+            if bookmarksManager.contains(place: self.place) {
                 buttonState = 1
             }
             updateScore()
@@ -54,7 +54,7 @@ struct PlaceDetail: View {
     }
     
     private var CommonName: some View {
-        Text(place.commonName)
+        Text(self.place.commonName)
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(2)
@@ -86,11 +86,11 @@ struct PlaceDetail: View {
     private var FavButton: some View {
         Button(action: {
             impact.impactOccurred()
-            if bookmarksManager.contains(place: place) {
-                bookmarksManager.remove(place: place)
+            if bookmarksManager.contains(place: self.place) {
+                bookmarksManager.remove(place: self.place)
                 buttonState = 0
             } else {
-                bookmarksManager.add(place: place, busyScore: busyScore)
+                bookmarksManager.add(place: self.place, busyScore: busyScore)
                 buttonState = 1
             }
         }) {
@@ -118,7 +118,7 @@ struct PlaceDetail: View {
     }
     
     private func setBusyScore() -> BusyScore {
-        if let busyScore = place.busyScore {
+        if let busyScore = self.place.busyScore {
             return busyScore
         } else {
             return BusyScore()
@@ -126,12 +126,12 @@ struct PlaceDetail: View {
     }
     
     private func updateScore() {
-        if bookmarksManager.contains(place: place) {
-            bookmarksManager.updateScoreFor(id: place.id)
+        if bookmarksManager.contains(place: self.place) {
+            bookmarksManager.updateScoreFor(id: self.place.id)
         } else {
             self.place.updateBusyScore(busyScore: BusyScore())
             DispatchQueue.global(qos: .userInteractive).async {
-                let busyScore = ML.model.run(on: [place]).first!
+                let busyScore = ML.model.run(on: [self.place]).first!
                 DispatchQueue.main.async { [self] in
                     self.place.updateBusyScore(busyScore: busyScore)
                     self.feedback.notificationOccurred(.success)
@@ -141,7 +141,7 @@ struct PlaceDetail: View {
     }
     
     private func setLatUpdated() -> String {
-        if let busyScore = place.busyScore {
+        if let busyScore = self.place.busyScore {
             return "Last Updated: " + busyScore.dateAsString()
         } else {
             return "Last Updated: " + self.busyScore.dateAsString()
@@ -157,7 +157,7 @@ struct PlaceDetail: View {
     }
     
     private func setBackgroundColour() -> Color {
-        if let busyScore = place.busyScore {
+        if let busyScore = self.place.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.busyGreyLighter

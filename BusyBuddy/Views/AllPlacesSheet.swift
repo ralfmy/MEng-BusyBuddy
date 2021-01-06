@@ -13,9 +13,7 @@ struct AllPlacesSheet: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        UITableView.appearance().separatorColor = UIColor(Color.appBlue)
-
-        return NavigationView {
+        NavigationView {
             VStack {
                 PlacesList(places: placesManager.getPlaces())
                 Spacer()
@@ -35,7 +33,6 @@ struct AllPlacesSheet: View {
 }
 
 struct AllPlacesSheet_Previews: PreviewProvider {
-    @EnvironmentObject var store: PlacesDataManager
     @State static private var isShowingAll = false
 
     static var previews: some View {
