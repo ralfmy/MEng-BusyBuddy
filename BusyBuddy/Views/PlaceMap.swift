@@ -15,7 +15,9 @@ struct PlaceMap: View {
     
     var body: some View {
         Map(coordinateRegion: $region, annotationItems: [place]) { place in
-            MapMarker(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon))
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
+                JamCamAnnotation()
+            }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .brightness(-0.2)

@@ -17,14 +17,8 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $region, annotationItems: placesManager.getPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
-                VStack {
-                    Text(place.commonName)
-                        .font(.caption2)
-                        .fontWeight(.medium)
-                        .padding(8)
-                        .foregroundColor(.white)
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.appBlue).opacity(0.8))
-                }.onTapGesture {
+                JamCamAnnotation()
+                .onTapGesture {
                     self.selectedPlace = place
                 }
             }
