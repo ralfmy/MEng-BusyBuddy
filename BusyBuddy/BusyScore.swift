@@ -25,7 +25,7 @@ public final class BusyScore {
     var score: Score = .none
     var date: Date
     
-    let expiry: Double = 10 * 60
+    let expiry: Double = 0 * 60
     
     // count = -1 means loading; count = -2 means no result
     
