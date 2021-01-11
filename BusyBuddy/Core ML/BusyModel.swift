@@ -16,15 +16,31 @@ protocol BusyModel: ObservableObject {
     var request: VNCoreMLRequest { get set }
     var observations: [[VNObservation]] { get set }
     var confidenceThreshold: VNConfidence { get set }
-    
-    func classify(images: [UIImage]) -> Self
-    
+        
     func processResults(for request: VNRequest, error: Error?)
     
     func generateBusyScores() -> [BusyScore]
 }
 
 extension BusyModel {
+    
+    private func classify(images: [UIImage]) -> Self {
+        self.images = images
+        self.observations = []
+
+        images.forEach { image in
+            guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+            
+            let handler = VNImageRequestHandler(ciImage: ciImage)
+            do {
+                try handler.perform([self.request])
+            } catch {
+               print("ERROR: Failed to run model - \(error.localizedDescription)")
+            }
+        }
+        
+        return self
+    }
 
     public func run(on places: [Place]) -> [BusyScore] {
         if !places.isEmpty {

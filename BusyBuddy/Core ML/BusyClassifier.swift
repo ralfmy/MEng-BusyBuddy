@@ -14,7 +14,7 @@ import os.log
 public final class BusyClassifier: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BusyClassifier")
     
-    let classifier = BusyClassifier6()
+    let classifier = BusyClassifierCreateMLv6()
 
     lazy var request: VNCoreMLRequest = {
         do {
@@ -39,24 +39,6 @@ public final class BusyClassifier: BusyModel {
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
         
-    }
-    
-    public func classify(images: [UIImage]) -> Self {
-        self.images = images
-        self.observations = []
-
-        images.forEach { image in
-            guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
-            
-            let handler = VNImageRequestHandler(ciImage: ciImage)
-            do {
-                try handler.perform([self.request])
-            } catch {
-                self.logger.error("ERROR: Failed to run model - \(error.localizedDescription)")
-            }
-        }
-        
-        return self
     }
     
     internal func processResults(for request: VNRequest, error: Error?) {

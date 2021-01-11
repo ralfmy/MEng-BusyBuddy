@@ -12,8 +12,8 @@ struct JamCamAnnotation: View {
         Image(systemName: "video.fill")
             .font(.subheadline)
             .padding(16)
-            .foregroundColor(.appBlue)
-            .background(Circle().strokeBorder(Color.white, lineWidth: 5).background(Circle().fill(Color.white.opacity(0.7))))
+            .foregroundColor(.white)
+            .background(Circle().strokeBorder(Color.white.opacity(0.8), lineWidth: 3).background(Circle().fill(Color.appBlue)))
     }
 }
 

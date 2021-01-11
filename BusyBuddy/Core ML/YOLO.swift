@@ -40,25 +40,7 @@ public final class YOLO: BusyModel {
         self.confidenceThreshold = confidenceThreshold
     }
     
-    public func classify(images: [UIImage]) -> Self {
-        self.images = images
-        self.observations = []
-
-        images.forEach { image in
-            guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
-            
-            let handler = VNImageRequestHandler(ciImage: ciImage)
-            do {
-                try handler.perform([self.request])
-            } catch {
-                self.logger.error("ERROR: Failed to run model - \(error.localizedDescription)")
-            }
-        }
-        
-        return self
-    }
-    
-    func processResults(for request: VNRequest, error: Error?) {
+    internal func processResults(for request: VNRequest, error: Error?) {
         guard let results = request.results else {
             self.logger.error("ERROR: Unable to run model on image - \(error!.localizedDescription)")
             return
