@@ -14,6 +14,7 @@
 
 import Foundation
 import UIKit
+import WidgetKit
 import os.log
 
 class BookmarksManager: ObservableObject {
@@ -100,6 +101,7 @@ class BookmarksManager: ObservableObject {
                 }
                 self?.logger.info("INFO: Finished updating BusyScores.")
                 self?.feedback.notificationOccurred(.success)
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
             }
         }
 
@@ -121,6 +123,7 @@ class BookmarksManager: ObservableObject {
                             DispatchQueue.main.async { [weak self] in
                                 self?.objectWillChange.send()
                                 place.updateBusyScore(busyScore: busyScore)
+                                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
                             }
                         }
                         

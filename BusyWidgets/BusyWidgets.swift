@@ -11,7 +11,7 @@ import Intents
 
 @main
 struct BusyWidgets: Widget {
-    let kind: String = "BusyWidgets"
+    let kind: String = "com.zcabrmy.busy-widgets"
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectPlaceIntent.self, provider: BusyTimeline()) { entry in
