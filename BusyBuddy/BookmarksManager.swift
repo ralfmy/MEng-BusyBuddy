@@ -20,13 +20,15 @@ import os.log
 class BookmarksManager: ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BookmarksManager")
     
+    private var model: BusyModel
     private var defaults: UserDefaults
     private let saveKey = "Bookmarks"
     private let feedback = UINotificationFeedbackGenerator()
     
     @Published var bookmarks: [Place]
     
-    init(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) {
+    init(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!, model: BusyModel = ML.model) {
+        self.model = model
         self.defaults = defaults
         if let data = self.defaults.object(forKey: saveKey) as? Data {
             if let bookmarks = try? JSONDecoder().decode([Place].self, from: data) {
@@ -92,7 +94,13 @@ class BookmarksManager: ObservableObject {
                 return
             }
             
-            let busyScores = ML.model.run(on: self.bookmarks)
+            var images = [UIImage]()
+            self.bookmarks.forEach { place in
+                let image = place.downloadImage()
+                images.append(image)
+            }
+            
+            let busyScores = self.model.run(on: images)
 
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()
@@ -118,7 +126,9 @@ class BookmarksManager: ObservableObject {
                                 return
                             }
                             
-                            let busyScore = ML.model.run(on: [place]).first!
+                            let image = place.downloadImage()
+                            
+                            let busyScore = self.model.run(on: [image]).first!
                             
                             DispatchQueue.main.async { [weak self] in
                                 self?.objectWillChange.send()

@@ -11,11 +11,13 @@ import CoreML
 import Vision
 import UIKit
 
-protocol BusyModel: ObservableObject {
+protocol BusyModel: AnyObject {
     var images: [UIImage] { get set }
     var request: VNCoreMLRequest { get set }
     var observations: [[VNObservation]] { get set }
     var confidenceThreshold: VNConfidence { get set }
+    
+    init(confidenceThreshold: VNConfidence)
         
     func processResults(for request: VNRequest, error: Error?)
     
@@ -24,7 +26,7 @@ protocol BusyModel: ObservableObject {
 
 extension BusyModel {
     
-    private func classify(images: [UIImage]) -> Self {
+    private func classify(images: [UIImage]) {
         self.images = images
         self.observations = []
 
@@ -38,24 +40,14 @@ extension BusyModel {
                print("ERROR: Failed to run model - \(error.localizedDescription)")
             }
         }
-        
-        return self
     }
 
-    public func run(on places: [Place]) -> [BusyScore] {
-        if !places.isEmpty {
-            print("INFO: Running model on \(places.count) images")
+    public func run(on images: [UIImage]) -> [BusyScore] {
+        if !images.isEmpty {
+            print("INFO: Running model on \(images.count) images")
             // CHECK SCORE CACHE
-            var images = [UIImage]()
-            places.forEach { place in
-                if let data = try? Data(contentsOf: URL(string: place.getImageUrl())!) {
-                    if let image = UIImage(data: data) {
-                        images.append(image)
-                    }
-                }
-            }
-            
-            let busyScores = self.classify(images: images).generateBusyScores()
+            self.classify(images: images)
+            let busyScores = self.generateBusyScores()
             print("INFO: Model finished.")
             return busyScores
         }

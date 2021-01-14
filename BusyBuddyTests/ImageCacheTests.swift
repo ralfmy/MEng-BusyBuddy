@@ -11,8 +11,8 @@ import XCTest
 
 class ImageCacheTests: XCTestCase {
     
-    let universitySt = UIImage(named: "test_UniversitySt_GowerSt.jpg")
-    let oxfordSt = UIImage(named: "test_OxfordSt_DaviesSt.jpg")
+    let universitySt = UIImage(named: "StGiles_busy.jpg")
+    let oxfordSt = UIImage(named: "RegentSt_busy.jpg")
     let horseferryRd = UIImage(named: "test_HorseferryRd_MarshamSt.jpg")
     var imageCache: ImageCache!
 

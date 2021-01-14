@@ -5,7 +5,7 @@
 //  Created by Ralf Michael Yap on 01/11/2020.
 //
 
-import Foundation
+import UIKit
 import os.log
 
 //  Decode JSON response from TfL Unified API into this PlacE type.
@@ -40,20 +40,18 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
         }
     }
     
+    public func downloadImage() -> UIImage {
+        if let data = try? Data(contentsOf: URL(string: self.getImageUrl())!) {
+            if let image = UIImage(data: data) {
+                return image
+            }
+        }
+        return UIImage()
+    }
+    
     public func updateBusyScore(busyScore: BusyScore) {
         self.busyScore = busyScore
     }
-    
-//    public func busyScoreNeedsUpdate() -> Bool {
-//        let busyScore = self.busyScore
-//        if Date() > busyScore.date.addingTimeInterval(5) || busyScore.score == .none  {
-//            self.logger.info("INFO: BusyScore older than 5 minutes, requires update.")
-//            return true
-//        } else {
-//            self.logger.info("INFO: BusyScore does not need update.")
-//            return false
-//        }
-//    }
     
     public static func == (lhs: Place, rhs: Place) -> Bool {
         if (lhs.commonName == rhs.commonName && lhs.placeType == rhs.placeType && lhs.lat == rhs.lat && lhs.lon == rhs.lon)

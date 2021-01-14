@@ -40,7 +40,7 @@ public final class YOLO: BusyModel {
         self.confidenceThreshold = confidenceThreshold
     }
     
-    internal func processResults(for request: VNRequest, error: Error?) {
+    func processResults(for request: VNRequest, error: Error?) {
         guard let results = request.results else {
             self.logger.error("ERROR: Unable to run model on image - \(error!.localizedDescription)")
             return
