@@ -27,7 +27,7 @@ class BookmarksManager: ObservableObject {
     
     @Published var bookmarks: [Place]
     
-    init(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!, model: BusyModel = ML.model) {
+    init(defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!, model: BusyModel = ML.model) {
         self.model = model
         self.defaults = defaults
         if let data = self.defaults.object(forKey: saveKey) as? Data {

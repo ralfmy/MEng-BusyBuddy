@@ -59,16 +59,12 @@ class BookmarksTests: XCTestCase {
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        bookmarksManager = BookmarksManager(userDefaults)
+        bookmarksManager = BookmarksManager(defaults: userDefaults, model: BusyModelMock())
         bookmarksManager.add(place: ExamplePlaces.oxfordCircus)
     }
 
     override func tearDownWithError() throws {
 
-    }
-
-    func testNobookmarksReturnsEmptyArray() throws {
-        XCTAssertTrue(bookmarksManager.getPlaces().isEmpty)
     }
     
     func testAddPlace() throws {
@@ -88,6 +84,11 @@ class BookmarksTests: XCTestCase {
     }
     
     func testUpdateScores() {
-        
+        let place = bookmarksManager.getPlaces()[0]
+        XCTAssertNil(place.busyScore)
+        bookmarksManager.updateScores()
+        XCTAssertNotNil(place.busyScore)
+        let busyScore = place.busyScore!
+        XCTAssertEqual(busyScore.count, -1)
     }
 }
