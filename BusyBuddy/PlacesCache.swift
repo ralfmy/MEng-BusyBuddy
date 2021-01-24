@@ -8,7 +8,7 @@
 import Foundation
 import os.log
 
-class PlacesCache {
+public final class PlacesCache {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesCache")
     private let key = "Places"
     
