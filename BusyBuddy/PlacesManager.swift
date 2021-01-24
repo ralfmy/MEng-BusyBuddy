@@ -11,10 +11,12 @@ import os.log
 class PlacesManager: ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesManager")
     private let cache = PlacesCache()
+    private var networkClient: NetworkClient
     
     @Published private var places = [Place]()
     
-    init() {
+    init(client: NetworkClient) {
+        self.networkClient = client
         self.loadPlaces()
     }
     
@@ -33,8 +35,9 @@ class PlacesManager: ObservableObject {
     }
     
     private func fetchPlacesFromAPI() {
+        objectWillChange.send()
         self.logger.info("INFO: Fetching places from TfL Unified API.")
-        TfLUnifiedAPI.fetchAllJamCams(client: NetworkClient()) { places in
+        TfLUnifiedAPI.fetchAllJamCams(client: self.networkClient) { places in
             self.logger.info("INFO: Fetching success.")
             self.cache.setPlaces(places: places)
             DispatchQueue.main.async {

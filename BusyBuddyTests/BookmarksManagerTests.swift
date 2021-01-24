@@ -12,49 +12,9 @@ import os.log
 
 @testable import BusyBuddy
 
-final class BusyModelMock: BusyModel {
-    var images: [UIImage]
-    var observations: [[VNObservation]]
-    var confidenceThreshold: VNConfidence
-    
-    let model = MLModel()
-    
-    lazy var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
-    
-    init(confidenceThreshold: VNConfidence = 0.5) {
-        self.images = []
-        self.observations = []
-        self.confidenceThreshold = confidenceThreshold
-    }
-    
-    func processResults(for request: VNRequest, error: Error?) {
-        let classifications = [VNClassificationObservation()]
-        self.observations.append(classifications)
-    }
-    
-    func generateBusyScores() -> [BusyScore] {
-        return [BusyScore()]
-    }
-    
-    
-}
-
-class BookmarksTests: XCTestCase {
+class BookmarksManagerTests: XCTestCase {
     private var userDefaults: UserDefaults!
-    
-    var bookmarksManager: BookmarksManager!
+    private var bookmarksManager: BookmarksManager!
 
     override func setUpWithError() throws {
         userDefaults = UserDefaults(suiteName: #file)

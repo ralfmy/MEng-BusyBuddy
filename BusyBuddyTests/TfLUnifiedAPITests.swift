@@ -13,23 +13,9 @@ import os.log
 
 @testable import BusyBuddy
 
-class NetworkClientMock: NetworkClient {
-    override public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        completion(.success(try! JSONEncoder().encode([ExamplePlaces.oxfordCircus])))
-    }
-}
-
 class TfLUnifiedAPITests: XCTestCase {
     
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPITests")
-    
-    override func setUpWithError() throws {
-
-    }
-
-    override func tearDownWithError() throws {
-
-    }
 
     func testGetAllJamCamsAPICall() {
         var count = 0;

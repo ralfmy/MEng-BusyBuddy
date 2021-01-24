@@ -1,5 +1,5 @@
 //
-//  PlaceExample.swift
+//  ExamplePlaces.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 05/11/2020.

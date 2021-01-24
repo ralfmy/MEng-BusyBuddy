@@ -25,7 +25,7 @@ class BookmarksManager: ObservableObject {
     private let saveKey = "Bookmarks"
     private let feedback = UINotificationFeedbackGenerator()
     
-    @Published var bookmarks: [Place]
+    @Published private var bookmarks: [Place]
     
     init(defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!, model: BusyModel = ML.model) {
         self.model = model
