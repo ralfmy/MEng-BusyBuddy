@@ -80,7 +80,6 @@
 		BFA7570625ADD96800F7ED25 /* Test Images in Resources */ = {isa = PBXBuildFile; fileRef = BFA7570525ADD96800F7ED25 /* Test Images */; };
 		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
 		BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* BookmarksManager.swift */; };
-		BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
 		BFC5A08E25544A7100CE2B80 /* BookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */; };
 		BFC5A0A12554540E00CE2B80 /* ExamplePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */; };
@@ -93,7 +92,6 @@
 		BFC73D5E25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlacesList.swift */; };
-		BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DAFD2556BE2800F10883 /* ImageCache.swift */; };
 		BFE3DB22255734C400F10883 /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3DB21255734C400F10883 /* ImageCacheTests.swift */; };
 		BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1EE0D2577ECC00010981B /* ImageView.swift */; };
 /* End PBXBuildFile section */
@@ -201,7 +199,6 @@
 		BFABB53F2598A63600106605 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BFACD8232591CCA400940D50 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		BFAFD2E025540DB700972554 /* BookmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
-		BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScoreCache.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		BFC5A08D25544A7100CE2B80 /* BookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTests.swift; sourceTree = "<group>"; };
 		BFC5A0A02554540E00CE2B80 /* ExamplePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlace.swift; sourceTree = "<group>"; };
@@ -215,7 +212,6 @@
 		BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectPlaceIntent.intentdefinition; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
-		BFE3DAFD2556BE2800F10883 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		BFE3DB21255734C400F10883 /* ImageCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
 		BFF1EE0D2577ECC00010981B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,8 +329,6 @@
 				BF74AE2D259C91920062EAB2 /* Network */,
 				BF1EDF72255161FD006C900F /* UIImageUtils.swift */,
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
-				BFE3DAFD2556BE2800F10883 /* ImageCache.swift */,
-				BFBD960C2563FC610091C0FE /* BusyScoreCache.swift */,
 				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF3058D4254F2E4C0087FDEA /* Core Data */,
@@ -686,9 +680,7 @@
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF700FC325A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
-				BFE3DAFE2556BE2800F10883 /* ImageCache.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
-				BFBD960D2563FC610091C0FE /* BusyScoreCache.swift in Sources */,
 				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
