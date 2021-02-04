@@ -14,7 +14,7 @@ import os.log
 public final class BusyClassifier: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BusyClassifier")
     
-    let classifier = BusyClassifierCreateMLv6()
+    let classifier = BusyClassifierTuriCreate()
 
     lazy var request: VNCoreMLRequest = {
         do {
@@ -41,6 +41,41 @@ public final class BusyClassifier: BusyModel {
         
     }
     
+    private func applyGaussianBlur(_ input: CIImage, radius: Double) -> CIImage? {
+        let gaussianBlurFilter = CIFilter(name: "CIGaussianBlur")
+        gaussianBlurFilter?.setValue(input, forKey: "inputImage")
+        gaussianBlurFilter?.setValue(radius, forKey: "inputRadius")
+        return gaussianBlurFilter?.outputImage
+    }
+    
+    private func applyGreyscale(_ input: CIImage) -> CIImage? {
+        //https://stackoverflow.com/questions/33028684/how-to-implement-a-grayscale-filter-using-coreimage-filters
+        
+        let colourControlsFilter = CIFilter(name: "CIColorControls")
+        colourControlsFilter?.setValue(input, forKey: "inputImage")
+        colourControlsFilter?.setValue(0.0, forKey: "inputBrightness")
+        colourControlsFilter?.setValue(0.0, forKey: "inputSaturation")
+        colourControlsFilter?.setValue(1.1, forKey: "inputContrast")
+        
+        let temp = colourControlsFilter?.outputImage
+        
+        let exposureAdjustFilter = CIFilter(name: "CIExposureAdjust")
+        exposureAdjustFilter?.setValue(temp, forKey: "inputImage")
+        exposureAdjustFilter?.setValue(0.7, forKey: "inputEV")
+        
+        return exposureAdjustFilter?.outputImage
+    }
+    
+    func applyPreprocessing(to image: CIImage) -> CIImage? {
+        if let blurredImage = applyGaussianBlur(image, radius: 1.0) {
+            if let greyscaleImage = applyGreyscale(blurredImage) {
+                let outputImage = greyscaleImage
+                return outputImage
+            }
+        }
+        return nil
+    }
+        
     func processResults(for request: VNRequest, error: Error?) {
         guard let results = request.results else {
             self.logger.error("ERROR: Unable to run model on image - \(error!.localizedDescription)")

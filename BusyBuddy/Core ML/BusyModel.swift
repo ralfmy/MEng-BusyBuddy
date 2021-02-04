@@ -19,6 +19,8 @@ protocol BusyModel: AnyObject {
     
     init(confidenceThreshold: VNConfidence)
         
+    func applyPreprocessing(to image: CIImage) -> CIImage?
+    
     func processResults(for request: VNRequest, error: Error?)
     
     func generateBusyScores() -> [BusyScore]
@@ -33,11 +35,14 @@ extension BusyModel {
         images.forEach { image in
             guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
             
-            let handler = VNImageRequestHandler(ciImage: ciImage)
-            do {
-                try handler.perform([self.request])
-            } catch {
-               print("ERROR: Failed to run model - \(error.localizedDescription)")
+            if let preprocessedImage = applyPreprocessing(to: ciImage) {
+                let uiimage = UIImage(ciImage: preprocessedImage)
+                let handler = VNImageRequestHandler(ciImage: preprocessedImage)
+                do {
+                    try handler.perform([self.request])
+                } catch {
+                   print("ERROR: Failed to run model - \(error.localizedDescription)")
+                }
             }
         }
     }

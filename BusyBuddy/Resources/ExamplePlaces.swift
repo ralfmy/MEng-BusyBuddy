@@ -8,7 +8,7 @@
 import Foundation
 
 struct ExamplePlaces {
-    static var oxfordCircus = Place(id: "JamCams_00001.07389", commonName: "Oxford Circus", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07452.jpg")], lat: 51.5154, lon: -0.14204)
+    static var oxfordCircus = Place(id: "JamCams_00001.07452", commonName: "Oxford Circus", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07452.jpg")], lat: 51.5154, lon: -0.14204)
     
     static var stGilesCircus = Place(id: "JamCams_00001.07301", commonName: "St Giles Circus", placeType: "JamCam", additionalProperties: [AdditionalProperty(key: "imageUrl", value: "https://s3-eu-west-1.amazonaws.com/jamcams.tfl.gov.uk/00001.07301.jpg")], lat: 51.5164, lon: -0.13022)
     

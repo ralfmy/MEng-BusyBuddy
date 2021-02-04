@@ -23,11 +23,11 @@ public final class BusyModelMock: BusyModel {
     public var observations: [[VNObservation]]
     public var confidenceThreshold: VNConfidence
     
-    let model = MLModel()
+    let classifier = BusyClassifierCreateMLv6()
     
     lazy public var request: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: self.model)
+            let model = try VNCoreMLModel(for: self.classifier.model)
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processResults(for: request, error: error)
             })

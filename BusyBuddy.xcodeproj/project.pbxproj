@@ -41,6 +41,9 @@
 		BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
 		BF63A68025A9A76D00F3C9F4 /* BusyClassifierCreateMLv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */; };
 		BF63A68625A9A76F00F3C9F4 /* BusyClassifierCreateMLv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */; };
+		BF69F2DC25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
+		BF69F2E225CC909E00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
+		BF69F2E825CC909F00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
 		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -177,6 +180,7 @@
 		BF37526D25BD9FB800888E73 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
 		BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
 		BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgetView.swift; sourceTree = "<group>"; };
+		BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BusyClassifierTuriCreate.mlmodel; path = ../../../TuriCreate/BusyClassifierTuriCreate.mlmodel; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
 		BF6B1DB92573C5C100CF3FF0 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
+				BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */,
 				BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */,
 				BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */,
 				BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */,
@@ -650,6 +655,7 @@
 				BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */,
 				BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */,
+				BF69F2E225CC909E00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF894374259C81FF0009582A /* BusyEntry.swift in Sources */,
 				BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */,
 				BF89433C259C7EA90009582A /* UIImageUtils.swift in Sources */,
@@ -683,6 +689,7 @@
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */,
+				BF69F2DC25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF0B8902257556350036E0E0 /* BusyText.swift in Sources */,
 				BF8554BB25A704E10055A007 /* JamCamAnnotation.swift in Sources */,
 				BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */,
@@ -709,6 +716,7 @@
 			files = (
 				BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */,
 				BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */,
+				BF69F2E825CC909F00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksManagerTests.swift in Sources */,

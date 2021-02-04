@@ -90,7 +90,7 @@ struct PlaceDetail: View {
                 bookmarksManager.remove(place: self.place)
                 buttonState = 0
             } else {
-                bookmarksManager.add(place: self.place, busyScore: busyScore)
+                bookmarksManager.add(place: self.place)
                 buttonState = 1
             }
         }) {

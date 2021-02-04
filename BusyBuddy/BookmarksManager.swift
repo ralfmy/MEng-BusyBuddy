@@ -48,12 +48,7 @@ class BookmarksManager: ObservableObject {
         return self.bookmarks.first(where: { $0.id == id })
     }
     
-    public func getPlaceAt(index: Int) -> Place? {
-        self.bookmarks.sort(by: { $0.commonName < $1.commonName })
-        return bookmarks[index]
-    }
-    
-    public func add(place: Place, busyScore: BusyScore? = nil) {
+    public func add(place: Place) {
         objectWillChange.send()
         if !self.contains(place: place) {
             self.bookmarks.append(place)
@@ -112,33 +107,33 @@ class BookmarksManager: ObservableObject {
     }
     
     public func updateScoreFor(id: String) {
-        if let place = bookmarks.first(where: { $0.id == id } ) {
-            if let currentScore = place.busyScore {
-                place.updateBusyScore(busyScore: BusyScore())
-                    if currentScore.isExpired() || currentScore.score == .none {
-                        self.logger.info("INFO: BusyScore for id \(place.id) is expired - updating...")
-                        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                            guard let self = self else {
-                                return
-                            }
-                            
-                            let image = place.downloadImage()
-                            
-                            let busyScore = self.model.run(on: [image]).first!
-                            
-                            DispatchQueue.main.async { [weak self] in
-                                self?.objectWillChange.send()
-                                place.updateBusyScore(busyScore: busyScore)
-                                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
-                            }
+        if let index = self.bookmarks.firstIndex(where: { $0.id == id } ) {
+            if let currentScore = self.bookmarks[index].busyScore {
+                self.bookmarks[index].updateBusyScore(busyScore: BusyScore())
+                if currentScore.isExpired() || currentScore.score == .none {
+                    self.logger.info("INFO: BusyScore for id \(self.bookmarks[index].id) is expired - updating...")
+                    DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                        guard let self = self else {
+                            return
                         }
                         
-                    } else {
-                        self.logger.info("INFO: BusyScore for id \(place.id) is not expired - no need for update.")
-                        place.updateBusyScore(busyScore: currentScore)
+                        let image = self.bookmarks[index].downloadImage()
+                        
+                        let busyScore = self.model.run(on: [image]).first!
+                        
+                        DispatchQueue.main.async { [weak self] in
+                            self?.objectWillChange.send()
+                            self?.bookmarks[index].updateBusyScore(busyScore: busyScore)
+                            WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+                        }
                     }
+                    
+                } else {
+                    self.logger.info("INFO: BusyScore for id \(self.bookmarks[index].id) is not expired - no need for update.")
+                    bookmarks[index].updateBusyScore(busyScore: currentScore)
                 }
             }
+        }
     }
     
     private func save() {
