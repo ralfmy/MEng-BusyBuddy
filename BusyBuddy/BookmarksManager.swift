@@ -74,35 +74,60 @@ class BookmarksManager: ObservableObject {
     }
     
     public func updateScores() {
-        self.objectWillChange.send()
-        self.bookmarks.forEach { place in
-            place.updateBusyScore(busyScore: BusyScore())
-        }
-        
         self.logger.info("INFO: Updating BusyScores...")
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else {
                 return
             }
             
-            var images = [UIImage]()
-            self.bookmarks.forEach { place in
-                let image = place.downloadImage()
-                images.append(image)
-            }
+            var busyScores = [BusyScore]()
             
-            let busyScores = self.model.run(on: images)
-
+            for index in 0..<self.bookmarks.count {
+                let image = self.bookmarks[index].downloadImage()
+                let busyScore = self.model.run(on: [image]).first!
+                busyScores.append(busyScore)
+            }
+        
             DispatchQueue.main.async { [weak self] in
+                self?.objectWillChange.send()
                 self?.objectWillChange.send()
                 for i in 0..<self!.bookmarks.count {
                     self?.bookmarks[i].updateBusyScore(busyScore: busyScores[i])
                 }
-                self?.logger.info("INFO: Finished updating BusyScores.")
-                self?.feedback.notificationOccurred(.success)
-                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+
             }
         }
+        WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+        self.logger.info("INFO: Finished updating BusyScores.")
+        
+//        self.bookmarks.forEach { place in
+//            place.updateBusyScore(busyScore: BusyScore())
+//        }
+        
+//        self.logger.info("INFO: Updating BusyScores...")
+//        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            var images = [UIImage]()
+//            self.bookmarks.forEach { place in
+//                let image = place.downloadImage()
+//                images.append(image)
+//            }
+//
+//            let busyScores = self.model.run(on: images)
+//
+//            DispatchQueue.main.async { [weak self] in
+//                self?.objectWillChange.send()
+//                for i in 0..<self!.bookmarks.count {
+//                    self?.bookmarks[i].updateBusyScore(busyScore: busyScores[i])
+//                }
+//                self?.feedback.notificationOccurred(.success)
+//                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+//                self?.logger.info("INFO: Finished updating BusyScores.")
+//            }
+//        }
 
     }
     
@@ -124,7 +149,9 @@ class BookmarksManager: ObservableObject {
                         DispatchQueue.main.async { [weak self] in
                             self?.objectWillChange.send()
                             self?.bookmarks[index].updateBusyScore(busyScore: busyScore)
+                            self?.feedback.notificationOccurred(.success)
                             WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+                            self?.logger.info("INFO: Finished updating BusyScores.")
                         }
                     }
                     

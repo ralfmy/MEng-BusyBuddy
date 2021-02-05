@@ -64,7 +64,7 @@ extension BusyModel {
 struct ML {
 
 //    static let model = YOLO()
-    static let model = BusyClassifier()
+    static let model = BusyClassifier(confidenceThreshold: 0.6)
     private init () {}
     
 }

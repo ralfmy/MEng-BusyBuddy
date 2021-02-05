@@ -54,6 +54,7 @@ public final class YOLO: BusyModel {
         
         if objects.isEmpty {
             self.logger.info("INFO: No results.")
+            self.observations.append([])
         } else {
 //            objects.forEach { object in
 //                print("\(object.labels.first!.identifier): \(object.labels.first!.confidence)")
@@ -71,7 +72,6 @@ public final class YOLO: BusyModel {
             let people = objects.filter { $0.labels.first!.identifier == "person" && $0.labels.first!.confidence >= self.confidenceThreshold }
             busyScores.append(BusyScore(count: people.count, image: image))
         }
-        
         return busyScores
     }
     
