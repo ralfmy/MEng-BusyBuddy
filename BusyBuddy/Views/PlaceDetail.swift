@@ -132,7 +132,7 @@ struct PlaceDetail: View {
             self.place.updateBusyScore(busyScore: BusyScore())
             DispatchQueue.global(qos: .userInteractive).async {
                 let image = self.place.downloadImage()
-                let busyScore = ML.model.run(on: [image]).first!
+                let busyScore = ML.currentModel().run(on: [image]).first!
                 DispatchQueue.main.async { [self] in
                     self.place.updateBusyScore(busyScore: busyScore)
                     self.feedback.notificationOccurred(.success)

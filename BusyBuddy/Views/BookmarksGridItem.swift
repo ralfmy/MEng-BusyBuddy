@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct BookmarksGridItem: View {
-    
+struct BookmarksGridItem: View {    
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var bookmarksManager: BookmarksManager
     

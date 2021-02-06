@@ -27,7 +27,7 @@ class BookmarksManager: ObservableObject {
     
     @Published private var bookmarks: [Place]
     
-    init(defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!, model: BusyModel = ML.model) {
+    init(model: BusyModel = ML.currentModel(), defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) {
         self.model = model
         self.defaults = defaults
         if let data = self.defaults.object(forKey: saveKey) as? Data {
@@ -161,6 +161,15 @@ class BookmarksManager: ObservableObject {
                 }
             }
         }
+    }
+    
+    public func updateModel(_ model: BusyModel? = nil) {
+        if model == nil {
+            self.model = ML.currentModel(self.defaults)
+        } else {
+            self.model = model!
+        }
+        self.updateScores()
     }
     
     private func save() {

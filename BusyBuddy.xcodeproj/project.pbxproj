@@ -36,14 +36,14 @@
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37526D25BD9FB800888E73 /* MockObjects.swift */; };
 		BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */; };
+		BF4142EA25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
+		BF4142EB25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
+		BF4142EC25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
 		BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */; };
 		BF42D849259CA40A004DBE86 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
 		BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
 		BF63A68025A9A76D00F3C9F4 /* BusyClassifierCreateMLv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */; };
 		BF63A68625A9A76F00F3C9F4 /* BusyClassifierCreateMLv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */; };
-		BF69F2DC25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
-		BF69F2E225CC909E00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
-		BF69F2E825CC909F00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */; };
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
 		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -82,6 +82,7 @@
 		BF977A4E259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
 		BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
 		BFA7570625ADD96800F7ED25 /* Test Images in Resources */ = {isa = PBXBuildFile; fileRef = BFA7570525ADD96800F7ED25 /* Test Images */; };
+		BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */; };
 		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
 		BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFD2E025540DB700972554 /* BookmarksManager.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
@@ -179,8 +180,8 @@
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF37526D25BD9FB800888E73 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
 		BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
+		BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusyClassifierTuriCreate.mlmodel; sourceTree = "<group>"; };
 		BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgetView.swift; sourceTree = "<group>"; };
-		BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BusyClassifierTuriCreate.mlmodel; path = ../../../TuriCreate/BusyClassifierTuriCreate.mlmodel; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
 		BF6B1DB92573C5C100CF3FF0 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyClassifier.swift; sourceTree = "<group>"; };
 		BFA7570525ADD96800F7ED25 /* Test Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Images"; sourceTree = "<group>"; };
+		BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BFABB53F2598A63600106605 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BFACD8232591CCA400940D50 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				BF0B8901257556350036E0E0 /* BusyText.swift */,
 				BF0B88F325754DD00036E0E0 /* MapView.swift */,
 				BF8554BA25A704E10055A007 /* JamCamAnnotation.swift */,
+				BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				BFAFD2E025540DB700972554 /* BookmarksManager.swift */,
 				BF1EDF72255161FD006C900F /* UIImageUtils.swift */,
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
+				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
 				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
 				BF74AE2D259C91920062EAB2 /* Network */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
@@ -338,7 +342,6 @@
 				BFC5A09F255453EF00CE2B80 /* Resources */,
 				BF305891254F2C3E0087FDEA /* Assets.xcassets */,
 				BF305899254F2C3E0087FDEA /* Info.plist */,
-				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
 			);
 			path = BusyBuddy;
 			sourceTree = "<group>";
@@ -376,7 +379,7 @@
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
-				BF69F2DB25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel */,
+				BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */,
 				BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */,
 				BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */,
 				BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */,
@@ -655,7 +658,7 @@
 				BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */,
 				BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */,
-				BF69F2E225CC909E00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
+				BF4142EC25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF894374259C81FF0009582A /* BusyEntry.swift in Sources */,
 				BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */,
 				BF89433C259C7EA90009582A /* UIImageUtils.swift in Sources */,
@@ -686,10 +689,11 @@
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
+				BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */,
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */,
-				BF69F2DC25CC909600DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
+				BF4142EA25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF0B8902257556350036E0E0 /* BusyText.swift in Sources */,
 				BF8554BB25A704E10055A007 /* JamCamAnnotation.swift in Sources */,
 				BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */,
@@ -716,7 +720,7 @@
 			files = (
 				BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */,
 				BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */,
-				BF69F2E825CC909F00DA323F /* BusyClassifierTuriCreate.mlmodel in Sources */,
+				BF4142EB25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksManagerTests.swift in Sources */,

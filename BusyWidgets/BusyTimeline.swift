@@ -35,7 +35,7 @@ struct BusyTimeline: IntentTimelineProvider {
         
         let place = Place(id: placeItem.identifier!, commonName: placeItem.displayString, placeType: placeItem.placeType!, additionalProperties: [AdditionalProperty(key: "imageUrl", value: placeItem.imageUrl!)], lat: placeItem.lat!.doubleValue, lon: placeItem.lon!.doubleValue)
         let image = place.downloadImage()
-        let busyScore = ML.model.run(on: [image]).first!
+        let busyScore = ML.currentModel().run(on: [image]).first!
 
         place.updateBusyScore(busyScore: busyScore)
         

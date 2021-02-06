@@ -19,6 +19,7 @@ public final class NetworkClientMock: NetworkClient {
 }
 
 public final class BusyModelMock: BusyModel {
+
     public var images: [UIImage]
     public var observations: [[VNObservation]]
     public var confidenceThreshold: VNConfidence
@@ -43,6 +44,10 @@ public final class BusyModelMock: BusyModel {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
+    }
+    
+    public func applyPreprocessing(to image: CIImage) -> CIImage? {
+        return image
     }
     
     public func processResults(for request: VNRequest, error: Error?) {

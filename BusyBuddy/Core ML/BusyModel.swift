@@ -60,11 +60,29 @@ extension BusyModel {
     }
 }
 
-// Singleton
 struct ML {
-
-//    static let model = YOLO()
-    static let model = BusyClassifier(confidenceThreshold: 0.6)
-    private init () {}
     
+    private static let yolo = YOLO()
+    private static let classifier = BusyClassifier(confidenceThreshold: 0.6)
+    
+    static func currentModel(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) -> BusyModel {
+        if let rawValue = defaults.integer(forKey: "model") as? Int {
+            let modelType = ModelType(rawValue: rawValue)
+            switch modelType {
+            case .yolo:
+                return self.yolo
+            case .classifier_tc:
+                return self.classifier
+            default:
+                return self.classifier
+            }
+        }
+        defaults.set(ModelType.classifier_tc.rawValue, forKey: "model")
+        return self.classifier
+    }
+}
+
+enum ModelType: Int {
+    case yolo
+    case classifier_tc
 }

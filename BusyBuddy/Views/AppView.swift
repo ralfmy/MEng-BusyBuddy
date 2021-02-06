@@ -38,7 +38,7 @@ struct AppView: View {
                 // Tab 1
                 BookmarksGrid()
                 .sheet(isPresented: $isShowingAll) {
-                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(bookmarksManager)
+                    AllPlacesSheet(isPresented: $isShowingAll)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
@@ -57,6 +57,13 @@ struct AppView: View {
                     Image(systemName: "map.fill")
                 }
                 .tag(Tab.map)
+                
+                // Tab 3
+                SettingsView()
+                .tabItem {
+                    Image(systemName: "switch.2")
+                }
+                .tag(Tab.settings)
             }
             
             .navigationTitle(setNavigationBarTitle(tabSelection: appState.tabSelection))
@@ -73,6 +80,8 @@ struct AppView: View {
             return "Bookmarks"
         case .map:
             return ""
+        case .settings:
+            return "Settings"
         }
     }
     
@@ -82,6 +91,8 @@ struct AppView: View {
             return false
         case .map:
             return true
+        case .settings:
+            return false
         }
     }
     
@@ -118,6 +129,7 @@ extension AppView {
     enum Tab: Hashable {
         case bookmarks
         case map
+        case settings
     }
 }
 
