@@ -68,7 +68,7 @@ struct AppView: View {
             
             .navigationTitle(setNavigationBarTitle(tabSelection: appState.tabSelection))
             .navigationBarHidden(setNavigationBarHidden(tabSelection: appState.tabSelection))
-            .navigationBarItems(leading: SearchButton, trailing: UpdateButton)
+            .navigationBarItems(leading: setNavigationBarItemLeading(tabSelection: appState.tabSelection), trailing: setNavigationBarItemTrailing(tabSelection: appState.tabSelection))
             .accentColor(.white)
         }
         .accentColor(.white)
@@ -93,6 +93,24 @@ struct AppView: View {
             return true
         case .settings:
             return false
+        }
+    }
+    
+    private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
+        switch tabSelection {
+        case .bookmarks:
+            return AnyView(SearchButton)
+        default:
+            return AnyView(EmptyView())
+        }
+    }
+    
+    private func setNavigationBarItemTrailing(tabSelection: Tab) -> some View {
+        switch tabSelection {
+        case .bookmarks:
+            return AnyView(UpdateButton)
+        default:
+            return AnyView(EmptyView())
         }
     }
     

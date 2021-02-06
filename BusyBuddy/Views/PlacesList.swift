@@ -22,7 +22,7 @@ struct PlacesList: View {
                     }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                 }
                 Spacer()
-                DistanceText
+//                DistanceText
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
         }

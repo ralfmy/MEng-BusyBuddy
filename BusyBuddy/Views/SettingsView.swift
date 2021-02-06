@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct SettingsView: View {
-    let columns: [GridItem] = [GridItem(.flexible(), spacing: 12, alignment: .leading), GridItem(.flexible(), spacing: 12, alignment: .trailing)]
+//    let columns: [GridItem] = [GridItem(.flexible(), spacing: 12, alignment: .leading), GridItem(.flexible(), spacing: 12, alignment: .trailing)]
         
     var body: some View {
         VStack(alignment: .leading) {
             Spacer().frame(height: 10)
             Text("ML MODEL")
                 .font(.caption)
+                .fontWeight(.semibold)
                 .foregroundColor(.gray)
                 .frame(alignment: .leading)
                 .padding(.bottom, 5)
-            LazyVGrid(columns: columns, alignment: .center, spacing: 16, pinnedViews: [])
-            {
-                ModelSelectionView(displayName: "TuriCreate Image Classifier", modelType: ModelType.classifier_tc)
-                ModelSelectionView(displayName: "YOLO", modelType: ModelType.yolo)
-            }
+            VStack {
+                ModelSelectionView(displayName: "TuriCreate Classifier", modelType: ModelType.tcv1)
+                ModelSelectionView(displayName: "TuriCreate Classifier pre", modelType: ModelType.tcv2)
+                ModelSelectionView(displayName: "TuriCreate Classifier pre + aug", modelType: ModelType.tcv3)
+                ModelSelectionView(displayName: "Create ML Classifier v6", modelType: ModelType.cmlv6)
+                ModelSelectionView(displayName: "YOLOv3", modelType: ModelType.yolo)
+                ModelSelectionView(displayName: "YOLOv3 Tiny", modelType: ModelType.yolotiny)
+            }.padding(0)
+            Spacer()
         }
         .padding(.leading).padding(.trailing)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -42,10 +47,10 @@ struct ModelSelectionView: View {
     var body: some View {
         HStack {
             Image(systemName: setIcon()).font(.title2)
-            Text(displayName).font(.subheadline).fontWeight(.medium)
+            Text(displayName).font(.headline).fontWeight(.medium)
         }
         .foregroundColor(setForegroundColour())
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40, alignment: .leading)
         .padding(.top, 8).padding(.bottom, 8).padding(.leading, 12).padding(.trailing, 12)
         .background(
             RoundedRectangle(cornerRadius: 16)
@@ -85,6 +90,6 @@ struct ModelSelectionView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView().previewLayout(.sizeThatFits)
+        SettingsView()
     }
 }

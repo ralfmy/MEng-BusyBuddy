@@ -11,10 +11,11 @@ import CoreML
 import Vision
 import os.log
 
-public final class BusyClassifier: BusyModel {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "BusyClassifier")
+public final class TuriCreateModelv2: BusyModel {
+    // With preprocessing, no augmentation
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateModelv2")
     
-    let classifier = BusyClassifierTuriCreate()
+    let classifier = TuriCreateClassifierv2()
 
     lazy var request: VNCoreMLRequest = {
         do {
@@ -67,13 +68,14 @@ public final class BusyClassifier: BusyModel {
     }
     
     func applyPreprocessing(to image: CIImage) -> CIImage? {
-        if let blurredImage = applyGaussianBlur(image, radius: 1.0) {
-            if let greyscaleImage = applyGreyscale(blurredImage) {
-                let outputImage = greyscaleImage
-                return outputImage
-            }
-        }
-        return nil
+//        if let blurredImage = applyGaussianBlur(image, radius: 0.8) {
+//            if let greyscaleImage = applyGreyscale(blurredImage) {
+//                let outputImage = greyscaleImage
+//                return outputImage
+//            }
+//        }
+//        return nil
+        return image
     }
         
     func processResults(for request: VNRequest, error: Error?) {

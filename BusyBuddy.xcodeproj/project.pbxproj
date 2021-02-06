@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
 		BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88F325754DD00036E0E0 /* MapView.swift */; };
-		BF0B8902257556350036E0E0 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
 		BF1B84922598ABEC00EC912D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFABB53D2598A63600106605 /* WidgetKit.framework */; };
 		BF1B84932598ABEC00EC912D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFABB53F2598A63600106605 /* SwiftUI.framework */; };
 		BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1B84952598ABEC00EC912D /* BusyWidgets.swift */; };
@@ -36,24 +34,18 @@
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37526D25BD9FB800888E73 /* MockObjects.swift */; };
 		BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */; };
-		BF4142EA25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
-		BF4142EB25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
-		BF4142EC25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */; };
 		BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */; };
-		BF42D849259CA40A004DBE86 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B88E6257546640036E0E0 /* BusyIcon.swift */; };
-		BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B8901257556350036E0E0 /* BusyText.swift */; };
-		BF63A68025A9A76D00F3C9F4 /* BusyClassifierCreateMLv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */; };
-		BF63A68625A9A76F00F3C9F4 /* BusyClassifierCreateMLv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */; };
+		BF63A68025A9A76D00F3C9F4 /* CreateMLClassifierv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */; };
+		BF63A68625A9A76F00F3C9F4 /* CreateMLClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */; };
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
 		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
 		BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
-		BF700FC325A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */; };
-		BF700FC425A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */; };
+		BF700FC325A7406A008AE90B /* CreateMLClassifierv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */; };
+		BF700FC425A7406A008AE90B /* CreateMLClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */; };
 		BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C4F1D25A49FE700F1247D /* AppState.swift */; };
-		BF8554BB25A704E10055A007 /* JamCamAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8554BA25A704E10055A007 /* JamCamAnnotation.swift */; };
 		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF894337259C7EA40009582A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -71,6 +63,33 @@
 		BF894399259C89640009582A /* ExamplePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlaces.swift */; };
 		BF89439F259C8BD80009582A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
+		BF90240D25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
+		BF90240E25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
+		BF90240F25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
+		BF90241025CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
+		BF90241125CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
+		BF90241225CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
+		BF90241325CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
+		BF90241425CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
+		BF90241525CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
+		BF90244525CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
+		BF90244625CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
+		BF90244725CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
+		BF90244825CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
+		BF90244925CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
+		BF90244A25CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
+		BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
+		BF90245725CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
+		BF90245825CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
+		BF90246425CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
+		BF90246525CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
+		BF90246625CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
+		BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
+		BF90248325CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
+		BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
+		BF90248525CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
+		BF90248625CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
+		BF90248725CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
 		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
 		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
 		BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */; };
@@ -79,8 +98,8 @@
 		BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
 		BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
-		BF977A4E259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
-		BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */; };
+		BF977A4E259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */; };
+		BF977A4F259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */; };
 		BFA7570625ADD96800F7ED25 /* Test Images in Resources */ = {isa = PBXBuildFile; fileRef = BFA7570525ADD96800F7ED25 /* Test Images */; };
 		BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */; };
 		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
@@ -146,9 +165,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF0B88E6257546640036E0E0 /* BusyIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
 		BF0B88F325754DD00036E0E0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		BF0B8901257556350036E0E0 /* BusyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
 		BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BusyWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1B84952598ABEC00EC912D /* BusyWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgets.swift; sourceTree = "<group>"; };
 		BF1B84982598ABEF00EC912D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,25 +197,32 @@
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF37526D25BD9FB800888E73 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
 		BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
-		BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusyClassifierTuriCreate.mlmodel; sourceTree = "<group>"; };
 		BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgetView.swift; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
 		BF6B1DB92573C5C100CF3FF0 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
-		BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusyClassifierCreateMLv6.mlmodel; sourceTree = "<group>"; };
-		BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusyClassifierCreateMLv2.mlmodel; sourceTree = "<group>"; };
+		BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CreateMLClassifierv6.mlmodel; sourceTree = "<group>"; };
+		BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CreateMLClassifierv2.mlmodel; sourceTree = "<group>"; };
 		BF7C4F1D25A49FE700F1247D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		BF8554BA25A704E10055A007 /* JamCamAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamAnnotation.swift; sourceTree = "<group>"; };
 		BF894372259C81FF0009582A /* BusyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyEntry.swift; sourceTree = "<group>"; };
 		BF89438B259C88D60009582A /* BusyTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTimeline.swift; sourceTree = "<group>"; };
 		BF89439E259C8BD80009582A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesDataManager.swift; sourceTree = "<group>"; };
+		BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TuriCreateClassifierv3.mlmodel; sourceTree = "<group>"; };
+		BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TuriCreateClassifierv1.mlmodel; sourceTree = "<group>"; };
+		BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TuriCreateClassifierv2.mlmodel; sourceTree = "<group>"; };
+		BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv3.swift; sourceTree = "<group>"; };
+		BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv2.swift; sourceTree = "<group>"; };
+		BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMLModelv6.swift; sourceTree = "<group>"; };
+		BF90246325CF334D001B1E80 /* YOLOTiny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLOTiny.swift; sourceTree = "<group>"; };
+		BF90248025CF3971001B1E80 /* BusyIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
+		BF90248125CF3971001B1E80 /* BusyText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
-		BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyClassifier.swift; sourceTree = "<group>"; };
+		BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv1.swift; sourceTree = "<group>"; };
 		BFA7570525ADD96800F7ED25 /* Test Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Images"; sourceTree = "<group>"; };
 		BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -286,10 +310,9 @@
 				BFF1EE0D2577ECC00010981B /* ImageView.swift */,
 				BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */,
 				BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */,
-				BF0B88E6257546640036E0E0 /* BusyIcon.swift */,
-				BF0B8901257556350036E0E0 /* BusyText.swift */,
+				BF90248025CF3971001B1E80 /* BusyIcon.swift */,
+				BF90248125CF3971001B1E80 /* BusyText.swift */,
 				BF0B88F325754DD00036E0E0 /* MapView.swift */,
-				BF8554BA25A704E10055A007 /* JamCamAnnotation.swift */,
 				BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -331,9 +354,9 @@
 				BF92212D256E78160022CE80 /* PlacesManager.swift */,
 				BFD2D3872556B7CD00554869 /* BusyScore.swift */,
 				BFAFD2E025540DB700972554 /* BookmarksManager.swift */,
+				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
 				BF1EDF72255161FD006C900F /* UIImageUtils.swift */,
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
-				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
 				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
 				BF74AE2D259C91920062EAB2 /* Network */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
@@ -379,15 +402,21 @@
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
-				BF4142E925CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel */,
-				BF700FC225A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel */,
-				BF700FC125A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel */,
+				BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */,
+				BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */,
+				BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */,
+				BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */,
+				BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */,
 				BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */,
 				BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */,
 				BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */,
 				BF1EDF542550BB5A006C900F /* BusyModel.swift */,
 				BF1EDF6A25515E94006C900F /* YOLO.swift */,
-				BF977A4D259CD8A400BC6896 /* BusyClassifier.swift */,
+				BF90246325CF334D001B1E80 /* YOLOTiny.swift */,
+				BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */,
+				BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */,
+				BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */,
+				BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */,
 			);
 			path = "Core ML";
 			sourceTree = "<group>";
@@ -635,32 +664,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF63A68025A9A76D00F3C9F4 /* BusyClassifierCreateMLv6.mlmodel in Sources */,
+				BF63A68025A9A76D00F3C9F4 /* CreateMLClassifierv6.mlmodel in Sources */,
 				BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */,
-				BF42D849259CA40A004DBE86 /* BusyIcon.swift in Sources */,
+				BF90244725CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
 				BF89432D259C7E990009582A /* Place.swift in Sources */,
+				BF90244A25CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
 				BF894350259C7EB50009582A /* NetworkClient.swift in Sources */,
+				BF90248725CF3971001B1E80 /* BusyText.swift in Sources */,
 				BF89438C259C88D60009582A /* BusyTimeline.swift in Sources */,
 				BF894346259C7EAE0009582A /* PlacesManager.swift in Sources */,
 				BF894337259C7EA40009582A /* Colours.swift in Sources */,
 				BF894399259C89640009582A /* ExamplePlaces.swift in Sources */,
+				BF90246625CF334D001B1E80 /* YOLOTiny.swift in Sources */,
 				BF894332259C7E9D0009582A /* BusyScore.swift in Sources */,
 				BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */,
-				BF63A68625A9A76F00F3C9F4 /* BusyClassifierCreateMLv2.mlmodel in Sources */,
+				BF63A68625A9A76F00F3C9F4 /* CreateMLClassifierv2.mlmodel in Sources */,
 				BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
 				BF894341259C7EAC0009582A /* BookmarksManager.swift in Sources */,
 				BF894355259C7EB70009582A /* TfLUnifiedAPI.swift in Sources */,
 				BF89435A259C7EC00009582A /* YOLO.swift in Sources */,
 				BF89435F259C7EC20009582A /* BusyModel.swift in Sources */,
 				BF89434B259C7EB20009582A /* PlacesCache.swift in Sources */,
+				BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */,
+				BF90241225CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
 				BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BF90241525CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
+				BF90240F25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
 				BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
-				BF42D84A259CA40C004DBE86 /* BusyText.swift in Sources */,
+				BF90245825CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,
 				BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */,
-				BF4142EC25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF894374259C81FF0009582A /* BusyEntry.swift in Sources */,
-				BF977A4F259CD8A400BC6896 /* BusyClassifier.swift in Sources */,
+				BF977A4F259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */,
 				BF89433C259C7EA90009582A /* UIImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,6 +705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */,
+				BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */,
 				BF1EDF552550BB5A006C900F /* BusyModel.swift in Sources */,
 				BF3058D7254F2E590087FDEA /* CoreDataPlace+CoreDataClass.swift in Sources */,
 				BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */,
@@ -678,27 +714,32 @@
 				BF89439F259C8BD80009582A /* ImageLoader.swift in Sources */,
 				BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */,
 				BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */,
-				BF700FC425A7406A008AE90B /* BusyClassifierCreateMLv2.mlmodel in Sources */,
+				BF700FC425A7406A008AE90B /* CreateMLClassifierv2.mlmodel in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
-				BF977A4E259CD8A400BC6896 /* BusyClassifier.swift in Sources */,
+				BF977A4E259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */,
 				BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */,
+				BF90244825CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
-				BF700FC325A7406A008AE90B /* BusyClassifierCreateMLv6.mlmodel in Sources */,
+				BF700FC325A7406A008AE90B /* CreateMLClassifierv6.mlmodel in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
+				BF90244525CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF1EDF73255161FD006C900F /* UIImageUtils.swift in Sources */,
+				BF90241325CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */,
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF305889254F2C3C0087FDEA /* AppDelegate.swift in Sources */,
 				BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */,
-				BF4142EA25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
-				BF0B8902257556350036E0E0 /* BusyText.swift in Sources */,
-				BF8554BB25A704E10055A007 /* JamCamAnnotation.swift in Sources */,
+				BF90248525CF3971001B1E80 /* BusyText.swift in Sources */,
 				BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */,
 				BF3058D8254F2E590087FDEA /* CoreDataPlace+CoreDataProperties.swift in Sources */,
 				BFAFD2E125540DB700972554 /* BookmarksManager.swift in Sources */,
+				BF90246425CF334D001B1E80 /* YOLOTiny.swift in Sources */,
+				BF90241025CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
+				BF90240D25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
+				BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
 				BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
 				BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */,
@@ -707,7 +748,6 @@
 				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
-				BF0B88E7257546640036E0E0 /* BusyIcon.swift in Sources */,
 				BF30588B254F2C3C0087FDEA /* SceneDelegate.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* AppView.swift in Sources */,
 				BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */,
@@ -720,10 +760,18 @@
 			files = (
 				BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */,
 				BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */,
-				BF4142EB25CDFDD800234F7E /* BusyClassifierTuriCreate.mlmodel in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
+				BF90245725CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
+				BF90241425CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksManagerTests.swift in Sources */,
+				BF90241125CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
+				BF90246525CF334D001B1E80 /* YOLOTiny.swift in Sources */,
+				BF90244925CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
+				BF90240E25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
+				BF90248625CF3971001B1E80 /* BusyText.swift in Sources */,
+				BF90244625CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
+				BF90248325CF3971001B1E80 /* BusyIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

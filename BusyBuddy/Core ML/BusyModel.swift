@@ -62,27 +62,43 @@ extension BusyModel {
 
 struct ML {
     
+    private static let tcv1 = TuriCreateModelv1(confidenceThreshold: 0.6)
+    private static let tcv2 = TuriCreateModelv2(confidenceThreshold: 0.6)
+    private static let tcv3 = TuriCreateModelv3(confidenceThreshold: 0.6)
+    private static let cmlv6 = CreateMLModelv6(confidenceThreshold: 0.6)
     private static let yolo = YOLO()
-    private static let classifier = BusyClassifier(confidenceThreshold: 0.6)
+    private static let yolotiny = YOLOTiny()
     
     static func currentModel(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) -> BusyModel {
         if let rawValue = defaults.integer(forKey: "model") as? Int {
             let modelType = ModelType(rawValue: rawValue)
             switch modelType {
+            case .tcv1:
+                return self.tcv1
+            case .tcv2:
+                return self.tcv2
+            case .tcv3:
+                return self.tcv3
+            case .cmlv6:
+                return self.cmlv6
             case .yolo:
                 return self.yolo
-            case .classifier_tc:
-                return self.classifier
+            case .yolotiny:
+                return self.yolotiny
             default:
-                return self.classifier
+                return self.tcv3
             }
         }
-        defaults.set(ModelType.classifier_tc.rawValue, forKey: "model")
-        return self.classifier
+        defaults.set(ModelType.tcv1.rawValue, forKey: "model")
+        return self.tcv3
     }
 }
 
 enum ModelType: Int {
+    case tcv1
+    case tcv2
+    case tcv3
+    case cmlv6
     case yolo
-    case classifier_tc
+    case yolotiny
 }
