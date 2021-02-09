@@ -67,15 +67,28 @@ public final class TuriCreateModelv2: BusyModel {
         return exposureAdjustFilter?.outputImage
     }
     
+    private func brightenLowlight(_ input: CIImage) -> CIImage? {
+        let hour = Calendar.current.component(.hour, from: Date())
+        if hour > 17 {
+            let exposureAdjustFilter = CIFilter(name: "CIExposureAdjust")
+            exposureAdjustFilter?.setValue(input, forKey: "inputImage")
+            exposureAdjustFilter?.setValue(0.9, forKey: "inputEV")
+            return exposureAdjustFilter?.outputImage
+        } else {
+            return input
+        }
+    }
+    
     func applyPreprocessing(to image: CIImage) -> CIImage? {
-//        if let blurredImage = applyGaussianBlur(image, radius: 0.8) {
-//            if let greyscaleImage = applyGreyscale(blurredImage) {
-//                let outputImage = greyscaleImage
-//                return outputImage
-//            }
-//        }
-//        return nil
-        return image
+        if let brightenedImage = brightenLowlight(image) {
+            if let blurredImage = applyGaussianBlur(brightenedImage, radius: 0.8) {
+                if let greyscaleImage = applyGreyscale(blurredImage) {
+                    let outputImage = greyscaleImage
+                    return outputImage
+                }
+            }
+        }
+        return nil
     }
         
     func processResults(for request: VNRequest, error: Error?) {
