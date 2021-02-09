@@ -38,7 +38,7 @@ struct AppView: View {
                 // Tab 1
                 BookmarksGrid()
                 .sheet(isPresented: $isShowingAll) {
-                    AllPlacesSheet(isPresented: $isShowingAll)
+                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(placesManager).environmentObject(bookmarksManager)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
