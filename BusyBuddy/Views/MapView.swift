@@ -40,8 +40,8 @@ struct MapView: View {
 struct JamCamAnnotation: View {
     var body: some View {
         Image(systemName: "video.fill")
-            .font(.subheadline)
-            .padding(16)
+            .font(.caption2)
+            .padding(12)
             .foregroundColor(.white)
             .background(Circle().strokeBorder(Color.white.opacity(0.8), lineWidth: 3).background(Circle().fill(Color.appBlue)))
     }

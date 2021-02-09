@@ -59,7 +59,7 @@ public final class BusyScore {
         case .medium:
             return "FAIRLY BUSY"
         case .high:
-            return "VERY BUSY"
+            return "BUSY"
         case.unsure:
             return "NOT CONFIDENT"
         default:
