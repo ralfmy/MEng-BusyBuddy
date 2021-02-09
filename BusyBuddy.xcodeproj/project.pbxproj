@@ -64,31 +64,22 @@
 		BF89439F259C8BD80009582A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF89E5EB254F51E500AA5336 /* PlacesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89E5EA254F51E500AA5336 /* PlacesDataManager.swift */; };
 		BF90240D25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
-		BF90240E25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
 		BF90240F25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */; };
 		BF90241025CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
-		BF90241125CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
 		BF90241225CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */; };
 		BF90241325CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
-		BF90241425CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
 		BF90241525CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */; };
 		BF90244525CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
-		BF90244625CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
 		BF90244725CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */; };
 		BF90244825CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
-		BF90244925CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
 		BF90244A25CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
 		BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
-		BF90245725CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
 		BF90245825CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
 		BF90246425CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
-		BF90246525CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
 		BF90246625CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
 		BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
-		BF90248325CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
 		BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
 		BF90248525CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
-		BF90248625CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
 		BF90248725CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
 		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
 		BF92212E256E78160022CE80 /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesManager.swift */; };
@@ -761,17 +752,8 @@
 				BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */,
 				BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
-				BF90245725CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
-				BF90241425CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksManagerTests.swift in Sources */,
-				BF90241125CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
-				BF90246525CF334D001B1E80 /* YOLOTiny.swift in Sources */,
-				BF90244925CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
-				BF90240E25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
-				BF90248625CF3971001B1E80 /* BusyText.swift in Sources */,
-				BF90244625CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
-				BF90248325CF3971001B1E80 /* BusyIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

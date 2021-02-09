@@ -19,12 +19,11 @@ public final class NetworkClientMock: NetworkClient {
 }
 
 public final class BusyModelMock: BusyModel {
-
     public var images: [UIImage]
     public var observations: [[VNObservation]]
     public var confidenceThreshold: VNConfidence
     
-    let classifier = BusyClassifierCreateMLv6()
+    let classifier = TuriCreateClassifierv3()
     
     lazy public var request: VNCoreMLRequest = {
         do {
@@ -56,8 +55,7 @@ public final class BusyModelMock: BusyModel {
     }
     
     public func generateBusyScores() -> [BusyScore] {
-        return [BusyScore()]
+        return [BusyScore(count: 5)]
     }
-    
     
 }

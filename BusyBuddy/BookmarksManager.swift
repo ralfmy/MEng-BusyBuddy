@@ -87,18 +87,17 @@ class BookmarksManager: ObservableObject {
                 let busyScore = self.model.run(on: [image]).first!
                 busyScores.append(busyScore)
             }
-        
+            
             DispatchQueue.main.async { [weak self] in
-                self?.objectWillChange.send()
                 self?.objectWillChange.send()
                 for i in 0..<self!.bookmarks.count {
                     self?.bookmarks[i].updateBusyScore(busyScore: busyScores[i])
                 }
-
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.zcabrmy.busy-widgets")
+                self?.logger.info("INFO: Finished updating BusyScores.")
             }
         }
-        WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
-        self.logger.info("INFO: Finished updating BusyScores.")
+
         
 //        self.bookmarks.forEach { place in
 //            place.updateBusyScore(busyScore: BusyScore())
@@ -124,7 +123,7 @@ class BookmarksManager: ObservableObject {
 //                    self?.bookmarks[i].updateBusyScore(busyScore: busyScores[i])
 //                }
 //                self?.feedback.notificationOccurred(.success)
-//                WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+//                WidgetCenter.shared.reloadTimelines(ofKind: "com.zcabrmy.busy-widgets")
 //                self?.logger.info("INFO: Finished updating BusyScores.")
 //            }
 //        }
@@ -150,7 +149,7 @@ class BookmarksManager: ObservableObject {
                             self?.objectWillChange.send()
                             self?.bookmarks[index].updateBusyScore(busyScore: busyScore)
                             self?.feedback.notificationOccurred(.success)
-                            WidgetCenter.shared.reloadTimelines(ofKind: "com.mygame.busy-widgets")
+                            WidgetCenter.shared.reloadTimelines(ofKind: "com.zcabrmy.busy-widgets")
                             self?.logger.info("INFO: Finished updating BusyScores.")
                         }
                     }
