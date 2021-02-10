@@ -10,13 +10,14 @@ import os.log
 
 class PlacesManager: ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesManager")
-    private let cache = PlacesCache()
     private var networkClient: NetworkClient
+    private var cache: PlacesCache
     
     @Published private var places = [Place]()
     
-    init(client: NetworkClient) {
+    init(client: NetworkClient, cache: PlacesCache = PlacesCache()) {
         self.networkClient = client
+        self.cache = cache
         self.loadPlaces()
     }
     

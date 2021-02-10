@@ -14,7 +14,7 @@ import Vision
 
 public final class NetworkClientMock: NetworkClient {
     override public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        completion(.success(try! JSONEncoder().encode([ExamplePlaces.oxfordCircus])))
+        completion(.success(try! JSONEncoder().encode([ExamplePlaces.oxfordCircus, ExamplePlaces.gowerSt])))
     }
 }
 

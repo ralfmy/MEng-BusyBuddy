@@ -34,6 +34,7 @@
 		BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058E9254F49660087FDEA /* PersistenceManager.swift */; };
 		BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37526D25BD9FB800888E73 /* MockObjects.swift */; };
 		BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */; };
+		BF3ACD2C25D4156E0078E013 /* PlacesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3ACD2B25D4156E0078E013 /* PlacesManagerTests.swift */; };
 		BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */; };
 		BF63A68025A9A76D00F3C9F4 /* CreateMLClassifierv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */; };
 		BF63A68625A9A76F00F3C9F4 /* CreateMLClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */; };
@@ -188,6 +189,7 @@
 		BF3058E9254F49660087FDEA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		BF37526D25BD9FB800888E73 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
 		BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
+		BF3ACD2B25D4156E0078E013 /* PlacesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManagerTests.swift; sourceTree = "<group>"; };
 		BF42D83E259CA0B7004DBE86 /* BusyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyWidgetView.swift; sourceTree = "<group>"; };
 		BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGrid.swift; sourceTree = "<group>"; };
 		BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGridItem.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				BFC5A08D25544A7100CE2B80 /* BookmarksManagerTests.swift */,
 				BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */,
 				BF37526D25BD9FB800888E73 /* MockObjects.swift */,
+				BF3ACD2B25D4156E0078E013 /* PlacesManagerTests.swift */,
 			);
 			path = BusyBuddyTests;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */,
 				BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */,
 				BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */,
+				BF3ACD2C25D4156E0078E013 /* PlacesManagerTests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
 				BFC5A08E25544A7100CE2B80 /* BookmarksManagerTests.swift in Sources */,
 			);

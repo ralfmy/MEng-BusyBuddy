@@ -27,7 +27,7 @@ class TfLUnifiedAPITests: XCTestCase {
         }
         
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(count, 1)
+        XCTAssertEqual(count, 2)
     }    
 
 }

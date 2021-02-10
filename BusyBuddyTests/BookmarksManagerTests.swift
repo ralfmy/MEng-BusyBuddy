@@ -8,7 +8,6 @@
 import XCTest
 import Vision
 import CoreML
-import os.log
 
 @testable import BusyBuddy
 
@@ -86,12 +85,12 @@ class BookmarksManagerTests: XCTestCase {
         bookmarksManager.updateScores()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            XCTAssertNotNil(place.busyScore)
-            XCTAssertEqual(place.busyScore!.count, 5)
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 3)
+        XCTAssertNotNil(place.busyScore)
+        XCTAssertEqual(place.busyScore!.count, 5)
     }
     
     func testUpdateScoreForId() throws {
@@ -107,15 +106,15 @@ class BookmarksManagerTests: XCTestCase {
          
         bookmarksManager.updateScoreFor(id: ExamplePlaces.oxfordCircus.id)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            XCTAssertNotNil(oxfordCircus.busyScore)
-            XCTAssertEqual(oxfordCircus.busyScore!.count, 5)
-            
-            XCTAssertNil(gowerSt.busyScore)
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 3)
+        
+        XCTAssertNotNil(oxfordCircus.busyScore)
+        XCTAssertEqual(oxfordCircus.busyScore!.count, 5)
+        
+        XCTAssertNil(gowerSt.busyScore)
     }
 }
