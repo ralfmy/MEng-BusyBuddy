@@ -49,6 +49,16 @@
                ReferencedContainer = "container:BusyBuddy.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF3058A8254F2C3E0087FDEA"
+               BuildableName = "BusyBuddyUITests.xctest"
+               BlueprintName = "BusyBuddyUITests"
+               ReferencedContainer = "container:BusyBuddy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

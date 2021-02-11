@@ -23,6 +23,7 @@ struct BookmarksGrid: View {
                     BookmarksGridItem(place: place)
                 }
             }.padding(.leading).padding(.trailing)
+            .accessibility(identifier: "BookmarksGrid")
             Spacer().frame(height: 30)
         }
     }
