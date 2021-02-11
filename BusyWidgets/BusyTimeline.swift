@@ -14,11 +14,18 @@ struct BusyTimeline: IntentTimelineProvider {
     typealias Intent = SelectPlaceIntent
 
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), place: ExamplePlaces.oxfordCircus)
+        var place = ExamplePlaces.oxfordCircus
+        place.updateBusyScore(busyScore: BusyScore())
+        let image = place.downloadImage()
+        let busyScore = ML.currentModel().run(on: [image]).first!
+        place.updateBusyScore(busyScore: busyScore)
+        return Entry(date: Date(), place: place)
     }
     
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> Void) {
-        let entry = Entry(date: Date(), place: ExamplePlaces.oxfordCircus)
+        let place = ExamplePlaces.gowerSt
+        place.updateBusyScore(busyScore: BusyScore(count: 1))
+        let entry = Entry(date: Date(), place: place)
         completion(entry)
     }
     
