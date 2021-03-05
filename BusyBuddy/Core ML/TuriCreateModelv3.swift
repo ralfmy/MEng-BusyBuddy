@@ -12,33 +12,22 @@ import Vision
 import os.log
 
 public final class TuriCreateModelv3: BusyModel {
+    
     // With preprocessing and augmentation
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateModelv3")
     
-    let classifier = TuriCreateClassifierv3()
-
-    lazy var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.classifier.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
+    var model: MLModel = TuriCreateClassifierv3().model
     
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence  // Confidence in classification of busy or not_busy
+    internal var context: CIContext
     
     init(confidenceThreshold: VNConfidence = 0.5) {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
+        self.context = CIContext(options: nil)
         
     }
     
@@ -79,18 +68,19 @@ public final class TuriCreateModelv3: BusyModel {
         }
     }
     
-    func applyPreprocessing(to image: CIImage) -> CIImage? {
+    func applyPreprocessing(to image: CIImage) -> CGImage? {
         if let brightenedImage = brightenLowlight(image) {
             if let blurredImage = applyGaussianBlur(brightenedImage, radius: 0.8) {
                 if let greyscaleImage = applyGreyscale(blurredImage) {
                     let outputImage = greyscaleImage
-                    return outputImage
+                    let cgImg = self.context.createCGImage(outputImage, from: outputImage.extent)
+                    return cgImg
                 }
             }
         }
         return nil
     }
-        
+    
     func processResults(for request: VNRequest, error: Error?) {
         guard let results = request.results else {
             self.logger.error("ERROR: Unable to run model on image - \(error!.localizedDescription)")

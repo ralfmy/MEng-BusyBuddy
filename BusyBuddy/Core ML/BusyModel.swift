@@ -4,7 +4,7 @@
 //
 //  Created by Ralf Michael Yap on 02/11/2020.
 //
-//  With help from: https://developer.apple.com/documentation/vision/classifying_images_with_vision_and_core_ml
+//  With help from: https://developer.apple.com/documentation/vision/classifying_images_with_vision_and_core_ml  (results in unbounded memory growth)
 
 import Foundation
 import CoreML
@@ -12,14 +12,15 @@ import Vision
 import UIKit
 
 protocol BusyModel: AnyObject {
+    var model: MLModel { get set }
     var images: [UIImage] { get set }
-    var request: VNCoreMLRequest { get set }
     var observations: [[VNObservation]] { get set }
     var confidenceThreshold: VNConfidence { get set }
+    var context: CIContext { get set }
     
     init(confidenceThreshold: VNConfidence)
         
-    func applyPreprocessing(to image: CIImage) -> CIImage?
+    func applyPreprocessing(to image: CIImage) -> CGImage?
     
     func processResults(for request: VNRequest, error: Error?)
     
@@ -29,6 +30,8 @@ protocol BusyModel: AnyObject {
 extension BusyModel {
     
     private func classify(images: [UIImage]) {
+//        https://stackoverflow.com/questions/51560767/memory-leak-in-do-catch-block-ios-swift/51561341
+        
         self.images = images
         self.observations = []
 
@@ -36,15 +39,22 @@ extension BusyModel {
             guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
             
             if let preprocessedImage = applyPreprocessing(to: ciImage) {
-//                let uiimage = UIImage(ciImage: preprocessedImage)
-                let handler = VNImageRequestHandler(ciImage: preprocessedImage)
+                let uiimage = UIImage(cgImage: preprocessedImage)
+                let handler = VNImageRequestHandler(cgImage: preprocessedImage)
                 do {
-                    try handler.perform([self.request])
+                    try handler.perform([
+                        VNCoreMLRequest(model: VNCoreMLModel(for: self.model), completionHandler: { [weak self] request, error in
+                            self?.processResults(for: request, error: error)
+                        })
+                    ])
                 } catch {
                    print("ERROR: Failed to run model - \(error.localizedDescription)")
                 }
             }
         }
+        
+        self.context.clearCaches()
+        
     }
 
     public func run(on images: [UIImage]) -> [BusyScore] {

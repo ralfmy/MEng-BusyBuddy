@@ -14,34 +14,23 @@ import os.log
 public final class YOLOTiny: BusyModel {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "YOLOTiny")
     
-    let detector = YOLOv3Tiny()
-    
-    lazy var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.detector.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
+    var model = YOLOv3Tiny().model
 
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence
+    internal var context: CIContext
     
     init(confidenceThreshold: VNConfidence = 0.5) {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
+        self.context = CIContext(options: nil)
     }
     
-    func applyPreprocessing(to image: CIImage) -> CIImage? {
-        return image
+    func applyPreprocessing(to image: CIImage) -> CGImage? {
+        let cgImg = self.context.createCGImage(image, from: image.extent)
+        return cgImg
     }
     
     func processResults(for request: VNRequest, error: Error?) {

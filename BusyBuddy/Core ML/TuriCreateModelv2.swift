@@ -15,31 +15,20 @@ public final class TuriCreateModelv2: BusyModel {
     // With preprocessing, no augmentation
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateModelv2")
     
-    let classifier = TuriCreateClassifierv2()
-
-    lazy var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.classifier.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
+    var model = TuriCreateClassifierv2().model
     
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence  // Confidence in classification of busy or not_busy
+    internal var context: CIContext
     
     init(confidenceThreshold: VNConfidence = 0.5) {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
-        
+        self.context = CIContext(options: nil)
+
+    
     }
     
     private func applyGaussianBlur(_ input: CIImage, radius: Double) -> CIImage? {
@@ -79,12 +68,14 @@ public final class TuriCreateModelv2: BusyModel {
         }
     }
     
-    func applyPreprocessing(to image: CIImage) -> CIImage? {
+    func applyPreprocessing(to image: CIImage) -> CGImage? {
+//        https://www.raywenderlich.com/2305-core-image-tutorial-getting-started#toc-anchor-010
         if let brightenedImage = brightenLowlight(image) {
             if let blurredImage = applyGaussianBlur(brightenedImage, radius: 0.8) {
                 if let greyscaleImage = applyGreyscale(blurredImage) {
                     let outputImage = greyscaleImage
-                    return outputImage
+                    let cgImg = self.context.createCGImage(outputImage, from: outputImage.extent)
+                    return cgImg
                 }
             }
         }

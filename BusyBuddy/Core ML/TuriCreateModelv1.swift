@@ -15,35 +15,23 @@ public final class TuriCreateModelv1: BusyModel {
     // No preprocessing, no augmentation
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateClassifierv1")
     
-    let classifier = TuriCreateClassifierv1()
-
-    lazy var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.classifier.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
+    var model = TuriCreateClassifierv1().model
     
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence  // Confidence in classification of busy or not_busy
+    internal var context: CIContext
     
     init(confidenceThreshold: VNConfidence = 0.5) {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
-        
+        self.context = CIContext(options: nil)
     }
     
-    func applyPreprocessing(to image: CIImage) -> CIImage? {
-        return image
+    func applyPreprocessing(to image: CIImage) -> CGImage? {
+        let cgImg = self.context.createCGImage(image, from: image.extent)
+        return cgImg
     }
         
     func processResults(for request: VNRequest, error: Error?) {
