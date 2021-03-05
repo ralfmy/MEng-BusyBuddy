@@ -49,7 +49,7 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
         return UIImage()
     }
     
-    public func updateBusyScore(busyScore: BusyScore) {
+    public func updateBusyScore(busyScore: BusyScore?) {
         self.busyScore = busyScore
     }
     
