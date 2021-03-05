@@ -34,11 +34,11 @@ public final class BusyScore {
         self.image = image
         self.date = date
         switch self.count {
-        case 0..<10:
+        case 0..<5:
             self.score = .low
-        case 10..<15:
+        case 5..<7:
             self.score = .medium
-        case 15...:
+        case 7...:
             self.score = .high
         case -2:
             self.score = .unsure
@@ -62,15 +62,14 @@ public final class BusyScore {
             return "BUSY"
         case.unsure:
             return "NOT CONFIDENT"
-        default:
-            return "ERROR"
         }
     }
     
     public func dateAsString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: self.date)
+        let dateString = dateFormatter.string(from: Date())
+        return dateString
     }
     
     public func isExpired() -> Bool {
