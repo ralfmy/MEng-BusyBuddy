@@ -75,6 +75,10 @@ class BookmarksManager: ObservableObject {
     
     public func updateScores() {
         self.logger.info("INFO: Updating BusyScores...")
+        self.objectWillChange.send()
+        self.bookmarks.forEach { place in
+            place.updateBusyScore(busyScore: nil)
+        }
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else {
                 return
@@ -133,7 +137,7 @@ class BookmarksManager: ObservableObject {
     public func updateScoreFor(id: String) {
         if let index = self.bookmarks.firstIndex(where: { $0.id == id } ) {
             if let currentScore = self.bookmarks[index].busyScore {
-                self.bookmarks[index].updateBusyScore(busyScore: BusyScore())
+                self.bookmarks[index].updateBusyScore(busyScore: nil)
                 if currentScore.isExpired() || currentScore.score == .none {
                     self.logger.info("INFO: BusyScore for id \(self.bookmarks[index].id) is expired - updating...")
                     DispatchQueue.global(qos: .userInteractive).async { [weak self] in
