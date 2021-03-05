@@ -96,21 +96,21 @@ struct AppView: View {
         }
     }
     
-    private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
+    @ViewBuilder private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
         switch tabSelection {
         case .bookmarks:
-            return AnyView(SearchButton)
+            SearchButton
         default:
-            return AnyView(EmptyView())
+            EmptyView()
         }
     }
     
-    private func setNavigationBarItemTrailing(tabSelection: Tab) -> some View {
+    @ViewBuilder private func setNavigationBarItemTrailing(tabSelection: Tab) -> some View {
         switch tabSelection {
         case .bookmarks:
-            return AnyView(UpdateButton)
+            UpdateButton
         default:
-            return AnyView(EmptyView())
+            EmptyView()
         }
     }
     
