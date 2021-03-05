@@ -36,7 +36,7 @@ extension BusyModel {
             guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
             
             if let preprocessedImage = applyPreprocessing(to: ciImage) {
-                let uiimage = UIImage(ciImage: preprocessedImage)
+//                let uiimage = UIImage(ciImage: preprocessedImage)
                 let handler = VNImageRequestHandler(ciImage: preprocessedImage)
                 do {
                     try handler.perform([self.request])

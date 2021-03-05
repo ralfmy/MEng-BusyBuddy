@@ -47,6 +47,7 @@
 		BF700FC425A7406A008AE90B /* CreateMLClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */; };
 		BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C4F1D25A49FE700F1247D /* AppState.swift */; };
+		BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */; };
 		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF894337259C7EA40009582A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -197,6 +198,7 @@
 		BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CreateMLClassifierv6.mlmodel; sourceTree = "<group>"; };
 		BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CreateMLClassifierv2.mlmodel; sourceTree = "<group>"; };
 		BF7C4F1D25A49FE700F1247D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		BF894372259C81FF0009582A /* BusyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyEntry.swift; sourceTree = "<group>"; };
 		BF89438B259C88D60009582A /* BusyTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTimeline.swift; sourceTree = "<group>"; };
 		BF89439E259C8BD80009582A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				BF90248125CF3971001B1E80 /* BusyText.swift */,
 				BF0B88F325754DD00036E0E0 /* MapView.swift */,
 				BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */,
+				BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				BF3058EA254F49660087FDEA /* PersistenceManager.swift in Sources */,
 				BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */,
 				BF305890254F2C3C0087FDEA /* BusyBuddy.xcdatamodeld in Sources */,
+				BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */,
 				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,

@@ -130,7 +130,7 @@ struct PlaceDetail: View {
             bookmarksManager.updateScoreFor(id: self.place.id)
         } else {
             self.place.updateBusyScore(busyScore: BusyScore())
-            DispatchQueue.global(qos: .userInteractive).async {
+            DispatchQueue.global(qos: .userInteractive).async { [self] in
                 let image = self.place.downloadImage()
                 let busyScore = ML.currentModel().run(on: [image]).first!
                 DispatchQueue.main.async { [self] in

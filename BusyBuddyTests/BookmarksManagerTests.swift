@@ -81,8 +81,10 @@ class BookmarksManagerTests: XCTestCase {
         XCTAssertNil(place.busyScore)
 
         let expectation = self.expectation(description: "Update BusyScores")
-
-        bookmarksManager.updateScores()
+        
+        self.measure {
+            bookmarksManager.updateScores()
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             expectation.fulfill()

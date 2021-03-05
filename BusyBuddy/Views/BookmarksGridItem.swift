@@ -77,7 +77,8 @@ struct BookmarksGridItem: View {
     
     private func setLastUpdated() -> String {
         if let busyScore = place.busyScore {
-            return busyScore.dateAsString()
+            let dateString = busyScore.dateAsString()
+            return dateString
         } else {
             return ""
         }
