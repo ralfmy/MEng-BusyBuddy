@@ -5,7 +5,7 @@
 //  Created by Ralf Michael Yap on 31/10/2020.
 //
 //  With help from:
-// https://github.com/TreatTrick/Hide-TabBar-In-SwiftUI
+//  https://github.com/TreatTrick/Hide-TabBar-In-SwiftUI
 
 import SwiftUI
 import CoreData
@@ -13,7 +13,7 @@ import os.log
 
 struct AppView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var placesManager: PlacesManager
+    @EnvironmentObject var placesModel: PlacesModel
     
     @State private var navigationBarHidden: Bool = false
     @State private var isShowingAll: Bool = false
@@ -119,7 +119,7 @@ struct AppView: View {
     private var UpdateButton: some View {
         Button(action: {
             impact.impactOccurred()
-            self.placesManager.updateBookmarksScores()
+            self.placesModel.updateBookmarksScores()
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))

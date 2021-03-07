@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BookmarksGridItem: View {    
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var placesManager: PlacesManager
+    @EnvironmentObject var placesModel: PlacesModel
     
     var place: Place
     
     var body: some View {
-        VStack { [weak appState, weak placesManager] in
+        VStack { [weak appState, weak placesModel] in
             VStack(alignment: .leading) {
                 Spacer().frame(height: 10)
                 BusyIcon(busyScore: self.place.busyScore ?? BusyScore(), size: 50, coloured: false)
@@ -32,7 +32,7 @@ struct BookmarksGridItem: View {
                 self.appState.placeSelectionId = self.place.id
             }
         }
-        .background(NavigationLink(destination: PlaceDetail(place: self.placesManager.getPlaceWithId(self.place.id)!), tag: self.place.id, selection: self.$appState.placeSelectionId) {
+        .background(NavigationLink(destination: PlaceDetail(place: self.placesModel.getPlaceWithId(self.place.id)!), tag: self.place.id, selection: self.$appState.placeSelectionId) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }

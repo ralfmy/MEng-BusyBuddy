@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaceDetail: View {
-    @EnvironmentObject private var placesManager: PlacesManager
+    @EnvironmentObject private var placesModel: PlacesModel
 //    @EnvironmentObject private var bookmarksManager: BookmarksManager
 
     @State private var isViewingImage: Bool = false
@@ -21,7 +21,7 @@ struct PlaceDetail: View {
     let impact = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
-        ZStack { [weak placesManager] in
+        ZStack { [weak placesModel] in
             VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
                     PlaceMap(place: self.place).edgesIgnoringSafeArea(.all).frame(height: 300)
@@ -47,10 +47,10 @@ struct PlaceDetail: View {
         .blur(radius: setBlurRadius())
         .overlay(ImageView(isShowing: $isViewingImage, busyScore: getBusyScore()))
         .onAppear {
-            if self.placesManager.isBookmark(id: self.place.id) {
+            if self.placesModel.isBookmark(id: self.place.id) {
                 buttonState = 1
             } else {
-                self.placesManager.updateScoreFor(id: self.place.id)
+                self.placesModel.updateScoreFor(id: self.place.id)
             }
         }
     }
@@ -75,7 +75,7 @@ struct PlaceDetail: View {
     private var UpdateButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            self.placesManager.updateScoreFor(id: self.place.id)
+            self.placesModel.updateScoreFor(id: self.place.id)
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
@@ -87,12 +87,12 @@ struct PlaceDetail: View {
     private var FavButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            if self.placesManager.isBookmark(id: self.place.id) {
-                self.placesManager.removeBookmark(id: self.place.id)
-                self.placesManager.updateScoreFor(id: self.place.id)
+            if self.placesModel.isBookmark(id: self.place.id) {
+                self.placesModel.removeBookmark(id: self.place.id)
+                self.placesModel.updateScoreFor(id: self.place.id)
                 buttonState = 0
             } else {
-                self.placesManager.addBookmark(id: self.place.id)
+                self.placesModel.addBookmark(id: self.place.id)
                 buttonState = 1
             }
         }) {

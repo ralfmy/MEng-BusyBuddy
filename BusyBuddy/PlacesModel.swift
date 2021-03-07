@@ -1,5 +1,5 @@
 //
-//  PlacesManager.swift
+//  PlacesModel.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 25/11/2020.
@@ -10,8 +10,8 @@ import UIKit
 import WidgetKit
 import os.log
 
-class PlacesManager: ObservableObject {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesManager")
+class PlacesModel: ObservableObject {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesModel")
     
     private var model: BusyModel
     private var networkClient: NetworkClient

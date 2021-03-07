@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @EnvironmentObject var placesManager: PlacesManager
+    @EnvironmentObject var placesModel: PlacesModel
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092),
@@ -17,7 +17,7 @@ struct MapView: View {
     @State private var selectedPlace: Place? = nil
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesManager.getAllPlaces()) { place in
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesModel.getAllPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
                 JamCamAnnotation()
                 .onTapGesture {
@@ -27,7 +27,7 @@ struct MapView: View {
         }
         .sheet(item: self.$selectedPlace) { place in
             NavigationView {
-                PlaceDetail(place: self.placesManager.getPlaceAtIndex(self.placesManager.getIndexOfId(place.id)!))
+                PlaceDetail(place: self.placesModel.getPlaceAtIndex(self.placesModel.getIndexOfId(place.id)!))
                     .navigationBarItems(trailing: Button(action: {
                         self.selectedPlace = nil
                     }) {

@@ -9,7 +9,7 @@ import SwiftUI
 import CoreML
 
 struct BookmarksGrid: View {
-    @EnvironmentObject var placesManager: PlacesManager
+    @EnvironmentObject var placesModel: PlacesModel
         
 //    @State var activeId: String?
     
@@ -19,8 +19,8 @@ struct BookmarksGrid: View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .center, spacing: 16, pinnedViews: [])
             {
-                ForEach(self.placesManager.getBookmarkIds(), id: \.self) { id in
-                    BookmarksGridItem(place: self.placesManager.getPlaceWithId(id)!)
+                ForEach(self.placesModel.getBookmarkIds(), id: \.self) { id in
+                    BookmarksGridItem(place: self.placesModel.getPlaceWithId(id)!)
                 }
             }.padding(.leading).padding(.trailing)
             .accessibility(identifier: "BookmarksGrid")

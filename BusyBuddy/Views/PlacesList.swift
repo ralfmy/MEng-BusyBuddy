@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct PlacesList: View {
-    @EnvironmentObject private var placesManager: PlacesManager
+    @EnvironmentObject private var placesModel: PlacesModel
     
     @State private var isEditing = false
     @State private var query : String = ""
         
     var body: some View {
-        VStack { [weak placesManager] in
+        VStack { [weak placesModel] in
             SearchBar(query: $query)
             
-            List(self.placesManager.getAllPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
+            List(self.placesModel.getAllPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
                 HStack {
                     ZStack(alignment: .leading) {
                         Text(place.commonName).font(.headline)
-                        NavigationLink(destination: PlaceDetail(place: self.placesManager.getPlaceAtIndex(self.placesManager.getIndexOfId(place.id)!))) {
+                        NavigationLink(destination: PlaceDetail(place: self.placesModel.getPlaceAtIndex(self.placesModel.getIndexOfId(place.id)!))) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                     }
