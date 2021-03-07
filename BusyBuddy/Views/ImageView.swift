@@ -17,7 +17,7 @@ struct ImageView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Image(uiImage: busyScore.image).padding(.bottom, 20)
+            Image(uiImage: self.busyScore.image).padding(.bottom, 20)
             CloseButton
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
@@ -28,9 +28,6 @@ struct ImageView: View {
             withAnimation(.easeInOut(duration: 0.2)) {
                 self.isShowing.toggle()
             }
-        }
-        .onAppear {
-            self.logger.info("INFO: \(busyScore.count) people detected.")
         }
     }
     

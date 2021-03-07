@@ -66,9 +66,8 @@ public final class BusyScore {
     }
     
     public func dateAsString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        let dateString = dateFormatter.string(from: Date())
+        GlobalDateFormatter.dateFormatter.timeStyle = .short
+        let dateString = GlobalDateFormatter.dateFormatter.string(from: self.date)
         return dateString
     }
     
@@ -79,4 +78,9 @@ public final class BusyScore {
             return false
         }
     }
+}
+
+
+struct GlobalDateFormatter {
+    static let dateFormatter = DateFormatter()
 }

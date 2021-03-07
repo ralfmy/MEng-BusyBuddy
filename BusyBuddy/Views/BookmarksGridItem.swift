@@ -11,17 +11,18 @@ struct BookmarksGridItem: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var bookmarksManager: BookmarksManager
     
-    @State var place: Place
+//    @State var place: Place
+    @State var id: String
     
     var body: some View {
-        VStack {
+        VStack { [weak appState, weak bookmarksManager] in
             VStack(alignment: .leading) {
                 Spacer().frame(height: 10)
-                BusyIcon(busyScore: setBusyScore(), size: 50, coloured: false)
+                BusyIcon(id: self.id, size: 50, coloured: false)
                 Spacer().frame(height: 20)
                 CommonName
                 Spacer()
-                BusyText(busyScore: setBusyScore(), font: .subheadline)
+                BusyText(id: self.id, font: .subheadline)
                 LastUpdated
                 Spacer().frame(height: 10)
             }
@@ -29,16 +30,16 @@ struct BookmarksGridItem: View {
             .padding(20)
             .background(RoundedRectangle(cornerRadius: 20).fill(setCardColour()))
             .onTapGesture {
-                self.appState.placeSelectionId = self.place.id
+                self.appState.placeSelectionId = self.id
             }
         }
-        .background(NavigationLink(destination: PlaceDetail(place: place), tag: self.place.id, selection: self.$appState.placeSelectionId) {
+        .background(NavigationLink(destination: PlaceDetail(id: self.id), tag: self.id, selection: self.$appState.placeSelectionId) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }
     
     private var CommonName: some View {
-        Text(setCommonName())
+        Text(self.bookmarksManager.getPlaceWith(id: self.id)?.commonNameText() ?? "")
             .font(.headline)
             .lineLimit(2)
             .multilineTextAlignment(.leading)
@@ -47,45 +48,14 @@ struct BookmarksGridItem: View {
     }
     
     private var LastUpdated: some View {
-        Text(setLastUpdated())
+        Text(self.bookmarksManager.getPlaceWith(id: self.id)?.busyScore?.dateAsString() ?? "")
             .font(.caption)
             .fontWeight(.semibold)
             .foregroundColor(setTextColour(opacity: 0.7))
-
-    }
-    
-    private func setCommonName() -> String {
-        if let place = bookmarksManager.getPlaceWith(id: place.id) {
-            if let index = place.commonName.firstIndex(of: "/") {
-                var commonName = place.commonName
-                commonName.insert("\n", at: commonName.index(after: index))
-                return commonName
-            }
-            return place.commonName
-        } else {
-            return ""
-        }
-    }
-    
-    private func setBusyScore() -> BusyScore {
-        if let busyScore = place.busyScore {
-            return busyScore
-        } else {
-            return BusyScore()
-        }
-    }
-    
-    private func setLastUpdated() -> String {
-        if let busyScore = place.busyScore {
-            let dateString = busyScore.dateAsString()
-            return dateString
-        } else {
-            return ""
-        }
     }
     
     private func setTextColour(opacity: Double) -> Color {
-        if let busyScore = place.busyScore {
+        if let busyScore = self.bookmarksManager.getPlaceWith(id: self.id)?.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.appGreyDarkest.opacity(0.8)
@@ -98,7 +68,7 @@ struct BookmarksGridItem: View {
     }
 
     private func setCardColour() -> Color {
-        if let busyScore = place.busyScore {
+        if let busyScore = self.bookmarksManager.getPlaceWith(id: id)?.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.busyGreyLighter
@@ -121,7 +91,7 @@ struct BookmarksGridItem_Preview: PreviewProvider {
     static let bookmarks = BookmarksManager()
 
     static var previews: some View {
-        BookmarksGridItem(place: ExamplePlaces.oxfordCircus)
+        BookmarksGridItem(id: ExamplePlaces.oxfordCircus.id)
             .previewLayout(.sizeThatFits).environmentObject(bookmarks)
     }
 }

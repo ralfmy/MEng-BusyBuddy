@@ -49,7 +49,17 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
         return UIImage()
     }
     
+    public func commonNameText() -> String {
+        if let index = self.commonName.firstIndex(of: "/") {
+            var commonName = self.commonName
+            commonName.insert("\n", at: commonName.index(after: index))
+            return commonName
+        }
+        return self.commonName
+    }
+    
     public func updateBusyScore(busyScore: BusyScore?) {
+        self.objectWillChange.send()
         self.busyScore = busyScore
     }
     

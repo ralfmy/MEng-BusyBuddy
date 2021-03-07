@@ -49,7 +49,7 @@ class BookmarksManager: ObservableObject {
     }
     
     public func add(place: Place) {
-        objectWillChange.send()
+        self.objectWillChange.send()
         if !self.contains(place: place) {
             self.bookmarks.append(place)
             self.bookmarks.sort(by: { $0.commonName < $1.commonName })
@@ -60,7 +60,7 @@ class BookmarksManager: ObservableObject {
     }
     
     public func remove(place: Place) {
-        objectWillChange.send()
+        self.objectWillChange.send()
         if self.contains(place: place) {
             self.bookmarks.removeAll(where: { $0.id == place.id })
             save()
@@ -69,8 +69,23 @@ class BookmarksManager: ObservableObject {
         }
     }
     
+    public func remove(id: String) {
+        self.objectWillChange.send()
+        if self.contains(id: id) {
+            self.bookmarks.removeAll(where: { $0.id == id })
+            save()
+        } else {
+            self.logger.info("INFO: Place with id \(id) is not in Bookmarks.")
+        }
+    }
+    
+    
     public func contains(place: Place) -> Bool {
         return self.bookmarks.contains(where: { $0.id == place.id })
+    }
+    
+    public func contains(id: String) -> Bool {
+        return self.bookmarks.contains(where: { $0.id == id })
     }
     
     public func updateScores() {
@@ -137,6 +152,7 @@ class BookmarksManager: ObservableObject {
     public func updateScoreFor(id: String) {
         if let index = self.bookmarks.firstIndex(where: { $0.id == id } ) {
             if let currentScore = self.bookmarks[index].busyScore {
+                self.objectWillChange.send()
                 self.bookmarks[index].updateBusyScore(busyScore: nil)
                 if currentScore.isExpired() || currentScore.score == .none {
                     self.logger.info("INFO: BusyScore for id \(self.bookmarks[index].id) is expired - updating...")

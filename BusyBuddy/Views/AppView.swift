@@ -38,7 +38,7 @@ struct AppView: View {
                 // Tab 1
                 BookmarksGrid()
                 .sheet(isPresented: $isShowingAll) {
-                    AllPlacesSheet(isPresented: $isShowingAll).environmentObject(placesManager).environmentObject(bookmarksManager)
+                    AllPlacesSheet(isPresented: $isShowingAll)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
@@ -139,7 +139,7 @@ struct AppView: View {
     }
     
     private func updateScores() {
-        bookmarksManager.updateScores()
+        self.bookmarksManager.updateScores()
     }
 }
 
@@ -152,12 +152,7 @@ extension AppView {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static let persistentContainer = PersistenceManager(.memory).container
-    static let managedObjectContext = persistentContainer.viewContext
-    static let store = PlacesDataManager(persistentContainer: persistentContainer, managedObjectContext: managedObjectContext)
-    static let bookmarks = BookmarksManager()
-    
     static var previews: some View {
-        AppView().environmentObject(store).environmentObject(bookmarks)
+        AppView()
     }
 }

@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct AllPlacesSheet: View {
-    @EnvironmentObject var placesManager: PlacesManager
-    
+struct AllPlacesSheet: View {    
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
             VStack {
-                PlacesList(places: placesManager.getPlaces())
+                PlacesList()
                 Spacer()
             }
             .navigationBarTitle(Text("All Places"), displayMode: .automatic)

@@ -59,7 +59,7 @@ struct ModelSelectionView: View {
         .onTapGesture {
             defaults.set(self.modelType.rawValue, forKey: "model")
             self.appState.modelSelection = self.modelType
-            self.bookmarksManager.updateModel()
+            self.self.bookmarksManager.updateModel()
         }
     }
     

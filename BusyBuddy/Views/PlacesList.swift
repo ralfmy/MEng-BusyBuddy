@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct PlacesList: View {
+    @EnvironmentObject private var placesManager: PlacesManager
     
     @State private var isEditing = false
     @State private var query : String = ""
-    
-    let places: [Place]
-    
+        
     var body: some View {
-        VStack { [places] in
+        VStack {
             SearchBar(query: $query)
             
-            List(places.filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
+            List(self.placesManager.getPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
                 HStack {
                     ZStack(alignment: .leading) {
                         Text(place.commonName).font(.headline)
-                        NavigationLink(destination: PlaceDetail(place: place)) {
+                        NavigationLink(destination: PlaceDetail(id: place.id)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                     }
@@ -42,7 +41,7 @@ struct PlacesList: View {
 
 struct PlaceRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesList(places: [ExamplePlaces.oxfordCircus])
+        PlacesList()
             .previewLayout(.sizeThatFits)
     }
 }

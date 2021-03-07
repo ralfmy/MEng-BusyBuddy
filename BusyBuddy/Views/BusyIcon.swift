@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct BusyIcon: View {    
-    let busyScore: BusyScore
+struct BusyIcon: View {
+    @EnvironmentObject private var placesManager: PlacesManager
+    @EnvironmentObject private var bookmarksManager: BookmarksManager
+    
+    let id: String
     let size: CGFloat
     let coloured: Bool
     
@@ -19,7 +22,28 @@ struct BusyIcon: View {
         }
     }
     
+    private func getBusyScore() -> BusyScore {
+        var busyScore: BusyScore
+        if self.bookmarksManager.contains(id: self.id) {
+            if let bs = self.bookmarksManager.getPlaceWith(id: self.id)!.busyScore {
+                busyScore = bs
+            } else {
+                busyScore = BusyScore()
+            }
+        } else {
+            if let bs = self.placesManager.getPlaceWith(id: self.id)!.busyScore {
+                busyScore = bs
+            } else {
+                busyScore = BusyScore()
+            }
+        }
+        
+        return busyScore
+    }
+    
     private func setBusyForegroundColour() -> Color {
+        let busyScore = getBusyScore()
+
         if coloured {
             switch busyScore.score {
             case .none:
@@ -40,6 +64,8 @@ struct BusyIcon: View {
     }
     
     private func setBusyBackgroundColour() -> Color {
+        let busyScore = getBusyScore()
+        
         if coloured {
             switch busyScore.score {
             case .none:
@@ -59,6 +85,8 @@ struct BusyIcon: View {
     }
     
     private func setInnerSize() -> CGFloat {
+        let busyScore = getBusyScore()
+        
         switch busyScore.score {
         case .none:
             return 0
@@ -78,6 +106,6 @@ struct BusyIcon: View {
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(busyScore: BusyScore(), size: 75, coloured: true)
+        BusyIcon(id: ExamplePlaces.oxfordCircus.id, size: 75, coloured: true)
     }
 }

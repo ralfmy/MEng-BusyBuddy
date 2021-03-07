@@ -19,8 +19,8 @@ struct BookmarksGrid: View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .center, spacing: 16, pinnedViews: [])
             {
-                ForEach(bookmarksManager.getPlaces()) { place in
-                    BookmarksGridItem(place: place)
+                ForEach(self.bookmarksManager.getPlaces()) { place in
+                    BookmarksGridItem(id: place.id)
                 }
             }.padding(.leading).padding(.trailing)
             .accessibility(identifier: "BookmarksGrid")
