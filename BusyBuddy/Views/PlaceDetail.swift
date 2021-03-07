@@ -9,23 +9,22 @@ import SwiftUI
 
 struct PlaceDetail: View {
     @EnvironmentObject private var placesManager: PlacesManager
-    @EnvironmentObject private var bookmarksManager: BookmarksManager
+//    @EnvironmentObject private var bookmarksManager: BookmarksManager
 
     @State private var isViewingImage: Bool = false
     @State private var buttonState: Int = 0
     @State private var busyScore: BusyScore = BusyScore()
     @State private var scoreText = ""
     
-//    @StateObject var place: Place
-    let id: String
+    let place: Place
     let feedback = UINotificationFeedbackGenerator()
     let impact = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
-        ZStack { [weak placesManager, weak bookmarksManager] in
+        ZStack { [weak placesManager] in
             VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
-                    PlaceMap(id: self.id).edgesIgnoringSafeArea(.all).frame(height: 300)
+                    PlaceMap(place: self.place).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {
                         HStack(alignment: .top) {
                             CommonName
@@ -35,8 +34,8 @@ struct PlaceDetail: View {
                     }
                 }
                 Spacer()
-                BusyIcon(id: self.id, size: 100, coloured: false).padding()
-                BusyText(id: self.id, font: .title2).padding(.bottom, 5 )
+                BusyIcon(busyScore: self.place.busyScore ?? BusyScore(), size: 100, coloured: false).padding()
+                BusyText(busyScore: self.place.busyScore ?? BusyScore(), font: .title2).padding(.bottom, 5)
                 LastUpdated
                 Spacer()
                 ViewImageButton
@@ -48,16 +47,16 @@ struct PlaceDetail: View {
         .blur(radius: setBlurRadius())
         .overlay(ImageView(isShowing: $isViewingImage, busyScore: getBusyScore()))
         .onAppear {
-            if isBookmark() {
+            if self.placesManager.isBookmark(id: self.place.id) {
                 buttonState = 1
             } else {
-                updateScore()
+                self.placesManager.updateScoreFor(id: self.place.id)
             }
         }
     }
     
     private var CommonName: some View {
-        Text(self.placesManager.getPlaceWith(id: self.id)?.commonNameText() ?? "")
+        Text(self.place.commonNameText())
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(2)
@@ -67,17 +66,16 @@ struct PlaceDetail: View {
     }
     
     private var LastUpdated: some View {
-        Text("Last Updated " + getBusyScore().dateAsString())
+        Text("Last Updated " + self.getBusyScore().dateAsString())
             .font(.subheadline)
             .fontWeight(.semibold)
             .foregroundColor(Color.white.opacity(0.7))
-
     }
 
     private var UpdateButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            updateScore()
+            self.placesManager.updateScoreFor(id: self.place.id)
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
@@ -89,13 +87,12 @@ struct PlaceDetail: View {
     private var FavButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            if isBookmark() {
-                self.bookmarksManager.remove(id: self.id)
-                updateScore()
+            if self.placesManager.isBookmark(id: self.place.id) {
+                self.placesManager.removeBookmark(id: self.place.id)
+                self.placesManager.updateScoreFor(id: self.place.id)
                 buttonState = 0
             } else {
-                let place = self.placesManager.getPlaceWith(id: self.id)!
-                self.bookmarksManager.add(place: place)
+                self.placesManager.addBookmark(id: self.place.id)
                 buttonState = 1
             }
         }) {
@@ -122,35 +119,9 @@ struct PlaceDetail: View {
         }
     }
     
-    private func isBookmark() -> Bool {
-        return self.bookmarksManager.contains(id: self.id)
-    }
-    
     private func getBusyScore() -> BusyScore {
-        var busyScore: BusyScore
-        if isBookmark() {
-            if let bs = self.bookmarksManager.getPlaceWith(id: self.id)!.busyScore {
-                busyScore = bs
-            } else {
-                busyScore = BusyScore()
-            }
-        } else {
-            if let bs = self.placesManager.getPlaceWith(id: self.id)!.busyScore {
-                busyScore = bs
-            } else {
-                busyScore = BusyScore()
-            }
-        }
-        
+        let busyScore = self.place.busyScore ?? BusyScore()
         return busyScore
-    }
-    
-    private func updateScore() {
-        if isBookmark() {
-            self.bookmarksManager.updateScoreFor(id: self.id)
-        } else {
-            self.placesManager.updateScoreFor(id: self.id)
-        }
     }
     
     private func setBlurRadius() -> CGFloat {
@@ -180,6 +151,6 @@ struct PlaceDetail: View {
 
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetail(id: ExamplePlaces.oxfordCircus.id)
+        PlaceDetail(place: ExamplePlaces.oxfordCircus)
     }
 }

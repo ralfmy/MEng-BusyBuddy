@@ -14,23 +14,20 @@ struct PlacesList: View {
     @State private var query : String = ""
         
     var body: some View {
-        VStack {
+        VStack { [weak placesManager] in
             SearchBar(query: $query)
             
-            List(self.placesManager.getPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
+            List(self.placesManager.getAllPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
                 HStack {
                     ZStack(alignment: .leading) {
                         Text(place.commonName).font(.headline)
-                        NavigationLink(destination: PlaceDetail(id: place.id)) {
+                        NavigationLink(destination: PlaceDetail(place: self.placesManager.getPlaceAtIndex(self.placesManager.getIndexOfId(place.id)!))) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                     }
-                    Spacer()
-    //                DistanceText
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-            }
-            .listStyle(PlainListStyle())
+            }.listStyle(PlainListStyle())
         }
     }
     

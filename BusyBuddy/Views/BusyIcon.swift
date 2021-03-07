@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct BusyIcon: View {
-    @EnvironmentObject private var placesManager: PlacesManager
-    @EnvironmentObject private var bookmarksManager: BookmarksManager
-    
-    let id: String
+    var busyScore: BusyScore
     let size: CGFloat
     let coloured: Bool
     
@@ -22,30 +19,9 @@ struct BusyIcon: View {
         }
     }
     
-    private func getBusyScore() -> BusyScore {
-        var busyScore: BusyScore
-        if self.bookmarksManager.contains(id: self.id) {
-            if let bs = self.bookmarksManager.getPlaceWith(id: self.id)!.busyScore {
-                busyScore = bs
-            } else {
-                busyScore = BusyScore()
-            }
-        } else {
-            if let bs = self.placesManager.getPlaceWith(id: self.id)!.busyScore {
-                busyScore = bs
-            } else {
-                busyScore = BusyScore()
-            }
-        }
-        
-        return busyScore
-    }
-    
     private func setBusyForegroundColour() -> Color {
-        let busyScore = getBusyScore()
-
         if coloured {
-            switch busyScore.score {
+            switch self.busyScore.score {
             case .none:
                 return Color.busyGreyLighter
             case .low:
@@ -64,10 +40,8 @@ struct BusyIcon: View {
     }
     
     private func setBusyBackgroundColour() -> Color {
-        let busyScore = getBusyScore()
-        
         if coloured {
-            switch busyScore.score {
+            switch self.busyScore.score {
             case .none:
                 return Color.busyGreyLighter
             case .low:
@@ -85,9 +59,7 @@ struct BusyIcon: View {
     }
     
     private func setInnerSize() -> CGFloat {
-        let busyScore = getBusyScore()
-        
-        switch busyScore.score {
+        switch self.busyScore.score {
         case .none:
             return 0
         case .low:
@@ -106,6 +78,6 @@ struct BusyIcon: View {
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(id: ExamplePlaces.oxfordCircus.id, size: 75, coloured: true)
+        BusyIcon(busyScore: BusyScore(), size: 75, coloured: true)
     }
 }

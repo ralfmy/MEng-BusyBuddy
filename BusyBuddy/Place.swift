@@ -8,7 +8,7 @@
 import UIKit
 import os.log
 
-//  Decode JSON response from TfL Unified API into this PlacE type.
+//  Decode JSON response from TfL Unified API into this Place type.
 
 public final class Place: Codable, Equatable, Identifiable, ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "Place")
@@ -19,6 +19,7 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
     let additionalProperties: [AdditionalProperty]
     let lat: Double
     let lon: Double
+    var isBookmark: Bool = false
     @Published public var busyScore: BusyScore?
         
     init(id: String, commonName: String, placeType: String, additionalProperties: [AdditionalProperty], lat: Double, lon: Double, busyScore: BusyScore? = nil) {
@@ -56,6 +57,10 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
             return commonName
         }
         return self.commonName
+    }
+    
+    public func toggleBookmark() {
+        self.isBookmark.toggle()
     }
     
     public func updateBusyScore(busyScore: BusyScore?) {

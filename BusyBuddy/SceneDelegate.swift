@@ -23,24 +23,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let container = (UIAp plication.shared.delegate as! AppDelegate).persistentContainer
         let appState = (UIApplication.shared.delegate as! AppDelegate).appState
         let placesManager = (UIApplication.shared.delegate as! AppDelegate).placesManager
-        var bookmarksManager = (UIApplication.shared.delegate as! AppDelegate).bookmarksManager
+//        var bookmarksManager = (UIApplication.shared.delegate as! AppDelegate).bookmarksManager
 //        let store = PlacesDataManager(persistentContainer: container, managedObjectContext: container.viewContext)
         
-        #if DEBUG
-        if CommandLine.arguments.contains("enable-testing") {
-            let defaults = UserDefaults(suiteName: "com.zcabrmy.BusyBuddyUITests")
-            let bookmarks = [ExamplePlaces.gowerSt, ExamplePlaces.oxfordCircus, ExamplePlaces.stGilesCircus, ExamplePlaces.exhibitionRd]
-            if let encoded = try? JSONEncoder().encode(bookmarks) {
-                defaults?.set(encoded, forKey: "Bookmarks")
-                logger.info("INFO: UserDefaults save successful.")
-            }
-            bookmarksManager = BookmarksManager(defaults: defaults!)
-        }
-        #endif
+//        #if DEBUG
+//        if CommandLine.arguments.contains("enable-testing") {
+//            let defaults = UserDefaults(suiteName: "com.zcabrmy.BusyBuddyUITests")
+//            let bookmarks = [ExamplePlaces.gowerSt, ExamplePlaces.oxfordCircus, ExamplePlaces.stGilesCircus, ExamplePlaces.exhibitionRd]
+//            if let encoded = try? JSONEncoder().encode(bookmarks) {
+//                defaults?.set(encoded, forKey: "Bookmarks")
+//                logger.info("INFO: UserDefaults save successful.")
+//            }
+//            bookmarksManager = BookmarksManager(defaults: defaults!)
+//        }
+//        #endif
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let placesView = AppView().environmentObject(appState).environmentObject(placesManager).environmentObject(bookmarksManager)
+        let placesView = AppView().environmentObject(appState).environmentObject(placesManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -98,7 +98,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+//        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
 

@@ -17,7 +17,7 @@ struct MapView: View {
     @State private var selectedPlace: Place? = nil
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesManager.getPlaces()) { place in
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesManager.getAllPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
                 JamCamAnnotation()
                 .onTapGesture {
@@ -27,7 +27,7 @@ struct MapView: View {
         }
         .sheet(item: self.$selectedPlace) { place in
             NavigationView {
-                PlaceDetail(id: place.id)
+                PlaceDetail(place: self.placesManager.getPlaceAtIndex(self.placesManager.getIndexOfId(place.id)!))
                     .navigationBarItems(trailing: Button(action: {
                         self.selectedPlace = nil
                     }) {

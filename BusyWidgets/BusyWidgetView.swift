@@ -19,11 +19,11 @@ struct BusyWidgetView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer().frame(height: 10)
-            BusyWidgetIcon(busyScore: entry.place.busyScore, size: 35, coloured: false)
+            BusyIcon(busyScore: self.entry.place.busyScore ?? BusyScore(), size: 35, coloured: false)
             Spacer()
             CommonName
             Spacer().frame(height: 5)
-            BusyWidgetText(busyScore: entry.place.busyScore, font: .footnote)
+            BusyText(busyScore: self.entry.place.busyScore ?? BusyScore(), font: .footnote)
             LastUpdated
             Spacer().frame(height: 10)
         }
@@ -33,7 +33,7 @@ struct BusyWidgetView: View {
     }
     
     private var CommonName: some View {
-        Text(entry.place.commonNameText())
+        Text(self.entry.place.commonNameText())
             .font(.callout)
             .fontWeight(.semibold)
             .lineLimit(2)
@@ -43,7 +43,7 @@ struct BusyWidgetView: View {
     }
     
     private var LastUpdated: some View {
-        Text(setLastUpdated())
+        Text(self.setLastUpdated())
             .font(.caption2)
             .fontWeight(.semibold)
             .foregroundColor(setTextColour(opacity: 0.7))
@@ -51,7 +51,7 @@ struct BusyWidgetView: View {
     }
     
     private func setLastUpdated() -> String {
-        if let busyScore = entry.place.busyScore {
+        if let busyScore = self.entry.place.busyScore {
             return "Updated: " + busyScore.dateAsString()
         } else {
             return ""
@@ -88,90 +88,6 @@ struct BusyWidgetView: View {
         } else {
             return Color.busyGreyLighter
         }
-    }
-}
-
-struct BusyWidgetIcon: View {
-    let busyScore: BusyScore?
-    let size: CGFloat
-    let coloured: Bool
-    
-    var body: some View {
-        ZStack(alignment: .center) {
-            Circle().fill(setBusyBackgroundColour()).frame(width: size, height: size)
-            Circle().fill(setBusyForegroundColour()).frame(width: setInnerSize(), height: setInnerSize())
-        }
-    }
-    
-    private func setBusyForegroundColour() -> Color {
-        if coloured {
-            switch self.busyScore?.score ?? BusyScore().score {
-            case .none:
-                return Color.busyGreyLighter
-            case .low:
-                return Color.busyGreenDarker
-            case .medium:
-                return Color.busyYellowDarker
-            case.high:
-                return Color.busyPinkDarker
-            default:
-                return Color.white
-            }
-        } else {
-            return Color.white.opacity(0.4)
-        }
-        
-    }
-    
-    private func setBusyBackgroundColour() -> Color {
-        if coloured {
-            switch self.busyScore?.score ?? BusyScore().score {
-            case .none:
-                return Color.busyGreyLighter
-            case .low:
-                return Color.busyGreenLighter
-            case .medium:
-                return Color.busyYellowLighter
-            case.high:
-                return Color.busyPinkLighter
-            default:
-                return Color.white
-            }
-        } else {
-            return Color.white.opacity(0.4)
-        }
-    }
-    
-    private func setInnerSize() -> CGFloat {
-        switch self.busyScore?.score ?? BusyScore().score {
-        case .none:
-            return 0
-        case .low:
-            return 0.5 * size
-        case .medium:
-            return 0.6 * size
-        case .high:
-            return 0.8 * size
-        case .unsure:
-            return 0
-        default:
-            return size
-        }
-    }
-}
-
-struct BusyWidgetText: View {
-    let busyScore: BusyScore?
-    let font: Font
-    
-    var body: some View {
-        Text(busyScore?.scoreAsString() ?? "")
-            .font(font)
-            .fontWeight(.bold)
-            .lineLimit(2)
-            .multilineTextAlignment(.leading)
-            .frame(alignment: .leading)
-            .foregroundColor(busyScore?.score ?? BusyScore().score == .none ? Color.appGreyDarker.opacity(0.8) : Color.white.opacity(0.8))
     }
 }
 

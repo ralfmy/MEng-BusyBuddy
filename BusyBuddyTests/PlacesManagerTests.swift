@@ -25,7 +25,7 @@ class PlacesManagerTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 3)
         
-        let places = placesManager.getPlaces()
+        let places = placesManager.getAllPlaces
         XCTAssertEqual(places.count, 2)
         XCTAssertTrue(places[0].commonName < places[1].commonName)
     }
@@ -43,7 +43,7 @@ class PlacesManagerTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 3)
         
-        let places = placesManager.getPlaces()
+        let places = placesManager.getAllPlaces
         XCTAssertEqual(places.count, 2)
         XCTAssertTrue(placesCache.getPlaces()!.elementsEqual(places))
     }

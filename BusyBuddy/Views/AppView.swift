@@ -12,14 +12,10 @@ import CoreData
 import os.log
 
 struct AppView: View {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "AppView")
-    
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var placesManager: PlacesManager
-    @EnvironmentObject var bookmarksManager: BookmarksManager
     
     @State private var navigationBarHidden: Bool = false
-    @State private var firstLoad: Bool = true
     @State private var isShowingAll: Bool = false
     
     let impact = UIImpactFeedbackGenerator(style: .light)
@@ -42,12 +38,6 @@ struct AppView: View {
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
-                }
-                .onAppear {
-                    if firstLoad {
-                        updateScores()
-                        firstLoad = false
-                    }
                 }
                 .tag(Tab.bookmarks)
                 
@@ -129,17 +119,13 @@ struct AppView: View {
     private var UpdateButton: some View {
         Button(action: {
             impact.impactOccurred()
-            updateScores()
+            self.placesManager.updateBookmarksScores()
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
                 .frame(width: 64, height: 64, alignment: .trailing)
                 .foregroundColor(.appGreyDarkest)
         }
-    }
-    
-    private func updateScores() {
-        self.bookmarksManager.updateScores()
     }
 }
 

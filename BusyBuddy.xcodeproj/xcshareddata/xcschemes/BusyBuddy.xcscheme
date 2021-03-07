@@ -20,6 +20,20 @@
                ReferencedContainer = "container:BusyBuddy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF30589D254F2C3E0087FDEA"
+               BuildableName = "BusyBuddyTests.xctest"
+               BlueprintName = "BusyBuddyTests"
+               ReferencedContainer = "container:BusyBuddy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
