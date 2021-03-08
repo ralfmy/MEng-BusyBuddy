@@ -81,8 +81,6 @@ struct BookmarksGridItem: View {
 }
 
 struct BookmarksGridItem_Preview: PreviewProvider {
-    static let bookmarks = BookmarksManager()
-
     static var previews: some View {
         BookmarksGridItem(place: ExamplePlaces.oxfordCircus).previewLayout(.sizeThatFits)
     }

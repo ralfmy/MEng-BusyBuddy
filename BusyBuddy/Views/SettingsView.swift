@@ -36,7 +36,7 @@ struct SettingsView: View {
 
 struct ModelSelectionView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var bookmarksManager: BookmarksManager
+    @EnvironmentObject var placesModel: PlacesModel
         
     var displayName: String
     var modelType: ModelType
@@ -59,7 +59,7 @@ struct ModelSelectionView: View {
         .onTapGesture {
             defaults.set(self.modelType.rawValue, forKey: "model")
             self.appState.modelSelection = self.modelType
-            self.self.bookmarksManager.updateModel()
+            self.placesModel.updateModel()
         }
     }
     

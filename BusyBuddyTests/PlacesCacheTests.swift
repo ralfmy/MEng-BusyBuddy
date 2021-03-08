@@ -16,7 +16,7 @@ class PlacesCacheTests: XCTestCase {
     
     func testGetPlaces() {
         let places = placesCache.getPlaces()
-        XCTAssertNil(places)
+        XCTAssertTrue(places.isEmpty)
     }
 
     func testSetPlaces() {
