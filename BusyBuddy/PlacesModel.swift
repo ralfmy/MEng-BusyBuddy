@@ -18,12 +18,11 @@ class PlacesModel: ObservableObject {
     private var cache: PlacesCache
     private var defaults: UserDefaults
     
-    private let saveKey = "BookmarksIDs"
     private let feedback = UINotificationFeedbackGenerator()
     
     @Published private var places = [Place]()
+    @Published private var bookmarkIds = [String]()
     @Published private var bookmarkIndices = [Int]()
-    private var bookmarkIds = [String]()
     
     init(model: BusyModel = ML.currentModel(),
          client: NetworkClient = NetworkClient(),
@@ -33,6 +32,18 @@ class PlacesModel: ObservableObject {
         self.networkClient = client
         self.cache = cache
         self.defaults = defaults
+        
+//        #if DEBUG
+//        if CommandLine.arguments.contains("ui-testing") {
+//            self.logger.debug("DEBUG: HERE")
+//            let testDefaults = UserDefaults(suiteName: "com.zcabrmy.BusyBuddyUITests")
+//            let bookmarkIds = [ExamplePlaces.gowerSt.id, ExamplePlaces.oxfordCircus.id, ExamplePlaces.stGilesCircus.id, ExamplePlaces.exhibitionRd.id]
+//            self.defaults.setValue(bookmarkIds, forKey: "BookmarksIDs")
+//            self.logger.info("INFO: UserDefaults save successful.")
+//            self.defaults = testDefaults!
+//        }
+//        #endif
+        
         self.loadPlaces()
     }
     
@@ -182,7 +193,7 @@ class PlacesModel: ObservableObject {
     }
     
     private func setBookmarkedPlaces() {
-        self.bookmarkIds = self.defaults.object(forKey: saveKey) as? [String] ?? [String]()
+        self.bookmarkIds = self.defaults.object(forKey: "BookmarksIDs") as? [String] ?? [String]()
         for (index, place) in self.places.enumerated() {
             if self.bookmarkIds.contains(place.id) {
                 self.places[index].toggleBookmark()

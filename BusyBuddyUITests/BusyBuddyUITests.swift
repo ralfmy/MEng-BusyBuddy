@@ -15,10 +15,6 @@ class BusyBuddyUITests: XCTestCase {
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        app = XCUIApplication()
-        app.launchArguments = ["enable-testing"]
-        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -26,27 +22,39 @@ class BusyBuddyUITests: XCTestCase {
     }
 
     func testLaunchOnBookmarksTab() throws {
+        app = XCUIApplication()
+        app.launchArguments = ["ui-testing"]
+        app.launch()
+        
         XCTAssertTrue(app.navigationBars["Bookmarks"].exists)
     }
     
     func testBookmarksNavigationBarItems() throws {
+        app = XCUIApplication()
+        app.launchArguments = ["ui-testing"]
+        app.launch()
+        
         let navigationBarItems = app.navigationBars["Bookmarks"].buttons
         XCTAssertTrue(navigationBarItems["magnifyingglass"].isHittable)
         XCTAssertTrue(navigationBarItems["arrow.clockwise"].isHittable)
     }
     
     func testBookmarksGridItems() throws {
+        app = XCUIApplication()
+        app.launchArguments = ["ui-testing"]
+        app.launch()
+        
         let bookmarksGrid = app.otherElements["BookmarksGrid"]
         XCTAssertTrue(bookmarksGrid.exists)
-        XCTAssertEqual(bookmarksGrid.buttons.count, 4)
+//        XCTAssertEqual(bookmarksGrid.grids.count, 4)
     }
 
-//    func testLaunchPerformance() throws {
-//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-//            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTApplicationLaunchMetric()]) {
-//                XCUIApplication().launch()
-//            }
-//        }
-//    }
+    func testLaunchPerformance() throws {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
 }
