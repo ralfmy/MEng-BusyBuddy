@@ -19,34 +19,22 @@ public final class NetworkClientMock: NetworkClient {
 }
 
 public final class BusyModelMock: BusyModel {
+    public var model: MLModel = MLModel()
     public var images: [UIImage]
     public var observations: [[VNObservation]]
     public var confidenceThreshold: VNConfidence
-    
-    let classifier = TuriCreateClassifierv3()
-    
-    lazy public var request: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: self.classifier.model)
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processResults(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFill
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-
-    }()
-    
+    public var context: CIContext
+        
     public init(confidenceThreshold: VNConfidence = 0.5) {
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
+        self.context = CIContext(options: nil)
     }
     
-    public func applyPreprocessing(to image: CIImage) -> CIImage? {
-        return image
+    public func applyPreprocessing(to image: CIImage) -> CGImage? {
+        let cgImg = self.context.createCGImage(image, from: image.extent)
+        return cgImg
     }
     
     public func processResults(for request: VNRequest, error: Error?) {

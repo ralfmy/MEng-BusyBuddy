@@ -24,8 +24,8 @@ public final class PlacesCache {
       }
     }
     
-    public func getPlaces() -> [Place]? {
-        return self.cache.object(forKey: NSString(string: self.key)) as? [Place]
+    public func getPlaces() -> [Place] {
+        return self.cache.object(forKey: NSString(string: self.key)) as? [Place] ?? [Place]()
     }
     
     public func setPlaces(places: [Place]) {

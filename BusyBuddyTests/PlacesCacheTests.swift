@@ -22,8 +22,8 @@ class PlacesCacheTests: XCTestCase {
     func testSetPlaces() {
         placesCache.setPlaces(places: [ExamplePlaces.gowerSt])
         let cachedPlaces = placesCache.getPlaces()
-        XCTAssertEqual(cachedPlaces!.count, 1)
-        XCTAssertEqual(cachedPlaces![0], ExamplePlaces.gowerSt)
+        XCTAssertEqual(cachedPlaces.count, 1)
+        XCTAssertEqual(cachedPlaces[0], ExamplePlaces.gowerSt)
     }
 
 }

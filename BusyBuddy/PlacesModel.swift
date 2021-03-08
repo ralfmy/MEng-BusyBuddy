@@ -47,15 +47,6 @@ class PlacesModel: ObservableObject {
         return nil
     }
     
-    public func getPlaceAtIndex(_ index: Int) -> Place {
-        return self.places[index]
-    }
-    
-    public func getIndexOfId(_ id: String) -> Int? {
-        return self.places.firstIndex(where: { $0.id == id })
-    }
-    
-    
     public func getBookmarkedPlaces() -> [Place] {
         return self.places.filter { self.bookmarkIds.contains($0.id) }
     }
@@ -63,9 +54,13 @@ class PlacesModel: ObservableObject {
     public func getBookmarkIds() -> [String] {
         return self.bookmarkIds
     }
-
-    public func getBookmarkIndices() -> [Int] {
-        return self.bookmarkIndices
+    
+    public func isBookmark(id: String) -> Bool {
+        if let place = self.places.first(where: { $0.id == id }) {
+            return place.isBookmark
+        } else {
+            return false
+        }
     }
     
     public func addBookmark(id: String) {
@@ -91,14 +86,6 @@ class PlacesModel: ObservableObject {
             self.saveBookmarks()
         } else {
             self.logger.info("INFO: Place with id \(id) is not in Bookmarks.")
-        }
-    }
-    
-    public func isBookmark(id: String) -> Bool {
-        if let place = self.places.first(where: { $0.id == id }) {
-            return place.isBookmark
-        } else {
-            return false
         }
     }
     
@@ -138,7 +125,9 @@ class PlacesModel: ObservableObject {
         if let index = self.places.firstIndex(where: { $0.id == id }) {
             self.objectWillChange.send()
             self.places[index].updateBusyScore(busyScore: nil)
+            
             self.logger.info("INFO: BusyScore for id \(self.places[index].id) is expired - updating...")
+            
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
                 guard let self = self else {
                     return
@@ -146,7 +135,7 @@ class PlacesModel: ObservableObject {
                 
                 let image = self.places[index].downloadImage()
                 
-                let busyScore = ML.currentModel().run(on: [image]).first!
+                let busyScore = self.model.run(on: [image]).first!
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.objectWillChange.send()
@@ -168,7 +157,8 @@ class PlacesModel: ObservableObject {
     }
     
     private func loadPlaces() {
-        if let cachedPlaces = self.cache.getPlaces() {
+        let cachedPlaces = self.cache.getPlaces()
+        if !cachedPlaces.isEmpty {
             self.logger.info("INFO: PlacesCache hit.")
             self.places = cachedPlaces
             self.setBookmarkedPlaces()
@@ -210,5 +200,9 @@ class PlacesModel: ObservableObject {
             self.defaults.set(encoded, forKey: "Bookmarks")
         }
         self.logger.info("INFO: UserDefaults save successful.")
+    }
+    
+    private func getIndexOfId(_ id: String) -> Int? {
+        return self.places.firstIndex(where: { $0.id == id })
     }
 }

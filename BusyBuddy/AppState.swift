@@ -13,5 +13,5 @@ import Foundation
 public class AppState: ObservableObject {
     @Published var tabSelection: AppView.Tab = .bookmarks
     @Published var placeSelectionId: String?
-    @Published var modelSelection: ModelType = ModelType(rawValue: UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!.integer(forKey: "model")) ?? ModelType.tcv1
+    @Published var modelSelection: ModelType = ModelType(rawValue: UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!.integer(forKey: "model")) ?? ModelType.tcv2
 }

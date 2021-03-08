@@ -21,7 +21,7 @@ struct PlacesList: View {
                 HStack {
                     ZStack(alignment: .leading) {
                         Text(place.commonName).font(.headline)
-                        NavigationLink(destination: PlaceDetail(place: self.placesModel.getPlaceAtIndex(self.placesModel.getIndexOfId(place.id)!))) {
+                        NavigationLink(destination: PlaceDetail(place: self.placesModel.getPlaceWithId(place.id)!)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                     }

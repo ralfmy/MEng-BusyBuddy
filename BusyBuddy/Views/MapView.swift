@@ -27,7 +27,7 @@ struct MapView: View {
         }
         .sheet(item: self.$selectedPlace) { place in
             NavigationView {
-                PlaceDetail(place: self.placesModel.getPlaceAtIndex(self.placesModel.getIndexOfId(place.id)!))
+                PlaceDetail(place: self.placesModel.getPlaceWithId(place.id)!)
                     .navigationBarItems(trailing: Button(action: {
                         self.selectedPlace = nil
                     }) {

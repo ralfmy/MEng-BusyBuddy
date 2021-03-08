@@ -27,8 +27,6 @@ public final class TuriCreateModelv2: BusyModel {
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
         self.context = CIContext(options: nil)
-
-    
     }
     
     private func applyGaussianBlur(_ input: CIImage, radius: Double) -> CIImage? {

@@ -64,6 +64,24 @@ struct AppView: View {
         .accentColor(.white)
     }
     
+    @ViewBuilder private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
+        switch tabSelection {
+        case .bookmarks:
+            SearchButton
+        default:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder private func setNavigationBarItemTrailing(tabSelection: Tab) -> some View {
+        switch tabSelection {
+        case .bookmarks:
+            UpdateButton
+        default:
+            EmptyView()
+        }
+    }
+    
     private func setNavigationBarTitle(tabSelection: Tab) -> String {
         switch tabSelection {
         case .bookmarks:
@@ -85,25 +103,7 @@ struct AppView: View {
             return false
         }
     }
-    
-    @ViewBuilder private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
-        switch tabSelection {
-        case .bookmarks:
-            SearchButton
-        default:
-            EmptyView()
-        }
-    }
-    
-    @ViewBuilder private func setNavigationBarItemTrailing(tabSelection: Tab) -> some View {
-        switch tabSelection {
-        case .bookmarks:
-            UpdateButton
-        default:
-            EmptyView()
-        }
-    }
-    
+
     private var SearchButton: some View {
         Button(action: {
             impact.impactOccurred()
