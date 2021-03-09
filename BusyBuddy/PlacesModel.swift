@@ -52,10 +52,11 @@ class PlacesModel: ObservableObject {
     }
     
     public func getPlaceWithId(_ id: String) -> Place? {
-        if let index = self.getIndexOfId(id) {
-            return self.places[index]
-        }
-        return nil
+//        if let index = self.getIndexOfId(id) {
+//            return self.places[index]
+//        }
+//        return nil
+        return self.places.first(where: { $0.id == id })
     }
     
     public func getBookmarkedPlaces() -> [Place] {

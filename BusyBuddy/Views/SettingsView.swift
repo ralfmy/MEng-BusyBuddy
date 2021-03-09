@@ -21,7 +21,7 @@ struct SettingsView: View {
         VStack {
             List {
                 Section(header: Text("ML Model")) {
-                    ForEach(Array(self.models.keys), id: \.self) { displayName in
+                    ForEach(Array(self.models.keys.sorted()), id: \.self) { displayName in
                         ModelSelectionView(displayName: displayName, modelType: self.models[displayName]!)
                     }
                 }
