@@ -27,7 +27,10 @@ struct PlaceDetail: View {
                     PlaceMap(place: self.place).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {
                         HStack(alignment: .top) {
-                            CommonName
+                            VStack {
+                                CommonName
+                                CameraView
+                            }
                             FavButton
                         }
                         Spacer().frame(height: 27)
@@ -56,10 +59,20 @@ struct PlaceDetail: View {
     }
     
     private var CommonName: some View {
-        Text(self.place.commonNameText())
+        Text(self.place.commonNameAsText())
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(2)
+            .frame(maxWidth: .infinity, alignment: .bottomLeading)
+            .padding(.leading, 10).padding(.trailing, 10)
+            .foregroundColor(Color.white)
+    }
+    
+    private var CameraView: some View {
+        Text(self.place.getCameraView())
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .bottomLeading)
             .padding(.leading, 10).padding(.trailing, 10)
             .foregroundColor(Color.white)

@@ -127,6 +127,7 @@ class PlacesModel: ObservableObject {
                 self?.bookmarkIndices.enumerated().forEach { (i, index) in
                     self?.places[index].updateBusyScore(busyScore: busyScores[i])
                 }
+                self?.feedback.notificationOccurred(.success)
                 WidgetCenter.shared.reloadTimelines(ofKind: "com.zcabrmy.busy-widgets")
                 self?.logger.info("INFO: Finished updating BusyScores.")
             }

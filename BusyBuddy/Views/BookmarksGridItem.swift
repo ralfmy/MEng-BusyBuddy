@@ -38,7 +38,7 @@ struct BookmarksGridItem: View {
     }
     
     private var CommonName: some View {
-        Text(self.place.commonNameText())
+        Text(self.place.commonNameAsText())
             .font(.headline)
             .lineLimit(2)
             .multilineTextAlignment(.leading)

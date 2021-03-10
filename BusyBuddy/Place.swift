@@ -33,12 +33,17 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
     }
     
     public func getImageUrl() -> String {
-        let imageUrl = self.additionalProperties.filter({$0.key == "imageUrl"})
-        if imageUrl.count != 0 {
-            return imageUrl[0].value
-        } else {
-            return "None"
+        if let property = self.additionalProperties.first(where: {$0.key == "imageUrl"}) {
+            return property.value
         }
+        return "None"
+    }
+    
+    public func getCameraView() -> String {
+        if let property = self.additionalProperties.first(where: { $0.key == "view" }) {
+            return property.value
+        }
+        return "None"
     }
     
     public func downloadImage() -> UIImage {
@@ -50,7 +55,7 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
         return UIImage()
     }
     
-    public func commonNameText() -> String {
+    public func commonNameAsText() -> String {
         if let index = self.commonName.firstIndex(of: "/") {
             var commonName = self.commonName
             commonName.insert("\n", at: commonName.index(after: index))

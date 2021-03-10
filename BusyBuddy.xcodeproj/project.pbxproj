@@ -83,7 +83,6 @@
 		BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BF977A4E259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */; };
 		BF977A4F259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */; };
-		BFA7570625ADD96800F7ED25 /* Test Images in Resources */ = {isa = PBXBuildFile; fileRef = BFA7570525ADD96800F7ED25 /* Test Images */; };
 		BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */; };
 		BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
 		BFAFBC6325F5538800E62CBD /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFBC6225F5538800E62CBD /* Main.swift */; };
@@ -199,7 +198,6 @@
 		BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv1.swift; sourceTree = "<group>"; };
-		BFA7570525ADD96800F7ED25 /* Test Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Images"; sourceTree = "<group>"; };
 		BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		BFABB53F2598A63600106605 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -417,7 +415,6 @@
 		BFC5A09F255453EF00CE2B80 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFA7570525ADD96800F7ED25 /* Test Images */,
 				BFC5A0A02554540E00CE2B80 /* ExamplePlaces.swift */,
 			);
 			path = Resources;
@@ -591,7 +588,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */,
-				BFA7570625ADD96800F7ED25 /* Test Images in Resources */,
 				BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -946,6 +942,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Debug;
 		};
@@ -969,6 +966,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Release;
 		};

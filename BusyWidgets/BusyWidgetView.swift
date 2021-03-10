@@ -33,7 +33,7 @@ struct BusyWidgetView: View {
     }
     
     private var CommonName: some View {
-        Text(self.entry.place.commonNameText())
+        Text(self.entry.place.commonNameAsText())
             .font(.callout)
             .fontWeight(.semibold)
             .lineLimit(2)

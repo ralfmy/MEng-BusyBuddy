@@ -113,8 +113,8 @@ class PlacesModelTests: XCTestCase {
     }
     
     func testUpdateScoreForId() throws {
-        let oxfordCircus = placesModel.getPlaceWithId( ExamplePlaces.oxfordCircus.id)!
-        let gowerSt = placesModel.getPlaceWithId( ExamplePlaces.gowerSt.id)!
+        let oxfordCircus = placesModel.getPlaceWithId(ExamplePlaces.oxfordCircus.id)!
+        let gowerSt = placesModel.getPlaceWithId(ExamplePlaces.gowerSt.id)!
          
         placesModel.updateScoreFor(id: ExamplePlaces.gowerSt.id)
         
