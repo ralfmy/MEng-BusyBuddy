@@ -10,14 +10,20 @@
 import Foundation
 
 public class NetworkClient {
-    private let session: URLSession = .shared
+    private let session: URLSession
     
     enum NetworkError: Error {
         case noData
     }
     
+    init() {
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+        self.session = URLSession(configuration: config)
+    }
+    
     public func runRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        session.dataTask(with: request) { (data, response, error) in
+        self.session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
             }
