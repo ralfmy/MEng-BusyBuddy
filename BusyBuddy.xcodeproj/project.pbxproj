@@ -88,6 +88,7 @@
 		BFAFBC6325F5538800E62CBD /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAFBC6225F5538800E62CBD /* Main.swift */; };
 		BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD96222565BABB0091C0FE /* PlaceMap.swift */; };
 		BFC5A0A12554540E00CE2B80 /* ExamplePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC5A0A02554540E00CE2B80 /* ExamplePlaces.swift */; };
+		BFC7354B2600D56300FFA306 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC7354A2600D56300FFA306 /* LocationModel.swift */; };
 		BFC73D0725A085EC0003413E /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC73CC325A084080003413E /* Intents.framework */; };
 		BFC73D0A25A085EC0003413E /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D0925A085EC0003413E /* IntentHandler.swift */; };
 		BFC73D0E25A085EC0003413E /* PlaceIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC73D0625A085EC0003413E /* PlaceIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -205,6 +206,7 @@
 		BFAFBC6225F5538800E62CBD /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		BFBD96222565BABB0091C0FE /* PlaceMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMap.swift; sourceTree = "<group>"; };
 		BFC5A0A02554540E00CE2B80 /* ExamplePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePlaces.swift; sourceTree = "<group>"; };
+		BFC7354A2600D56300FFA306 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BFC73CC325A084080003413E /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BFC73CCE25A084080003413E /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		BFC73D0625A085EC0003413E /* PlaceIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlaceIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +329,7 @@
 				BF92211A256E6D7F0022CE80 /* PlacesCache.swift */,
 				BF92212D256E78160022CE80 /* PlacesModel.swift */,
 				BFD2D3872556B7CD00554869 /* BusyScore.swift */,
+				BFC7354A2600D56300FFA306 /* LocationModel.swift */,
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
 				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
 				BF74AE2D259C91920062EAB2 /* Network */,
@@ -695,6 +698,7 @@
 				BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */,
 				BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */,
 				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
+				BFC7354B2600D56300FFA306 /* LocationModel.swift in Sources */,
 				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* AppView.swift in Sources */,

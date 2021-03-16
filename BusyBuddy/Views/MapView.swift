@@ -10,6 +10,7 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var placesModel: PlacesModel
+    @EnvironmentObject var locationModel: LocationModel
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092),
@@ -17,7 +18,7 @@ struct MapView: View {
     @State private var selectedPlace: Place? = nil
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesModel.getAllPlaces()) { place in
+        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: self.placesModel.getAllPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
                 JamCamAnnotation()
                 .onTapGesture {
@@ -34,6 +35,11 @@ struct MapView: View {
                         Text("Done").foregroundColor(.white)
                     })
             }
+        }
+        .onAppear {
+            self.region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: self.locationModel.userCoordinates.latitude, longitude: self.locationModel.userCoordinates.longitude),
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         }
         .edgesIgnoringSafeArea(.all)
     }

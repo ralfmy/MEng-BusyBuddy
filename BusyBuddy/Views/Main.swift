@@ -17,10 +17,11 @@ struct BusyBuddy: App {
 
     @StateObject var appState: AppState = AppState()
     @StateObject var placesModel: PlacesModel = PlacesModel()
+    @StateObject var locationModel: LocationModel = LocationModel()
     
     var body: some Scene {
         WindowGroup {
-            AppView().environmentObject(appState).environmentObject(placesModel)
+            AppView().environmentObject(appState).environmentObject(placesModel).environmentObject(locationModel)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {
