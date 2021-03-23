@@ -32,7 +32,7 @@ struct AppView: View {
             TabView(selection: $appState.tabSelection) {
                 
                 // Tab 1
-                BookmarksGrid()
+                BookmarksView()
                 .sheet(isPresented: $isShowingAll) {
                     AllPlacesSheet(isPresented: $isShowingAll)
                 }
@@ -62,6 +62,26 @@ struct AppView: View {
             .accentColor(.white)
         }
         .accentColor(.white)
+    }
+    
+    @ViewBuilder private func BookmarksView() -> some View {
+        if self.placesModel.apiHasReturned {
+            BookmarksGrid()
+        } else {
+            VStack {
+                Image(systemName: "antenna.radiowaves.left.and.right")
+                    .font(.system(size: 64))
+                    .foregroundColor(.busyGreyLighter)
+                
+                Spacer().frame(height: 40)
+                
+                Text("LOADING")
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.appGreyDarker)
+
+            }
+        }
     }
     
     @ViewBuilder private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {

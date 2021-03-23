@@ -18,7 +18,7 @@ struct MapView: View {
     @State private var selectedPlace: Place? = nil
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow), annotationItems: self.placesModel.getAllPlaces()) { place in
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesModel.getAllPlaces()) { place in
             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
                 JamCamAnnotation()
                 .onTapGesture {

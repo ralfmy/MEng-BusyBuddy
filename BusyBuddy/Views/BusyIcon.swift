@@ -20,10 +20,8 @@ struct BusyIcon: View {
     }
     
     private func setBusyForegroundColour() -> Color {
-        if coloured {
+        if self.coloured {
             switch self.busyScore.score {
-            case .none:
-                return Color.busyGreyLighter
             case .low:
                 return Color.busyGreenDarker
             case .medium:
@@ -31,7 +29,7 @@ struct BusyIcon: View {
             case.high:
                 return Color.busyPinkDarker
             default:
-                return Color.white
+                return Color.busyGreyDarker
             }
         } else {
             return Color.white.opacity(0.4)
@@ -40,10 +38,8 @@ struct BusyIcon: View {
     }
     
     private func setBusyBackgroundColour() -> Color {
-        if coloured {
+        if self.coloured {
             switch self.busyScore.score {
-            case .none:
-                return Color.busyGreyLighter
             case .low:
                 return Color.busyGreenLighter
             case .medium:
@@ -51,7 +47,7 @@ struct BusyIcon: View {
             case.high:
                 return Color.busyPinkLighter
             default:
-                return Color.white
+                return Color.busyGreyLighter
             }
         } else {
             return Color.white.opacity(0.4)
@@ -78,6 +74,6 @@ struct BusyIcon: View {
 
 struct BusyIcon_Previews: PreviewProvider {
     static var previews: some View {
-        BusyIcon(busyScore: BusyScore(), size: 75, coloured: true)
+        BusyIcon(busyScore: BusyScore(count: -1), size: 75, coloured: true)
     }
 }

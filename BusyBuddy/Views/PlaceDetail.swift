@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlaceDetail: View {
     @EnvironmentObject private var placesModel: PlacesModel
-//    @EnvironmentObject private var bookmarksManager: BookmarksManager
 
     @State private var isViewingImage: Bool = false
     @State private var buttonState: Int = 0
@@ -122,8 +121,8 @@ struct PlaceDetail: View {
                 isViewingImage.toggle()
             }
         }) {
-            Text("View Image")
-                .font(.subheadline)
+            Text("VIEW IMAGE")
+                .font(.caption)
                 .fontWeight(.bold)
                 .padding()
                 .foregroundColor(.black)

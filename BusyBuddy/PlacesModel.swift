@@ -17,12 +17,13 @@ class PlacesModel: ObservableObject {
     private var networkClient: NetworkClient
     private var cache: PlacesCache
     private var defaults: UserDefaults
-    
     private let feedback = UINotificationFeedbackGenerator()
     
     @Published private var places = [Place]()
     @Published private var bookmarkIds = [String]()
-    @Published private var bookmarkIndices = [Int]()
+    private var bookmarkIndices = [Int]()
+    
+    @Published public var apiHasReturned = false
     
     init(model: BusyModel = ML.currentModel(),
          client: NetworkClient = NetworkClient(),
@@ -182,14 +183,15 @@ class PlacesModel: ObservableObject {
     }
     
     private func fetchPlacesFromAPI() {
-        objectWillChange.send()
         self.logger.info("INFO: Fetching Places from TfL Unified API.")
         TfLUnifiedAPI.fetchAllJamCams(client: self.networkClient) { places in
             self.logger.info("INFO: Fetching success.")
             DispatchQueue.main.async { [weak self] in
+                self?.objectWillChange.send()
                 self?.places = places.sorted(by: { $0.commonName < $1.commonName })
                 self?.cache.setPlaces(places: places)
                 self?.setBookmarkedPlaces()
+                self?.apiHasReturned = true
             }
         }
     }
