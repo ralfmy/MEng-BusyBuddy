@@ -10,9 +10,9 @@ import SwiftUI
 struct SettingsView: View {
 //    let columns: [GridItem] = [GridItem(.flexible(), spacing: 12, alignment: .leading), GridItem(.flexible(), spacing: 12, alignment: .trailing)]
     
-    private let models: [String: ModelType] = ["TuriCreate Classifier": ModelType.tcv1,
-                                               "TuriCreate Classifier pre": ModelType.tcv2,
-                                               "TuriCreate Classifier pre + aug": ModelType.tcv3,
+    private let models: [String: ModelType] = ["ResNet-50": ModelType.resnet,
+                                               "SqueezeNet": ModelType.squeezenet,
+                                               "VisionFeaturePrint_Scene": ModelType.vfps,
                                                "Create ML Classifier v6": ModelType.cmlv6,
                                                "YOLOv3": ModelType.yolo,
                                                "YOLOv3Tiny": ModelType.yolotiny]

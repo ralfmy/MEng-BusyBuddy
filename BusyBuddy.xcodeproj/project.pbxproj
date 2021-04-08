@@ -41,6 +41,14 @@
 		BF74AE28259C90AE0062EAB2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF89439E259C8BD80009582A /* ImageLoader.swift */; };
 		BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C4F1D25A49FE700F1247D /* AppState.swift */; };
 		BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */; };
+		BF88F9B0261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AD261EFE7900DC5DF4 /* ResNet-50.mlmodel */; };
+		BF88F9B1261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AD261EFE7900DC5DF4 /* ResNet-50.mlmodel */; };
+		BF88F9B3261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AE261EFE7900DC5DF4 /* VisionFeaturePrint_Scene.mlmodel */; };
+		BF88F9B4261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AE261EFE7900DC5DF4 /* VisionFeaturePrint_Scene.mlmodel */; };
+		BF88F9B6261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AF261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel */; };
+		BF88F9B7261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AF261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel */; };
+		BF88F9C9261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */; };
+		BF88F9CA261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */; };
 		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF894337259C7EA40009582A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
@@ -67,8 +75,6 @@
 		BF90244A25CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */; };
 		BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
 		BF90245825CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */; };
-		BF90246425CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
-		BF90246625CF334D001B1E80 /* YOLOTiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90246325CF334D001B1E80 /* YOLOTiny.swift */; };
 		BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
 		BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
 		BF90248525CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
@@ -181,6 +187,10 @@
 		BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CreateMLClassifierv2.mlmodel; sourceTree = "<group>"; };
 		BF7C4F1D25A49FE700F1247D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		BF88F9AD261EFE7900DC5DF4 /* ResNet-50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ResNet-50.mlmodel"; sourceTree = "<group>"; };
+		BF88F9AE261EFE7900DC5DF4 /* VisionFeaturePrint_Scene.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VisionFeaturePrint_Scene.mlmodel; sourceTree = "<group>"; };
+		BF88F9AF261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet_v1.1.mlmodel; sourceTree = "<group>"; };
+		BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuriCreateImageClassifier.swift; sourceTree = "<group>"; };
 		BF894372259C81FF0009582A /* BusyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyEntry.swift; sourceTree = "<group>"; };
 		BF89438B259C88D60009582A /* BusyTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTimeline.swift; sourceTree = "<group>"; };
 		BF89439E259C8BD80009582A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -190,7 +200,6 @@
 		BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv3.swift; sourceTree = "<group>"; };
 		BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuriCreateModelv2.swift; sourceTree = "<group>"; };
 		BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMLModelv6.swift; sourceTree = "<group>"; };
-		BF90246325CF334D001B1E80 /* YOLOTiny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YOLOTiny.swift; sourceTree = "<group>"; };
 		BF90248025CF3971001B1E80 /* BusyIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
 		BF90248125CF3971001B1E80 /* BusyText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
@@ -375,6 +384,9 @@
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
+				BF88F9AD261EFE7900DC5DF4 /* ResNet-50.mlmodel */,
+				BF88F9AF261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel */,
+				BF88F9AE261EFE7900DC5DF4 /* VisionFeaturePrint_Scene.mlmodel */,
 				BF90240B25CF2FB1001B1E80 /* TuriCreateClassifierv1.mlmodel */,
 				BF90240C25CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel */,
 				BF90240A25CF2FAB001B1E80 /* TuriCreateClassifierv3.mlmodel */,
@@ -385,11 +397,11 @@
 				BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */,
 				BF1EDF542550BB5A006C900F /* BusyModel.swift */,
 				BF1EDF6A25515E94006C900F /* YOLO.swift */,
-				BF90246325CF334D001B1E80 /* YOLOTiny.swift */,
 				BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */,
 				BF977A4D259CD8A400BC6896 /* TuriCreateModelv1.swift */,
 				BF90244425CF311A001B1E80 /* TuriCreateModelv2.swift */,
 				BF90244325CF311A001B1E80 /* TuriCreateModelv3.swift */,
+				BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */,
 			);
 			path = "Core ML";
 			sourceTree = "<group>";
@@ -634,19 +646,22 @@
 				BF894346259C7EAE0009582A /* PlacesModel.swift in Sources */,
 				BF894337259C7EA40009582A /* Colours.swift in Sources */,
 				BF894399259C89640009582A /* ExamplePlaces.swift in Sources */,
-				BF90246625CF334D001B1E80 /* YOLOTiny.swift in Sources */,
+				BF88F9B1261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */,
 				BF894332259C7E9D0009582A /* BusyScore.swift in Sources */,
 				BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */,
 				BF63A68625A9A76F00F3C9F4 /* CreateMLClassifierv2.mlmodel in Sources */,
 				BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
+				BF88F9CA261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */,
 				BF894355259C7EB70009582A /* TfLUnifiedAPI.swift in Sources */,
 				BF89435A259C7EC00009582A /* YOLO.swift in Sources */,
 				BF89435F259C7EC20009582A /* BusyModel.swift in Sources */,
+				BF88F9B7261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */,
 				BF89434B259C7EB20009582A /* PlacesCache.swift in Sources */,
 				BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */,
 				BF90241225CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
 				BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BF88F9B4261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */,
 				BF90241525CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BF90240F25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
 				BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
@@ -665,6 +680,7 @@
 				BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */,
 				BF1EDF552550BB5A006C900F /* BusyModel.swift in Sources */,
 				BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */,
+				BF88F9B0261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */,
 				BFAFBC6325F5538800E62CBD /* Main.swift in Sources */,
 				BFC5A0A12554540E00CE2B80 /* ExamplePlaces.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
@@ -675,6 +691,7 @@
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
 				BF977A4E259CD8A400BC6896 /* TuriCreateModelv1.swift in Sources */,
 				BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */,
+				BF88F9B3261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */,
 				BF90244825CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
 				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
@@ -682,14 +699,15 @@
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
 				BF90244525CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
+				BF88F9C9261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */,
 				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
 				BF90241325CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
+				BF88F9B6261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */,
 				BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */,
 				BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */,
 				BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */,
 				BF90248525CF3971001B1E80 /* BusyText.swift in Sources */,
 				BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */,
-				BF90246425CF334D001B1E80 /* YOLOTiny.swift in Sources */,
 				BF90241025CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
 				BF90240D25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
 				BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,

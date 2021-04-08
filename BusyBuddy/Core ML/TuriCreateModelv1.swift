@@ -15,14 +15,14 @@ public final class TuriCreateModelv1: BusyModel {
     // No preprocessing, no augmentation
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateClassifierv1")
     
-    var model = TuriCreateClassifierv1().model
-    
+    internal var model: MLModel
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence  // Confidence in classification of busy or not_busy
     internal var context: CIContext
     
-    init(confidenceThreshold: VNConfidence = 0.5) {
+    init(mlModel: MLModel = TuriCreateClassifierv1().model, confidenceThreshold: VNConfidence = 0.5) {
+        self.model = mlModel
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold

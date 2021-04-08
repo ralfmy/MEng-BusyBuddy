@@ -15,14 +15,14 @@ public final class TuriCreateModelv2: BusyModel {
     // With preprocessing, no augmentation
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TuriCreateModelv2")
     
-    var model = TuriCreateClassifierv2().model
-    
+    internal var model: MLModel
     internal var images: [UIImage]
     var observations: [[VNObservation]]
     var confidenceThreshold: VNConfidence  // Confidence in classification of busy or not_busy
     internal var context: CIContext
     
-    init(confidenceThreshold: VNConfidence = 0.5) {
+    init(mlModel: MLModel = TuriCreateClassifierv2().model, confidenceThreshold: VNConfidence = 0.5) {
+        self.model = mlModel
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
@@ -56,10 +56,10 @@ public final class TuriCreateModelv2: BusyModel {
     
     private func brightenLowlight(_ input: CIImage) -> CIImage? {
         let hour = Calendar.current.component(.hour, from: Date())
-        if hour > 17 {
+        if (hour >= 0 && hour < 7) || (hour > 19) {
             let exposureAdjustFilter = CIFilter(name: "CIExposureAdjust")
             exposureAdjustFilter?.setValue(input, forKey: "inputImage")
-            exposureAdjustFilter?.setValue(0.9, forKey: "inputEV")
+            exposureAdjustFilter?.setValue(1.1, forKey: "inputEV")
             return exposureAdjustFilter?.outputImage
         } else {
             return input

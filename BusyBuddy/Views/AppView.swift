@@ -69,7 +69,7 @@ struct AppView: View {
             BookmarksGrid()
         } else {
             VStack {
-                Image(systemName: "antenna.radiowaves.left.and.right")
+                Image(systemName: "square.and.arrow.down.fill")
                     .font(.system(size: 64))
                     .foregroundColor(.busyGreyLighter)
                 
