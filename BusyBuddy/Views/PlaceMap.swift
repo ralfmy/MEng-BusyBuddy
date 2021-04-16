@@ -1,5 +1,5 @@
 //
-//  PlaceMap.swift
+//  JamCamMap.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 18/11/2020.
@@ -10,15 +10,15 @@
 import SwiftUI
 import MapKit
 
-struct PlaceMap: View {
+struct JamCamMap: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-    @State private var places = [Place]()
+    @State private var jamCams = [JamCam]()
     
-    let place: Place
+    let jamCam: JamCam
     
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: self.places) { place in
-            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
+        Map(coordinateRegion: $region, annotationItems: self.jamCams) { jamCam in
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: jamCam.lat, longitude: jamCam.lon)) {
                 JamCamAnnotation()
             }
         }
@@ -26,16 +26,16 @@ struct PlaceMap: View {
         .brightness(-0.2)
         .onAppear {
             self.region = MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: self.place.lat, longitude: self.place.lon),
+                center: CLLocationCoordinate2D(latitude: self.jamCam.lat, longitude: self.jamCam.lon),
                 span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.places.append(self.place)
+            self.jamCams.append(self.jamCam)
         }
     }
 }
 
-struct PlaceMap_Previews: PreviewProvider {
+struct JamCamMap_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceMap(place: ExamplePlaces.oxfordCircus)
+        JamCamMap(jamCam: ExampleJamCams.oxfordCircus)
             
     }
 }

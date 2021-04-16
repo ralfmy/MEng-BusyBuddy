@@ -1,5 +1,5 @@
 //
-//  AllPlacesView.swift
+//  AllJamCamsView.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 05/11/2020.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct AllPlacesSheet: View {    
+struct AllJamCamsSheet: View {    
     @Binding var isPresented: Bool
     
     var body: some View {
         NavigationView {
             VStack {
-                PlacesList()
+                JamCamsList()
                 Spacer()
             }
-            .navigationBarTitle(Text("All Places"), displayMode: .automatic)
+            .navigationBarTitle(Text("All JamCams"), displayMode: .automatic)
             .navigationBarItems(trailing: DoneButton)
         }.accentColor(.white)
     }
@@ -30,10 +30,10 @@ struct AllPlacesSheet: View {
     }
 }
 
-struct AllPlacesSheet_Previews: PreviewProvider {
+struct AllJamCamsSheet_Previews: PreviewProvider {
     @State static private var isShowingAll = false
 
     static var previews: some View {
-        AllPlacesSheet(isPresented: $isShowingAll)
+        AllJamCamsSheet(isPresented: $isShowingAll)
     }
 }

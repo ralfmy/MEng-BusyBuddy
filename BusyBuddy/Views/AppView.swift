@@ -13,7 +13,7 @@ import os.log
 
 struct AppView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var placesModel: PlacesModel
+    @EnvironmentObject var jamCamsModel: JamCamsModel
     
     @State private var navigationBarHidden: Bool = false
     @State private var isShowingAll: Bool = false
@@ -34,7 +34,7 @@ struct AppView: View {
                 // Tab 1
                 BookmarksView()
                 .sheet(isPresented: $isShowingAll) {
-                    AllPlacesSheet(isPresented: $isShowingAll)
+                    AllJamCamsSheet(isPresented: $isShowingAll)
                 }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
@@ -65,7 +65,7 @@ struct AppView: View {
     }
     
     @ViewBuilder private func BookmarksView() -> some View {
-        if self.placesModel.apiHasReturned {
+        if self.jamCamsModel.apiHasReturned {
             BookmarksGrid()
         } else {
             VStack {
@@ -139,7 +139,7 @@ struct AppView: View {
     private var UpdateButton: some View {
         Button(action: {
             impact.impactOccurred()
-            self.placesModel.updateBookmarksScores()
+            self.jamCamsModel.updateBookmarksScores()
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))

@@ -1,5 +1,5 @@
 //
-//  PlacesCacheTests.swift
+//  JamCamsCacheTests.swift
 //  BusyBuddyTests
 //
 //  Created by Ralf Michael Yap on 24/01/2021.
@@ -10,20 +10,20 @@ import os.log
 
 @testable import BusyBuddy
 
-class PlacesCacheTests: XCTestCase {
+class JamCamsCacheTests: XCTestCase {
     
-    private var placesCache = PlacesCache()
+    private var jamCamsCache = JamCamsCache()
     
-    func testGetPlaces() {
-        let places = placesCache.getPlaces()
-        XCTAssertTrue(places.isEmpty)
+    func testGetJamCams() {
+        let jamCams = jamCamsCache.getJamCams()
+        XCTAssertTrue(jamCams.isEmpty)
     }
 
-    func testSetPlaces() {
-        placesCache.setPlaces(places: [ExamplePlaces.gowerSt])
-        let cachedPlaces = placesCache.getPlaces()
-        XCTAssertEqual(cachedPlaces.count, 1)
-        XCTAssertEqual(cachedPlaces[0], ExamplePlaces.gowerSt)
+    func testSetJamCams() {
+        jamCamsCache.setJamCams(jamCams: [ExampleJamCams.gowerSt])
+        let cachedJamCams = jamCamsCache.getJamCams()
+        XCTAssertEqual(cachedJamCams.count, 1)
+        XCTAssertEqual(cachedJamCams[0], ExampleJamCams.gowerSt)
     }
 
 }

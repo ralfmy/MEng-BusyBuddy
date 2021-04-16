@@ -1,5 +1,5 @@
 //
-//  PlacesCache.swift
+//  JamCamsCache.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 25/11/2020.
@@ -8,9 +8,9 @@
 import UIKit
 import os.log
 
-public final class PlacesCache {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesCache")
-    private let key = "Places"
+public final class JamCamsCache {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "JamCamsCache")
+    private let key = "JamCams"
     
     private var cache = NSCache<NSString, NSArray>()
     
@@ -24,12 +24,12 @@ public final class PlacesCache {
       }
     }
     
-    public func getPlaces() -> [Place] {
-        return self.cache.object(forKey: NSString(string: self.key)) as? [Place] ?? [Place]()
+    public func getJamCams() -> [JamCam] {
+        return self.cache.object(forKey: NSString(string: self.key)) as? [JamCam] ?? [JamCam]()
     }
     
-    public func setPlaces(places: [Place]) {
-        self.cache.setObject(places as NSArray, forKey: NSString(string: self.key))
+    public func setJamCams(jamCams: [JamCam]) {
+        self.cache.setObject(jamCams as NSArray, forKey: NSString(string: self.key))
         self.logger.info("INFO: Cache save success.")
     }
 }

@@ -11,21 +11,21 @@ import UIKit
 struct BusyTimeline: IntentTimelineProvider {
     
     typealias Entry = BusyEntry
-    typealias Intent = SelectPlaceIntent
+    typealias Intent = SelectJamCamIntent
 
     func placeholder(in context: Context) -> Entry {
-        var place = ExamplePlaces.oxfordCircus
-        place.updateBusyScore(busyScore: BusyScore())
-        let image = place.downloadImage()
+        var jamCam = ExampleJamCams.oxfordCircus
+        jamCam.updateBusyScore(busyScore: BusyScore())
+        let image = jamCam.downloadImage()
         let busyScore = ML.currentModel().run(on: [image]).first!
-        place.updateBusyScore(busyScore: busyScore)
-        return Entry(date: Date(), place: place)
+        jamCam.updateBusyScore(busyScore: busyScore)
+        return Entry(date: Date(), jamCam: jamCam)
     }
     
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> Void) {
-        let place = ExamplePlaces.gowerSt
-        place.updateBusyScore(busyScore: BusyScore(count: 1))
-        let entry = Entry(date: Date(), place: place)
+        let jamCam = ExampleJamCams.gowerSt
+        jamCam.updateBusyScore(busyScore: BusyScore(count: 1))
+        let entry = Entry(date: Date(), jamCam: jamCam)
         completion(entry)
     }
     
@@ -33,20 +33,20 @@ struct BusyTimeline: IntentTimelineProvider {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)!
         
-        guard let placeItem = configuration.place else {
-            let entry = Entry(date: currentDate, place: ExamplePlaces.oxfordCircus)
+        guard let jamCamItem = configuration.jamCam else {
+            let entry = Entry(date: currentDate, jamCam: ExampleJamCams.oxfordCircus)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             return
         }
         
-        let place = Place(id: placeItem.identifier!, commonName: placeItem.displayString, placeType: placeItem.placeType!, additionalProperties: [AdditionalProperty(key: "imageUrl", value: placeItem.imageUrl!)], lat: placeItem.lat!.doubleValue, lon: placeItem.lon!.doubleValue)
-        let image = place.downloadImage()
+        let jamCam = JamCam(id: jamCamItem.identifier!, commonName: jamCamItem.displayString, placeType: jamCamItem.placeType!, additionalProperties: [AdditionalProperty(key: "imageUrl", value: jamCamItem.imageUrl!)], lat: jamCamItem.lat!.doubleValue, lon: jamCamItem.lon!.doubleValue)
+        let image = jamCam.downloadImage()
         let busyScore = ML.currentModel().run(on: [image]).first!
 
-        place.updateBusyScore(busyScore: busyScore)
+        jamCam.updateBusyScore(busyScore: busyScore)
         
-        let entry = Entry(date: currentDate, place: place)
+        let entry = Entry(date: currentDate, jamCam: jamCam)
         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
         completion(timeline)
     }

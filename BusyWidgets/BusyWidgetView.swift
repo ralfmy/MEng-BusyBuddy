@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlaceholderView: View {
+struct JamCamholderView: View {
     var body: some View {
         Text("Loading...")
     }
@@ -19,21 +19,21 @@ struct BusyWidgetView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer().frame(height: 10)
-            BusyIcon(busyScore: self.entry.place.busyScore ?? BusyScore(), size: 35, coloured: false)
+            BusyIcon(busyScore: self.entry.jamCam.busyScore ?? BusyScore(), size: 35, coloured: false)
             Spacer()
             CommonName
             Spacer().frame(height: 5)
-            BusyText(busyScore: self.entry.place.busyScore ?? BusyScore(), font: .footnote)
+            BusyText(busyScore: self.entry.jamCam.busyScore ?? BusyScore(), font: .footnote)
             LastUpdated
             Spacer().frame(height: 10)
         }
-        .widgetURL(URL(string: "busybuddy://bookmarks/" + entry.place.id))
+        .widgetURL(URL(string: "busybuddy://bookmarks/" + entry.jamCam.id))
         .padding(15)
         .background(setCardColour())
     }
     
     private var CommonName: some View {
-        Text(self.entry.place.commonNameAsText())
+        Text(self.entry.jamCam.commonNameAsText())
             .font(.callout)
             .fontWeight(.semibold)
             .lineLimit(2)
@@ -51,7 +51,7 @@ struct BusyWidgetView: View {
     }
     
     private func setLastUpdated() -> String {
-        if let busyScore = self.entry.place.busyScore {
+        if let busyScore = self.entry.jamCam.busyScore {
             return "Updated: " + busyScore.dateAsString()
         } else {
             return ""
@@ -59,7 +59,7 @@ struct BusyWidgetView: View {
     }
     
     private func setTextColour(opacity: Double) -> Color {
-        if let busyScore = entry.place.busyScore {
+        if let busyScore = entry.jamCam.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.appGreyDarkest.opacity(0.8)
@@ -72,7 +72,7 @@ struct BusyWidgetView: View {
     }
 
     private func setCardColour() -> Color {
-        if let busyScore = entry.place.busyScore {
+        if let busyScore = entry.jamCam.busyScore {
             switch busyScore.score {
             case .none:
                 return Color.busyYellowDarker
@@ -93,6 +93,6 @@ struct BusyWidgetView: View {
 
 struct BusyWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        BusyWidgetView(entry: BusyEntry(date: Date(), place: ExamplePlaces.oxfordCircus))
+        BusyWidgetView(entry: BusyEntry(date: Date(), jamCam: ExampleJamCams.oxfordCircus))
     }
 }

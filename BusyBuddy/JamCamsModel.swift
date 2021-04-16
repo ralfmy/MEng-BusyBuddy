@@ -1,5 +1,5 @@
 //
-//  PlacesModel.swift
+//  JamCamsModel.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 25/11/2020.
@@ -10,16 +10,16 @@ import UIKit
 import WidgetKit
 import os.log
 
-class PlacesModel: ObservableObject {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "PlacesModel")
+class JamCamsModel: ObservableObject {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "JamCamsModel")
     
     private var model: BusyModel
     private var networkClient: NetworkClient
-    private var cache: PlacesCache
+    private var cache: JamCamsCache
     private var defaults: UserDefaults
     private let feedback = UINotificationFeedbackGenerator()
     
-    @Published private var places = [Place]()
+    @Published private var jamCams = [JamCam]()
     @Published private var bookmarkIds = [String]()
     private var bookmarkIndices = [Int]()
     
@@ -27,7 +27,7 @@ class PlacesModel: ObservableObject {
     
     init(model: BusyModel = ML.currentModel(),
          client: NetworkClient = NetworkClient(),
-         cache: PlacesCache = PlacesCache(),
+         cache: JamCamsCache = JamCamsCache(),
          defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) {
         self.model = model
         self.networkClient = client
@@ -38,30 +38,30 @@ class PlacesModel: ObservableObject {
 //        if CommandLine.arguments.contains("ui-testing") {
 //            self.logger.debug("DEBUG: HERE")
 //            let testDefaults = UserDefaults(suiteName: "com.zcabrmy.BusyBuddyUITests")
-//            let bookmarkIds = [ExamplePlaces.gowerSt.id, ExamplePlaces.oxfordCircus.id, ExamplePlaces.stGilesCircus.id, ExamplePlaces.exhibitionRd.id]
+//            let bookmarkIds = [ExampleJamCams.gowerSt.id, ExampleJamCams.oxfordCircus.id, ExampleJamCams.stGilesCircus.id, ExampleJamCams.exhibitionRd.id]
 //            self.defaults.setValue(bookmarkIds, forKey: "BookmarksIDs")
 //            self.logger.info("INFO: UserDefaults save successful.")
 //            self.defaults = testDefaults!
 //        }
 //        #endif
         
-        self.loadPlaces()
+        self.loadJamCams()
     }
     
-    public func getAllPlaces() -> [Place] {
-        return self.places
+    public func getAllJamCams() -> [JamCam] {
+        return self.jamCams
     }
     
-    public func getPlaceWithId(_ id: String) -> Place? {
+    public func getJamCamWithId(_ id: String) -> JamCam? {
 //        if let index = self.getIndexOfId(id) {
-//            return self.places[index]
+//            return self.jamCams[index]
 //        }
 //        return nil
-        return self.places.first(where: { $0.id == id })
+        return self.jamCams.first(where: { $0.id == id })
     }
     
-    public func getBookmarkedPlaces() -> [Place] {
-        return self.places.filter { self.bookmarkIds.contains($0.id) }
+    public func getBookmarkedJamCams() -> [JamCam] {
+        return self.jamCams.filter { self.bookmarkIds.contains($0.id) }
     }
     
     public func getBookmarkIds() -> [String] {
@@ -69,8 +69,8 @@ class PlacesModel: ObservableObject {
     }
     
     public func isBookmark(id: String) -> Bool {
-        if let place = self.places.first(where: { $0.id == id }) {
-            return place.isBookmark
+        if let jamCam = self.jamCams.first(where: { $0.id == id }) {
+            return jamCam.isBookmark
         } else {
             return false
         }
@@ -80,12 +80,12 @@ class PlacesModel: ObservableObject {
         self.objectWillChange.send()
         if !self.isBookmark(id: id) {
             let index = self.getIndexOfId(id)!
-            self.places[index].toggleBookmark()
+            self.jamCams[index].toggleBookmark()
             self.bookmarkIndices.append(index)
             self.bookmarkIds.append(id)
             self.saveBookmarks()
         } else {
-            self.logger.info("INFO: Place with id \(id) already in Bookmarks.")
+            self.logger.info("INFO: JamCam with id \(id) already in Bookmarks.")
         }
     }
     
@@ -93,12 +93,12 @@ class PlacesModel: ObservableObject {
         self.objectWillChange.send()
         if self.isBookmark(id: id) {
             let index = self.getIndexOfId(id)!
-            self.places[index].toggleBookmark()
+            self.jamCams[index].toggleBookmark()
             self.bookmarkIndices.append(index)
             self.bookmarkIds.removeAll(where: { $0 == id })
             self.saveBookmarks()
         } else {
-            self.logger.info("INFO: Place with id \(id) is not in Bookmarks.")
+            self.logger.info("INFO: JamCam with id \(id) is not in Bookmarks.")
         }
     }
     
@@ -107,7 +107,7 @@ class PlacesModel: ObservableObject {
         
         self.objectWillChange.send()
         self.bookmarkIndices.forEach { index in
-            self.places[index].updateBusyScore(busyScore: nil)
+            self.jamCams[index].updateBusyScore(busyScore: nil)
         }
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
@@ -118,7 +118,7 @@ class PlacesModel: ObservableObject {
             var busyScores = [BusyScore]()
             
             self.bookmarkIndices.forEach { index in
-                let image = self.places[index].downloadImage()
+                let image = self.jamCams[index].downloadImage()
                 let busyScore = self.model.run(on: [image]).first!
                 busyScores.append(busyScore)
             }
@@ -126,7 +126,7 @@ class PlacesModel: ObservableObject {
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()
                 self?.bookmarkIndices.enumerated().forEach { (i, index) in
-                    self?.places[index].updateBusyScore(busyScore: busyScores[i])
+                    self?.jamCams[index].updateBusyScore(busyScore: busyScores[i])
                 }
                 self?.feedback.notificationOccurred(.success)
                 WidgetCenter.shared.reloadTimelines(ofKind: "com.zcabrmy.busy-widgets")
@@ -136,24 +136,24 @@ class PlacesModel: ObservableObject {
     }
     
     public func updateScoreFor(id: String) {
-        if let index = self.places.firstIndex(where: { $0.id == id }) {
+        if let index = self.jamCams.firstIndex(where: { $0.id == id }) {
             self.objectWillChange.send()
-            self.places[index].updateBusyScore(busyScore: nil)
+            self.jamCams[index].updateBusyScore(busyScore: nil)
             
-            self.logger.info("INFO: BusyScore for id \(self.places[index].id) is expired - updating...")
+            self.logger.info("INFO: BusyScore for id \(self.jamCams[index].id) is expired - updating...")
             
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
                 guard let self = self else {
                     return
                 }
                 
-                let image = self.places[index].downloadImage()
+                let image = self.jamCams[index].downloadImage()
                 
                 let busyScore = self.model.run(on: [image]).first!
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.objectWillChange.send()
-                    self?.places[index].updateBusyScore(busyScore: busyScore)
+                    self?.jamCams[index].updateBusyScore(busyScore: busyScore)
                     self?.feedback.notificationOccurred(.success)
                     self?.logger.info("INFO: Finished updating BusyScores.")
                 }
@@ -170,37 +170,37 @@ class PlacesModel: ObservableObject {
         self.updateBookmarksScores()
     }
     
-    private func loadPlaces() {
-        let cachedPlaces = self.cache.getPlaces()
-        if !cachedPlaces.isEmpty {
-            self.logger.info("INFO: PlacesCache hit.")
-            self.places = cachedPlaces
-            self.setBookmarkedPlaces()
+    private func loadJamCams() {
+        let cachedJamCams = self.cache.getJamCams()
+        if !cachedJamCams.isEmpty {
+            self.logger.info("INFO: JamCamsCache hit.")
+            self.jamCams = cachedJamCams
+            self.setBookmarkedJamCams()
         } else {
-            self.logger.info("INFO: PlacesCache miss.")
-            self.fetchPlacesFromAPI()
+            self.logger.info("INFO: JamCamsCache miss.")
+            self.fetchJamCamsFromAPI()
         }
     }
     
-    private func fetchPlacesFromAPI() {
-        self.logger.info("INFO: Fetching Places from TfL Unified API.")
-        TfLUnifiedAPI.fetchAllJamCams(client: self.networkClient) { places in
+    private func fetchJamCamsFromAPI() {
+        self.logger.info("INFO: Fetching JamCams from TfL Unified API.")
+        TfLUnifiedAPI.fetchAllJamCams(client: self.networkClient) { jamCams in
             self.logger.info("INFO: Fetching success.")
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()
-                self?.places = places.sorted(by: { $0.commonName < $1.commonName })
-                self?.cache.setPlaces(places: places)
-                self?.setBookmarkedPlaces()
+                self?.jamCams = jamCams.sorted(by: { $0.commonName < $1.commonName })
+                self?.cache.setJamCams(jamCams: jamCams)
+                self?.setBookmarkedJamCams()
                 self?.apiHasReturned = true
             }
         }
     }
     
-    private func setBookmarkedPlaces() {
+    private func setBookmarkedJamCams() {
         self.bookmarkIds = self.defaults.object(forKey: "BookmarksIDs") as? [String] ?? [String]()
-        for (index, place) in self.places.enumerated() {
-            if self.bookmarkIds.contains(place.id) {
-                self.places[index].toggleBookmark()
+        for (index, jamCam) in self.jamCams.enumerated() {
+            if self.bookmarkIds.contains(jamCam.id) {
+                self.jamCams[index].toggleBookmark()
                 self.bookmarkIndices.append(index)
             }
         }
@@ -210,14 +210,14 @@ class PlacesModel: ObservableObject {
     
     private func saveBookmarks() {
         self.defaults.setValue(self.bookmarkIds, forKey: "BookmarksIDs")
-        let bookmarkedPlaces = self.getBookmarkedPlaces()
-        if let encoded = try? JSONEncoder().encode(bookmarkedPlaces) {
+        let bookmarkedJamCams = self.getBookmarkedJamCams()
+        if let encoded = try? JSONEncoder().encode(bookmarkedJamCams) {
             self.defaults.set(encoded, forKey: "Bookmarks")
         }
         self.logger.info("INFO: UserDefaults save successful.")
     }
     
     private func getIndexOfId(_ id: String) -> Int? {
-        return self.places.firstIndex(where: { $0.id == id })
+        return self.jamCams.firstIndex(where: { $0.id == id })
     }
 }

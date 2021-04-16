@@ -9,5 +9,5 @@ import WidgetKit
 
 struct BusyEntry: TimelineEntry {
     let date: Date
-    let place: Place
+    let jamCam: JamCam
 }

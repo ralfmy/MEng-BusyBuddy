@@ -1,5 +1,5 @@
 //
-//  CodablePlace.swift
+//  CodableJamCam.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 01/11/2020.
@@ -8,10 +8,10 @@
 import UIKit
 import os.log
 
-//  Decode JSON response from TfL Unified API into this Place type.
+//  Decode JSON response from TfL Unified API into this JamCam type.
 
-public final class Place: Codable, Equatable, Identifiable, ObservableObject {
-    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "Place")
+public final class JamCam: Codable, Equatable, Identifiable, ObservableObject {
+    private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "JamCam")
 
     public let id: String
     let commonName: String
@@ -73,7 +73,7 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
         self.busyScore = busyScore
     }
     
-    public static func == (lhs: Place, rhs: Place) -> Bool {
+    public static func == (lhs: JamCam, rhs: JamCam) -> Bool {
         if (lhs.commonName == rhs.commonName && lhs.placeType == rhs.placeType && lhs.lat == rhs.lat && lhs.lon == rhs.lon)
         {
             return true
@@ -83,7 +83,7 @@ public final class Place: Codable, Equatable, Identifiable, ObservableObject {
     }
 }
 
-extension Place {
+extension JamCam {
     enum CodingKeys: CodingKey {
         case id
         case commonName

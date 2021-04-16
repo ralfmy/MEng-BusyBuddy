@@ -15,7 +15,7 @@
 		BF1B849F2598ABEF00EC912D /* BusyWidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF1EDF552550BB5A006C900F /* BusyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF542550BB5A006C900F /* BusyModel.swift */; };
 		BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF6A25515E94006C900F /* YOLO.swift */; };
-		BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */; };
+		BF2DB8A725541D0E00A304A7 /* AllJamCamsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8A625541D0E00A304A7 /* AllJamCamsSheet.swift */; };
 		BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */; };
 		BF30588D254F2C3C0087FDEA /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF30588C254F2C3C0087FDEA /* AppView.swift */; };
 		BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305891254F2C3E0087FDEA /* Assets.xcassets */; };
@@ -23,7 +23,7 @@
 		BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */; };
 		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
 		BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
-		BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF3058C8254F2C7E0087FDEA /* JamCam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* JamCam.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
 		BF37526E25BD9FB800888E73 /* MockObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37526D25BD9FB800888E73 /* MockObjects.swift */; };
 		BF37529325BDB1C800888E73 /* PlacesCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */; };
@@ -34,7 +34,7 @@
 		BF6B1DA42573BAB900CF3FF0 /* BookmarksGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DA32573BAB900CF3FF0 /* BookmarksGrid.swift */; };
 		BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB42573C3DA00CF3FF0 /* BookmarksGridItem.swift */; };
 		BF6B1DBA2573C5C100CF3FF0 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
-		BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF6BD0DB25A0894D0014DF2D /* JamCam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* JamCam.swift */; };
 		BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF700FC325A7406A008AE90B /* CreateMLClassifierv6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */; };
 		BF700FC425A7406A008AE90B /* CreateMLClassifierv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF700FC225A7406A008AE90B /* CreateMLClassifierv2.mlmodel */; };
@@ -49,11 +49,11 @@
 		BF88F9B7261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9AF261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel */; };
 		BF88F9C9261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */; };
 		BF88F9CA261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88F9C8261F000D00DC5DF4 /* TuriCreateImageClassifier.swift */; };
-		BF89432D259C7E990009582A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* Place.swift */; };
+		BF89432D259C7E990009582A /* JamCam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* JamCam.swift */; };
 		BF894332259C7E9D0009582A /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BF894337259C7EA40009582A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1DB92573C5C100CF3FF0 /* Colours.swift */; };
-		BF894346259C7EAE0009582A /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesModel.swift */; };
-		BF89434B259C7EB20009582A /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
+		BF894346259C7EAE0009582A /* JamCamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* JamCamsModel.swift */; };
+		BF89434B259C7EB20009582A /* JamCamsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */; };
 		BF894350259C7EB50009582A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFACD8232591CCA400940D50 /* NetworkClient.swift */; };
 		BF894355259C7EB70009582A /* TfLUnifiedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */; };
 		BF89435A259C7EC00009582A /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EDF6A25515E94006C900F /* YOLO.swift */; };
@@ -79,8 +79,8 @@
 		BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248025CF3971001B1E80 /* BusyIcon.swift */; };
 		BF90248525CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
 		BF90248725CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
-		BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* PlacesCache.swift */; };
-		BF92212E256E78160022CE80 /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* PlacesModel.swift */; };
+		BF92211B256E6D7F0022CE80 /* JamCamsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */; };
+		BF92212E256E78160022CE80 /* JamCamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* JamCamsModel.swift */; };
 		BF977A23259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */; };
 		BF977A24259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */; };
 		BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
@@ -97,10 +97,10 @@
 		BFC7354B2600D56300FFA306 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC7354A2600D56300FFA306 /* LocationModel.swift */; };
 		BFC73D0725A085EC0003413E /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC73CC325A084080003413E /* Intents.framework */; };
 		BFC73D0A25A085EC0003413E /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D0925A085EC0003413E /* IntentHandler.swift */; };
-		BFC73D0E25A085EC0003413E /* PlaceIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC73D0625A085EC0003413E /* PlaceIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
-		BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
-		BFC73D5E25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */; };
+		BFC73D0E25A085EC0003413E /* JamCamIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC73D0625A085EC0003413E /* JamCamIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFC73D5C25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */; };
+		BFC73D5D25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */; };
+		BFC73D5E25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
 		BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlacesList.swift */; };
 		BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1EE0D2577ECC00010981B /* ImageView.swift */; };
@@ -144,7 +144,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BFC73D0E25A085EC0003413E /* PlaceIntent.appex in Embed App Extensions */,
+				BFC73D0E25A085EC0003413E /* JamCamIntent.appex in Embed App Extensions */,
 				BF1B849F2598ABEF00EC912D /* BusyWidgetsExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -160,7 +160,7 @@
 		BF1B849A2598ABEF00EC912D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF1EDF542550BB5A006C900F /* BusyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyModel.swift; sourceTree = "<group>"; };
 		BF1EDF6A25515E94006C900F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
-		BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlacesSheet.swift; sourceTree = "<group>"; };
+		BF2DB8A625541D0E00A304A7 /* AllJamCamsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllJamCamsSheet.swift; sourceTree = "<group>"; };
 		BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
 		BF305885254F2C3C0087FDEA /* BusyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF30588C254F2C3C0087FDEA /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyUITests.swift; sourceTree = "<group>"; };
 		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3058BF254F2C640087FDEA /* TfLUnifiedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPI.swift; sourceTree = "<group>"; };
-		BF3058C7254F2C7E0087FDEA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		BF3058C7254F2C7E0087FDEA /* JamCam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCam.swift; sourceTree = "<group>"; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
 		BF37526D25BD9FB800888E73 /* MockObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockObjects.swift; sourceTree = "<group>"; };
 		BF37529225BDB1C800888E73 /* PlacesCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCacheTests.swift; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 		BF90245525CF31F8001B1E80 /* CreateMLModelv6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMLModelv6.swift; sourceTree = "<group>"; };
 		BF90248025CF3971001B1E80 /* BusyIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyIcon.swift; sourceTree = "<group>"; };
 		BF90248125CF3971001B1E80 /* BusyText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
-		BF92211A256E6D7F0022CE80 /* PlacesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCache.swift; sourceTree = "<group>"; };
-		BF92212D256E78160022CE80 /* PlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModel.swift; sourceTree = "<group>"; };
+		BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamsCache.swift; sourceTree = "<group>"; };
+		BF92212D256E78160022CE80 /* JamCamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamsModel.swift; sourceTree = "<group>"; };
 		BF977A22259CBF8F00BC6896 /* YOLOv3TinyFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyFP16.mlmodel; sourceTree = "<group>"; };
 		BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
@@ -218,11 +218,11 @@
 		BFC7354A2600D56300FFA306 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		BFC73CC325A084080003413E /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		BFC73CCE25A084080003413E /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		BFC73D0625A085EC0003413E /* PlaceIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlaceIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC73D0625A085EC0003413E /* JamCamIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JamCamIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC73D0925A085EC0003413E /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		BFC73D0B25A085EC0003413E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFC73D4625A086F70003413E /* PlaceIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaceIntent.entitlements; sourceTree = "<group>"; };
-		BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectPlaceIntent.intentdefinition; sourceTree = "<group>"; };
+		BFC73D4625A086F70003413E /* JamCamIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = JamCamIntent.entitlements; path = "/Users/ralf/UCL/Year 4/Final Year Project/Development/BusyBuddy/JamCamIntent/JamCamIntent.entitlements"; sourceTree = "<absolute>"; };
+		BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectJamCamIntent.intentdefinition; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
 		BFD97B572550449E00FF23D4 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
 		BFF1EE0D2577ECC00010981B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 			children = (
 				BFAFBC6225F5538800E62CBD /* Main.swift */,
 				BF30588C254F2C3C0087FDEA /* AppView.swift */,
-				BF2DB8A625541D0E00A304A7 /* AllPlacesSheet.swift */,
+				BF2DB8A625541D0E00A304A7 /* AllJamCamsSheet.swift */,
 				BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */,
 				BFD97B572550449E00FF23D4 /* PlacesList.swift */,
 				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
@@ -311,7 +311,7 @@
 				BF3058A1254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058AC254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84942598ABEC00EC912D /* BusyWidgets */,
-				BFC73D0825A085EC0003413E /* PlaceIntent */,
+				BFC73D0825A085EC0003413E /* JamCamIntent */,
 				BFABB53C2598A63600106605 /* Frameworks */,
 				BF305886254F2C3C0087FDEA /* Products */,
 			);
@@ -324,7 +324,7 @@
 				BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */,
 				BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */,
 				BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */,
-				BFC73D0625A085EC0003413E /* PlaceIntent.appex */,
+				BFC73D0625A085EC0003413E /* JamCamIntent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,13 +334,13 @@
 			children = (
 				BF1EDF7B25516248006C900F /* Views */,
 				BF7C4F1D25A49FE700F1247D /* AppState.swift */,
-				BF3058C7254F2C7E0087FDEA /* Place.swift */,
-				BF92211A256E6D7F0022CE80 /* PlacesCache.swift */,
-				BF92212D256E78160022CE80 /* PlacesModel.swift */,
+				BF3058C7254F2C7E0087FDEA /* JamCam.swift */,
+				BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */,
+				BF92212D256E78160022CE80 /* JamCamsModel.swift */,
 				BFD2D3872556B7CD00554869 /* BusyScore.swift */,
 				BFC7354A2600D56300FFA306 /* LocationModel.swift */,
 				BF6B1DB92573C5C100CF3FF0 /* Colours.swift */,
-				BFC73D5B25A088000003413E /* SelectPlaceIntent.intentdefinition */,
+				BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */,
 				BF74AE2D259C91920062EAB2 /* Network */,
 				BF3058BE254F2C530087FDEA /* Core ML */,
 				BF305893254F2C3E0087FDEA /* Preview Content */,
@@ -435,14 +435,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		BFC73D0825A085EC0003413E /* PlaceIntent */ = {
+		BFC73D0825A085EC0003413E /* JamCamIntent */ = {
 			isa = PBXGroup;
 			children = (
-				BFC73D4625A086F70003413E /* PlaceIntent.entitlements */,
+				BFC73D4625A086F70003413E /* JamCamIntent.entitlements */,
 				BFC73D0925A085EC0003413E /* IntentHandler.swift */,
 				BFC73D0B25A085EC0003413E /* Info.plist */,
 			);
-			path = PlaceIntent;
+			path = JamCamIntent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,9 +521,9 @@
 			productReference = BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		BFC73D0525A085EC0003413E /* PlaceIntent */ = {
+		BFC73D0525A085EC0003413E /* JamCamIntent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "PlaceIntent" */;
+			buildConfigurationList = BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "JamCamIntent" */;
 			buildPhases = (
 				BFC73D0225A085EC0003413E /* Sources */,
 				BFC73D0325A085EC0003413E /* Frameworks */,
@@ -533,9 +533,9 @@
 			);
 			dependencies = (
 			);
-			name = PlaceIntent;
+			name = JamCamIntent;
 			productName = PlaceIntent;
-			productReference = BFC73D0625A085EC0003413E /* PlaceIntent.appex */;
+			productReference = BFC73D0625A085EC0003413E /* JamCamIntent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -583,7 +583,7 @@
 				BF30589D254F2C3E0087FDEA /* BusyBuddyTests */,
 				BF3058A8254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */,
-				BFC73D0525A085EC0003413E /* PlaceIntent */,
+				BFC73D0525A085EC0003413E /* JamCamIntent */,
 			);
 		};
 /* End PBXProject section */
@@ -638,12 +638,12 @@
 				BF63A68025A9A76D00F3C9F4 /* CreateMLClassifierv6.mlmodel in Sources */,
 				BF42D83F259CA0B7004DBE86 /* BusyWidgetView.swift in Sources */,
 				BF90244725CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
-				BF89432D259C7E990009582A /* Place.swift in Sources */,
+				BF89432D259C7E990009582A /* JamCam.swift in Sources */,
 				BF90244A25CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
 				BF894350259C7EB50009582A /* NetworkClient.swift in Sources */,
 				BF90248725CF3971001B1E80 /* BusyText.swift in Sources */,
 				BF89438C259C88D60009582A /* BusyTimeline.swift in Sources */,
-				BF894346259C7EAE0009582A /* PlacesModel.swift in Sources */,
+				BF894346259C7EAE0009582A /* JamCamsModel.swift in Sources */,
 				BF894337259C7EA40009582A /* Colours.swift in Sources */,
 				BF894399259C89640009582A /* ExamplePlaces.swift in Sources */,
 				BF88F9B1261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */,
@@ -657,10 +657,10 @@
 				BF89435A259C7EC00009582A /* YOLO.swift in Sources */,
 				BF89435F259C7EC20009582A /* BusyModel.swift in Sources */,
 				BF88F9B7261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */,
-				BF89434B259C7EB20009582A /* PlacesCache.swift in Sources */,
+				BF89434B259C7EB20009582A /* JamCamsCache.swift in Sources */,
 				BF90248425CF3971001B1E80 /* BusyIcon.swift in Sources */,
 				BF90241225CF2FB7001B1E80 /* TuriCreateClassifierv1.mlmodel in Sources */,
-				BFC73D5D25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BFC73D5D25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */,
 				BF88F9B4261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */,
 				BF90241525CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BF90240F25CF2FB7001B1E80 /* TuriCreateClassifierv3.mlmodel in Sources */,
@@ -679,13 +679,13 @@
 				BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */,
 				BF90248225CF3971001B1E80 /* BusyIcon.swift in Sources */,
 				BF1EDF552550BB5A006C900F /* BusyModel.swift in Sources */,
-				BF92211B256E6D7F0022CE80 /* PlacesCache.swift in Sources */,
+				BF92211B256E6D7F0022CE80 /* JamCamsCache.swift in Sources */,
 				BF88F9B0261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */,
 				BFAFBC6325F5538800E62CBD /* Main.swift in Sources */,
 				BFC5A0A12554540E00CE2B80 /* ExamplePlaces.swift in Sources */,
 				BF2DB8AF255426A500A304A7 /* PlaceDetail.swift in Sources */,
 				BF89439F259C8BD80009582A /* ImageLoader.swift in Sources */,
-				BF92212E256E78160022CE80 /* PlacesModel.swift in Sources */,
+				BF92212E256E78160022CE80 /* JamCamsModel.swift in Sources */,
 				BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */,
 				BF700FC425A7406A008AE90B /* CreateMLClassifierv2.mlmodel in Sources */,
 				BFBD96232565BABB0091C0FE /* PlaceMap.swift in Sources */,
@@ -700,7 +700,7 @@
 				BF90244525CF311A001B1E80 /* TuriCreateModelv3.swift in Sources */,
 				BFACD8242591CCA400940D50 /* NetworkClient.swift in Sources */,
 				BF88F9C9261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */,
-				BFC73D5C25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BFC73D5C25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */,
 				BF90241325CF2FB7001B1E80 /* TuriCreateClassifierv2.mlmodel in Sources */,
 				BF88F9B6261EFE7A00DC5DF4 /* SqueezeNet_v1.1.mlmodel in Sources */,
 				BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */,
@@ -713,11 +713,11 @@
 				BF90245625CF31F8001B1E80 /* CreateMLModelv6.swift in Sources */,
 				BF1EDF6B25515E94006C900F /* YOLO.swift in Sources */,
 				BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
-				BF2DB8A725541D0E00A304A7 /* AllPlacesSheet.swift in Sources */,
+				BF2DB8A725541D0E00A304A7 /* AllJamCamsSheet.swift in Sources */,
 				BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */,
 				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BFC7354B2600D56300FFA306 /* LocationModel.swift in Sources */,
-				BF3058C8254F2C7E0087FDEA /* Place.swift in Sources */,
+				BF3058C8254F2C7E0087FDEA /* JamCam.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
 				BF30588D254F2C3C0087FDEA /* AppView.swift in Sources */,
 			);
@@ -747,9 +747,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF6BD0DB25A0894D0014DF2D /* Place.swift in Sources */,
+				BF6BD0DB25A0894D0014DF2D /* JamCam.swift in Sources */,
 				BF6BD0E625A089670014DF2D /* BusyScore.swift in Sources */,
-				BFC73D5E25A088000003413E /* SelectPlaceIntent.intentdefinition in Sources */,
+				BFC73D5E25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */,
 				BFC73D0A25A085EC0003413E /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,7 +774,7 @@
 		};
 		BFC73D0D25A085EC0003413E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BFC73D0525A085EC0003413E /* PlaceIntent */;
+			target = BFC73D0525A085EC0003413E /* JamCamIntent */;
 			targetProxy = BFC73D0C25A085EC0003413E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1079,17 +1079,17 @@
 		BFC73D1025A085EC0003413E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PlaceIntent/PlaceIntent.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JamCamIntent/JamCamIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
-				INFOPLIST_FILE = PlaceIntent/Info.plist;
+				INFOPLIST_FILE = JamCamIntent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.PlaceIntent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.JamCamIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1100,17 +1100,17 @@
 		BFC73D1125A085EC0003413E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PlaceIntent/PlaceIntent.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JamCamIntent/JamCamIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z59VU7JW5V;
-				INFOPLIST_FILE = PlaceIntent/Info.plist;
+				INFOPLIST_FILE = JamCamIntent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.PlaceIntent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddy.JamCamIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1166,7 +1166,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "PlaceIntent" */ = {
+		BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "JamCamIntent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFC73D1025A085EC0003413E /* Debug */,

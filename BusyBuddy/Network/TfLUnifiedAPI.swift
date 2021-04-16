@@ -13,7 +13,7 @@ import os.log
 public struct TfLUnifiedAPI {
     static let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPI")
     
-    public static func fetchAllJamCams(client: NetworkClient, completion: (([Place]) -> Void)? = nil) {
+    public static func fetchAllJamCams(client: NetworkClient, completion: (([JamCam]) -> Void)? = nil) {
         let prefix = "https://api.tfl.gov.uk/"
         let api_key = Bundle.main.object(forInfoDictionaryKey: "TfLApiKey") as! String
         
@@ -23,8 +23,8 @@ public struct TfLUnifiedAPI {
             switch result {
             case .success(let data):
                 do {
-                    let places = try JSONDecoder().decode([Place].self, from: data)
-                    completion?(places)
+                    let jamCams = try JSONDecoder().decode([JamCam].self, from: data)
+                    completion?(jamCams)
                 } catch {
                     self.logger.error("ERROR: \(error.localizedDescription)")
                 }

@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>ASy5xb</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>20C69</string>
+	<string>20D91</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>12C33</string>
+	<string>12D4e</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>12.3</string>
+	<string>12.4</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -28,24 +28,24 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>INIntentName</key>
-			<string>SelectPlace</string>
+			<string>SelectJamCam</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Place</string>
+					<string>JamCam</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>vJFEgg</string>
+					<string>Pqv1WW</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
-					<string>place</string>
+					<string>jamCam</string>
 					<key>INIntentParameterObjectType</key>
-					<string>PlaceItem</string>
+					<string>JamCamItem</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
 					<string>ASy5xb</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -62,11 +62,31 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>There are ${count} options matching ‘${jamCam}’.</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>mBvgqv</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>DisambiguationIntroduction</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Just to confirm, you wanted ‘${jamCam}’?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>lqKlUP</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Confirmation</string>
+						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>4</integer>
+					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -88,7 +108,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Select Place</string>
+			<string>Select Jam Cam</string>
 			<key>INIntentTitleID</key>
 			<string>gPDvPL</string>
 			<key>INIntentType</key>
@@ -101,13 +121,13 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Place Item</string>
+			<string>JamCam Item</string>
 			<key>INTypeDisplayNameID</key>
 			<string>SzTvmo</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>107</integer>
+			<integer>108</integer>
 			<key>INTypeName</key>
-			<string>PlaceItem</string>
+			<string>JamCamItem</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TfLApiKey</key>
-	<string>$(TFL_API_KEY)</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.busybuddy.refresh</string>
@@ -39,11 +37,15 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>BusyBuddy uses your location to display nearby JamCams. Your location is never logged, locally or remotely.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>PlaceIntent</string>
-		<string>SelectPlaceIntent</string>
+		<string>JamCamIntent</string>
+		<string>SelectJamCamIntent</string>
 	</array>
+	<key>TfLApiKey</key>
+	<string>$(TFL_API_KEY)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -68,6 +70,13 @@
 		<string>fetch</string>
 		<string>processing</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>LaunchImage</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<false/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -78,14 +87,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>BusyBuddy uses your location to display nearby JamCams. Your location is never logged, locally or remotely.</string>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<false/>
-		<key>UIImageName</key>
-		<string>LaunchImage</string>
-	</dict>
 </dict>
 </plist>

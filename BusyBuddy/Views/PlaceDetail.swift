@@ -1,5 +1,5 @@
 //
-//  PlaceDetail.swift
+//  JamCamDetail.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 05/11/2020.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct PlaceDetail: View {
-    @EnvironmentObject private var placesModel: PlacesModel
+struct JamCamDetail: View {
+    @EnvironmentObject private var jamCamsModel: JamCamsModel
 
     @State private var isViewingImage: Bool = false
     @State private var buttonState: Int = 0
     @State private var busyScore: BusyScore = BusyScore()
     @State private var scoreText = ""
     
-    let place: Place
+    let jamCam: JamCam
     let feedback = UINotificationFeedbackGenerator()
     let impact = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
-        ZStack { [weak placesModel] in
+        ZStack { [weak jamCamsModel] in
             VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
-                    PlaceMap(place: self.place).edgesIgnoringSafeArea(.all).frame(height: 300)
+                    JamCamMap(jamCam: self.jamCam).edgesIgnoringSafeArea(.all).frame(height: 300)
                     VStack {
                         HStack(alignment: .top) {
                             VStack {
@@ -36,8 +36,8 @@ struct PlaceDetail: View {
                     }
                 }
                 Spacer()
-                BusyIcon(busyScore: self.place.busyScore ?? BusyScore(), size: 100, coloured: false).padding()
-                BusyText(busyScore: self.place.busyScore ?? BusyScore(), font: .title2).padding(.bottom, 5)
+                BusyIcon(busyScore: self.jamCam.busyScore ?? BusyScore(), size: 100, coloured: false).padding()
+                BusyText(busyScore: self.jamCam.busyScore ?? BusyScore(), font: .title2).padding(.bottom, 5)
                 LastUpdated
                 Spacer()
                 ViewImageButton
@@ -49,16 +49,16 @@ struct PlaceDetail: View {
         .blur(radius: setBlurRadius())
         .overlay(ImageView(isShowing: $isViewingImage, busyScore: getBusyScore()))
         .onAppear {
-            if self.placesModel.isBookmark(id: self.place.id) {
+            if self.jamCamsModel.isBookmark(id: self.jamCam.id) {
                 buttonState = 1
             } else {
-                self.placesModel.updateScoreFor(id: self.place.id)
+                self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
             }
         }
     }
     
     private var CommonName: some View {
-        Text(self.place.commonNameAsText())
+        Text(self.jamCam.commonNameAsText())
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(2)
@@ -68,7 +68,7 @@ struct PlaceDetail: View {
     }
     
     private var CameraView: some View {
-        Text(self.place.getCameraView())
+        Text(self.jamCam.getCameraView())
             .font(.subheadline)
             .fontWeight(.semibold)
             .lineLimit(1)
@@ -87,7 +87,7 @@ struct PlaceDetail: View {
     private var UpdateButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            self.placesModel.updateScoreFor(id: self.place.id)
+            self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
@@ -99,12 +99,12 @@ struct PlaceDetail: View {
     private var FavButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            if self.placesModel.isBookmark(id: self.place.id) {
-                self.placesModel.removeBookmark(id: self.place.id)
-                self.placesModel.updateScoreFor(id: self.place.id)
+            if self.jamCamsModel.isBookmark(id: self.jamCam.id) {
+                self.jamCamsModel.removeBookmark(id: self.jamCam.id)
+                self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
                 buttonState = 0
             } else {
-                self.placesModel.addBookmark(id: self.place.id)
+                self.jamCamsModel.addBookmark(id: self.jamCam.id)
                 buttonState = 1
             }
         }) {
@@ -132,7 +132,7 @@ struct PlaceDetail: View {
     }
     
     private func getBusyScore() -> BusyScore {
-        let busyScore = self.place.busyScore ?? BusyScore()
+        let busyScore = self.jamCam.busyScore ?? BusyScore()
         return busyScore
     }
     
@@ -161,8 +161,8 @@ struct PlaceDetail: View {
     }
 }
 
-struct PlaceDetail_Previews: PreviewProvider {
+struct JamCamDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetail(place: ExamplePlaces.oxfordCircus)
+        JamCamDetail(jamCam: ExampleJamCams.oxfordCircus)
     }
 }

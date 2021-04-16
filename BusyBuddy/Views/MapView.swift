@@ -9,28 +9,28 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @EnvironmentObject var placesModel: PlacesModel
+    @EnvironmentObject var jamCamsModel: JamCamsModel
     @EnvironmentObject var locationModel: LocationModel
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-    @State private var selectedPlace: Place? = nil
+    @State private var selectedJamCam: JamCam? = nil
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.placesModel.getAllPlaces()) { place in
-            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)) {
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.jamCamsModel.getAllJamCams()) { jamCam in
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: jamCam.lat, longitude: jamCam.lon)) {
                 JamCamAnnotation()
                 .onTapGesture {
-                    self.selectedPlace = place
+                    self.selectedJamCam = jamCam
                 }
             }
         }
-        .sheet(item: self.$selectedPlace) { place in
+        .sheet(item: self.$selectedJamCam) { jamCam in
             NavigationView {
-                PlaceDetail(place: self.placesModel.getPlaceWithId(place.id)!)
+                JamCamDetail(jamCam: self.jamCamsModel.getJamCamWithId(jamCam.id)!)
                     .navigationBarItems(trailing: Button(action: {
-                        self.selectedPlace = nil
+                        self.selectedJamCam = nil
                     }) {
                         Text("Done").foregroundColor(.white)
                     })

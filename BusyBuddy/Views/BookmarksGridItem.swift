@@ -9,19 +9,19 @@ import SwiftUI
 
 struct BookmarksGridItem: View {    
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var placesModel: PlacesModel
+    @EnvironmentObject var jamCamsModel: JamCamsModel
     
-    var place: Place
+    var jamCam: JamCam
     
     var body: some View {
-        VStack { [weak appState, weak placesModel] in
+        VStack { [weak appState, weak jamCamsModel] in
             VStack(alignment: .leading) {
                 Spacer().frame(height: 10)
-                BusyIcon(busyScore: self.place.busyScore ?? BusyScore(), size: 50, coloured: false)
+                BusyIcon(busyScore: self.jamCam.busyScore ?? BusyScore(), size: 50, coloured: false)
                 Spacer().frame(height: 20)
                 CommonName
                 Spacer()
-                BusyText(busyScore: self.place.busyScore ?? BusyScore(), font: .subheadline)
+                BusyText(busyScore: self.jamCam.busyScore ?? BusyScore(), font: .subheadline)
                 LastUpdated
                 Spacer().frame(height: 10)
             }
@@ -29,16 +29,16 @@ struct BookmarksGridItem: View {
             .padding(20)
             .background(RoundedRectangle(cornerRadius: 20).fill(setCardColour()))
             .onTapGesture {
-                self.appState.placeSelectionId = self.place.id
+                self.appState.jamCamSelectionId = self.jamCam.id
             }
         }
-        .background(NavigationLink(destination: PlaceDetail(place: self.placesModel.getPlaceWithId(self.place.id)!), tag: self.place.id, selection: self.$appState.placeSelectionId) {
+        .background(NavigationLink(destination: JamCamDetail(jamCam: self.jamCamsModel.getJamCamWithId(self.jamCam.id)!), tag: self.jamCam.id, selection: self.$appState.jamCamSelectionId) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }
     
     private var CommonName: some View {
-        Text(self.place.commonNameAsText())
+        Text(self.jamCam.commonNameAsText())
             .font(.headline)
             .lineLimit(2)
             .multilineTextAlignment(.leading)
@@ -47,14 +47,14 @@ struct BookmarksGridItem: View {
     }
     
     private var LastUpdated: some View {
-        Text(self.place.busyScore?.dateAsString() ?? "")
+        Text(self.jamCam.busyScore?.dateAsString() ?? "")
             .font(.caption)
             .fontWeight(.semibold)
             .foregroundColor(setTextColour(opacity: 0.7))
     }
     
     private func setTextColour(opacity: Double) -> Color {
-        let busyScore = self.place.busyScore ?? BusyScore()
+        let busyScore = self.jamCam.busyScore ?? BusyScore()
         switch busyScore.score {
         case .none:
             return Color.appGreyDarkest.opacity(0.8)
@@ -64,7 +64,7 @@ struct BookmarksGridItem: View {
     }
 
     private func setCardColour() -> Color {
-        let busyScore = self.place.busyScore ?? BusyScore()
+        let busyScore = self.jamCam.busyScore ?? BusyScore()
         switch busyScore.score {
         case .none:
             return Color.busyGreyLighter
@@ -82,6 +82,6 @@ struct BookmarksGridItem: View {
 
 struct BookmarksGridItem_Preview: PreviewProvider {
     static var previews: some View {
-        BookmarksGridItem(place: ExamplePlaces.oxfordCircus).previewLayout(.sizeThatFits)
+        BookmarksGridItem(jamCam: ExampleJamCams.oxfordCircus).previewLayout(.sizeThatFits)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PlacesModelTests.swift
+//  JamCamsModelTests.swift
 //  BusyBuddyTests
 //
 //  Created by Ralf Michael Yap on 10/02/2021.
@@ -9,25 +9,25 @@ import XCTest
 
 @testable import BusyBuddy
 
-class PlacesModelTests: XCTestCase {
+class JamCamsModelTests: XCTestCase {
     private var busyModel: BusyModel!
     private var networkClient: NetworkClient!
-    private var placesCache: PlacesCache!
+    private var jamCamsCache: JamCamsCache!
     private var userDefaults: UserDefaults!
-    private var placesModel: PlacesModel!
+    private var jamCamsModel: JamCamsModel!
 
     override func setUpWithError() throws {
         busyModel = BusyModelMock()
         networkClient = NetworkClientMock()
-        placesCache = PlacesCache()
+        jamCamsCache = JamCamsCache()
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        placesModel = PlacesModel(model: busyModel,
+        jamCamsModel = JamCamsModel(model: busyModel,
                                     client: networkClient,
-                                    cache: placesCache,
+                                    cache: jamCamsCache,
                                     defaults: userDefaults)
         
-        let expectation = self.expectation(description: "Get Places")
+        let expectation = self.expectation(description: "Get JamCams")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             expectation.fulfill()
         }
@@ -35,72 +35,72 @@ class PlacesModelTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        placesModel.removeBookmark(id: ExamplePlaces.oxfordCircus.id)
-        placesModel.removeBookmark(id: ExamplePlaces.gowerSt.id)
+        jamCamsModel.removeBookmark(id: ExampleJamCams.oxfordCircus.id)
+        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
     }
     
-    func testGetAllPlaces() throws {
-        let places = placesModel.getAllPlaces()
+    func testGetAllJamCams() throws {
+        let jamCams = jamCamsModel.getAllJamCams()
         
-        XCTAssertEqual(places.count, 2)
-        XCTAssertTrue(places[0].commonName < places[1].commonName)
+        XCTAssertEqual(jamCams.count, 2)
+        XCTAssertTrue(jamCams[0].commonName < jamCams[1].commonName)
     }
     
     func testAddBookmark() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
-        let bookmarkedPlaces = placesModel.getBookmarkedPlaces()
-        let bookmarkIds = placesModel.getBookmarkIds()
-        let savedBookmarks = try! JSONDecoder().decode([Place].self, from: self.userDefaults.object(forKey: "Bookmarks") as! Data)
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        let bookmarkedJamCams = jamCamsModel.getBookmarkedJamCams()
+        let bookmarkIds = jamCamsModel.getBookmarkIds()
+        let savedBookmarks = try! JSONDecoder().decode([JamCam].self, from: self.userDefaults.object(forKey: "Bookmarks") as! Data)
         
-        XCTAssertEqual(bookmarkedPlaces.count, 1)
+        XCTAssertEqual(bookmarkedJamCams.count, 1)
         XCTAssertEqual(bookmarkIds.count, 1)
-        XCTAssertTrue(bookmarkedPlaces.contains(ExamplePlaces.gowerSt))
-        XCTAssertTrue(bookmarkIds.contains(ExamplePlaces.gowerSt.id))
-        XCTAssertTrue(savedBookmarks.elementsEqual(bookmarkedPlaces))
+        XCTAssertTrue(bookmarkedJamCams.contains(ExampleJamCams.gowerSt))
+        XCTAssertTrue(bookmarkIds.contains(ExampleJamCams.gowerSt.id))
+        XCTAssertTrue(savedBookmarks.elementsEqual(bookmarkedJamCams))
     }
     
     func testAddExistingBookmark() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertEqual(placesModel.getBookmarkIds().count, 1)
+        XCTAssertEqual(jamCamsModel.getBookmarkIds().count, 1)
     }
     
-    func testRemovePlace() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
-        placesModel.removeBookmark(id: ExamplePlaces.gowerSt.id)
+    func testRemoveJamCam() throws {
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertTrue(placesModel.getBookmarkIds().isEmpty)
+        XCTAssertTrue(jamCamsModel.getBookmarkIds().isEmpty)
     }
     
-    func testRemovePlaceNotBookmarked() throws {
-        placesModel.addBookmark(id: ExamplePlaces.oxfordCircus.id)
-        placesModel.removeBookmark(id: ExamplePlaces.gowerSt.id)
+    func testRemoveJamCamNotBookmarked() throws {
+        jamCamsModel.addBookmark(id: ExampleJamCams.oxfordCircus.id)
+        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertEqual(placesModel.getBookmarkIds().count, 1)
+        XCTAssertEqual(jamCamsModel.getBookmarkIds().count, 1)
     }
     
     func testIsBookmarkTrue() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertTrue(placesModel.isBookmark(id: ExamplePlaces.gowerSt.id))
+        XCTAssertTrue(jamCamsModel.isBookmark(id: ExampleJamCams.gowerSt.id))
     }
     
     func testIsBookmarkFalse() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertFalse(placesModel.isBookmark(id: ExamplePlaces.oxfordCircus.id))
+        XCTAssertFalse(jamCamsModel.isBookmark(id: ExampleJamCams.oxfordCircus.id))
     }
     
     func testUpdateBookmarksScores() throws {
-        placesModel.addBookmark(id: ExamplePlaces.gowerSt.id)
-        let place = placesModel.getPlaceWithId(ExamplePlaces.gowerSt.id)!
+        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        let jamCam = jamCamsModel.getJamCamWithId(ExampleJamCams.gowerSt.id)!
         
-        XCTAssertNil(place.busyScore)
+        XCTAssertNil(jamCam.busyScore)
 
         let expectation = self.expectation(description: "Update BusyScores")
         self.measure {
-            placesModel.updateBookmarksScores()
+            jamCamsModel.updateBookmarksScores()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -108,15 +108,15 @@ class PlacesModelTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 3)
-        XCTAssertNotNil(place.busyScore)
-        XCTAssertEqual(place.busyScore!.count, 5)
+        XCTAssertNotNil(jamCam.busyScore)
+        XCTAssertEqual(jamCam.busyScore!.count, 5)
     }
     
     func testUpdateScoreForId() throws {
-        let oxfordCircus = placesModel.getPlaceWithId(ExamplePlaces.oxfordCircus.id)!
-        let gowerSt = placesModel.getPlaceWithId(ExamplePlaces.gowerSt.id)!
+        let oxfordCircus = jamCamsModel.getJamCamWithId(ExampleJamCams.oxfordCircus.id)!
+        let gowerSt = jamCamsModel.getJamCamWithId(ExampleJamCams.gowerSt.id)!
          
-        placesModel.updateScoreFor(id: ExamplePlaces.gowerSt.id)
+        jamCamsModel.updateScoreFor(id: ExampleJamCams.gowerSt.id)
         
         let expectation = self.expectation(description: "Update BusyScores")
         
@@ -132,24 +132,24 @@ class PlacesModelTests: XCTestCase {
         XCTAssertNil(oxfordCircus.busyScore)
     }
     
-    func testLoadPlacesCacheHit() throws {
-        placesCache.setPlaces(places: [ExamplePlaces.exhibitionRd, ExamplePlaces.stGilesCircus])
+    func testLoadJamCamsCacheHit() throws {
+        jamCamsCache.setJamCams(jamCams: [ExampleJamCams.exhibitionRd, ExampleJamCams.stGilesCircus])
         
-        placesModel = PlacesModel(model: busyModel,
+        jamCamsModel = JamCamsModel(model: busyModel,
                                     client: networkClient,
-                                    cache: placesCache,
+                                    cache: jamCamsCache,
                                     defaults: userDefaults)
 
-        let expectation = self.expectation(description: "Load Places")
+        let expectation = self.expectation(description: "Load JamCams")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
 
-        let places = placesModel.getAllPlaces()
+        let jamCams = jamCamsModel.getAllJamCams()
         
-        XCTAssertEqual(places.count, 2)
-        XCTAssertTrue(placesCache.getPlaces().elementsEqual(places))
+        XCTAssertEqual(jamCams.count, 2)
+        XCTAssertTrue(jamCamsCache.getJamCams().elementsEqual(jamCams))
     }
 
 }

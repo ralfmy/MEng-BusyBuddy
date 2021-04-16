@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>PlaceIntent</string>
+	<string>JamCamIntent</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -30,7 +30,7 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>SelectPlaceIntent</string>
+				<string>SelectJamCamIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

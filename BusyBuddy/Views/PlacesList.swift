@@ -1,5 +1,5 @@
 //
-//  PlaceItem.swift
+//  JamCamItem.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 02/11/2020.
@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct PlacesList: View {
-    @EnvironmentObject private var placesModel: PlacesModel
+struct JamCamsList: View {
+    @EnvironmentObject private var jamCamsModel: JamCamsModel
     
     @State private var isEditing = false
     @State private var query : String = ""
         
     var body: some View {
-        VStack { [weak placesModel] in
+        VStack { [weak jamCamsModel] in
             SearchBar(query: $query)
             
-            List(self.placesModel.getAllPlaces().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { place in
+            List(self.jamCamsModel.getAllJamCams().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { jamCam in
                 HStack {
                     ZStack(alignment: .leading) {
-                        Text(place.commonName).font(.headline)
-                        NavigationLink(destination: PlaceDetail(place: place)) {
+                        Text(jamCam.commonName).font(.headline)
+                        NavigationLink(destination: JamCamDetail(jamCam: jamCam)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle()).opacity(0.0)
                     }
@@ -36,9 +36,9 @@ struct PlacesList: View {
     }
 }
 
-struct PlaceRow_Previews: PreviewProvider {
+struct JamCamRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesList()
+        JamCamsList()
             .previewLayout(.sizeThatFits)
     }
 }
