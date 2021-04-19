@@ -23,7 +23,28 @@ struct BookmarksGrid: View {
                     ForEach(self.jamCamsModel.getBookmarkIds(), id: \.self) { id in
                         BookmarksGridItem(jamCam: self.jamCamsModel.getJamCamWithId(id)!)
                     }
-                }.padding(.leading).padding(.trailing)
+                    
+                    VStack(alignment: .center) {
+                        Spacer()
+                        Image(systemName: "plus")
+                            .font(.system(size: 40))
+                            .foregroundColor(Color.appGreyDarker.opacity(0.6))
+                        Spacer().frame(height: 40)
+                        Text("ADD BOOKMARK")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.appGreyDarkest.opacity(0.6))
+                        Spacer().frame(height: 22)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 190, maxHeight: 190)
+                    .padding(20)
+                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.busyGreyLighter))
+                    .onTapGesture {
+                        self.appState.tabSelection = .map
+                    }
+
+                }
+                .padding(.leading).padding(.trailing)
                 .accessibility(identifier: "BookmarksGrid")
                 Spacer().frame(height: 30)
             }
@@ -35,7 +56,7 @@ struct BookmarksGrid: View {
                 
                 Spacer().frame(height: 40)
                 
-                Text("EXPLORE PLACES")
+                Text("EXPLORE JAMCAMS")
                     .font(.footnote)
                     .fontWeight(.semibold)
                     .foregroundColor(.appBlue)
