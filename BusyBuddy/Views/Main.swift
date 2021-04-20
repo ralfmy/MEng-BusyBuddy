@@ -21,7 +21,10 @@ struct BusyBuddy: App {
     
     var body: some Scene {
         WindowGroup {
-            AppView().environmentObject(appState).environmentObject(jamCamsModel).environmentObject(locationModel)
+            AppView()
+                .environmentObject(appState)
+                .environmentObject(jamCamsModel)
+                .environmentObject(locationModel)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

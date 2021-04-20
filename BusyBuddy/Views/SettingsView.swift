@@ -13,9 +13,10 @@ struct SettingsView: View {
     private let models: [String: ModelType] = ["ResNet-50": ModelType.resnet,
                                                "SqueezeNet": ModelType.squeezenet,
                                                "VisionFeaturePrint_Scene": ModelType.vfps,
-                                               "Create ML Classifier v6": ModelType.cmlv6,
+                                               "Create ML Classifier": ModelType.cmlv6,
                                                "YOLOv3": ModelType.yolo,
-                                               "YOLOv3Tiny": ModelType.yolotiny]
+//                                               "YOLOv3Tiny": ModelType.yolotiny
+                                                ]
         
     var body: some View {
         VStack {

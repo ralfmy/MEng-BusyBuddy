@@ -149,11 +149,9 @@ struct JamCamDetail: View {
         switch busyScore.score {
         case .none:
             return Color.busyGreyLighter
-        case .low:
+        case .notbusy:
             return Color.busyGreenDarker
-        case .medium:
-            return Color.busyYellowDarker
-        case .high:
+        case .busy:
             return Color.busyPinkDarker
         case .unsure:
             return Color.busyYellowDarker

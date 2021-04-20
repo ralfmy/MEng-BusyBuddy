@@ -59,7 +59,15 @@ public final class YOLO: BusyModel {
             let observation = self.observations[i]
             let objects = observation as! [VNRecognizedObjectObservation]
             let people = objects.filter { $0.labels.first!.identifier == "person" && $0.labels.first!.confidence >= self.confidenceThreshold }
-            busyScores.append(BusyScore(count: people.count, image: image))
+            
+            switch people.count {
+            case 0..<5:
+                busyScores.append(BusyScore(score: .notbusy, image: image))
+            case 5...:
+                busyScores.append(BusyScore(score: .busy, image: image))
+            default:
+                busyScores.append(BusyScore(score: .unsure, image: image))
+            }
         }
         return busyScores
     }

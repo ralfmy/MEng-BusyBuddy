@@ -14,12 +14,15 @@ public struct TfLUnifiedAPI {
     static let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPI")
     
     public static func fetchAllJamCams(client: NetworkClient, completion: (([JamCam]) -> Void)? = nil) {
-        let prefix = "https://api.tfl.gov.uk/"
+        // Build TfL Unified API endpoint URL
+        let endpoint = "https://api.tfl.gov.uk/Place/Type/JamCam?app_key="
         let api_key = Bundle.main.object(forInfoDictionaryKey: "TfLApiKey") as! String
+        guard let url = URL(string: endpoint + api_key) else { return }
         
-        guard let url = URL(string: prefix + "Place/Type/JamCam?app_key=" + api_key) else { return }
-        
-        client.runRequest(request: URLRequest(url: url)) { result in
+        let request = URLRequest(url: url)
+                
+        // Fetch data from endpoint
+        client.runRequest(request: request) { result in
             switch result {
             case .success(let data):
                 do {
@@ -33,5 +36,4 @@ public struct TfLUnifiedAPI {
             }
         }
     }
-
 }

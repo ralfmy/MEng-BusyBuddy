@@ -14,7 +14,7 @@ struct BusyTimeline: IntentTimelineProvider {
     typealias Intent = SelectJamCamIntent
 
     func placeholder(in context: Context) -> Entry {
-        var jamCam = ExampleJamCams.oxfordCircus
+        let jamCam = ExampleJamCams.oxfordCircus
         jamCam.updateBusyScore(busyScore: BusyScore())
         let image = jamCam.downloadImage()
         let busyScore = ML.currentModel().run(on: [image]).first!
@@ -24,7 +24,7 @@ struct BusyTimeline: IntentTimelineProvider {
     
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> Void) {
         let jamCam = ExampleJamCams.gowerSt
-        jamCam.updateBusyScore(busyScore: BusyScore(count: 1))
+        jamCam.updateBusyScore(busyScore: BusyScore(score: .notbusy))
         let entry = Entry(date: Date(), jamCam: jamCam)
         completion(entry)
     }

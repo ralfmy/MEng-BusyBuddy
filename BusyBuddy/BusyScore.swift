@@ -12,57 +12,32 @@ import UIKit
 
 public final class BusyScore {
     
-    enum Score {
-        case none
-        case low
-        case medium
-        case high
-        case unsure
+    enum Score: String {
+        case none = "NONE"
+        case notbusy = "NOT BUSY"
+        case busy = "BUSY"
+        case unsure = "NOT CONFIDENT"
     }
     
-    var count: Int
     var image: UIImage
     var score: Score = .none
     var date: Date
     
-    let expiry: Double = 0 * 60
+    let expiry: Double = 2 * 60
     
     // count = -1 means loading; count = -2 means no result
     
-    init(count: Int = -1, image: UIImage = UIImage(), date: Date = Date()) {
-        self.count = count
+    init(score: Score = .none, image: UIImage = UIImage(), date: Date = Date()) {
+        self.score = score
         self.image = image
         self.date = date
-        switch self.count {
-        case 0..<5:
-            self.score = .low
-        case 5..<7:
-            self.score = .medium
-        case 7...:
-            self.score = .high
-        case -2:
-            self.score = .unsure
-        default:
-            self.score = .none
-        }
     }
     
     public func scoreAsString() -> String {
-        if self.count == -1 {
+        if self.score == .none {
             return "LOADING"
         }
-        switch self.score {
-        case .none:
-            return "NONE"
-        case .low:
-            return "NOT BUSY"
-        case .medium:
-            return "FAIRLY BUSY"
-        case .high:
-            return "BUSY"
-        case.unsure:
-            return "NOT CONFIDENT"
-        }
+        return self.score.rawValue
     }
     
     public func dateAsString() -> String {

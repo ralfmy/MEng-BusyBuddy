@@ -33,9 +33,6 @@ struct AppView: View {
                 
                 // Tab 1
                 BookmarksView()
-                .sheet(isPresented: $isShowingAll) {
-                    AllJamCamsSheet(isPresented: $isShowingAll)
-                }
                 .tabItem {
                     Image(systemName: "square.grid.2x2.fill")
                 }
@@ -58,7 +55,7 @@ struct AppView: View {
             
             .navigationTitle(setNavigationBarTitle(tabSelection: appState.tabSelection))
             .navigationBarHidden(setNavigationBarHidden(tabSelection: appState.tabSelection))
-            .navigationBarItems(leading: setNavigationBarItemLeading(tabSelection: appState.tabSelection), trailing: setNavigationBarItemTrailing(tabSelection: appState.tabSelection))
+            .navigationBarItems(trailing: setNavigationBarItemTrailing(tabSelection: appState.tabSelection))
             .accentColor(.white)
         }
         .accentColor(.white)
@@ -81,15 +78,6 @@ struct AppView: View {
                     .foregroundColor(.appGreyDarker)
 
             }
-        }
-    }
-    
-    @ViewBuilder private func setNavigationBarItemLeading(tabSelection: Tab) -> some View {
-        switch tabSelection {
-        case .bookmarks:
-            SearchButton
-        default:
-            EmptyView()
         }
     }
     

@@ -102,7 +102,7 @@
 		BFC73D5D25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */; };
 		BFC73D5E25A088000003413E /* SelectJamCamIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */; };
 		BFD2D3882556B7CE00554869 /* BusyScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D3872556B7CD00554869 /* BusyScore.swift */; };
-		BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* PlacesList.swift */; };
+		BFD97B582550449E00FF23D4 /* JamCamsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD97B572550449E00FF23D4 /* JamCamsList.swift */; };
 		BFF1EE0E2577ECC00010981B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1EE0D2577ECC00010981B /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -224,7 +224,7 @@
 		BFC73D4625A086F70003413E /* JamCamIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = JamCamIntent.entitlements; path = "/Users/ralf/UCL/Year 4/Final Year Project/Development/BusyBuddy/JamCamIntent/JamCamIntent.entitlements"; sourceTree = "<absolute>"; };
 		BFC73D5B25A088000003413E /* SelectJamCamIntent.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectJamCamIntent.intentdefinition; sourceTree = "<group>"; };
 		BFD2D3872556B7CD00554869 /* BusyScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyScore.swift; sourceTree = "<group>"; };
-		BFD97B572550449E00FF23D4 /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
+		BFD97B572550449E00FF23D4 /* JamCamsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamsList.swift; sourceTree = "<group>"; };
 		BFF1EE0D2577ECC00010981B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,7 +290,7 @@
 				BF30588C254F2C3C0087FDEA /* AppView.swift */,
 				BF2DB8A625541D0E00A304A7 /* AllJamCamsSheet.swift */,
 				BF7ECC1225ED1F5B004AC50D /* SearchBar.swift */,
-				BFD97B572550449E00FF23D4 /* PlacesList.swift */,
+				BFD97B572550449E00FF23D4 /* JamCamsList.swift */,
 				BF2DB8AE255426A500A304A7 /* PlaceDetail.swift */,
 				BFBD96222565BABB0091C0FE /* PlaceMap.swift */,
 				BFF1EE0D2577ECC00010981B /* ImageView.swift */,
@@ -693,7 +693,7 @@
 				BF7C4F1E25A49FE700F1247D /* AppState.swift in Sources */,
 				BF88F9B3261EFE7A00DC5DF4 /* VisionFeaturePrint_Scene.mlmodel in Sources */,
 				BF90244825CF311A001B1E80 /* TuriCreateModelv2.swift in Sources */,
-				BFD97B582550449E00FF23D4 /* PlacesList.swift in Sources */,
+				BFD97B582550449E00FF23D4 /* JamCamsList.swift in Sources */,
 				BF0B88F425754DD00036E0E0 /* MapView.swift in Sources */,
 				BF700FC325A7406A008AE90B /* CreateMLClassifierv6.mlmodel in Sources */,
 				BF3058C0254F2C640087FDEA /* TfLUnifiedAPI.swift in Sources */,
@@ -800,6 +800,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Debug;
 		};
@@ -823,6 +824,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Release;
 		};
@@ -1011,6 +1013,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusyBuddy.app/BusyBuddy";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Debug;
 		};
@@ -1033,6 +1036,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusyBuddy.app/BusyBuddy";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Release;
 		};
@@ -1053,6 +1057,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = BusyBuddy;
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Debug;
 		};
@@ -1073,6 +1078,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = BusyBuddy;
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Release;
 		};
@@ -1094,6 +1100,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Debug;
 		};
@@ -1115,6 +1122,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
 			};
 			name = Release;
 		};

@@ -148,7 +148,6 @@ class JamCamsModel: ObservableObject {
                 }
                 
                 let image = self.jamCams[index].downloadImage()
-                
                 let busyScore = self.model.run(on: [image]).first!
                 
                 DispatchQueue.main.async { [weak self] in

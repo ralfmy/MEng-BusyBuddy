@@ -107,12 +107,12 @@ public final class TuriCreateModelv2: BusyModel {
             if (classifications.first!.confidence >= VNConfidence(self.confidenceThreshold)) {
                 self.logger.info("INFO: \(classifications.first!.identifier) with confidence \(classifications.first!.confidence)")
                 if classifications.first!.identifier == "busy" {
-                    busyScores.append(BusyScore(count: 100, image: image))
+                    busyScores.append(BusyScore(score: .busy, image: image))
                 }
-                busyScores.append(BusyScore(count: 0, image: image))
+                busyScores.append(BusyScore(score: .notbusy, image: image))
             } else {
                 self.logger.info("INFO: Label probabilities do not meet confidence threshold - \(classifications.first!.identifier) \(classifications.first!.confidence); \(classifications.last!.identifier) \(classifications.last!.confidence)")
-                busyScores.append(BusyScore(count: -2, image: image))
+                busyScores.append(BusyScore(score: .unsure, image: image))
             }
         }
         

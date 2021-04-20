@@ -16,7 +16,7 @@ struct AllJamCamsSheet: View {
                 JamCamsList()
                 Spacer()
             }
-            .navigationBarTitle(Text("All JamCams"), displayMode: .automatic)
+            .navigationBarTitle(Text("Search JamCams"), displayMode: .automatic)
             .navigationBarItems(trailing: DoneButton)
         }.accentColor(.white)
     }

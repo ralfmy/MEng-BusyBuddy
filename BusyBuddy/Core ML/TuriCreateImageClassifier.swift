@@ -57,9 +57,10 @@ public final class TuriCreateImageClassifier: BusyModel {
     private func brightenLowlight(_ input: CIImage) -> CIImage? {
         let hour = Calendar.current.component(.hour, from: Date())
         if (hour >= 0 && hour < 7) || (hour > 19) {
+            print("BRIGHTEN")
             let exposureAdjustFilter = CIFilter(name: "CIExposureAdjust")
             exposureAdjustFilter?.setValue(input, forKey: "inputImage")
-            exposureAdjustFilter?.setValue(1.1, forKey: "inputEV")
+            exposureAdjustFilter?.setValue(4, forKey: "inputEV")
             return exposureAdjustFilter?.outputImage
         } else {
             return input
@@ -107,12 +108,12 @@ public final class TuriCreateImageClassifier: BusyModel {
             if (classifications.first!.confidence >= VNConfidence(self.confidenceThreshold)) {
                 self.logger.info("INFO: \(classifications.first!.identifier) with confidence \(classifications.first!.confidence)")
                 if classifications.first!.identifier == "busy" {
-                    busyScores.append(BusyScore(count: 100, image: image))
+                    busyScores.append(BusyScore(score: .busy, image: image))
                 }
-                busyScores.append(BusyScore(count: 0, image: image))
+                busyScores.append(BusyScore(score: .notbusy, image: image))
             } else {
                 self.logger.info("INFO: Label probabilities do not meet confidence threshold - \(classifications.first!.identifier) \(classifications.first!.confidence); \(classifications.last!.identifier) \(classifications.last!.confidence)")
-                busyScores.append(BusyScore(count: -2, image: image))
+                busyScores.append(BusyScore(score: .unsure, image: image))
             }
         }
         
