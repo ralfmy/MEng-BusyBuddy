@@ -55,7 +55,7 @@ public final class JamCam: Codable, Equatable, Identifiable, ObservableObject {
         return UIImage()
     }
     
-    public func commonNameAsText() -> String {
+    public func formattedCommonName() -> String {
         if let index = self.commonName.firstIndex(of: "/") {
             var commonName = self.commonName
             commonName.insert("\n", at: commonName.index(after: index))

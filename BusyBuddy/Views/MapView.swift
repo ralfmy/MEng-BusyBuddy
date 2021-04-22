@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var jamCamsModel: JamCamsModel
+    @EnvironmentObject var jamCamsManager: JamCamsManager
     @EnvironmentObject var locationModel: LocationModel
     
     @State private var region = MKCoordinateRegion(
@@ -24,7 +24,7 @@ struct MapView: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.jamCamsModel.getAllJamCams()) { jamCam in
+            Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.jamCamsManager.getAllJamCams()) { jamCam in
                 MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: jamCam.lat, longitude: jamCam.lon)) {
                     JamCamAnnotation()
                     .onTapGesture {
@@ -34,7 +34,7 @@ struct MapView: View {
             }
             .sheet(item: self.$selectedJamCam) { jamCam in
                 NavigationView {
-                    JamCamDetail(jamCam: self.jamCamsModel.getJamCamWithId(jamCam.id)!)
+                    JamCamDetail(jamCam: self.jamCamsManager.getJamCamWithId(jamCam.id)!)
                         .navigationBarItems(trailing: Button(action: {
                             self.selectedJamCam = nil
                         }) {

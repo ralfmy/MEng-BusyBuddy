@@ -33,7 +33,7 @@ struct BusyWidgetView: View {
     }
     
     private var CommonName: some View {
-        Text(self.entry.jamCam.commonNameAsText())
+        Text(self.entry.jamCam.commonName)
             .font(.callout)
             .fontWeight(.semibold)
             .lineLimit(2)

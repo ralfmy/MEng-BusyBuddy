@@ -10,18 +10,18 @@ import CoreML
 
 struct BookmarksGrid: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var jamCamsModel: JamCamsModel
+    @EnvironmentObject var jamCamsManager: JamCamsManager
         
     let columns: [GridItem] = [GridItem(.flexible(), spacing: 16, alignment: .center), GridItem(.flexible(), spacing: 16, alignment: .center)]
     
     @ViewBuilder
     var body: some View {
-        if !self.jamCamsModel.getBookmarkIds().isEmpty {
+        if !self.jamCamsManager.getBookmarkIds().isEmpty {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .center, spacing: 16, pinnedViews: [])
                 {
-                    ForEach(self.jamCamsModel.getBookmarkIds(), id: \.self) { id in
-                        BookmarksGridItem(jamCam: self.jamCamsModel.getJamCamWithId(id)!)
+                    ForEach(self.jamCamsManager.getBookmarkIds(), id: \.self) { id in
+                        BookmarksGridItem(jamCam: self.jamCamsManager.getJamCamWithId(id)!)
                     }
                     
                     AddBookmark

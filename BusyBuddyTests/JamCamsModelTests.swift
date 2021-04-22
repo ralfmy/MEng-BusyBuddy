@@ -14,7 +14,7 @@ class JamCamsModelTests: XCTestCase {
     private var networkClient: NetworkClient!
     private var jamCamsCache: JamCamsCache!
     private var userDefaults: UserDefaults!
-    private var jamCamsModel: JamCamsModel!
+    private var jamCamsManager: JamCamsManager!
 
     override func setUpWithError() throws {
         busyModel = BusyModelMock()
@@ -22,7 +22,7 @@ class JamCamsModelTests: XCTestCase {
         jamCamsCache = JamCamsCache()
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults.removePersistentDomain(forName: #file)
-        jamCamsModel = JamCamsModel(model: busyModel,
+        jamCamsManager = JamCamsManager(model: busyModel,
                                     client: networkClient,
                                     cache: jamCamsCache,
                                     defaults: userDefaults)
@@ -35,21 +35,21 @@ class JamCamsModelTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        jamCamsModel.removeBookmark(id: ExampleJamCams.oxfordCircus.id)
-        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.removeBookmark(id: ExampleJamCams.oxfordCircus.id)
+        jamCamsManager.removeBookmark(id: ExampleJamCams.gowerSt.id)
     }
     
     func testGetAllJamCams() throws {
-        let jamCams = jamCamsModel.getAllJamCams()
+        let jamCams = jamCamsManager.getAllJamCams()
         
         XCTAssertEqual(jamCams.count, 2)
         XCTAssertTrue(jamCams[0].commonName < jamCams[1].commonName)
     }
     
     func testAddBookmark() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
-        let bookmarkedJamCams = jamCamsModel.getBookmarkedJamCams()
-        let bookmarkIds = jamCamsModel.getBookmarkIds()
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
+        let bookmarkedJamCams = jamCamsManager.getBookmarkedJamCams()
+        let bookmarkIds = jamCamsManager.getBookmarkIds()
         let savedBookmarks = try! JSONDecoder().decode([JamCam].self, from: self.userDefaults.object(forKey: "Bookmarks") as! Data)
         
         XCTAssertEqual(bookmarkedJamCams.count, 1)
@@ -60,63 +60,63 @@ class JamCamsModelTests: XCTestCase {
     }
     
     func testAddExistingBookmark() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertEqual(jamCamsModel.getBookmarkIds().count, 1)
+        XCTAssertEqual(jamCamsManager.getBookmarkIds().count, 1)
     }
     
     func testRemoveJamCam() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
-        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.removeBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertTrue(jamCamsModel.getBookmarkIds().isEmpty)
+        XCTAssertTrue(jamCamsManager.getBookmarkIds().isEmpty)
     }
     
     func testRemoveJamCamNotBookmarked() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.oxfordCircus.id)
-        jamCamsModel.removeBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.oxfordCircus.id)
+        jamCamsManager.removeBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertEqual(jamCamsModel.getBookmarkIds().count, 1)
+        XCTAssertEqual(jamCamsManager.getBookmarkIds().count, 1)
     }
     
     func testIsBookmarkTrue() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertTrue(jamCamsModel.isBookmark(id: ExampleJamCams.gowerSt.id))
+        XCTAssertTrue(jamCamsManager.isBookmark(id: ExampleJamCams.gowerSt.id))
     }
     
     func testIsBookmarkFalse() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
         
-        XCTAssertFalse(jamCamsModel.isBookmark(id: ExampleJamCams.oxfordCircus.id))
+        XCTAssertFalse(jamCamsManager.isBookmark(id: ExampleJamCams.oxfordCircus.id))
     }
     
     func testUpdateBookmarksScores() throws {
-        jamCamsModel.addBookmark(id: ExampleJamCams.gowerSt.id)
-        let jamCam = jamCamsModel.getJamCamWithId(ExampleJamCams.gowerSt.id)!
+        jamCamsManager.addBookmark(id: ExampleJamCams.gowerSt.id)
+        let jamCam = jamCamsManager.getJamCamWithId(ExampleJamCams.gowerSt.id)!
         
         XCTAssertNil(jamCam.busyScore)
 
         let expectation = self.expectation(description: "Update BusyScores")
         self.measure {
-            jamCamsModel.updateBookmarksScores()
+            jamCamsManager.updateBookmarksScores()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 3)
         XCTAssertNotNil(jamCam.busyScore)
-        XCTAssertEqual(jamCam.busyScore!.count, 5)
+        XCTAssertEqual(jamCam.busyScore!.score, .busy)
     }
     
     func testUpdateScoreForId() throws {
-        let oxfordCircus = jamCamsModel.getJamCamWithId(ExampleJamCams.oxfordCircus.id)!
-        let gowerSt = jamCamsModel.getJamCamWithId(ExampleJamCams.gowerSt.id)!
+        let oxfordCircus = jamCamsManager.getJamCamWithId(ExampleJamCams.oxfordCircus.id)!
+        let gowerSt = jamCamsManager.getJamCamWithId(ExampleJamCams.gowerSt.id)!
          
-        jamCamsModel.updateScoreFor(id: ExampleJamCams.gowerSt.id)
+        jamCamsManager.updateScoreFor(id: ExampleJamCams.gowerSt.id)
         
         let expectation = self.expectation(description: "Update BusyScores")
         
@@ -127,7 +127,7 @@ class JamCamsModelTests: XCTestCase {
         wait(for: [expectation], timeout: 3)
         
         XCTAssertNotNil(gowerSt.busyScore)
-        XCTAssertEqual(gowerSt.busyScore!.count, 5)
+        XCTAssertEqual(gowerSt.busyScore!.score, .busy)
         
         XCTAssertNil(oxfordCircus.busyScore)
     }
@@ -135,7 +135,7 @@ class JamCamsModelTests: XCTestCase {
     func testLoadJamCamsCacheHit() throws {
         jamCamsCache.setJamCams(jamCams: [ExampleJamCams.exhibitionRd, ExampleJamCams.stGilesCircus])
         
-        jamCamsModel = JamCamsModel(model: busyModel,
+        jamCamsManager = JamCamsManager(model: busyModel,
                                     client: networkClient,
                                     cache: jamCamsCache,
                                     defaults: userDefaults)
@@ -146,7 +146,7 @@ class JamCamsModelTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 1)
 
-        let jamCams = jamCamsModel.getAllJamCams()
+        let jamCams = jamCamsManager.getAllJamCams()
         
         XCTAssertEqual(jamCams.count, 2)
         XCTAssertTrue(jamCamsCache.getJamCams().elementsEqual(jamCams))

@@ -16,20 +16,20 @@ struct BusyBuddy: App {
     @Environment(\.scenePhase) var scenePhase
 
     @StateObject var appState: AppState = AppState()
-    @StateObject var jamCamsModel: JamCamsModel = JamCamsModel()
+    @StateObject var jamCamsManager: JamCamsManager = JamCamsManager()
     @StateObject var locationModel: LocationModel = LocationModel()
     
     var body: some Scene {
         WindowGroup {
             AppView()
                 .environmentObject(appState)
-                .environmentObject(jamCamsModel)
+                .environmentObject(jamCamsManager)
                 .environmentObject(locationModel)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {
             case .active:
-                self.jamCamsModel.updateBookmarksScores()
+                self.jamCamsManager.updateBookmarksScores()
             default:
                 break;
             }

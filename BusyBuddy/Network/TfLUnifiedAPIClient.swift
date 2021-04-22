@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 //  Methods for calling the TfL Unified API.
-public struct TfLUnifiedAPI {
+public struct TfLUnifiedAPIClient {
     static let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "TfLUnifiedAPI")
     
     public static func fetchAllJamCams(client: NetworkClient, completion: (([JamCam]) -> Void)? = nil) {

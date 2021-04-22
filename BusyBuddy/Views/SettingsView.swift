@@ -44,7 +44,7 @@ struct SettingsView: View {
 
 struct ModelSelectionView: View {
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var jamCamsModel: JamCamsModel
+    @EnvironmentObject var jamCamsManager: JamCamsManager
         
     var displayName: String
     var modelType: ModelType
@@ -65,7 +65,7 @@ struct ModelSelectionView: View {
         .onTapGesture {
             defaults.set(self.modelType.rawValue, forKey: "model")
             self.appState.modelSelection = self.modelType
-            self.jamCamsModel.updateModel()
+            self.jamCamsManager.updateModel()
         }
     }
     

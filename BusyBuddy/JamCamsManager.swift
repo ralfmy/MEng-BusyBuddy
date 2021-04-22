@@ -1,5 +1,5 @@
 //
-//  JamCamsModel.swift
+//  JamCamsManager.swift
 //  BusyBuddy
 //
 //  Created by Ralf Michael Yap on 25/11/2020.
@@ -10,7 +10,7 @@ import UIKit
 import WidgetKit
 import os.log
 
-class JamCamsModel: ObservableObject {
+class JamCamsManager: ObservableObject {
     private let logger = Logger(subsystem: "com.zcabrmy.BusyBuddy", category: "JamCamsModel")
     
     private var model: BusyModel
@@ -34,6 +34,8 @@ class JamCamsModel: ObservableObject {
         self.cache = cache
         self.defaults = defaults
         
+        self.loadJamCams()
+        
 //        #if DEBUG
 //        if CommandLine.arguments.contains("ui-testing") {
 //            self.logger.debug("DEBUG: HERE")
@@ -44,8 +46,6 @@ class JamCamsModel: ObservableObject {
 //            self.defaults = testDefaults!
 //        }
 //        #endif
-        
-        self.loadJamCams()
     }
     
     public func getAllJamCams() -> [JamCam] {
@@ -183,7 +183,7 @@ class JamCamsModel: ObservableObject {
     
     private func fetchJamCamsFromAPI() {
         self.logger.info("INFO: Fetching JamCams from TfL Unified API.")
-        TfLUnifiedAPI.fetchAllJamCams(client: self.networkClient) { jamCams in
+        TfLUnifiedAPIClient.fetchAllJamCams(client: self.networkClient) { jamCams in
             self.logger.info("INFO: Fetching success.")
             DispatchQueue.main.async { [weak self] in
                 self?.objectWillChange.send()

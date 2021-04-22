@@ -21,7 +21,7 @@ class TfLUnifiedAPITests: XCTestCase {
         var count = 0;
         let expectation = self.expectation(description: "API Call")
         
-        TfLUnifiedAPI.fetchAllJamCams(client: NetworkClientMock()) { jamCams in
+        TfLUnifiedAPIClient.fetchAllJamCams(client: NetworkClientMock()) { jamCams in
             count = jamCams.count
             expectation.fulfill()
         }

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BookmarksGridItem: View {    
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var jamCamsModel: JamCamsModel
+    @EnvironmentObject var jamCamsManager: JamCamsManager
     
     var jamCam: JamCam
     
     var body: some View {
-        VStack { [weak appState, weak jamCamsModel] in
+        VStack { [weak appState, weak jamCamsManager] in
             VStack(alignment: .leading) {
                 Spacer().frame(height: 10)
                 BusyIcon(busyScore: self.jamCam.busyScore ?? BusyScore(), size: 50, coloured: false)
@@ -32,13 +32,13 @@ struct BookmarksGridItem: View {
                 self.appState.jamCamSelectionId = self.jamCam.id
             }
         }
-        .background(NavigationLink(destination: JamCamDetail(jamCam: self.jamCamsModel.getJamCamWithId(self.jamCam.id)!), tag: self.jamCam.id, selection: self.$appState.jamCamSelectionId) {
+        .background(NavigationLink(destination: JamCamDetail(jamCam: self.jamCamsManager.getJamCamWithId(self.jamCam.id)!), tag: self.jamCam.id, selection: self.$appState.jamCamSelectionId) {
                 EmptyView()
             }.buttonStyle(PlainButtonStyle()).opacity(0.0))
     }
     
     private var CommonName: some View {
-        Text(self.jamCam.commonNameAsText())
+        Text(self.jamCam.formattedCommonName())
             .font(.headline)
             .lineLimit(2)
             .multilineTextAlignment(.leading)

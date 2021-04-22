@@ -19,14 +19,12 @@ public final class BusyScore {
         case unsure = "NOT CONFIDENT"
     }
     
+    var score: Score
     var image: UIImage
-    var score: Score = .none
     var date: Date
     
     let expiry: Double = 2 * 60
-    
-    // count = -1 means loading; count = -2 means no result
-    
+        
     init(score: Score = .none, image: UIImage = UIImage(), date: Date = Date()) {
         self.score = score
         self.image = image

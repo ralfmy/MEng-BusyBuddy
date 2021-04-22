@@ -19,13 +19,15 @@ public final class NetworkClientMock: NetworkClient {
 }
 
 public final class BusyModelMock: BusyModel {
-    public var model: MLModel = MLModel()
+    
+    public var model: MLModel
     public var images: [UIImage]
     public var observations: [[VNObservation]]
     public var confidenceThreshold: VNConfidence
     public var context: CIContext
         
-    public init(confidenceThreshold: VNConfidence = 0.5) {
+    public init(mlModel: MLModel = MLModel(), confidenceThreshold: VNConfidence = 0.5) {
+        self.model = mlModel
         self.images = []
         self.observations = []
         self.confidenceThreshold = confidenceThreshold
@@ -43,7 +45,11 @@ public final class BusyModelMock: BusyModel {
     }
     
     public func generateBusyScores() -> [BusyScore] {
-        return [BusyScore(count: 5)]
+        return [BusyScore(score: .busy)]
+    }
+    
+    public func run(on images: [UIImage]) -> [BusyScore] {
+        return generateBusyScores()
     }
     
 }

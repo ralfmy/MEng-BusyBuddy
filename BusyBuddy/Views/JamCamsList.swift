@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct JamCamsList: View {
-    @EnvironmentObject private var jamCamsModel: JamCamsModel
+    @EnvironmentObject private var jamCamsManager: JamCamsManager
     
     @State private var isEditing = false
     @State private var query : String = ""
         
     var body: some View {
-        VStack { [weak jamCamsModel] in
+        VStack { [weak jamCamsManager] in
             SearchBar(query: $query)
             
-            List(self.jamCamsModel.getAllJamCams().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { jamCam in
+            List(self.jamCamsManager.getAllJamCams().filter({ self.query.isEmpty ? true : $0.commonName.contains(query) })) { jamCam in
                 HStack {
                     ZStack(alignment: .leading) {
                         Text(jamCam.commonName).font(.headline)

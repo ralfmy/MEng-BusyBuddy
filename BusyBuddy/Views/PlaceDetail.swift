@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JamCamDetail: View {
-    @EnvironmentObject private var jamCamsModel: JamCamsModel
+    @EnvironmentObject private var jamCamsManager: JamCamsManager
 
     @State private var isViewingImage: Bool = false
     @State private var buttonState: Int = 0
@@ -20,7 +20,7 @@ struct JamCamDetail: View {
     let impact = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
-        ZStack { [weak jamCamsModel] in
+        ZStack { [weak jamCamsManager] in
             VStack(alignment: .center) {
                 ZStack(alignment: .bottomLeading) {
                     JamCamMap(jamCam: self.jamCam).edgesIgnoringSafeArea(.all).frame(height: 300)
@@ -49,16 +49,16 @@ struct JamCamDetail: View {
         .blur(radius: setBlurRadius())
         .overlay(ImageView(isShowing: $isViewingImage, busyScore: getBusyScore()))
         .onAppear {
-            if self.jamCamsModel.isBookmark(id: self.jamCam.id) {
+            if self.jamCamsManager.isBookmark(id: self.jamCam.id) {
                 buttonState = 1
             } else {
-                self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
+                self.jamCamsManager.updateScoreFor(id: self.jamCam.id)
             }
         }
     }
     
     private var CommonName: some View {
-        Text(self.jamCam.commonNameAsText())
+        Text(self.jamCam.formattedCommonName())
             .font(.title)
             .fontWeight(.bold)
             .lineLimit(2)
@@ -87,7 +87,7 @@ struct JamCamDetail: View {
     private var UpdateButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
+            self.jamCamsManager.updateScoreFor(id: self.jamCam.id)
         }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.title3.weight(.bold))
@@ -99,12 +99,12 @@ struct JamCamDetail: View {
     private var FavButton: some View {
         Button(action: {
             self.impact.impactOccurred()
-            if self.jamCamsModel.isBookmark(id: self.jamCam.id) {
-                self.jamCamsModel.removeBookmark(id: self.jamCam.id)
-                self.jamCamsModel.updateScoreFor(id: self.jamCam.id)
+            if self.jamCamsManager.isBookmark(id: self.jamCam.id) {
+                self.jamCamsManager.removeBookmark(id: self.jamCam.id)
+                self.jamCamsManager.updateScoreFor(id: self.jamCam.id)
                 buttonState = 0
             } else {
-                self.jamCamsModel.addBookmark(id: self.jamCam.id)
+                self.jamCamsManager.addBookmark(id: self.jamCam.id)
                 buttonState = 1
             }
         }) {
