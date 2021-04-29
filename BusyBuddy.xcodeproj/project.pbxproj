@@ -23,7 +23,6 @@
 		BF305892254F2C3E0087FDEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305891254F2C3E0087FDEA /* Assets.xcassets */; };
 		BF305895254F2C3E0087FDEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF305894254F2C3E0087FDEA /* Preview Assets.xcassets */; };
 		BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */; };
-		BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */; };
 		BF3058C0254F2C640087FDEA /* TfLUnifiedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058BF254F2C640087FDEA /* TfLUnifiedAPIClient.swift */; };
 		BF3058C8254F2C7E0087FDEA /* JamCam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058C7254F2C7E0087FDEA /* JamCam.swift */; };
 		BF3058E0254F2E8E0087FDEA /* TfLUnifiedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */; };
@@ -71,8 +70,6 @@
 		BF90248725CF3971001B1E80 /* BusyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90248125CF3971001B1E80 /* BusyText.swift */; };
 		BF92211B256E6D7F0022CE80 /* JamCamsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */; };
 		BF92212E256E78160022CE80 /* JamCamsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF92212D256E78160022CE80 /* JamCamsManager.swift */; };
-		BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
-		BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */; };
 		BF977A43259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */; };
 		BFAAEE1E25CD98B700F4DF77 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */; };
@@ -102,13 +99,6 @@
 			remoteInfo = BusyWidgetsExtension;
 		};
 		BF30589F254F2C3E0087FDEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF30587D254F2C3C0087FDEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF305884254F2C3C0087FDEA;
-			remoteInfo = BusyBuddy;
-		};
-		BF3058AA254F2C3E0087FDEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF30587D254F2C3C0087FDEA /* Project object */;
 			proxyType = 1;
@@ -158,9 +148,6 @@
 		BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3058A2254F2C3E0087FDEA /* BusyBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyTests.swift; sourceTree = "<group>"; };
 		BF3058A4254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyBuddyUITests.swift; sourceTree = "<group>"; };
-		BF3058AF254F2C3E0087FDEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3058BF254F2C640087FDEA /* TfLUnifiedAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPIClient.swift; sourceTree = "<group>"; };
 		BF3058C7254F2C7E0087FDEA /* JamCam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCam.swift; sourceTree = "<group>"; };
 		BF3058DF254F2E8E0087FDEA /* TfLUnifiedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TfLUnifiedAPITests.swift; sourceTree = "<group>"; };
@@ -186,7 +173,6 @@
 		BF90248125CF3971001B1E80 /* BusyText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyText.swift; sourceTree = "<group>"; };
 		BF92211A256E6D7F0022CE80 /* JamCamsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamsCache.swift; sourceTree = "<group>"; };
 		BF92212D256E78160022CE80 /* JamCamsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamCamsManager.swift; sourceTree = "<group>"; };
-		BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3Tiny.mlmodel; sourceTree = "<group>"; };
 		BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlmodel; sourceTree = "<group>"; };
 		BFAAEE1D25CD98B700F4DF77 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFABB53D2598A63600106605 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -227,13 +213,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BF30589B254F2C3E0087FDEA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF3058A6254F2C3E0087FDEA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -290,7 +269,6 @@
 			children = (
 				BF305887254F2C3C0087FDEA /* BusyBuddy */,
 				BF3058A1254F2C3E0087FDEA /* BusyBuddyTests */,
-				BF3058AC254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84942598ABEC00EC912D /* BusyWidgets */,
 				BFC73D0825A085EC0003413E /* JamCamIntent */,
 				BFABB53C2598A63600106605 /* Frameworks */,
@@ -303,7 +281,6 @@
 			children = (
 				BF305885254F2C3C0087FDEA /* BusyBuddy.app */,
 				BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */,
-				BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */,
 				BF1B84912598ABEC00EC912D /* BusyWidgetsExtension.appex */,
 				BFC73D0625A085EC0003413E /* JamCamIntent.appex */,
 			);
@@ -354,15 +331,6 @@
 			path = BusyBuddyTests;
 			sourceTree = "<group>";
 		};
-		BF3058AC254F2C3E0087FDEA /* BusyBuddyUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BF3058AD254F2C3E0087FDEA /* BusyBuddyUITests.swift */,
-				BF3058AF254F2C3E0087FDEA /* Info.plist */,
-			);
-			path = BusyBuddyUITests;
-			sourceTree = "<group>";
-		};
 		BF3058BE254F2C530087FDEA /* Core ML */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,7 +339,6 @@
 				BF88F9AE261EFE7900DC5DF4 /* VisionFeaturePrint_Scene.mlmodel */,
 				BF700FC125A7406A008AE90B /* CreateMLClassifierv6.mlmodel */,
 				BF977A42259CCA2D00BC6896 /* YOLOv3.mlmodel */,
-				BF977A29259CC13B00BC6896 /* YOLOv3Tiny.mlmodel */,
 				BF1EDF542550BB5A006C900F /* BusyModel.swift */,
 				BF807EA72631CCB7002E6828 /* ML.swift */,
 				BF1EDF6A25515E94006C900F /* YOLO.swift */,
@@ -478,24 +445,6 @@
 			productReference = BF30589E254F2C3E0087FDEA /* BusyBuddyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF3058A8254F2C3E0087FDEA /* BusyBuddyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF3058B8254F2C3E0087FDEA /* Build configuration list for PBXNativeTarget "BusyBuddyUITests" */;
-			buildPhases = (
-				BF3058A5254F2C3E0087FDEA /* Sources */,
-				BF3058A6254F2C3E0087FDEA /* Frameworks */,
-				BF3058A7254F2C3E0087FDEA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BF3058AB254F2C3E0087FDEA /* PBXTargetDependency */,
-			);
-			name = BusyBuddyUITests;
-			productName = BusyBuddyUITests;
-			productReference = BF3058A9254F2C3E0087FDEA /* BusyBuddyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		BFC73D0525A085EC0003413E /* JamCamIntent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFC73D0F25A085EC0003413E /* Build configuration list for PBXNativeTarget "JamCamIntent" */;
@@ -532,10 +481,6 @@
 						CreatedOnToolsVersion = 12.1;
 						TestTargetID = BF305884254F2C3C0087FDEA;
 					};
-					BF3058A8254F2C3E0087FDEA = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = BF305884254F2C3C0087FDEA;
-					};
 					BFC73D0525A085EC0003413E = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -556,7 +501,6 @@
 			targets = (
 				BF305884254F2C3C0087FDEA /* BusyBuddy */,
 				BF30589D254F2C3E0087FDEA /* BusyBuddyTests */,
-				BF3058A8254F2C3E0087FDEA /* BusyBuddyUITests */,
 				BF1B84902598ABEC00EC912D /* BusyWidgetsExtension */,
 				BFC73D0525A085EC0003413E /* JamCamIntent */,
 			);
@@ -589,13 +533,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF3058A7254F2C3E0087FDEA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFC73D0425A085EC0003413E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -622,7 +559,6 @@
 				BF894399259C89640009582A /* ExampleJamCams.swift in Sources */,
 				BF88F9B1261EFE7A00DC5DF4 /* ResNet-50.mlmodel in Sources */,
 				BF894332259C7E9D0009582A /* BusyScore.swift in Sources */,
-				BF977A2B259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BF1B84962598ABEC00EC912D /* BusyWidgets.swift in Sources */,
 				BF977A44259CCA2D00BC6896 /* YOLOv3.mlmodel in Sources */,
 				BF88F9CA261F000D00DC5DF4 /* TuriCreateImageClassifier.swift in Sources */,
@@ -676,7 +612,6 @@
 				BF2DB8A725541D0E00A304A7 /* AllJamCamsSheet.swift in Sources */,
 				BF7ECC1325ED1F5B004AC50D /* SearchBar.swift in Sources */,
 				BF28F28F26309C4000FD6515 /* CreateMLModelv6.swift in Sources */,
-				BF977A2A259CC13B00BC6896 /* YOLOv3Tiny.mlmodel in Sources */,
 				BFC7354B2600D56300FFA306 /* LocationModel.swift in Sources */,
 				BF3058C8254F2C7E0087FDEA /* JamCam.swift in Sources */,
 				BF6B1DB52573C3DA00CF3FF0 /* BookmarksGridItem.swift in Sources */,
@@ -694,14 +629,6 @@
 				BF3ACD2C25D4156E0078E013 /* JamCamsModelTests.swift in Sources */,
 				BFCEE1502631C01700A4C8B6 /* JamCamTests.swift in Sources */,
 				BF3058A3254F2C3E0087FDEA /* BusyBuddyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF3058A5254F2C3E0087FDEA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF3058AE254F2C3E0087FDEA /* BusyBuddyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,11 +655,6 @@
 			isa = PBXTargetDependency;
 			target = BF305884254F2C3C0087FDEA /* BusyBuddy */;
 			targetProxy = BF30589F254F2C3E0087FDEA /* PBXContainerItemProxy */;
-		};
-		BF3058AB254F2C3E0087FDEA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BF305884254F2C3C0087FDEA /* BusyBuddy */;
-			targetProxy = BF3058AA254F2C3E0087FDEA /* PBXContainerItemProxy */;
 		};
 		BFC73D0D25A085EC0003413E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1002,48 +924,6 @@
 			};
 			name = Release;
 		};
-		BF3058B9254F2C3E0087FDEA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z59VU7JW5V;
-				INFOPLIST_FILE = BusyBuddyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BusyBuddy;
-				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
-			};
-			name = Debug;
-		};
-		BF3058BA254F2C3E0087FDEA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z59VU7JW5V;
-				INFOPLIST_FILE = BusyBuddyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zcabrmy.BusyBuddyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BusyBuddy;
-				TFL_API_KEY = 8de811fa119a40759ae10b7222621547;
-			};
-			name = Release;
-		};
 		BFC73D1025A085EC0003413E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1123,15 +1003,6 @@
 			buildConfigurations = (
 				BF3058B6254F2C3E0087FDEA /* Debug */,
 				BF3058B7254F2C3E0087FDEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BF3058B8254F2C3E0087FDEA /* Build configuration list for PBXNativeTarget "BusyBuddyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BF3058B9254F2C3E0087FDEA /* Debug */,
-				BF3058BA254F2C3E0087FDEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

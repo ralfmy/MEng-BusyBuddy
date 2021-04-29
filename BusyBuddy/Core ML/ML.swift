@@ -14,7 +14,6 @@ struct ML {
     private static let vfps = TuriCreateImageClassifier(mlModel: VisionFeaturePrint_Scene().model, confidenceThreshold: 0.6)
     private static let cmlv6 = CreateMLModelv6(confidenceThreshold: 0.6)
     private static let yolo = YOLO()
-    private static let yolotiny = YOLO(mlModel: YOLOv3Tiny().model)
     
     static func currentModel(_ defaults: UserDefaults = UserDefaults(suiteName: "group.com.zcabrmy.BusyBuddy")!) -> BusyModel {
         if let rawValue = defaults.integer(forKey: "model") as? Int {
@@ -30,8 +29,6 @@ struct ML {
                 return self.cmlv6
             case .yolo:
                 return self.yolo
-            case .yolotiny:
-                return self.yolotiny
             default:
                 return self.vfps
             }
